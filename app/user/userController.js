@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('buzzbands_client.UserControllers', ['ngRoute'])
+angular.module('buzzbands_client.UserControllers', ['ui.router'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/register', {
-    templateUrl: 'user/signup.html',
+.config(['$stateProvider', function($stateProvider) {
+  $stateProvider.state('register', {
+    url: '/register',
+    templateUrl: 'app/user/signup.html',
     controller: 'UserRegisterController'
   });
 }])

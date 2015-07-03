@@ -2,8 +2,8 @@
 
 // Declare app level module which depends on views, and components
 angular.module('buzzbands_client', [
-  'ngRoute',
   'ngResource',
+  'ui.router',
   'ui.bootstrap',
   'ipCookie',
   'ng-token-auth',
@@ -12,8 +12,8 @@ angular.module('buzzbands_client', [
   'buzzbands_client.UserControllers',
   'buzzbands_client.version'
 ]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/register'});
+config(['$urlRouterProvider', function($urlRouterProvider) {
+  $urlRouterProvider.otherwise('/register');
 }])
 .config(function($authProvider) {
 

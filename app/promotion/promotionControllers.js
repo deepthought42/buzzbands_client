@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('buzzbands_client.promotion', ['ngRoute'])
+angular.module('buzzbands_client.promotion', ['ui.router'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/promotions', {
+.config(['$stateProvider', function($stateProvider) {
+  $stateProvider.state('promotionIndex', {
+    url: '/promotions',
     templateUrl: 'promotion/index.html',
     controller: 'PromotionIndexCtrl'
   });
