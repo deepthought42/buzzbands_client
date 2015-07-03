@@ -10,8 +10,8 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
   });
 }])
 
-.controller('UserRegisterController', ['$scope', '$rootScope', '$auth', '$sessionStorage',
-	function ($scope, $rootScope, $auth, $sessionStorage ) {
+.controller('UserRegisterController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state',
+	function ($scope, $rootScope, $auth, $sessionStorage, $state) {
 		$scope.$session = $sessionStorage;
 
 		$scope.register = function(isValid){
@@ -34,6 +34,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 					$rootScope.$broadcast('userRegistered', user);
 					$scope.registrationForm={}
 					$scope.userRegistration.$submitted = false;
+          $state.go('promotions')
 				});
 			}
 		}

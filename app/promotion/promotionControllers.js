@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('buzzbands_client.promotion', ['ui.router'])
+angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands.PromotionService'])
 
 .config(['$stateProvider', function($stateProvider) {
-  $stateProvider.state('promotionIndex', {
+  $stateProvider.state('promotions', {
     url: '/promotions',
-    templateUrl: 'promotion/index.html',
-    controller: 'PromotionIndexCtrl'
+    templateUrl: 'app/promotion/index.html',
+    controller: 'PromotionIndexController'
   });
 }])
 
-.controller('PromotionIndexCtrl', [function() {
-
+.controller('PromotionIndexController', ['$scope', 'Promotion', function($scope, Promotion) {
+  $scope.promotionList = Promotion.query();
 }]);

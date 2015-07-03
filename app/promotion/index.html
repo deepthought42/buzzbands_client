@@ -1,8 +1,9 @@
-
 <div class="container" ng-controller="PromotionIndexController">
   <div class="row text-center">
-    <div class="col-md-3 promotionItem text-center" ng-repeat="promo in promotions">
-      <span></span>
+    <div class="col-md-3 promotionItem text-center" ng-repeat="promo in promotionList">
+      <span>{{promo.name}}</span>
+      <span>{{promo.ad_location}}</span>
+      <img ng-src="{{promo.ad_location}}"/>
     </div>
   </div>
 </div>

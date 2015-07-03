@@ -10,6 +10,7 @@ angular.module('buzzbands_client', [
   'ngStorage',
   'ngMessages',
   'buzzbands_client.UserControllers',
+  'buzzbands_client.PromotionControllers',
   'buzzbands_client.version'
 ]).
 config(['$urlRouterProvider', function($urlRouterProvider) {
