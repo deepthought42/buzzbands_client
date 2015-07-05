@@ -7,6 +7,11 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
     url: '/promotions',
     templateUrl: 'app/promotion/index.html',
     controller: 'PromotionIndexController'
+  })
+  .state('promotion/edit',{
+    url: '/promotions/:id',
+    templateUrl: 'app/promotion/new.html',
+    controller: 'PromotionCreationController'
   });
 }])
 
