@@ -12,4 +12,8 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
 
 .controller('PromotionIndexController', ['$scope', 'Promotion', function($scope, Promotion) {
   $scope.promotionList = Promotion.query();
+}])
+
+.controller('PromotionCreationController', ['$scope', 'Promotion', function($scope, Promotion) {
+  $scope.promotion = Promotion.new();
 }]);

@@ -6,13 +6,18 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
   $stateProvider.state('register', {
     url: '/register',
     templateUrl: 'app/user/signup.html',
-    controller: 'UserRegisterController'
+    controller: 'UserAuthController'
   });
 }])
 
-.controller('UserRegisterController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state',
+.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state',
 	function ($scope, $rootScope, $auth, $sessionStorage, $state) {
 		$scope.$session = $sessionStorage;
+    $scope.$session.signedIn = $auth.validateUser();
+
+    if($scope.$session.signedIn){
+        $state.go("promotions");
+    }
 
 		$scope.register = function(isValid){
 			var credentials = {
@@ -23,7 +28,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 
 			if(isValid){
 				$auth.submitRegistration(credentials).then(function(registeredUser) {
-					$auth.validateUser();
+          $scope.$session.signedIn = $auth.validateUser();
 					$scope.successfulRegistration = true;
 					//show some sort of statement that indicates they are welcome to enjoy
 				}, function(error) {
@@ -37,6 +42,49 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
           $state.go('promotions')
 				});
 			}
+		}
+
+    $scope.logout = function(user){
+			$auth.signOut()
+			$scope.$on('auth:logout-success', function(event, oldCurrentUser) {
+				$('#editProfileForm').hide();
+				delete $scope.$session.user;
+			});
+
+			$scope.$on('auth:logout-error', function(event, reason){
+				delete $scope.$session.user;
+				console.log("There was an error signing you out. REASON :: "+reason);
+			})
+		}
+
+    /**
+    * @param loginForm {User}
+    */
+    $scope.signIn = function(loginForm){
+			var credentials = {
+				email: $scope.loginForm.email,
+				password: $scope.loginForm.password
+			};
+
+			//Authenticate with user credentials
+			$auth.submitLogin(credentials).then(function(response) {
+				//$scope.$session.user = response.data;
+				console.log(response.data)
+				console.log($scope.$session.user); // => {id: 1, ect: '...'}
+			}, function(error) {
+				alert("Failed to log in");
+			});
+
+			$scope.$on('auth:login-success', function(event, currentUser) {
+				$scope.$session.user = currentUser.data;
+				$auth.validateUser();
+				$location.path('/ideaIdx');
+				$scope.hideSignInPanel();
+			});
+
+			$scope.$on('auth:login-error', function(event, currentUser) {
+				alert("Error logging in");
+			});
 		}
 	}
 ]);

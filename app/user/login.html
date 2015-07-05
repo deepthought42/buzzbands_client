@@ -1,0 +1,30 @@
+<div ng-contoller="UserAuthController">
+  <form role="form"
+        ng-init="loginForm = {}"
+        ng-submit="signIn(userLogin.$valid)"
+        name="userLogin" novalidate>
+        <input type="email"
+               name="email"
+               id="userFormEmailField"
+               ng-model="loginForm.email"
+               required="required"
+               class="form-control"
+               placeholder="Email" />
+        <div ng-messages="userLogin.email.$error" ng-if="userLogin.$submitted">
+          <p ng-message="required">Email is required.</p>
+          <p ng-message="email">Invalid email address.</p>
+        </div>
+
+        <input placeholder= "Password"
+                type="password"
+                name="password"
+                id="password"
+                ng-model="loginForm.password"
+                class="form-control"
+                required />
+        <div ng-messages="loginForm.password.$error" ng-if="loginForm.$submitted">
+          <p ng-message="required">Password is required.</p>
+        </div>
+      <button type="submit">Sign in</button>
+  </form>
+</div>

@@ -1,4 +1,4 @@
-<div class="container" ng-controller="UserRegisterController">
+<div class="container" ng-controller="UserAuthController">
   <div class="row col-sm-12">
     Header Text Here
       <button>Learn More</button>
@@ -12,11 +12,16 @@
             ng-submit="register(userRegistration.$valid)"
             name="userRegistration" novalidate>
         <div class="form-group">
-          <input type="email" name="email" id="userFormEmailField" ng-model="registrationForm.email" required="required" class="form-control" placeholder="Email">
+          <input type="email"
+                 name="email"
+                 id="userFormEmailField"
+                 ng-model="registrationForm.email"
+                 required="required"
+                 class="form-control"
+                 placeholder="Email" />
           <div ng-messages="userRegistration.email.$error" ng-if="userRegistration.$submitted">
             <p ng-message="required">Email is required.</p>
             <p ng-message="email">Invalid email address.</p>
-
           </div>
         </div>
         <div class="form-group">

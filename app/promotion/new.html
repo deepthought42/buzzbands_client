@@ -15,12 +15,14 @@
 										ng-model="promotion.cover_img"
 										drop-available="dropSupported"
 										ng-file-select
-										accept="image/*">
+										accept="image/*"
+										ng-show="formStep==2">
 											<img id="promotionCreationImage"
-														class="cover_img"
-														ng-src="{{logo_url}}"/>
+														class="promotion.cover_img"
+														ng-src="{{logo_url}}" />
 							</div>
-							<div class="field">
+							<div class="field"
+									 ng-show="formStep==1">
 								<input  class="form-control"
 												type="text"
 												name="name"
@@ -42,7 +44,7 @@
 					<div class="actions col-md-12">
 						<button type="submit" class="btn btn-primary pull-right" >
 							<i class="fa fa-save"></i>
-							Save
+							Next
 						</button>
 					</div>
 				</form>
