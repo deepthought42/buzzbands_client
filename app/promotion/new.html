@@ -1,53 +1,53 @@
 <div class="container" ng-controller="PromotionCreationCtrl">
 	<div class="row" >
 		<div id="promotionCreatePanel" class="col-md-10">
-			</div>
-				<form name="promotionForm"
-							enctype="multipart/form-data"
-							ng-submit="createNewPromotion(promotionForm.$valid)"
-							novalidate>
-					<div class="col-md-12">
-						<div class="col-md-5">
-							<div class="text-center field"
-										name="cover_image"
-										ng-file-drop
-										ng-file-change="previewImage($files)"
-										ng-model="promotion.cover_img"
-										drop-available="dropSupported"
-										ng-file-select
-										accept="image/*"
-										ng-show="formStep==2">
-											<img id="promotionCreationImage"
-														class="promotion.cover_img"
-														ng-src="{{logo_url}}" />
-							</div>
-							<div class="field"
-									 ng-show="formStep==1">
-								<input  class="form-control"
-												type="text"
-												name="name"
-												ng-model="promotion.name"
-												id="newPromotionName"
-												placeholder="Name"
-												required
-												minlength="3"
-												maxlength="250"
-												promotion-name-availability-validator="/promotions.json"/>
-								<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$submitted" class="error">
-									<p ng-message="required">Name is required.</p>
-									<p ng-message="minlength">Name must be at least 3 characters</p>
-									<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>								</div>
+			<form name="promotionForm"
+						enctype="multipart/form-data"
+						ng-submit="createNewPromotion(promotionForm.$valid)"
+						novalidate>
+				<div class="col-md-12">
+					<div class="col-md-5">
+						<div class="text-center field"
+									name="cover_image"
+									ng-file-drop
+									ng-file-change="previewImage($files)"
+									ng-model="promotion.cover_img"
+									drop-available="dropSupported"
+									ng-file-select
+									accept="image/*"
+									ng-show="formStep==2">
+										<img id="promotionCreationImage"
+													class="promotion.cover_img"
+													ng-src="{{logo_url}}" />
+						</div>
+						<div class="field"
+								 ng-show="formStep==1">
+							<input  class="form-control"
+											type="text"
+											name="name"
+											ng-model="promotion.name"
+											id="newPromotionName"
+											placeholder="Name"
+											required
+											minlength="3"
+											maxlength="250"
+											promotion-name-availability-validator="/promotions.json"/>
+							<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$submitted" class="error">
+								<p ng-message="required">Name is required.</p>
+								<p ng-message="minlength">Name must be at least 3 characters</p>
+								<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
 							</div>
 						</div>
 					</div>
+				</div>
 
-					<div class="actions col-md-12">
-						<button type="submit" class="btn btn-primary pull-right" >
-							<i class="fa fa-save"></i>
-							Next
-						</button>
-					</div>
-				</form>
+				<div class="actions col-md-12">
+					<button type="submit" class="btn btn-primary pull-right" >
+						<i class="fa fa-save"></i>
+						Next
+					</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
