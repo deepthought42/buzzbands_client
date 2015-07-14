@@ -7,6 +7,11 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
     url: '/register',
     templateUrl: 'app/user/signup.html',
     controller: 'UserAuthController'
+  })
+  .state('login', {
+    url: '/login',
+    templateUrl: 'app/user/login.html',
+    controller: 'UserAuthController'
   });
 }])
 
@@ -15,7 +20,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 		$scope.$session = $sessionStorage;
     $scope.$session.signedIn = $auth.validateUser();
 
-    if($scope.$session.signedIn){
+    if($scope.$session.signedIn === true){
         $state.go("promotions");
     }
 
@@ -28,7 +33,8 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 
 			if(isValid){
 				$auth.submitRegistration(credentials).then(function(registeredUser) {
-          $scope.$session.signedIn = $auth.validateUser();
+          $scope.$session.user = registeredUser;
+          $scope.$session.user.signedIn = $auth.validateUser();
 					$scope.successfulRegistration = true;
 					//show some sort of statement that indicates they are welcome to enjoy
 				}, function(error) {

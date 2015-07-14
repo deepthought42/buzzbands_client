@@ -1,11 +1,27 @@
-<div class="container" ng-controller="PromotionIndexController">
-  <div class="row text-center">
-    <div class="col-md-3 promotionItem text-center" ng-repeat="promo in promotionList">
-      <span>{{promo.name}}</span>
-      <span>{{	promo.ad_location}}</span>
-      <img ng-src="{{promo.ad_location}}"/>
-      <button>Edit</button>
-      <button>Delete</button>
-    </div>
+<div class="row" ng-controller="PromotionIndexController">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead>
+        <tr>Name</tr>
+        <tr>Venue</tr>
+        <tr>Description</tr>
+        <tr>Image</tr>
+        <tr>Start Time</tr>
+        <tr>End Time</tr>
+        <tr></tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="promo in promotionList">
+          <td>{{promo.name}}</td>
+          <td></td>
+          <td></td>
+          <td>{{promo.ad_location}}</td>
+          <td>
+            <button>Edit</button>
+            <button>Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
