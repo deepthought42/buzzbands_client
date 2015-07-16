@@ -1,13 +1,32 @@
 <div class="container" ng-controller="VenueIndexController">
-  <div class="row text-center">
-    <div class="col-md-3 venueItem text-center" ng-repeat="venue in venueList">
-      <span>{{venue.name}}</span>
-      <span>{{venue.address}}</span>
-      <span>{{venue.city}}</span>
-      <span>{{venue.state}}</span>
-      <span>{{venue.zip_code}}</span>
-      <button>Edit</button>
-      <button>Delete</button>
-    </div>
+  <div class="row">
+    <table class="col-sm-6 table table-striped table-condensed">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Address</td>
+          <td>City</td>
+          <td>State</td>
+          <td>Zip</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="venue in venueList">
+          <td>{{venue.name}}</td>
+          <td>{{venue.address}}</td>
+          <td>{{venue.city}}</td>
+          <td>{{venue.state}}</td>
+          <td>{{venue.zip_code}}</td>
+          <td>
+            <button>Edit</button>
+            <button>Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <button class="btn btn-default" tooltip="New Venue">Create Venue</button>
   </div>
 </div>
