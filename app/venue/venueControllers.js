@@ -11,6 +11,11 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   .state('venue/edit',{
     url: '/venues/edit',
     templateUrl: 'app/venue/edit.html',
+    controller: 'VenueUpdateController'
+  })
+  .state('venue/new',{
+    url: '/venues/new',
+    templateUrl: 'app/venue/new.html',
     controller: 'VenueCreationController'
   });
 }])
@@ -21,14 +26,33 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   $scope.addVenue = function(){
     state.go('venue/edit')
   }
+
+  $scope.deleteVenue = function(venueId){
+    Venue.delete(venueId);
+  }
+
+  $scope.editVenue = function(venueId){
+    state.go("venue/edit")
+  }
 }])
 
 .controller('VenueCreationController', ['$scope', 'Venue', function($scope, Venue) {
   $scope.venue = {};
 
-  $scope.updateVenue = function(venueValid){
+  $scope.createVenue = function(venueValid){
     if(venueValid){
       Venue.save($scope.venue)
     }
   }
+
 }]);
+
+.controller('VenueDetailsController', ['$scope', 'Venue', '$state', function($scope, Venue, state) {
+  $scope.venueList = Venue.get(1);
+
+  $scope.updateVenue = function(venueValid){
+    if(venueValid){
+      Venue.update($scope.venue)
+    }
+  }
+}])
