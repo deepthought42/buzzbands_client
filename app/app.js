@@ -11,6 +11,7 @@ angular.module('buzzbands_client', [
   'ngMessages',
   'buzzbands_client.UserControllers',
   'buzzbands_client.PromotionControllers',
+  'buzzbands_client.VenueControllers',
   'buzzbands_client.LandingControllers',
   'buzzbands_client.version'
 ]).
