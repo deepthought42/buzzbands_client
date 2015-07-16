@@ -1,10 +1,9 @@
-<div class="row" ng-controller="PromotionIndexController">
+<div class="row">
   <div class="col-sm-12">
     <table class="table table-striped">
       <thead>
         <tr>
           <td>Name</td>
-          <td>Venue</td>
           <td>Description</td>
           <td>Image</td>
           <td>Start Time</td>
@@ -15,9 +14,10 @@
       <tbody>
         <tr ng-repeat="promo in promotionList">
           <td>{{promo.name}}</td>
-          <td></td>
-          <td></td>
+          <td>{{promo.description}}</td>
           <td>{{promo.ad_location}}</td>
+          <td>{{promo.start_time}}</td>
+          <td>{{promo.end_time}}</td>
           <td>
             <button>Edit</button>
             <button>Delete</button>
@@ -25,5 +25,8 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div>
+    <button class="btn btn-default" ng-click="createPromotion()">Create Promotion</button>
   </div>
 </div>

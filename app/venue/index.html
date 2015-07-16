@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="venue in venueList">
-          <td>{{venue.name}}</td>
+          <td><a ng-click="showPromotionsList(venue.id)">{{venue.name}}</a></td>
           <td>{{venue.address}}</td>
           <td>{{venue.city}}</td>
           <td>{{venue.state}}</td>

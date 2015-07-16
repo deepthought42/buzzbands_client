@@ -3,8 +3,7 @@
 		<div id="promotionCreatePanel" class="col-md-10">
 			<form name="promotionForm"
 						enctype="multipart/form-data"
-						ng-submit="createNewPromotion(promotionForm.$valid)"
-						ng-init="formStep=1"
+						ng-submit="updatePromotion(promotionForm.$valid)"
 						novalidate>
 				<div class="col-md-12">
 					<div class="col-md-5">
@@ -31,8 +30,9 @@
 											placeholder="Name"
 											required
 											minlength="3"
-											maxlength="250"/>
-							<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
+											maxlength="250"
+											promotion-name-availability-validator="/promotions.json"/>
+							<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$submitted" class="text-danger">
 								<p ng-message="required">Name is required.</p>
 								<p ng-message="minlength">Name must be at least 3 characters</p>
 								<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
@@ -42,12 +42,9 @@
 				</div>
 
 				<div class="actions col-md-12">
-					<button class="btn btn-primary pull-right" ng-show="formStep<2" ng-click="formStep=formStep+1">
+					<button type="submit" class="btn btn-primary pull-right" >
+						<i class="fa fa-save"></i>
 						Next
-					</button>
-
-					<button class="btn btn-primary pull-right" ng-show="formStep==2" type="submit" ng-disabled="promotionForm.$invalid">
-						Submit
 					</button>
 				</div>
 			</form>

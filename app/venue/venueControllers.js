@@ -14,7 +14,6 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
     controller: 'VenueDetailsController'
   })
   .state('venue/new',{
-    url: '/venues/new',
     templateUrl: 'app/venue/new.html',
     controller: 'VenueCreationController'
   });
@@ -33,6 +32,10 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
 
   $scope.editVenue = function(venueId){
     state.go("venue/edit", {"id" : venueId});
+  }
+
+  $scope.showPromotionsList = function(venueId){
+    state.go("promotions", {"venueId": venueId});
   }
 }])
 
