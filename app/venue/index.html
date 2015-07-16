@@ -19,8 +19,8 @@
           <td>{{venue.state}}</td>
           <td>{{venue.zip_code}}</td>
           <td>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button ng-click="editVenue(venue.id)">Edit</button>
+            <button ng-click="deleteVenue(venue.id)">Delete</button>
           </td>
         </tr>
       </tbody>

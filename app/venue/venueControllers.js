@@ -8,8 +8,8 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
     templateUrl: 'app/venue/index.html',
     controller: 'VenueIndexController'
   })
-  .state('venue/edit',{
-    url: '/venues/edit',
+  .state('venue/edit', @id, {
+    url: '/venues/:id',
     templateUrl: 'app/venue/edit.html',
     controller: 'VenueUpdateController'
   })
@@ -24,7 +24,7 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   $scope.venueList = Venue.query();
 
   $scope.addVenue = function(){
-    state.go('venue/edit')
+    state.go('venue/edit');
   }
 
   $scope.deleteVenue = function(venueId){
@@ -32,7 +32,7 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   }
 
   $scope.editVenue = function(venueId){
-    state.go("venue/edit")
+    state.go("venue/edit", venueId);
   }
 }])
 
