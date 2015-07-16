@@ -15,10 +15,20 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   });
 }])
 
-.controller('VenueIndexController', ['$scope', 'Venue', function($scope, Venue) {
+.controller('VenueIndexController', ['$scope', 'Venue', '$state', function($scope, Venue, state) {
   $scope.venueList = Venue.query();
+
+  $scope.addVenue = function(){
+    state.go('venue/edit')
+  }
 }])
 
 .controller('VenueCreationController', ['$scope', 'Venue', function($scope, Venue) {
-  $scope.venue = Venue.new();
+  $scope.venue = {};
+
+  $scope.updateVenue = function(venueValid){
+    if(venueValid){
+      Venue.save($scope.venue)
+    }
+  }
 }]);

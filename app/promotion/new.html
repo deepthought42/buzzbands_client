@@ -32,7 +32,7 @@
 											minlength="3"
 											maxlength="250"
 											promotion-name-availability-validator="/promotions.json"/>
-							<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$submitted" class="error">
+							<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$submitted" class="text-danger">
 								<p ng-message="required">Name is required.</p>
 								<p ng-message="minlength">Name must be at least 3 characters</p>
 								<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>

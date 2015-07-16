@@ -2,6 +2,6 @@ var services = angular.module('buzzbands.PromotionService', ['ngResource', 'buzz
 
 services.factory('Promotion', ['$resource', 'buzzbands.serviceConfig', function ($resource, config) {
   return $resource(config.basePath + '/promotions/:id.json', {id: '@id'}, {
-    save: { method: 'PUT'}
+    update: { method: 'PUT'}
   });
 }]);
