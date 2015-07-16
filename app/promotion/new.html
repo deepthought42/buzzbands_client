@@ -18,8 +18,8 @@
 									accept="image/*"
 									ng-show="formStep==2">
 										<img id="promotionCreationImage"
-													class="promotion.cover_img"
-													ng-src="{{logo_url}}" />
+													class=""
+													ng-src="{{promotion.cover_img || '../images/No_Image_Available.png'}}" />
 						</div>
 						<div class="field"
 								 ng-show="formStep==1">
