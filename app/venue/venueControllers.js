@@ -50,12 +50,17 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
 .controller('VenueDetailsController', ['$scope', 'Venue', '$state', '$stateParams',
   function($scope, Venue, state, stateParams)
   {
-    $scope.venueList = Venue.get({id: stateParams.id}).$promise
-      .then(function(data){
-        console.log("SUCESS :: "+data)
-      }, function(data){
-        console.log("ERR  :: "+ data)
-      });
+    $scope.venue={}
+
+    $scope.loadVenue = function(){
+      Venue.get({id: stateParams.id}).$promise
+        .then(function(data){
+          $scope.venue = data;
+        })
+        .catch(function(data){
+          console.log("ERR  :: "+ data)
+        });
+    }
 
     $scope.updateVenue = function(venueValid){
       if(venueValid){
