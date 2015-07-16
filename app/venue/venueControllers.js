@@ -8,10 +8,10 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
     templateUrl: 'app/venue/index.html',
     controller: 'VenueIndexController'
   })
-  .state('venue/edit', @id, {
+  .state('venue/edit', {
     url: '/venues/:id',
     templateUrl: 'app/venue/edit.html',
-    controller: 'VenueUpdateController'
+    controller: 'VenueDetailsController'
   })
   .state('venue/new',{
     url: '/venues/new',
@@ -32,7 +32,7 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   }
 
   $scope.editVenue = function(venueId){
-    state.go("venue/edit", venueId);
+    state.go("venue/edit", {"id" : venueId});
   }
 }])
 
@@ -45,14 +45,22 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
     }
   }
 
-}]);
+}])
 
-.controller('VenueDetailsController', ['$scope', 'Venue', '$state', function($scope, Venue, state) {
-  $scope.venueList = Venue.get(1);
+.controller('VenueDetailsController', ['$scope', 'Venue', '$state', '$stateParams',
+  function($scope, Venue, state, stateParams)
+  {
+    $scope.venueList = Venue.get({id: stateParams.id}).$promise
+      .then(function(data){
+        console.log("SUCESS :: "+data)
+      }, function(data){
+        console.log("ERR  :: "+ data)
+      });
 
-  $scope.updateVenue = function(venueValid){
-    if(venueValid){
-      Venue.update($scope.venue)
+    $scope.updateVenue = function(venueValid){
+      if(venueValid){
+        Venue.update($scope.venue)
+      }
     }
   }
-}])
+])
