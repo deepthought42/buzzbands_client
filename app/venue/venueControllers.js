@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.VenueService'])
+angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.VenueService', 'mwl.confirm'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('venues', {
@@ -36,16 +36,14 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   }
 
   $scope.deleteVenue = function(venueId){
-    if(confirm("Are you sure you want to delete this venue")){
-      Venue.remove({id: venueId}).$promise
-        .then(function(data){
-          $scope.venueList = $scope.queryVenues();
-          state.go("venues");
-        })
-        .catch(function(data){
-          console.log("an error occurred while deleting venue");
-        });
-    }
+    Venue.remove({id: venueId}).$promise
+      .then(function(data){
+        $scope.venueList = $scope.queryVenues();
+        state.go("venues");
+      })
+      .catch(function(data){
+        console.log("an error occurred while deleting venue");
+      });
   }
 
   $scope.editVenue = function(venueId){

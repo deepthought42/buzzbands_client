@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "buzzbands_client",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "",
+  "repository": "https://github.com/deepthought42/buzzbands_client",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.3.1",

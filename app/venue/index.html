@@ -20,7 +20,20 @@
           <td>{{venue.zip_code}}</td>
           <td>
             <button ng-click="editVenue(venue.id)">Edit</button>
-            <button ng-click="deleteVenue(venue.id)">Delete</button>
+            <button ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
+                    cancel-button-type="default"
+                    confirm-button-type="danger"
+                    on-cancel="vm.cancelClicked = true"
+                    on-confirm="deleteVenue(venue.id)"
+                    placement="bottom"
+                    cancel-text="No &lt;i class='glyphicon glyphicon-remove'&gt;&lt;/i&gt;"
+                    confirm-text="Yes &lt;i class='glyphicon glyphicon-ok'&gt;&lt;/i&gt;"
+                    message="Are you really &lt;b&gt;sure&lt;/b&gt; you want to do this?"
+                    title="Are you sure?"
+                    mwl-confirm=""
+                    class="btn btn-default ng-binding ng-isolate-scope">
+                Delete
+            </button>
           </td>
         </tr>
       </tbody>
