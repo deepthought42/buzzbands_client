@@ -20,14 +20,30 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
 }])
 
 .controller('VenueIndexController', ['$scope', 'Venue', '$state', function($scope, Venue, state) {
-  $scope.venueList = Venue.query();
+  $scope.queryVenues = function(){
+    Venue.query().$promise
+      .then(function(data){
+        console.log("successfully queried venues :: "+data);
+        $scope.venueList = data;
+      })
+      .catch(function(data){
+        console.log("error querying venues")
+      });
+  }
 
   $scope.addVenue = function(){
     state.go('venue/new');
   }
 
   $scope.deleteVenue = function(venueId){
-    Venue.delete(venueId);
+    Venue.remove({id: venueId}).$promise
+      .then(function(data){
+        $scope.venueList = $scope.queryVenues();
+        state.go("venues");
+      })
+      .catch(function(data){
+        console.log("an error occurred while deleting venue");
+      });
   }
 
   $scope.editVenue = function(venueId){
@@ -37,6 +53,8 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   $scope.showPromotionsList = function(venueId){
     state.go("promotions", {"venueId": venueId});
   }
+
+  $scope.venueList = $scope.queryVenues();
 }])
 
 .controller('VenueCreationController', ['$scope', 'Venue', '$state', function($scope, Venue, state) {
@@ -54,7 +72,6 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
         });
     }
   }
-
 }])
 
 .controller('VenueDetailsController', ['$scope', 'Venue', '$state', '$stateParams',
