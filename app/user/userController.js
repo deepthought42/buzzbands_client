@@ -45,7 +45,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 					$rootScope.$broadcast('userRegistered', user);
 					$scope.registrationForm={}
 					$scope.userRegistration.$submitted = false;
-          $state.go('promotions')
+          $state.go('venues')
 				});
 			}
 		}

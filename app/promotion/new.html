@@ -10,16 +10,16 @@
 					<div class="col-md-5">
 						<div class="text-center field"
 									name="cover_image"
-									ng-file-drop
-									ng-file-change="previewImage($files)"
+									ngf-drop
+									ngf-change="previewImage($files)"
 									ng-model="promotion.cover_img"
-									drop-available="dropSupported"
-									ng-file-select
-									accept="image/*"
+									ngf-drop-available="dropSupported"
+									ngf-select="true"
+									ngf-accept="image/*"
 									ng-show="formStep==2">
 										<img id="promotionCreationImage"
-													class=""
-													ng-src="{{promotion.cover_img || '../images/No_Image_Available.png'}}" />
+													ngf-src="file"
+													ng-src="images/No_Image_Available.png" />
 						</div>
 						<div class="field"
 								 ng-show="formStep==1">

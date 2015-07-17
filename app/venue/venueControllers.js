@@ -23,7 +23,7 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   $scope.venueList = Venue.query();
 
   $scope.addVenue = function(){
-    state.go('venue/edit');
+    state.go('venue/new');
   }
 
   $scope.deleteVenue = function(venueId){
@@ -39,12 +39,19 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   }
 }])
 
-.controller('VenueCreationController', ['$scope', 'Venue', function($scope, Venue) {
+.controller('VenueCreationController', ['$scope', 'Venue', '$state', function($scope, Venue, state) {
   $scope.venue = {};
 
   $scope.createVenue = function(venueValid){
     if(venueValid){
-      Venue.save($scope.venue)
+      console.log("SAVING VENUE..");
+      Venue.save($scope.venue).$promise
+        .then(function(data){
+          state.go("venues");
+        })
+        .catch(function(data){
+          console.log("there was an error creating venue");
+        });
     }
   }
 
@@ -56,13 +63,16 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
     $scope.venue={}
 
     $scope.loadVenue = function(){
-      Venue.get({id: stateParams.id}).$promise
-        .then(function(data){
-          $scope.venue = data;
-        })
-        .catch(function(data){
-          console.log("ERR  :: "+ data)
-        });
+      if(stateParams.id){
+        console.log("ID FOUND FOR VENUE");
+        Venue.get({id: stateParams.id}).$promise
+          .then(function(data){
+            $scope.venue = data;
+          })
+          .catch(function(data){
+            console.log("ERR  :: "+ data)
+          });
+      }
     }
 
     $scope.updateVenue = function(venueValid){

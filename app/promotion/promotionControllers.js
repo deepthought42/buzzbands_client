@@ -56,4 +56,16 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
 
       })
   }
+
+  $scope.previewImage = function(files){
+    var reader = new FileReader();
+    if(typeof files[0] === 'object'){
+      reader.readAsDataURL(files[0]);
+    }
+    reader.onload = function(event){
+      $scope.logo_url = reader.result;
+      $scope.promotion.cover_img = files[0];
+      $scope.$apply()
+    }
+  }
 }]);
