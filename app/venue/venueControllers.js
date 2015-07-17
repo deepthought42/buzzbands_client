@@ -36,14 +36,16 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   }
 
   $scope.deleteVenue = function(venueId){
-    Venue.remove({id: venueId}).$promise
-      .then(function(data){
-        $scope.venueList = $scope.queryVenues();
-        state.go("venues");
-      })
-      .catch(function(data){
-        console.log("an error occurred while deleting venue");
-      });
+    if(confirm("Are you sure you want to delete this venue")){
+      Venue.remove({id: venueId}).$promise
+        .then(function(data){
+          $scope.venueList = $scope.queryVenues();
+          state.go("venues");
+        })
+        .catch(function(data){
+          console.log("an error occurred while deleting venue");
+        });
+    }
   }
 
   $scope.editVenue = function(venueId){
