@@ -8,6 +8,7 @@
           <td>City</td>
           <td>State</td>
           <td>Zip</td>
+          <td>Active</td>
           <td></td>
         </tr>
       </thead>
@@ -18,6 +19,9 @@
           <td>{{venue.city}}</td>
           <td>{{venue.state}}</td>
           <td>{{venue.zip_code}}</td>
+          <td>
+            <input type="checkbox" ng-model="venue.active" />
+          </td>
           <td>
             <button ng-click="editVenue(venue.id)">Edit</button>
             <button ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
