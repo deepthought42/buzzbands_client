@@ -20,7 +20,7 @@
           <td>{{venue.state}}</td>
           <td>{{venue.zip_code}}</td>
           <td>
-            <input type="checkbox" ng-model="venue.active" />
+            <input type="checkbox" ng-model="venue.active" ng-Readonly="{{$session.user.role!='Admin'}}"/>
           </td>
           <td>
             <button ng-click="editVenue(venue.id)">Edit</button>
