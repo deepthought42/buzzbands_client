@@ -6,8 +6,10 @@
 						enctype="multipart/form-data"
 						ng-submit="updateVenue(venueForm.$valid)"
 						novalidate>
-				<div class="col-md-12">
-					<input  class="form-control"
+				<div class="form-group">
+					<label for="venueName">Name</label>
+					<input  id="venueName"
+									class="form-control"
 									type="text"
 									name="name"
 									ng-model="venue.name"
@@ -20,12 +22,14 @@
 						<p ng-message="required">Name is required.</p>
 						<p ng-message="minlength">Name must be at least 3 characters</p>
 					</div>
-
+				</div>
+				<div class="form-group">
+					<label for="venueAddress">Address</label>
 					<input  class="form-control"
 									type="text"
 									name="address"
 									ng-model="venue.address"
-									id="newVenueAddress"
+									id="venueAddress"
 									placeholder="Address"
 									required
 									minlength="3"
@@ -34,7 +38,9 @@
 						<p ng-message="required">Address is required.</p>
 						<p ng-message="minlength">Address must be at least 3 characters</p>
 					</div>
-
+				</div>
+				<div class="form-group">
+					<label for="venueCity">City</label>
 					<input  class="form-control"
 									type="text"
 									name="city"
@@ -48,12 +54,14 @@
 						<p ng-message="required">City is required.</p>
 						<p ng-message="minlength">City must be at least 3 characters</p>
 					</div>
-
+				</div>
+				<div class="form-group">
+					<label for="venueState">State</label>
 					<input  class="form-control"
 									type="text"
 									name="state"
 									ng-model="venue.state"
-									id="newVenueState"
+									id="venueState"
 									placeholder="State"
 									required
 									minlength="2"
@@ -62,12 +70,14 @@
 						<p ng-message="required">State is required.</p>
 						<p ng-message="minlength">State must be 2 letter abbreviation</p>
 					</div>
-
+				</div>
+				<div class="form-group">
+					<label for="valueZipCode">Zip code</label>
 					<input  class="form-control"
 									type="text"
 									name="zip_code"
 									ng-model="venue.zip_code"
-									id="newVenueZipCode"
+									id="venueZipCode"
 									placeholder="Zip Code"
 									required
 									minlength="5"
