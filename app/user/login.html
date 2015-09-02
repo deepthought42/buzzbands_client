@@ -11,8 +11,8 @@
                class="form-control"
                placeholder="Email" />
         <div ng-messages="userLogin.email.$error" ng-if="userLogin.$submitted">
-          <p ng-message="required">Email is required.</p>
-          <p ng-message="email">Invalid email address.</p>
+          <p class="text-danger" ng-message="required">Email is required.</p>
+          <p class="text-danger" ng-message="email">Invalid email address.</p>
         </div>
 
         <input placeholder= "Password"
@@ -23,8 +23,9 @@
                 class="form-control"
                 required />
         <div ng-messages="loginForm.password.$error" ng-if="loginForm.$submitted">
-          <p ng-message="required">Password is required.</p>
+          <p class="text-danger" ng-message="required">Password is required.</p>
         </div>
       <button type="submit" class="btn btn-default">Sign in</button>
+      <button ng-controller="landingController" ng-click="showRegistration" class="btn btn-default">Register</button>
   </form>
 </div>
