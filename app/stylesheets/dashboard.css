@@ -1,0 +1,66 @@
+#dashboard{
+  color: white;
+}
+
+#navContainer{
+  border: 1px solid black;
+  position:absolute;
+  height:100%;
+  background-color: black;
+}
+
+#mainPanelContainer{
+  border: 1px solid black;
+  position:absolute;
+  height:100%;
+  right:0px;
+  background-color: black;
+}
+
+#mainPanelHeader{
+  height: 10%;
+  border: 1px solid black;
+}
+
+#overviewCards{
+  position: relative;
+  height: 45%;
+  border: 1px solid black;
+}
+
+#quickStatsCardsContainer{
+  position: relative;
+  height: 45%;
+  border: 1px solid black;
+}
+
+#buyBandButton{
+    background-color: #FF3399;
+    top:  30%;
+    height: 60%;
+    border: 0px;
+    border-radius: 20px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+.overviewStatCard {
+  height: 225px;
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.overviewStat{
+  font-size: 7em;
+}
+
+.quickStatCard {
+  height: 225px;
+  margin-top: 40px;
+  margin-left: 85px;
+  margin-right: 85px;
+  background-color: #FF3399;
+  border: 1px solid black;
+}

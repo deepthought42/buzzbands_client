@@ -45,7 +45,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 					$rootScope.$broadcast('userRegistered', user);
 					$scope.registrationForm={}
 					$scope.userRegistration.$submitted = false;
-          $state.go('venues')
+          $state.go('home')
 				});
 			}
 		}
@@ -84,7 +84,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.$session.user = currentUser.data;
 				$auth.validateUser();
-				$state.go('venues');
+				$state.go('home');
 			});
 
 			$scope.$on('auth:login-error', function(event, currentUser) {

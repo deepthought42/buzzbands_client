@@ -1,0 +1,15 @@
+#logoContainer{
+  height: 15%;
+}
+
+img#logo{
+  height: 90%;
+}
+
+#navLinkContainer{
+  height: 70%;
+}
+
+.link{
+  margin-top: 10%;
+}
