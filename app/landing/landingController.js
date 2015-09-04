@@ -7,15 +7,15 @@ angular.module('buzzbands_client.LandingControllers', ['ui.router'])
     url: '/',
     views: {
       '': {
-        templateUrl: 'app/landing/landing.html',
+        templateUrl: 'app/views/landing/landing.html',
         controller: 'LandingController'
       },
       'register@landing': {
-        templateUrl: 'app/user/signup.html',
+        templateUrl: 'app/views/user/signup.html',
         controller: 'UserAuthController'
       },
       'login@landing': {
-        templateUrl: 'app/user/login.html',
+        templateUrl: 'app/views/user/login.html',
         controller: 'UserAuthController'
       }
     }

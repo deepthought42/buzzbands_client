@@ -22,14 +22,14 @@ config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $st
     url: '/dashboard',
     views: {
       '':{
-        templateUrl: 'app/dashboard/home.html',
+        templateUrl: 'app/views/home.html',
       },
       'dashboard@home': {
-        templateUrl: 'app/dashboard/dashboard.html',
+        templateUrl: 'app/views/dashboard/dashboard.html',
         controller: 'DashboardController'
       },
       'navigation@home': {
-        templateUrl: 'app/navigation/navigation.html',
+        templateUrl: 'app/views/navigation/navigation.html',
         controller: 'NavigationController'
       }
     }

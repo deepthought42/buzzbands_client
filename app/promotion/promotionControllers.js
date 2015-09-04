@@ -5,17 +5,17 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('promotions', {
     url: '/promotions/:venueId',
-    templateUrl: 'app/promotion/index.html',
+    templateUrl: 'views/promotion/index.html',
     controller: 'PromotionIndexController'
   })
   .state('promotion/edit',{
     url: '/promotions/:id',
-    templateUrl: 'app/promotion/edit.html',
+    templateUrl: 'views/promotion/edit.html',
     controller: 'PromotionDetailsController'
   })
   .state('promotion/new',{
     url: '/promotion/new',
-    templateUrl: 'app/promotion/new.html',
+    templateUrl: 'views/promotion/new.html',
     controller: 'PromotionCreationController'
   });
 }])

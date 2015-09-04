@@ -5,12 +5,12 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('register', {
     url: '/register',
-    templateUrl: 'app/user/signup.html',
+    templateUrl: 'views/user/signup.html',
     controller: 'UserAuthController'
   })
   .state('login', {
     url: '/login',
-    templateUrl: 'app/user/login.html',
+    templateUrl: 'views/user/login.html',
     controller: 'UserAuthController'
   });
 }])
