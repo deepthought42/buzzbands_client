@@ -18,22 +18,6 @@ angular.module('buzzbands_client', [
   'buzzbands_client.NavigationControllers'
 ]).
 config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
-  $stateProvider.state('home', {
-    url: '/dashboard',
-    views: {
-      '':{
-        templateUrl: 'app/views/home.html',
-      },
-      'dashboard@home': {
-        templateUrl: 'app/views/dashboard/dashboard.html',
-        controller: 'DashboardController'
-      },
-      'navigation@home': {
-        templateUrl: 'app/views/navigation/navigation.html',
-        controller: 'NavigationController'
-      }
-    }
-  })
   $urlRouterProvider.otherwise('/');
 }])
 .config(function($authProvider) {

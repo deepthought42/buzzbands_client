@@ -4,12 +4,7 @@ angular.module('buzzbands_client.LandingControllers', ['ui.router'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('landing', {
-    url: '/',
     views: {
-      '': {
-        templateUrl: 'app/views/landing/landing.html',
-        controller: 'LandingController'
-      },
       'register@landing': {
         templateUrl: 'app/views/user/signup.html',
         controller: 'UserAuthController'

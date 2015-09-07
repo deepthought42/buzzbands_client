@@ -5,16 +5,16 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('venues', {
     url: '/venues',
-    templateUrl: 'views/venue/index.html',
+    templateUrl: 'app/views/venue/index.html',
     controller: 'VenueIndexController'
   })
   .state('venue/edit', {
     url: '/venues/:id',
-    templateUrl: 'views/venue/edit.html',
+    templateUrl: 'app/views/venue/edit.html',
     controller: 'VenueDetailsController'
   })
   .state('venue/new',{
-    templateUrl: 'views/venue/new.html',
+    templateUrl: 'app/views/venue/new.html',
     controller: 'VenueCreationController'
   });
 }])
