@@ -38,10 +38,9 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
       });
   }
 
-  $scope.editVenue = function(venueId){
-    console.log("SHOWING DETAILS");
+  $scope.editVenue = function(venue){
     $scope.userLoaded = true;
-    state.go("edit.venue", {"id" : venueId});
+    $scope.venue = venue;
   }
 
   $scope.showPromotionsList = function(venueId){
@@ -71,8 +70,8 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
 .controller('VenueDetailsController', ['$scope', 'Venue', '$state', '$stateParams',
   function($scope, Venue, state, stateParams)
   {
-    $scope.venue={}
-
+    //$scope.venue={}
+    console.log("EDITING VENUE: "+$scope.venue);
     $scope.loadVenue = function(){
       if(stateParams.id){
         console.log("ID FOUND FOR VENUE");
