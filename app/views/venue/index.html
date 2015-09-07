@@ -1,26 +1,47 @@
+<link rel="stylesheet" href="app/stylesheets/venue.css">
 <div class="container">
   <div class="row">
+
+    <div class="row">
+      <span class="col-sm-2"><h1>Venues</h1></span>
+      <button class="btn add-button col-sm-1" tooltip="New Venue" ng-click="addVenue()">Add Venue</button>
+    </div>
+    <div class="row">
+      <div class="col-sm-1">
+        All
+        <span>( {{}} )</span>
+      </div>
+      <div class="col-sm-1">
+        Active
+        <span>( {{}} )</span>
+      </div>
+      <div class="col-sm-2">
+        Disabled
+        <span>( {{}} )</span>
+      </div>
+    </div>
     <table class="col-sm-6 table table-striped table-condensed">
       <thead>
         <tr>
+          <td>Active</td>
           <td>Name</td>
           <td>Address</td>
-          <td>City</td>
-          <td>State</td>
-          <td>Zip</td>
-          <td>Active</td>
           <td></td>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="venue in venueList">
-          <td><a ng-click="showPromotionsList(venue.id)">{{venue.name}}</a></td>
-          <td>{{venue.address}}</td>
-          <td>{{venue.city}}</td>
-          <td>{{venue.state}}</td>
-          <td>{{venue.zip_code}}</td>
           <td>
-            <input type="checkbox" ng-model="venue.active" ng-Readonly="{{$session.user.role!='Admin'}}"/>
+            <input type="checkbox"
+                   ng-model="venue.active"
+                   ng-Readonly="{{$session.user.role!='Admin'}}"/>
+          </td>
+          <td ng-click="showPromotionsList(venue.id)">
+            {{venue.name}}
+          </td>
+          <td>{{venue.address}}
+            <br />
+          {{venue.city}}, {{venue.state}} {{venue.zip_code}}
           </td>
           <td>
             <button ng-click="editVenue(venue.id)">Edit</button>
@@ -43,7 +64,5 @@
       </tbody>
     </table>
   </div>
-  <div class="row">
-    <button class="btn btn-default" tooltip="New Venue" ng-click="addVenue()">Create Venue</button>
-  </div>
+
 </div>

@@ -20,20 +20,20 @@
 <body>
   <link rel="stylesheet" href="app/stylesheets/dashboard.css">
   <div id="dashboard">
-    <div id="navContainer" class='col-sm-2'>
+    <div id="navContainer" class='col-sm-2' ng-controller="NavigationController">
       <div id="logoContainer" class="col-sm-12">
         <img id="logo" href="#" alt="Buzzbands logo" />
       </div>
       <div id="navLinkContainer" class="col-sm-12">
         DASHBOARDS
         <div class="link col-sm-12">
-          <button class="navButtonActive col-sm-10" ui-sref="dashboard">Overview</button>
+          <button class="col-sm-10" ui-sref="dashboard" ng-class='{"navButtonActive":tog==1,"navButton":tog!=1}' ng-click='tog=1'>Overview</button>
         </div>
         <div class="link col-sm-12">
-          <button class="navButton col-sm-10" ui-sref="venues">Venues</button>
+          <button class="navButton col-sm-10" ui-sref="venues" ng-class='{"navButtonActive":tog==2,"navButton":tog!=2}' ng-click='tog=2'>Venues</button>
         </div>
         <div class="link col-sm-12">
-          <button class="navButton col-sm-10" ng-click="promotions">Promotions</button>
+          <button class="navButton col-sm-10" ui-sref="promotions" ng-class='{"navButtonActive":tog==3,"navButton":tog!=3}' ng-click='tog=3'>Promotions</button>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
           BUY BANDS
         </button>
       </div>
-      <div ui-view></div>
+      <div class="col-sm-12" ui-view></div>
     </div>
   </div>
 

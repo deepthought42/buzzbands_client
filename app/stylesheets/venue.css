@@ -1,0 +1,19 @@
+table {
+  color: #5ab553;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td {
+  background-color: #5f7387;
+  border: 0;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td {
+  background-color: #434e66;
+  border: 0;
+}
+
+.add-button {
+  height: 5%;
+  font-size: .7em;
+  background-color: #5f7387;
+}
