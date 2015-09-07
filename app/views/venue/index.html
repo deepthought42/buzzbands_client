@@ -1,25 +1,31 @@
 <link rel="stylesheet" href="app/stylesheets/venue.css">
-<div class="container">
+<div ui-view="new@venues" class="col-sm-6"></div>
+<div class="container col-sm-6">
   <div class="row">
-
-    <div class="row">
-      <span class="col-sm-2"><h1>Venues</h1></span>
-      <button class="btn add-button col-sm-1" tooltip="New Venue" ng-click="addVenue()">Add Venue</button>
-    </div>
-    <div class="row">
-      <div class="col-sm-1">
+    <span class="col-sm-4"><h1>Venues</h1></span>
+    <button class="btn add-button col-sm-2" tooltip="New Venue" ng-click="addVenue()">Add Venue</button>
+  </div>
+  <div class="row">
+    <div class="col-sm-7">
+      <div class="col-sm-3">
         All
         <span>( {{}} )</span>
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-4">
         Active
         <span>( {{}} )</span>
       </div>
-      <div class="col-sm-2">
+      <div class="col-sm-5">
         Disabled
         <span>( {{}} )</span>
       </div>
     </div>
+    <div class="col-sm-5">
+      <button class="pull-right">Save Changes</button>
+    </div>
+  </div>
+
+  <div class="row">
     <table class="col-sm-6 table table-striped table-condensed">
       <thead>
         <tr>
@@ -64,5 +70,4 @@
       </tbody>
     </table>
   </div>
-
 </div>
