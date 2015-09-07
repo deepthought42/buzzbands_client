@@ -40,7 +40,7 @@
           <td>
             <input type="checkbox"
                    ng-model="venue.active"
-                   ng-Readonly="{{$session.user.role!='Admin'}}"/>
+                   ng-disabled="{{$session.user.role!='Admin'}}"/>
           </td>
           <td ng-click="showPromotionsList(venue.id)">
             {{venue.name}}

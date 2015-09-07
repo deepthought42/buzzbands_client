@@ -2,6 +2,10 @@ table {
   color: #5ab553;
 }
 
+thead {
+  background-color: grey;
+
+}
 .table-striped>tbody>tr:nth-child(odd)>td {
   background-color: #5f7387;
   border: 0;
