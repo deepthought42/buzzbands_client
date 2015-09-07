@@ -1,12 +1,9 @@
 'use strict';
 
-angular.module('buzzbands_client.NavigationControllers', ['ui.router'])
+angular.module('buzzbands_client.NavigationController', ['ui.router'])
 .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
-  $stateProvider.state('navigation', {
-    views: {
 
-    }
-  })
 }])
 .controller('NavigationController', ['$scope', function($scope) {
+  console.log("nav controller loaded");
 }])

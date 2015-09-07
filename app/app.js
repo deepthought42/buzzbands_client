@@ -15,9 +15,13 @@ angular.module('buzzbands_client', [
   'buzzbands_client.LandingControllers',
   'buzzbands_client.version',
   'buzzbands_client.DashboardControllers',
-  'buzzbands_client.NavigationControllers'
+  'buzzbands_client.AnalyticsControllers'
 ]).
 config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+  $stateProvider.state('authenticate', {
+    templateUrl: 'app/views/user/login.html',
+    controller: 'UserAuthController'
+  })
   $urlRouterProvider.otherwise('/');
 }])
 .config(function($authProvider) {

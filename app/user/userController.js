@@ -82,9 +82,10 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 			});
 
 			$scope.$on('auth:login-success', function(event, currentUser) {
-				$scope.$session.user = currentUser.data;
+				$scope.$session.user = currentUser;
 				$auth.validateUser();
-				$state.go('dashboard');
+        $state.go('dashboard');
+
 			});
 
 			$scope.$on('auth:login-error', function(event, currentUser) {

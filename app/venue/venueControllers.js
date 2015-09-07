@@ -4,23 +4,17 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('venues', {
-    url: '/venues',
-    views: {
-      '': {
-        templateUrl: 'app/views/venue/index.html',
-        controller: 'VenueIndexController'
-      },
-      'new@venues': {
-        templateUrl: 'app/views/venue/new.html',
-        controller: 'VenueCreationController'
-      }
-    }
-  })
-  .state('venue/edit', {
-    url: '/venues/:id',
-    templateUrl: 'app/views/venue/edit.html',
-    controller: 'VenueDetailsController'
-  });
+      url: '/venues',
+      templateUrl: 'app/views/venue/index.html',
+      controller: 'VenueIndexController'
+    })
+
+    .state('edit.venues', {
+      url: '/venues/:id',
+      parent: 'dashboard',
+      templateUrl: 'app/views/venue/edit.html',
+      controller: 'VenueDetailsController'
+    });
 }])
 
 .controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', function($scope, Venue, state, session) {
@@ -55,7 +49,7 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   }
 
   $scope.editVenue = function(venueId){
-    state.go("venue/edit", {"id" : venueId});
+    state.go("edit.venue", {"id" : venueId});
   }
 
   $scope.showPromotionsList = function(venueId){
