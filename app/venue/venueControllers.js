@@ -23,7 +23,11 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   });
 }])
 
-.controller('VenueIndexController', ['$scope', 'Venue', '$state', function($scope, Venue, state) {
+.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', function($scope, Venue, state, session) {
+  if (!session.user) {
+    state.go("authenticate");
+  }
+
   $scope.queryVenues = function(){
     Venue.query().$promise
       .then(function(data){

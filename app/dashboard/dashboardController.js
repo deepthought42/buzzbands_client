@@ -7,14 +7,14 @@ angular.module('buzzbands_client.DashboardControllers', ['ui.router'])
     url: '/',
     views: {
       '': {
-        templateUrl: 'app/views/dashboard/dashboard.html',
+        templateUrl: 'app/views/dashboard/index.html',
         controller: 'DashboardController'
       },
       'venue.index@dashboard': {
         templateUrl: 'app/views/venue/index.html',
         controller: 'VenueIndexController'
       },
-      'promotion.index@landing': {
+      'promotion.index@dashboard': {
         templateUrl: 'app/views/promotion/index.html',
         controller: 'PromotionIndexController'
       }
@@ -23,10 +23,5 @@ angular.module('buzzbands_client.DashboardControllers', ['ui.router'])
 }])
 
 .controller('DashboardController', ['$scope', function($scope) {
-  $scope.promotionCount;
-  $scope.bandsOrdered;
-  $scope.activeAccounts;
-  $scope.totalScans;
-  $scope.topAccounts;
-  $scope.topPromotions;
+
 }])

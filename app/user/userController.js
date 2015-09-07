@@ -5,12 +5,12 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('register', {
     url: '/register',
-    templateUrl: 'views/user/signup.html',
+    templateUrl: 'app/views/user/signup.html',
     controller: 'UserAuthController'
   })
   .state('login', {
     url: '/login',
-    templateUrl: 'views/user/login.html',
+    templateUrl: 'app/views/user/login.html',
     controller: 'UserAuthController'
   });
 }])
@@ -21,7 +21,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
     $scope.$session.signedIn = $auth.validateUser();
 
     if($scope.$session.signedIn === true){
-        $state.go("venues");
+        $state.go("dashboard");
     }
 
 		$scope.register = function(isValid){
@@ -45,7 +45,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 					$rootScope.$broadcast('userRegistered', user);
 					$scope.registrationForm={}
 					$scope.userRegistration.$submitted = false;
-          $state.go('home')
+          $state.go('dashboard')
 				});
 			}
 		}
@@ -84,7 +84,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.$session.user = currentUser.data;
 				$auth.validateUser();
-				$state.go('home');
+				$state.go('dashboard');
 			});
 
 			$scope.$on('auth:login-error', function(event, currentUser) {
