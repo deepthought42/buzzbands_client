@@ -1,5 +1,12 @@
 <link rel="stylesheet" href="app/stylesheets/venue.css">
-<div ui-view="new.venues@venues.dashboard" class="col-sm-6"></div>
+<div ng-switch="userLoaded">
+  <div ng-switch-when="false">
+    <div  ui-view="new.venue@venues.dashboard" class="col-sm-6"></div>
+  </div>
+  <div ng-switch-when="true">
+    <div ui-view="edit.venue@venues.dashboard" class="col-sm-6"></div>
+  </div>
+</div>
 <div class="container col-sm-6">
   <div class="row">
     <span class="col-sm-4"><h1>Venues</h1></span>

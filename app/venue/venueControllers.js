@@ -7,13 +7,6 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
       url: '/venues',
       templateUrl: 'app/views/venue/index.html',
       controller: 'VenueIndexController'
-    })
-
-    .state('edit.venues', {
-      url: '/venues/:id',
-      parent: 'dashboard',
-      templateUrl: 'app/views/venue/edit.html',
-      controller: 'VenueDetailsController'
     });
 }])
 
@@ -21,6 +14,7 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   if (!session.user) {
     state.go("authenticate");
   }
+  $scope.userLoaded = false;
 
   $scope.queryVenues = function(){
     Venue.query().$promise
@@ -31,10 +25,6 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
       .catch(function(data){
         console.log("error querying venues")
       });
-  }
-
-  $scope.addVenue = function(){
-    state.go('venue/new');
   }
 
   $scope.deleteVenue = function(venueId){
@@ -49,6 +39,8 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   }
 
   $scope.editVenue = function(venueId){
+    console.log("SHOWING DETAILS");
+    $scope.userLoaded = true;
     state.go("edit.venue", {"id" : venueId});
   }
 
