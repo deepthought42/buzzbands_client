@@ -1,102 +1,126 @@
-<div class="container">
+<div class="container  col-sm-12">
 	<div class="row" >
 		<div id="venueCreatePanel" class="col-md-10">
+			EDIT VENUE
 			<form name="venueForm"
 						enctype="multipart/form-data"
 						ng-submit="updateVenue(venueForm.$valid)"
 						novalidate>
-				<div class="form-group">
-					<label for="venueName">Name</label>
-					<input  id="venueName"
-									class="form-control"
-									type="text"
-									name="name"
-									ng-model="venue.name"
-									id="newVenueName"
-									placeholder="Name"
-									required
-									minlength="3"
-									maxlength="250"/>
-					<div ng-messages="venueForm.name.$error" ng-if="venueForm.$submitted" class="text-danger">
-						<p ng-message="required">Name is required.</p>
-						<p ng-message="minlength">Name must be at least 3 characters</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="venueAddress">Address</label>
-					<input  class="form-control"
-									type="text"
-									name="address"
-									ng-model="venue.address"
-									id="venueAddress"
-									placeholder="Address"
-									required
-									minlength="3"
-									maxlength="250" />
-					<div ng-messages="venueForm.address.$error" ng-if="venueForm.$submitted" class="text-danger">
-						<p ng-message="required">Address is required.</p>
-						<p ng-message="minlength">Address must be at least 3 characters</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="venueCity">City</label>
-					<input  class="form-control"
-									type="text"
-									name="city"
-									ng-model="venue.city"
-									id="newVenueCity"
-									placeholder="City"
-									required
-									minlength="3"
-									maxlength="250"/>
-					<div ng-messages="venueForm.city.$error" ng-if="venueForm.$submitted" class="text-danger">
-						<p ng-message="required">City is required.</p>
-						<p ng-message="minlength">City must be at least 3 characters</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="venueState">State</label>
-					<input  class="form-control"
-									type="text"
-									name="state"
-									ng-model="venue.state"
-									id="venueState"
-									placeholder="State"
-									required
-									minlength="2"
-									maxlength="2"/>
-					<div ng-messages="venueForm.state.$error" ng-if="venueForm.$submitted" class="text-danger">
-						<p ng-message="required">State is required.</p>
-						<p ng-message="minlength">State must be 2 letter abbreviation</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="valueZipCode">Zip code</label>
-					<input  class="form-control"
-									type="text"
-									name="zip_code"
-									ng-model="venue.zip_code"
-									id="venueZipCode"
-									placeholder="Zip Code"
-									required
-									minlength="5"
-									maxlength="5"
-									pattern="[0-9]*"
-									venue-name-availability-validator="/venues.json"/>
-					<div ng-messages="venueForm.zip_code.$error" ng-if="venueForm.$submitted" class="text-danger">
-						<p ng-message="required">Zip code is required.</p>
-						<p ng-message="minlength">Zip code must be 5 digits.</p>
-						<p ng-message="pattern">Zip code can only contain numbers.</p>
-					</div>
-				</div>
+						<div class="col-md-12">
+							<div class="col-sm-12">
+								<input  class="form-control"
+												type="text"
+												name="name"
+												ng-model="venue.name"
+												id="newVenueName"
+												placeholder="Name"
+												required
+												minlength="3"
+												maxlength="250"/>
+								<div ng-messages="venueForm.name.$error" ng-if="venueForm.$submitted" class="text-danger">
+									<p ng-message="required">Name is required.</p>
+									<p ng-message="minlength">Name must be at least 3 characters</p>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<select class="form-control">
+									<option selected> Category Type</option>
+								</select>
+							</div>
+							<div class="col-sm-12">
+								<span class="col-sm-5">
+									Cover Photo:
+								</span>
+								<span class="col-sm-2">
+									<img href="/no-image.jpg" />
+								</span>
+								<button class="pull-right navButtonActive" ng-disabled="true">Add Media</button>
+							</div>
+							<div class="col-sm-12">
+								<input  class="form-control"
+												type="text"
+												name="address"
+												ng-model="venue.address"
+												id="newVenueAddress"
+												placeholder="URL"
+												minlength="3"
+												maxlength="250" />
+								<div ng-messages="venueForm.address.$error" ng-if="venueForm.$submitted" class="text-danger">
+									<p ng-message="minlength">Street address must be at least 3 characters</p>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<input  class="form-control"
+												type="text"
+												name="address"
+												ng-model="venue.address"
+												id="newVenueAddress"
+												placeholder="Street"
+												required
+												minlength="3"
+												maxlength="250" />
+								<div ng-messages="venueForm.address.$error" ng-if="venueForm.$submitted" class="text-danger">
+									<p ng-message="required">Street address is required.</p>
+									<p ng-message="minlength">Street address must be at least 3 characters</p>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<input  class="form-control"
+												type="text"
+												name="city"
+												ng-model="venue.city"
+												id="newVenueCity"
+												placeholder="City"
+												required
+												minlength="3"
+												maxlength="250"/>
+								<div ng-messages="venueForm.city.$error" ng-if="venueForm.$submitted" class="text-danger">
+									<p ng-message="required">City is required.</p>
+									<p ng-message="minlength">City must be at least 3 characters</p>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<input  class="form-control col-sm-6"
+												type="text"
+												name="state"
+												ng-model="venue.state"
+												id="newVenueState"
+												placeholder="State"
+												required
+												minlength="2"
+												maxlength="2"/>
+								<div ng-messages="venueForm.state.$error" ng-if="venueForm.$submitted" class="text-danger">
+									<p ng-message="required">State is required.</p>
+									<p ng-message="minlength">State must be 2 letter abbreviation</p>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<input  class="form-control"
+												type="text"
+												name="zip_code"
+												ng-model="venue.zip_code"
+												id="newVenueZipCode"
+												placeholder="Zip Code"
+												required
+												minlength="5"
+												maxlength="5"
+												pattern="[0-9]*"
+												venue-name-availability-validator="/venues.json"/>
+								<div ng-messages="venueForm.zip_code.$error" ng-if="venueForm.$submitted" class="text-danger">
+									<p ng-message="required">Zip code is required.</p>
+									<p ng-message="minlength">Zip code must be 5 digits.</p>
+									<p ng-message="pattern">Zip code can only contain numbers.</p>
+								</div>
+							</div>
+						</div>
 
-				<div class="actions col-md-12">
-					<a ui-sref="venues" class="pull-right">Cancel</a>
-					<button type="submit" class="btn btn-primary pull-right" >
-						<i class="fa fa-save"></i>
-						Save
-					</button>
-				</div>
+						<div class="actions col-md-12">
+							<a ui-sref="venues" class="pull-right">Cancel</a>
+							<button type="submit" class="btn btn-primary pull-right" >
+								<i class="fa fa-save"></i>
+								Save
+							</button>
+						</div>
 			</form>
 		</div>
 	</div>

@@ -51,7 +51,7 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
 }])
 
 .controller('VenueCreationController', ['$scope', 'Venue', '$state', function($scope, Venue, state) {
-  $scope.venue = {};
+  //$scope.venue = {};
 
   $scope.createVenue = function(venueValid){
     if(venueValid){
