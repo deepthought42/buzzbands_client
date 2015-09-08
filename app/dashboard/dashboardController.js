@@ -37,8 +37,17 @@ angular.module('buzzbands_client.DashboardControllers', ['ui.router'])
         .state('promotions.dashboard', {
           url: '/promotions',
           parent: 'dashboard',
-          templateUrl: 'app/views/promotion/index.html',
-          controller: 'PromotionIndexController'
+
+          views: {
+            '':{
+              templateUrl: 'app/views/promotion/index.html',
+              controller: 'PromotionIndexController'
+            },
+            'new.promotion@promotions.dashboard': {
+              templateUrl: 'app/views/promotion/new.html',
+              controller: 'PromotionCreationController'
+            }
+          }
         })
 
 }])

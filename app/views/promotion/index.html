@@ -1,32 +1,64 @@
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>Description</td>
-          <td>Image</td>
-          <td>Start Time</td>
-          <td>End Time</td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="promo in promotionList">
-          <td>{{promo.name}}</td>
-          <td>{{promo.description}}</td>
-          <td>{{promo.ad_location}}</td>
-          <td>{{promo.start_time}}</td>
-          <td>{{promo.end_time}}</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container col-sm-12">
+  <div class="row">
+    Promotions
+    <button>Add new</button>
   </div>
-  <div>
-    <button class="btn btn-default" ng-click="createPromotion()">Create Promotion</button>
+  <div class="row">
+    <div class="col-sm-3">
+      All
+      <span>({{}})</span>
+    </div>
+    <div class="col-sm-3">
+      Active
+      <span>({{}})</span>
+    </div>
+    <div class="col-sm-3">
+      Disabled
+      <span>({{}})</span>
+    </div>
+  </div>
+  <div class="row">
+    <button> Apply </button>
+    <select id="venueFilter">
+      <option selected>Select Venue</option>
+    </select>
+    <button id="listButton">list</button>
+    <button id="tileButton">tile</button>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td>Active</td>
+            <td>Name</td>
+            <td>Image</td>
+            <td>Start Time</td>
+            <td>End Time</td>
+            <td>Venues</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="promo in promotionList">
+            <td><input type="checkbox" ng-model="promo.active"/></td>
+            <td>{{promo.name}}
+                <br/>
+                {{promo.description}}</td>
+            <td>{{promo.ad_location}}</td>
+            <td>{{promo.start_time}}</td>
+            <td>{{promo.end_time}}</td>
+            <td>{{promo.venue_id}}</td>
+            <td>
+              <button>Edit</button>
+              <button>Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <button class="btn btn-default" ng-click="createPromotion()">Create Promotion</button>
+    </div>
   </div>
 </div>

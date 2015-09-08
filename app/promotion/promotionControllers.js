@@ -37,7 +37,7 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
     }
 
     $scope.createPromotion = function(){
-        state.go("promotion/new");
+        state.go("new.promotion@promotions.dashboard");
     }
 
     $scope.getPromotionList();
