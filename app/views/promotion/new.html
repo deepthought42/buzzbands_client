@@ -39,11 +39,9 @@
 				</div>
 
 				<div class="actions col-md-12">
-					<button class="btn btn-primary pull-right" ng-show="formStep<2" ng-click="formStep=formStep+1">
-						Next
-					</button>
-
-					<button class="btn btn-primary pull-right" ng-show="formStep==2" type="submit" ng-disabled="promotionForm.$invalid">
+					<button class="btn btn-primary pull-right"
+								  type="submit"
+									ng-disabled="promotionForm.$invalid">
 						Submit
 					</button>
 				</div>

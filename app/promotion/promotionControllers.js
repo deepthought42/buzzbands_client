@@ -22,6 +22,8 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
 
 .controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams',
   function($scope, Promotion, state, stateParams) {
+    $scope.promoPanel='index';
+
     $scope.editPromotion = function(id){
       state.go("promotion/edit", {"promotionId": id})
       $scope.promotionList = getPromotionList();
@@ -37,7 +39,9 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
     }
 
     $scope.createPromotion = function(){
-        state.go("new.promotion@promotions.dashboard");
+      $scope.promoPanel='create';
+      console.log("CREATE PROMOTION CICKED");
+      //state.go("new@promotions.dashboard");
     }
 
     $scope.getPromotionList();

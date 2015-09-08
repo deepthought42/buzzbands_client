@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="app/stylesheets/venue.css">
 <div ng-switch="userLoaded">
   <div ng-switch-when="false">
-    <div  ui-view="new.venue@venues.dashboard" class="col-sm-6"></div>
+    <div ui-view="new.venue@venues.dashboard" class="col-sm-6"></div>
   </div>
   <div ng-switch-when="true">
     <div ui-view="edit.venue@venues.dashboard" class="col-sm-6"></div>

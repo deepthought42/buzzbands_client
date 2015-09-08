@@ -1,0 +1,8 @@
+<div ng-switch="promoPanel">
+  <div ng-switch-when="create">
+    <div ui-view="promotion.new@promotions.dashboard"></div>
+  </div>
+  <div ng-switch-when="index">
+    <div ui-view="promotion.index@promotions.dashboard"></div>
+  </div>
+</div>

@@ -1,7 +1,12 @@
-<div class="container col-sm-12">
+<div ng-switch="promoPanel">
+
+<div ng-switch-when="create">
+  <div ui-view="promotion.new@promotions.dashboard"></div>
+</div>
+<div ng-switch-when="index" class="container col-sm-12">
   <div class="row">
     Promotions
-    <button>Add new</button>
+    <button class="btn btn-primary" ng-click="createPromotion()">Add new</button>
   </div>
   <div class="row">
     <div class="col-sm-3">
@@ -57,8 +62,6 @@
         </tbody>
       </table>
     </div>
-    <div>
-      <button class="btn btn-default" ng-click="createPromotion()">Create Promotion</button>
-    </div>
   </div>
+</div>
 </div>
