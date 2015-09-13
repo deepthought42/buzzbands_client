@@ -32,4 +32,31 @@ config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $st
   $authProvider.configure({
     apiUrl:                  'http://localhost:3000/api',
   });
-});
+})
+.config([
+  '$httpProvider', function($httpProvider){
+    //$httpProvider.defaults.headers.common['X-CSRF-Token'] =
+		//	$('meta[name=csrf-token]').attr('content');
+  /*
+   Response interceptors are stored inside the
+   $httpProvider.responseInterceptors array.
+   To register a new response interceptor is enough to add
+   a new function to that array.
+  */
+
+  $httpProvider.interceptors.push(
+	function() {
+		return {
+    	'request': function(config) {
+				if (config.headers['access-token'] && !$httpProvider.defaults.headers.common['Access-Token']) {
+		    	$httpProvider.defaults.headers.common['Access-Token'] = config.headers['access-token'];
+					$httpProvider.defaults.headers.common['Token-Type'] = config.headers['token-type'];
+			    $httpProvider.defaults.headers.common['Client'] = config.headers['client'];
+					$httpProvider.defaults.headers.common['Expiry'] = config.headers['expiry'];
+					$httpProvider.defaults.headers.common['Uid'] = config.headers['uid'];
+		    }
+		    return config;
+			}
+		};
+  });
+}]);

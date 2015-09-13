@@ -39,14 +39,13 @@
 					<div class="col-sm-12">
 						<input  class="form-control"
 										type="text"
-										name="address"
-										ng-model="venue.address"
-										id="newVenueAddress"
+										name="url"
+										ng-model="venue.url"
+										id="newVenueUrl"
 										placeholder="URL"
 										minlength="3"
 										maxlength="250" />
-						<div ng-messages="venueForm.address.$error" ng-if="venueForm.$submitted" class="text-danger">
-							<p ng-message="minlength">Street address must be at least 3 characters</p>
+						<div ng-messages="venueForm.url.$error" ng-if="venueForm.$submitted" class="text-danger">
 						</div>
 					</div>
 					<div class="col-sm-12">

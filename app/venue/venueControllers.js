@@ -47,18 +47,23 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
     state.go("promotions", {"venueId": venueId});
   }
 
+  $scope.$on("refreshVenuesList", function(event, data){
+    $scope.venueList = $scope.queryVenues();
+  })
   $scope.venueList = $scope.queryVenues();
 }])
 
-.controller('VenueCreationController', ['$scope', 'Venue', '$state', function($scope, Venue, state) {
+.controller('VenueCreationController', ['$scope', 'Venue', '$state', '$auth', '$rootScope',
+  function($scope, Venue, state, $auth, $rootScope) {
   //$scope.venue = {};
-
+  $auth.validateUser();
   $scope.createVenue = function(venueValid){
     if(venueValid){
       console.log("SAVING VENUE..");
       Venue.save($scope.venue).$promise
         .then(function(data){
-          state.go("venues");
+          $rootScope.$broadcast("refreshVenuesList");
+          //clear fields
         })
         .catch(function(data){
           console.log("there was an error creating venue");
@@ -67,10 +72,10 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   }
 }])
 
-.controller('VenueDetailsController', ['$scope', 'Venue', '$state', '$stateParams',
-  function($scope, Venue, state, stateParams)
+.controller('VenueDetailsController', ['$scope', 'Venue', '$state', '$stateParams', '$auth',
+  function($scope, Venue, state, stateParams, $auth)
   {
-    //$scope.venue={}
+    $auth.validateUser();
     console.log("EDITING VENUE: "+$scope.venue);
     $scope.loadVenue = function(){
       if(stateParams.id){
