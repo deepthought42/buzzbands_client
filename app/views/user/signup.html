@@ -42,7 +42,7 @@
             required />
     <div ng-messages="userRegistration.confirmation_password.$error" ng-if="userRegistration.$submitted">
       <p ng-message="required" >
-            Confirmation password is required
+            Confirmation password is required.
       </p>
       <p 	ng-if="registrationForm.password != registrationForm.confirmation_password" >
             Passwords do not match.
