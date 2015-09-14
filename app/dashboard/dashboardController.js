@@ -7,12 +7,22 @@ angular.module('buzzbands_client.DashboardControllers', ['ui.router'])
       url: '/',
       abstract: true,
       templateUrl: 'app/views/dashboard/index.html',
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
+        }
+      }
     })
     .state('analytics.dashboard', {
       url: '',
       parent: 'dashboard',
       templateUrl: 'app/views/analytics/index.html',
-      controller: 'AnalyticsController'
+      controller: 'AnalyticsController',
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
+        }
+      }
     })
     .state('venues.dashboard', {
       url: '/venues',
@@ -30,6 +40,11 @@ angular.module('buzzbands_client.DashboardControllers', ['ui.router'])
           templateUrl: 'app/views/venue/edit.html',
           controller: 'VenueDetailsController'
         }
+      },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
+        }
       }
     })
     .state('promotions.dashboard', {
@@ -43,6 +58,11 @@ angular.module('buzzbands_client.DashboardControllers', ['ui.router'])
         'promotion.new@promotions.dashboard': {
           templateUrl: 'app/views/promotion/new.html',
           controller: 'PromotionCreationController'
+        }
+      },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
         }
       }
     })

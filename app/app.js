@@ -56,4 +56,17 @@ config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $st
 			}
 		};
   });
-}]);
+}])
+.run(function($rootScope, $state){
+  $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+    if(error.status == 401){
+      console.log("EXPERIENCED 401 err");
+      $state.go("authenticate");
+    }
+    else{
+      console.log("EXPERIENCED 404 err");
+      $state.go("authenticate");
+      //handle 400, 404, 500, etc here
+    }
+  })
+});
