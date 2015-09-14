@@ -3,7 +3,11 @@
 angular.module('buzzbands_client.UserControllers', ['ui.router'])
 
 .config(['$stateProvider', function($stateProvider) {
-  $stateProvider.state('register', {
+  $stateProvider.state('authenticate', {
+    templateUrl: 'app/views/user/login.html',
+    controller: 'UserAuthController'
+  })
+  .state('register', {
     url: '/register',
     templateUrl: 'app/views/user/signup.html',
     controller: 'UserAuthController'
@@ -84,8 +88,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.$session.user = currentUser;
 				$auth.validateUser();
-        $state.go('dashboard');
-
+        $state.go('analytics.dashboard');
 			});
 
 			$scope.$on('auth:login-error', function(event, currentUser) {
