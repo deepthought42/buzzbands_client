@@ -8,7 +8,7 @@
 				<div class="col-md-12">
 					<div class="col-md-5">
 						<div class="field">
-							<input  class="form-control"
+							<!--<input  class="form-control"
 											type="text"
 											name="name"
 											ng-model="promotion.name"
@@ -17,12 +17,20 @@
 											required
 											minlength="3"
 											maxlength="250"/>
+										-->
+									<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+											 pickerclass="btn btn-default"
+											 multiple="true" mimetype="*"
+											 callback="callBackToExecuteAfterUpload(file)"
+											 multiple=false>Add Photo</div>
+
 							<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
 								<p ng-message="required">Name is required.</p>
 								<p ng-message="minlength">Name must be at least 3 characters</p>
 								<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
 							</div>
 						</div>
+
 						<div class="text-center field"
 									name="cover_image"
 									ngf-drop
