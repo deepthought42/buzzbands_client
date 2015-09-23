@@ -15,7 +15,8 @@ angular.module('buzzbands_client', [
   'buzzbands_client.LandingControllers',
   'buzzbands_client.version',
   'buzzbands_client.DashboardControllers',
-  'buzzbands_client.AnalyticsControllers'
+  'buzzbands_client.AnalyticsControllers',
+  'filepicker'
 ]).
 config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 
