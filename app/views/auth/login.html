@@ -1,17 +1,31 @@
-<div class="container" ng-controller="UserAuthController">
-  <div class="row col-sm-12">
-    Header Text Here
-      <button>Learn More</button>
-      <button class="btn btn-default" ng-click="showLogin()" ng-show="!loginViewVisible">Sign In</button>
-      <button class="btn btn-default" ng-click="showRegistration()" ng-show="!registerViewVisible">Sign Up</button>
-  </div>
-  <div class="row text-center">
-    <div class="col-sm-6">
-      <div ui-view="register" ng-show="registerViewVisible"></div>
-      <div ui-view="login" ng-show="loginViewVisible"></div>
-    </div>
-    <div class="col-sm-6">
-      Right side stuff here
-    </div>
-  </div>
+<div class="col-sm-6">
+  <button class="close">X</button>
+  <form role="form"
+        ng-init="loginForm = {}"
+        ng-submit="signIn(userLogin.$valid)"
+        name="userLogin" novalidate>
+        <input type="email"
+               name="email"
+               id="userFormEmailField"
+               ng-model="loginForm.email"
+               required="required"
+               class="form-control"
+               placeholder="Email" />
+        <div ng-messages="userLogin.email.$error" ng-if="userLogin.$submitted">
+          <p class="text-danger" ng-message="required">Email is required.</p>
+          <p class="text-danger" ng-message="email">Invalid email address.</p>
+        </div>
+
+        <input placeholder= "Password"
+                type="password"
+                name="password"
+                id="password"
+                ng-model="loginForm.password"
+                class="form-control"
+                required />
+        <div ng-messages="loginForm.password.$error" ng-if="loginForm.$submitted">
+          <p class="text-danger" ng-message="required">Password is required.</p>
+        </div>
+      <button type="submit" class="btn btn-default">Sign in</button>
+  </form>
 </div>

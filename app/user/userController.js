@@ -4,17 +4,17 @@ angular.module('buzzbands_client.UserControllers', ['ui.router', 'ngMorph'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('authenticate', {
-    templateUrl: 'app/views/user/login.html',
+    templateUrl: 'app/views/landing/index.html',
     controller: 'UserAuthController'
   })
   .state('register', {
     url: '/register',
-    templateUrl: 'app/views/user/signup.html',
+    templateUrl: 'app/views/auth/signup.html',
     controller: 'UserAuthController'
   })
   .state('login', {
     url: '/login',
-    templateUrl: 'app/views/user/login.html',
+    templateUrl: 'app/views/auth/login.html',
     controller: 'UserAuthController'
   });
 }])
@@ -27,14 +27,26 @@ angular.module('buzzbands_client.UserControllers', ['ui.router', 'ngMorph'])
     $scope.signInSettings = {
            closeEl: '.close',
            modal: {
-             templateUrl: 'login.html',
+             templateUrl: 'app/views/auth/login.html',
              position: {
               top: '30%',
               left: '20%'
              },
              fade: false
            }
-         }
+         };
+
+     $scope.signUpSettings = {
+            closeEl: '.close',
+            modal: {
+              templateUrl: 'app/views/auth/register.html',
+              position: {
+               top: '30%',
+               left: '20%'
+              },
+              fade: false
+            }
+          };
 
     if($scope.$session.signedIn === true){
         $state.go("dashboard");

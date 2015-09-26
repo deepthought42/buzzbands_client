@@ -1,0 +1,16 @@
+<div class="container" ng-controller="UserAuthController">
+  <div class="row col-sm-12">
+    Header Text Here
+      <button>Learn More</button>
+      <button class="btn btn-default" ng-morph-modal="signInSettings" ng-click="showLogin()" ng-show="!loginViewVisible">Sign In</button>
+      <button class="btn btn-default" ng-morph-modal="signUpSettings" ng-click="showRegistration()" ng-show="!registerViewVisible">Sign Up</button>
+  </div>
+  <div class="row text-center">
+    <div class="col-sm-6">
+
+    </div>
+    <div class="col-sm-6">
+      Right side stuff here
+    </div>
+  </div>
+</div>
