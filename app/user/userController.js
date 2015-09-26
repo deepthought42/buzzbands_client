@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands_client.UserControllers', ['ui.router'])
+angular.module('buzzbands_client.UserControllers', ['ui.router', 'ngMorph'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('authenticate', {
@@ -23,6 +23,18 @@ angular.module('buzzbands_client.UserControllers', ['ui.router'])
 	function ($scope, $rootScope, $auth, $sessionStorage, $state) {
 		$scope.$session = $sessionStorage;
     $scope.$session.signedIn = $auth.validateUser();
+
+    $scope.signInSettings = {
+           closeEl: '.close',
+           modal: {
+             templateUrl: 'login.html',
+             position: {
+              top: '30%',
+              left: '20%'
+             },
+             fade: false
+           }
+         }
 
     if($scope.$session.signedIn === true){
         $state.go("dashboard");
