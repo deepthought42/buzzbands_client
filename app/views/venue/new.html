@@ -31,25 +31,13 @@
 					<div class="col-sm-12 col-xs-12">
 						<span style="padding-top:10px;" class="col-sm-6">
 							Cover Photo:</span>
-						
-						
+
+
 						<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 								pickerclass="btn addphoto"
 								multiple="true" mimetype="image/*"
 								callback="callBackToExecuteAfterUpload(file)"
 								multiple=false><i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo</div>
-					</div>
-					<div class="col-sm-12 col-xs-12">
-						<input  class="form-control"
-										type="text"
-										name="url"
-										ng-model="venue.url"
-										id="newVenueUrl"
-										placeholder="URL"
-										minlength="3"
-										maxlength="250" />
-						<div ng-messages="venueForm.url.$error" ng-if="venueForm.$submitted" class="text-danger">
-						</div>
 					</div>
 					<div class="col-sm-12 col-xs-12">
 						<input  class="form-control"
@@ -117,7 +105,6 @@
 				</div>
 
 				<div class="actions col-md-12">
-					<a ui-sref="venues" class="pull-right">Cancel</a>
 					<button type="submit" class="btn btn-primary pull-right" >
 						<i class="fa fa-save"></i>
 						Save

@@ -42,19 +42,6 @@
 							</div>
 							<div class="col-sm-12">
 								<input  class="form-control"
-										type="text"
-										name="url"
-										ng-model="venue.url"
-										id="newVenueUrl"
-										placeholder="URL"
-										minlength="3"
-										maxlength="250" />
-								<div ng-messages="venueForm.address.$error" ng-if="venueForm.$submitted" class="text-danger">
-									<p ng-message="minlength">Street address must be at least 3 characters</p>
-								</div>
-							</div>
-							<div class="col-sm-12">
-								<input  class="form-control"
 												type="text"
 												name="address"
 												ng-model="venue.address"
@@ -119,7 +106,6 @@
 						</div>
 
 						<div class="actions col-md-12">
-							<a ui-sref="venues" class="pull-right">Cancel</a>
 							<button type="submit" class="btn btn-primary pull-right" >
 								<i class="fa fa-save"></i>
 								Save
