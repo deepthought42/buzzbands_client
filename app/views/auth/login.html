@@ -1,9 +1,10 @@
-<div class="col-sm-6" ng-controller="UserAuthController">
+<div id="loginmorph" ng-controller="UserAuthController">
   <button class="close">X</button>
-  <form role="form"
+  <form style="padding-top:35px;"  role="form"
         ng-init="loginForm = {}"
         ng-submit="signIn(userLogin.$valid)"
         name="userLogin" novalidate>
+        <div class="form-group">
         <input type="email"
                name="email"
                id="userFormEmailField"
@@ -15,7 +16,8 @@
           <p class="text-danger" ng-message="required">Email is required.</p>
           <p class="text-danger" ng-message="email">Invalid email address.</p>
         </div>
-
+      </div>
+       <div class="form-group">
         <input placeholder= "Password"
                 type="password"
                 name="password"
@@ -26,6 +28,7 @@
         <div ng-messages="loginForm.password.$error" ng-if="loginForm.$submitted">
           <p class="text-danger" ng-message="required">Password is required.</p>
         </div>
-      <button type="submit" class="btn btn-default">Sign in</button>
+      </div>
+      <button type="submit" class="btn-login btn btn-default">Sign in</button>
   </form>
 </div>

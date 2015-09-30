@@ -1,7 +1,7 @@
-<div class="container col-sm-12">
+<div style="padding-top:200px;">
 	<div class="row" >
-		<div id="venueCreatePanel" class="col-md-10">
-			ADD NEW ACCOUNT
+		<div id="venueCreatePanel">
+            <span style="color:#808266;font-size:30px;">ADD NEW ACCOUNT</span><br><br>
 			<form name="venueForm"
 						enctype="multipart/form-data"
 						ng-submit="createVenue(venueForm.$valid)"
@@ -22,25 +22,24 @@
 							<p ng-message="minlength">Name must be at least 3 characters</p>
 						</div>
 					</div>
-					<div class="col-sm-12">
+					<div class="col-sm-12 col-xs-12">
 						<select class="form-control">
+							<option selected> Category Type</option>
 							<option selected> Category Type</option>
 						</select>
 					</div>
-					<div class="col-sm-12">
-						<span class="col-sm-5">
-							Cover Photo:
-						</span>
-						<span class="col-sm-2">
-							<img href="/no-image.jpg" />
-						</span>
-						<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-								pickerclass="btn btn-default"
+					<div class="col-sm-12 col-xs-12">
+						<span style="padding-top:10px;" class="col-sm-6">
+							Cover Photo:</span>
+						
+						
+						<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+								pickerclass="btn addphoto"
 								multiple="true" mimetype="image/*"
 								callback="callBackToExecuteAfterUpload(file)"
-								multiple=false>Add Photo</div>
+								multiple=false><i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo</div>
 					</div>
-					<div class="col-sm-12">
+					<div class="col-sm-12 col-xs-12">
 						<input  class="form-control"
 										type="text"
 										name="url"
@@ -52,7 +51,7 @@
 						<div ng-messages="venueForm.url.$error" ng-if="venueForm.$submitted" class="text-danger">
 						</div>
 					</div>
-					<div class="col-sm-12">
+					<div class="col-sm-12 col-xs-12">
 						<input  class="form-control"
 										type="text"
 										name="address"
@@ -67,7 +66,7 @@
 							<p ng-message="minlength">Street address must be at least 3 characters</p>
 						</div>
 					</div>
-					<div class="col-sm-12">
+					<div class="col-sm-12 col-xs-12">
 						<input  class="form-control"
 										type="text"
 										name="city"
@@ -82,7 +81,7 @@
 							<p ng-message="minlength">City must be at least 3 characters</p>
 						</div>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-6 col-xs-12">
 						<input  class="form-control col-sm-6"
 										type="text"
 										name="state"
@@ -97,7 +96,7 @@
 							<p ng-message="minlength">State must be 2 letter abbreviation</p>
 						</div>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-6 col-xs-12">
 						<input  class="form-control"
 										type="text"
 										name="zip_code"

@@ -1,9 +1,9 @@
-<div ng-controller="UserAuthController">
+<div id="signupmorph" ng-controller="UserAuthController">
   <button class="close">X</button>
   <div class="col-sm-12" ng-show="successfulRegistration">
     Successfully registered
   </div>
-  <form role="form" ng-init="registrationForm = {}"
+  <form style="padding-top:35px;" role="form" ng-init="registrationForm = {}"
         ng-submit="register(userRegistration.$valid)"
         name="userRegistration" novalidate>
     <div class="form-group">
@@ -51,6 +51,6 @@
         </p>
       </div>
     </div>
-    <button type="submit" id="userFormSignInButton" class="btn btn-primary" >Sign Up</button>
+    <button  type="submit" id="userFormSignInButton" class="btn-signup btn " >Sign Up</button>
   </form>
 </div>

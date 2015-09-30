@@ -30,9 +30,9 @@ angular.module('buzzbands_client.UserControllers', ['ui.router', 'ngMorph'])
              templateUrl: 'app/views/auth/login.html',
              position: {
               top: '30%',
-              left: '20%'
+           
              },
-             fade: false
+             fade: true
            }
          };
 
@@ -42,9 +42,9 @@ angular.module('buzzbands_client.UserControllers', ['ui.router', 'ngMorph'])
               templateUrl: 'app/views/auth/register.html',
               position: {
                top: '30%',
-               left: '20%'
+              
               },
-              fade: false
+              fade: true
             }
           };
 

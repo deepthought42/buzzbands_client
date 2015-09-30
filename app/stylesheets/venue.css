@@ -21,3 +21,30 @@ thead {
   font-size: .7em;
   background-color: #5f7387;
 }
+
+#venueCreatePanel{
+color:white;
+    text-align: center;
+    font-weight:100;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.form-control{
+    margin-top:5px;
+background-color: #3b4454;
+    border-radius: 0%;
+    border:none;
+    color:#808266;
+}
+
+.addphoto{
+padding: 5px 15px;
+    margin-top: 5px;
+    border-radius: 1em;
+    background-color: #ffffff;
+    color:#4BBA4B;
+}
+
+.text-danger{
+color:#de519b;
+}
