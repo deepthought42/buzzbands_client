@@ -4,6 +4,7 @@
             <span style="color:#808266;font-size:30px;">ADD NEW ACCOUNT</span><br><br>
 			<form name="venueForm"
 						enctype="multipart/form-data"
+						ng-init="venue = {}"
 						ng-submit="createVenue(venueForm.$valid)"
 						novalidate>
 				<div class="col-md-12">
@@ -31,13 +32,12 @@
 					<div class="col-sm-12 col-xs-12">
 						<span style="padding-top:10px;" class="col-sm-6">
 							Cover Photo:</span>
-
-
 						<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-								pickerclass="btn addphoto"
-								multiple="true" mimetype="image/*"
-								callback="callBackToExecuteAfterUpload(file)"
-								multiple=false><i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo</div>
+							pickerclass="btn addphoto"
+							multiple="true" mimetype="image/*"
+							callback="setUrl(file)">
+								<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
+						</div>
 					</div>
 					<div class="col-sm-12 col-xs-12">
 						<input  class="form-control"

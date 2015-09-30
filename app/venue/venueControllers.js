@@ -67,6 +67,10 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
         });
     }
   }
+
+  $scope.setUrl = function(data){
+    $scope.venue.url = data[0].url;
+  }
 }])
 
 .controller('VenueDetailsController', ['$scope', 'Venue', '$state', '$stateParams', '$auth',
