@@ -17,8 +17,10 @@
     "ng-token-auth": "0.0.25",
     "ngstorage": "0.3.4",
     "angular-messages": "1.3.15",
-    "angular-resource": "latest"
+    "angular-resource": "latest",
+    "angular-morph":"latest"
   },
+
   "resolutions": {
     "angular": "1.3.4"
   }
