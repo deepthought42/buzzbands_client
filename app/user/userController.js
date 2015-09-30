@@ -1,12 +1,12 @@
 'use strict';
 
-<<<<<<< HEAD
+
 angular.module('buzzbands_client.UserControllers', ['ui.router', 'ngMorph'])
-=======
+
 angular.module('buzzbands_client.UserControllers', ['ui.router','ngMorph'])
 
 
->>>>>>> Styling
+
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('authenticate', {
