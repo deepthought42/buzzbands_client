@@ -1,0 +1,26 @@
+<div class="col-sm-12" style="color:orange" ng-init="shopBands = {}">
+  <form name="bandsForm">
+    <select ng-model="shopBands.color" class="form-control" required>
+      <option ng-repeat="bandColor in bandColors" value="{{bandColor}}">{{bandColor}}</option>
+    </select>
+
+    <select ng-model="shopBands.package" class="form-control" required >
+      <option value="">Select Band Count</option>
+      <option ng-repeat="bandPackage in bandPackages" value="{{bandPackage.price}}">{{bandPackage.count}}</option>
+    </select>
+    <div>
+      {{shopBands.package.price}}
+    </div>
+  </form>
+
+  <h1>Stripe Checkout has been loaded</h1>
+  <button stripe-checkout="BuyBandsController.doCheckout"
+            data-key="pk_test_kZbH5pE5QrS1wyz7tHeLYY27"
+            data-name="Band Package"
+            data-description="{{shopBands.package}}"
+            data-amount="{{shopBands.package*100}}"
+            class="btn btn-primary"
+            ng-disabled="bandsForm.$invalid">
+      Buy
+    </button>
+</div>

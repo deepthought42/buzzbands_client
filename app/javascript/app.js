@@ -16,23 +16,19 @@ angular.module('buzzbands_client', [
   'buzzbands_client.version',
   'buzzbands_client.DashboardControllers',
   'buzzbands_client.AnalyticsControllers',
+  'buzzbands_client.BandsControllers',
   'filepicker'
 ]).
-config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider',
+ function($urlRouterProvider, $stateProvider, $authProvider, $httpProvider) {
 
   $urlRouterProvider.otherwise('/');
-}])
-.config(function($authProvider) {
-
   // the following shows the default values. values passed to this method
   // will extend the defaults using angular.extend
 
   $authProvider.configure({
-    apiUrl:                  'http://localhost:3000/api',
+    apiUrl:                  'http://localhost:3000/api'
   });
-})
-.config([
-  '$httpProvider', function($httpProvider){
     //$httpProvider.defaults.headers.common['X-CSRF-Token'] =
 		//	$('meta[name=csrf-token]').attr('content');
   /*
