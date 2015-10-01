@@ -23,6 +23,7 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
 .controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams',
   function($scope, Promotion, state, stateParams) {
     $scope.promoPanel='index';
+    $scope.promotion = {};
 
     $scope.editPromotion = function(id){
       state.go("promotion/edit", {"promotionId": id})
@@ -44,6 +45,7 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
       //state.go("new@promotions.dashboard");
     }
 
+
     $scope.getPromotionList();
   }
 ])
@@ -52,24 +54,23 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
   $scope.promotion = {}
 
   $scope.createPromotion = function(promotion){
-    Promotion.save(promotion)
-      .success(function(data){
-
-      })
-      .error(function(data){
-
-      })
+    Promotion.save($scope.promotion);
   }
 
   $scope.previewImage = function(files){
+    $scope.setUrl(files);
     var reader = new FileReader();
     if(typeof files[0] === 'object'){
       reader.readAsDataURL(files[0]);
     }
     reader.onload = function(event){
       $scope.logo_url = reader.result;
-      $scope.promotion.cover_img = files[0];
+      $scope.promotion.ad_location = files[0].url;
       $scope.$apply()
     }
   }
+
+      $scope.setUrl = function(files){
+        $scope.promotion.ad_location = files[0].url;
+      }
 }]);
