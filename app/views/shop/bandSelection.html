@@ -1,17 +1,20 @@
-<div class="col-sm-12" style="color:orange" ng-init="shopBands = {}">
-  <form name="bandsForm">
-    <select ng-model="shopBands.color" class="form-control" required>
-      <option ng-repeat="bandColor in bandColors" value="{{bandColor}}">{{bandColor}}</option>
-    </select>
-
-    <select ng-model="shopBands.package" class="form-control" required >
-      <option value="">Select Band Count</option>
-      <option ng-repeat="bandPackage in bandPackages" value="{{bandPackage.price}}">{{bandPackage.count}}</option>
-    </select>
-    <div>
-      {{shopBands.package.price}}
+<div class="col-sm-12" style="color:orange" >
+  <form name="shopBandsForm" ng-init="shopBands={}" novalidate>
+    <div ng-model="shopBands.color">
+      <span ng-repeat="bandColor in bandColors" ng-click="shopBands.color=bandColor">
+        <button >{{bandColor}}</button>
+      </span>
     </div>
-  </form>
+    <img src="buzzbands_{{shopBands.color}}.jpg" />
+    <div>
+      <select ng-model="shopBands.package" class="form-control" required >
+        <option value="">Select Band Count</option>
+        <option ng-repeat="bandPackage in bandPackages" value="{{bandPackage.price}}" >{{bandPackage.count}}</option>
+      </select>
+      <div>
+        ${{shopBands.package || 0.00}}
+      </div>
+    </div>
 
   <h1>Stripe Checkout has been loaded</h1>
   <button stripe-checkout="BuyBandsController.doCheckout"
@@ -20,7 +23,7 @@
             data-description="{{shopBands.package}}"
             data-amount="{{shopBands.package*100}}"
             class="btn btn-primary"
-            ng-disabled="bandsForm.$invalid">
+            ng-disabled="shopBandsForm.$invalid">
       Buy
     </button>
 </div>
