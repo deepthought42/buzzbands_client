@@ -11,15 +11,15 @@
   <div class="row">
     <div class="col-sm-3">
       All
-      <span>({{}})</span>
+      <span>({{promotionList.length || -1}})</span>
     </div>
     <div class="col-sm-3">
       Active
-      <span>({{}})</span>
+      <span>({{($scope.promotionList | filter:active==0).length || -1}})</span>
     </div>
     <div class="col-sm-3">
       Disabled
-      <span>({{}})</span>
+      <span>({{($scope.promotionList | filter:active==1).length || -1}})</span>
     </div>
   </div>
   <div class="row">

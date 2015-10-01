@@ -11,9 +11,7 @@
     <div ui-view="edit.venue@venues.dashboard" class="col-sm-6 col-xs-12"></div>
   </div>
 </div>
-
-        
-        <div class="container col-sm-6 col-xs-12">
+<div class="container col-sm-6 col-xs-12">
   <div class="row">
     <span class="col-sm-4"><h1>Venues</h1></span>
     <button class="btn add-button col-sm-2" tooltip="New Venue" ng-click="addVenue()">Add Venue</button>
@@ -22,15 +20,15 @@
     <div class="col-sm-7">
       <div class="col-sm-3">
         All
-        <span>( {{}} )</span>
+        <span>( {{venueList.length}} )</span>
       </div>
       <div class="col-sm-4">
         Active
-        <span>( {{}} )</span>
+        <span>( {{($scope.venueList | filter:isActive).length || -1}} )</span>
       </div>
       <div class="col-sm-5">
         Disabled
-        <span>( {{}} )</span>
+        <span>( {{($scope.venueList | filter:!isActive).length || -1}} )</span>
       </div>
     </div>
     <div class="col-sm-5">
@@ -85,19 +83,19 @@
   </div>
 </div>
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
     </div>

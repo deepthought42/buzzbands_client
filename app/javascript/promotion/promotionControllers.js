@@ -36,7 +36,7 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
     }
 
     $scope.getPromotionList = function(){
-      return Promotion.query({id: stateParams.venueId});
+      return Promotion.query();
     }
 
     $scope.createPromotion = function(){
@@ -46,7 +46,7 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
     }
 
 
-    $scope.getPromotionList();
+    $scope.promotionList = $scope.getPromotionList();
   }
 ])
 

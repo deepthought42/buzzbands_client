@@ -44,6 +44,10 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
     state.go("promotions", {"venueId": venueId});
   }
 
+  $scope.isActive = function(object) {
+    return object.active === true;
+  }
+
   $scope.$on("refreshVenuesList", function(event, data){
     $scope.venueList = $scope.queryVenues();
   })
