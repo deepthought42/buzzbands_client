@@ -95,7 +95,8 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
             },
             resolve: {
                 auth: function($auth) {
-                  return $auth.validateUser();
+                  //ensure user has admin role
+                  return $auth.validateUser() && $session.user.role == 1;
                 },
               }
           });

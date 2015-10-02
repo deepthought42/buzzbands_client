@@ -21,7 +21,8 @@
                 ng-click='tog=3'>Promotions</button>
         <button ui-sref="dashboard.users"
                 ng-class='{"navButtonActive":tog==4,"navButton":tog!=4}'
-                ng-click='tog=4'>Users</button>
+                ng-click='tog=4'
+                ng-show="$session.user.role == 1 || true">Users</button>
       </div>
       <div  style="padding-top:15px;" class=" col-sm-10 col-xs-12">
         <div class="col-lg-12"ui-view></div>

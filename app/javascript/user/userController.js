@@ -20,18 +20,34 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 .controller('UserIndexController', ['$scope', '$rootScope', '$auth',
                                    '$sessionStorage', '$state', 'User',
 	function ($scope, $rootScope, $auth, $sessionStorage, $state, User) {
-    User.query().$promise
-      .then(function(data){
-        console.log("successfully queried users :: "+data);
-        $scope.userList = data;
-      })
-      .catch(function(data){
-        console.log("error querying users")
-      });
+    $scope.getUserList = function(){
+      User.query().$promise
+        .then(function(data){
+          console.log("successfully queried users :: "+data);
+          return $scope.userList = data;
+        })
+        .catch(function(data){
+          console.log("error querying users")
+        });
+    }
+
+    /**
+    * Deletes user account.
+    *
+    * @role admin only
+    */
+    $scope.delete = function(user_id){
+      if($sessionStorage.user.role == 'admin'){}
+        User.delete({id: user_id}).$promise.then(function(){
+          $scope.getUserList();
+        });
+      }
+
+     $scope.getUserList();
   }
 ])
-.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state',
-	function ($scope, $rootScope, $auth, $sessionStorage, $state) {
+.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state', 'User',
+	function ($scope, $rootScope, $auth, $sessionStorage, $state, User) {
 
     $scope.settings = {
        closeEl: '.close',
@@ -73,7 +89,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
           };
 
     if($scope.$session.signedIn === true){
-        $state.go("dashboard");
+        $state.go("analytics.dashboard");
     }
 
 		$scope.register = function(isValid){
@@ -85,8 +101,9 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 
 			if(isValid){
 				$auth.submitRegistration(credentials).then(function(registeredUser) {
-          $scope.$session.user = registeredUser;
+          $scope.$session.user = registeredUser.data.data;
           $scope.$session.user.signedIn = $auth.validateUser();
+          $scope.$session.roles = User.getRoles({id: $scope.$session.user.id});
 					$scope.successfulRegistration = true;
 					//show some sort of statement that indicates they are welcome to enjoy
 				}, function(error) {
@@ -97,7 +114,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 					$rootScope.$broadcast('userRegistered', user);
 					$scope.registrationForm={}
 					$scope.userRegistration.$submitted = false;
-          $state.go('dashboard')
+          $state.go('analytics.dashboard')
 				});
 			}
 		}
@@ -136,6 +153,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.$session.user = currentUser;
 				$auth.validateUser();
+        $scope.$session.roles = User.getRoles({id: $scope.$session.user.id});
         $state.go('analytics.dashboard');
 			});
 

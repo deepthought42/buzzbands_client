@@ -17,6 +17,7 @@ angular.module('buzzbands', [
   'buzzbands.DashboardControllers',
   'buzzbands.AnalyticsControllers',
   'buzzbands.BandsControllers',
+  'buzzbands.RoleServices',
   'filepicker'
 ]).
 config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider',
