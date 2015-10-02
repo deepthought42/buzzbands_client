@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands_client.LandingControllers', ['ui.router'])
+angular.module('buzzbands.LandingControllers', ['ui.router'])
 
 
 

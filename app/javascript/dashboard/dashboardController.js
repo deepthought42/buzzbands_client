@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands_client.DashboardControllers', ['ui.router', 'stripe.checkout'])
+angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'])
 
 .config(['$stateProvider', 'StripeCheckoutProvider',
   function($stateProvider, StripeCheckoutProvider) {
@@ -83,7 +83,22 @@ angular.module('buzzbands_client.DashboardControllers', ['ui.router', 'stripe.ch
               // checkout.js isn't fetched until this is resolved.
               stripe: StripeCheckoutProvider.load
             }
-        });
+        })
+        .state('dashboard.users', {
+            url: '/users',
+            parent: 'dashboard',
+            views: {
+              '':{
+                templateUrl: 'app/views/user/index.html',
+                controller: 'UserIndexController'
+              }
+            },
+            resolve: {
+                auth: function($auth) {
+                  return $auth.validateUser();
+                },
+              }
+          });
   }
 ])
 

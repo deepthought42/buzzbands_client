@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands.PromotionService'])
+angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('promotions', {
@@ -25,7 +25,7 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
     $scope.promoPanel='index';
     $scope.promotion = {};
     $scope.promotionLoaded = false;
-    
+
     $scope.editPromotion = function(id){
       state.go("promotion/edit", {"promotionId": id})
       $scope.promotionList = getPromotionList();

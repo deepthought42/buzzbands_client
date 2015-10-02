@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands_client.BandsControllers', ['ui.router', 'buzzbands.BandsService', 'stripe.checkout'])
+angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsService', 'stripe.checkout'])
 
 .config(['StripeCheckoutProvider',
   function(StripeCheckoutProvider) {

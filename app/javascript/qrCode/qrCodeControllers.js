@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands_client.QrCodeControllers', ['ui.router', 'buzzbands.QrCodeService', 'qrScanner'])
+angular.module('buzzbands.QrCodeControllers', ['ui.router', 'buzzbands.QrCodeService', 'qrScanner'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('qrCodeReader', {

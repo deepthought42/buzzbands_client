@@ -1,13 +1,6 @@
 'use strict';
 
-
-angular.module('buzzbands_client.UserControllers', ['ui.router', 'ngMorph'])
-
-angular.module('buzzbands_client.UserControllers', ['ui.router','ngMorph'])
-
-
-
-
+angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.UserServices'])
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('authenticate', {
     templateUrl: 'app/views/landing/index.html',
@@ -24,7 +17,12 @@ angular.module('buzzbands_client.UserControllers', ['ui.router','ngMorph'])
     controller: 'UserAuthController'
   });
 }])
-
+.controller('UserIndexController', ['$scope', '$rootScope', '$auth',
+                                   '$sessionStorage', '$state', 'User',
+	function ($scope, $rootScope, $auth, $sessionStorage, $state, User) {
+    $scope.users = User.query();
+  }
+])
 .controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state',
 	function ($scope, $rootScope, $auth, $sessionStorage, $state) {
 
@@ -49,7 +47,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router','ngMorph'])
              templateUrl: 'app/views/auth/login.html',
              position: {
               top: '30%',
-           
+
              },
              fade: true
            }
@@ -61,7 +59,7 @@ angular.module('buzzbands_client.UserControllers', ['ui.router','ngMorph'])
               templateUrl: 'app/views/auth/register.html',
               position: {
                top: '30%',
-              
+
               },
               fade: true
             }
