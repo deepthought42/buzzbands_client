@@ -24,7 +24,8 @@ angular.module('buzzbands_client.PromotionControllers', ['ui.router', 'buzzbands
   function($scope, Promotion, state, stateParams) {
     $scope.promoPanel='index';
     $scope.promotion = {};
-
+    $scope.promotionLoaded = false;
+    
     $scope.editPromotion = function(id){
       state.go("promotion/edit", {"promotionId": id})
       $scope.promotionList = getPromotionList();

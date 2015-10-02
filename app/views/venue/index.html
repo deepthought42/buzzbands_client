@@ -49,6 +49,9 @@
       <tbody>
         <tr ng-repeat="venue in venueList">
           <td>
+            <img class="col-sm-12" ng-src="{{venue.url}}" />
+          </td>
+          <td>
             <input type="checkbox"
                    ng-model="venue.active"
                    ng-disabled="{{$session.user.role!='Admin'}}"/>
@@ -58,7 +61,7 @@
           </td>
           <td>{{venue.address}}
             <br />
-          {{venue.city}}, {{venue.state}} {{venue.zip_code}}
+            {{venue.city}}, {{venue.state}} {{venue.zip_code}}
           </td>
           <td>
             <button ng-click="editVenue(venue)">Edit</button>
@@ -82,20 +85,5 @@
     </table>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-    </div>
+</div>
+</div>

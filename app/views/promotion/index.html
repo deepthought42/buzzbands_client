@@ -1,10 +1,15 @@
-<div ng-switch="promoPanel">
-
-<div ng-switch-when="create">
-  <div ui-view="promotion.new@promotions.dashboard"></div>
+<div class="container-fluid">
+    <div class="col-sm-12 col-xs-12">
+        <div ng-switch="promotionLoaded">
+  <div ng-switch-when="false">
+    <div ui-view="promotion.new@promotions.dashboard" class="col-sm-6 col-xs-12"></div>
+  </div>
+  <div ng-switch-when="true">
+  <!--  <div ui-view="edit.promotion@promotions.dashboard" class="col-sm-6 col-xs-12"></div>-->
+  </div>
 </div>
-<div ng-switch-when="index" class="container col-sm-12">
-  <div class="row">
+<div class="container col-sm-6">
+  <div class="col-sm-10">
     Promotions
     <button class="btn btn-primary" ng-click="createPromotion()">Add new</button>
   </div>
@@ -30,8 +35,8 @@
     <button id="listButton">list</button>
     <button id="tileButton">tile</button>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
+  <div class="col-sm-8">
+    <div class="col-sm-4">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -50,7 +55,7 @@
             <td>{{promo.name}}
                 <br/>
                 {{promo.description}}</td>
-            <td>{{promo.ad_location}}</td>
+            <td><img ng-src="{{promo.ad_location}}" class="col-sm-12"/></td>
             <td>{{promo.start_time}}</td>
             <td>{{promo.end_time}}</td>
             <td>{{promo.venue_id}}</td>
