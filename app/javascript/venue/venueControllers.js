@@ -41,7 +41,7 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
   }
 
   $scope.showPromotionsList = function(venueId){
-    state.go("promotions", {"venueId": venueId});
+    state.go("promotions.dashboard", {"venueId": venueId});
   }
 
   $scope.isActive = function(object) {
@@ -56,14 +56,13 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
 
 .controller('VenueCreationController', ['$scope', 'Venue', '$state', '$auth', '$rootScope',
   function($scope, Venue, state, $auth, $rootScope) {
-  //$scope.venue = {};
   $auth.validateUser();
   $scope.createVenue = function(venueValid){
     if(venueValid){
-      console.log("SAVING VENUE..");
       Venue.save($scope.venue).$promise
         .then(function(data){
           $rootScope.$broadcast("refreshVenuesList");
+          venue = {};
           //clear fields
         })
         .catch(function(data){
