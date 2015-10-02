@@ -24,11 +24,11 @@
       </div>
       <div class="col-sm-4">
         Active
-        <span>( {{($scope.venueList | filter:isActive).length || -1}} )</span>
+        <span>( {{(venueList | filter:{active:true}).length || -1}} )</span>
       </div>
       <div class="col-sm-5">
         Disabled
-        <span>( {{($scope.venueList | filter:!isActive).length || -1}} )</span>
+        <span>( {{(venueList | filter:{active:false}).length || -1}} )</span>
       </div>
     </div>
     <div class="col-sm-5">

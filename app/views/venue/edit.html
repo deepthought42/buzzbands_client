@@ -104,7 +104,10 @@
 								</div>
 							</div>
 						</div>
-
+						<div class="col-sm-12">
+							Active? 
+							<input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />
+						</div>
 						<div class="actions col-md-12">
 							<button type="submit" class="btn btn-primary pull-right" >
 								<i class="fa fa-save"></i>
