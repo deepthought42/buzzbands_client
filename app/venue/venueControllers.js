@@ -10,7 +10,8 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
     });
 }])
 
-.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', function($scope, Venue, state, session) {
+.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage',
+function($scope, Venue, state, session) {
   $scope.userLoaded = false;
 
   $scope.queryVenues = function(){

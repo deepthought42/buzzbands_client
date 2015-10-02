@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands_client.AnalyticsControllers', ['ui.router'])
+angular.module('buzzbands.AnalyticsControllers', ['ui.router'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('analytics', {

@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('buzzbands_client.version', [
-  'buzzbands_client.version.interpolate-filter',
-  'buzzbands_client.version.version-directive'
+angular.module('buzzbands.version', [
+  'buzzbands.version.interpolate-filter',
+  'buzzbands.version.version-directive'
 ])
 
 .value('version', '0.1');

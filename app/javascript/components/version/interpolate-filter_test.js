@@ -1,6 +1,6 @@
 'use strict';
 
-describe('buzzbands_client.version module', function() {
+describe('buzzbands.version module', function() {
   beforeEach(module('myApp.version'));
 
   describe('interpolate filter', function() {

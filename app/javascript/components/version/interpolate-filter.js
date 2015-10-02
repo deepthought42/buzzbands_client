@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands_client.version.interpolate-filter', [])
+angular.module('buzzbands.version.interpolate-filter', [])
 
 .filter('interpolate', ['version', function(version) {
   return function(text) {

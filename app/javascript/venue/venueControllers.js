@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.VenueService', 'mwl.confirm'])
+angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueService', 'mwl.confirm'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('venues', {

@@ -84,7 +84,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
               stripe: StripeCheckoutProvider.load
             }
         })
-        .state('dashboard.users', {
+        .state('users.dashboard', {
             url: '/users',
             parent: 'dashboard',
             views: {
