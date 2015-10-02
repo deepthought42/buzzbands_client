@@ -20,7 +20,14 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 .controller('UserIndexController', ['$scope', '$rootScope', '$auth',
                                    '$sessionStorage', '$state', 'User',
 	function ($scope, $rootScope, $auth, $sessionStorage, $state, User) {
-    $scope.users = User.query();
+    User.query().$promise
+      .then(function(data){
+        console.log("successfully queried users :: "+data);
+        $scope.userList = data;
+      })
+      .catch(function(data){
+        console.log("error querying users")
+      });
   }
 ])
 .controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state',
