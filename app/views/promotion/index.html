@@ -56,8 +56,8 @@
                 <br/>
                 {{promo.description}}</td>
             <td><img ng-src="{{promo.ad_location}}" class="col-sm-12"/></td>
-            <td>{{promo.start_time}}</td>
-            <td>{{promo.end_time}}</td>
+            <td>{{promo.start_time | date:'MM/dd/yyyy @ h:mma'}}</td>
+            <td>{{promo.end_time | date:'MM/dd/yyyy @ h:mma'}}</td>
             <td>{{promo.venue_id}}</td>
             <td>
               <button>Edit</button>
