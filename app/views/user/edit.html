@@ -1,0 +1,80 @@
+	<button class="btn add-button col-sm-2" tooltip="New User" ng-click="addUser()">Add User</button>
+
+	<div class="row" >
+		<div id="userCreatePanel" class="col-md-10">
+      <span style="color:#808266;font-size:30px;">EDIT VENUE</span><br><br>
+			<div class="col-sm-12">
+				{{user.email}}
+			</div>
+			<div class="col-sm-12" ng-show="hasPermission('manager') || $session.user.id==user.id">
+				<img ng-src="user.image" />
+			</div>
+			<form name="userForm"
+						enctype="multipart/form-data"
+						ng-submit="updateUser(userForm.$valid)"
+						novalidate>
+							<div class="col-sm-12">
+								<span class="col-sm-5">
+									Cover Photo:
+								</span>
+								<span class="col-sm-2">
+									<img href="/no-image.jpg" />
+								</span>
+								<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+										pickerclass="btn btn-default"
+										multiple="false" mimetype="image/jpg"
+										callback="preview(file)"
+										multiple=false
+										ng-show="$session.user.id==user.id"
+										ng-model="user.image">Add Photo</div>
+							<div ng-show="hasPermission('admin') && $session.user.id != user.id">
+								<button class="btn">Send password reset email</button>
+							</div>
+							<div ng-show="$session.user.id==user.id">
+						    <div class="form-group">
+						      <input placeholder= "Password"
+						              type="password"
+						              name="password"
+						              id="password"
+						              ng-model="user.password"
+						              class="form-control"
+						              required
+						              minlength="8"
+													ng-show="$session.user.id==user.id"/>
+						      <div ng-messages="userForm.password.$error" ng-if="userForm.$submitted">
+						        <p ng-message="minlength">
+						            Password must be at least 8 characters.
+						        </p>
+						      </div>
+						    </div>
+						    <div class="form-group">
+						      <input placeholder= "Confirm Password"
+						              type="password"
+						              name="confirmation_password"
+						              id="confirmation_password"
+						              ng-model="user.confirmation_password"
+						              class="form-control"
+						              required
+													ng-show="$session.user.id==user.id" />
+						      <div ng-messages="userForm.confirmation_password.$error" ng-if="userForm.$submitted">
+						        <p ng-message="required" >
+						              Confirmation password is required.
+						        </p>
+						        <p 	ng-if="registrationForm.password != userForm.confirmation_password" >
+						              Passwords do not match.
+						        </p>
+						      </div>
+								</div>
+							</div>
+						<div class="col-sm-12">
+							Active?
+							<input type="checkbox" ng-model="user.active" ng-disabled="hasPermission('admin')" />
+						</div>
+						<div class="actions col-md-12">
+							<button type="submit" class="btn btn-primary" >
+								<i class="fa fa-save"></i>
+								Save
+							</button>
+						</div>
+			</form>
+		</div>

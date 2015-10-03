@@ -19,8 +19,8 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 }])
 .controller('UserIndexController', ['$scope', '$rootScope', '$auth',
                                    '$sessionStorage', '$state', 'User', 'Role',
-	function ($scope, $rootScope, $auth, $sessionStorage, $state, User, Role) {
-    $scope.roles = Role;
+	function ($scope, $rootScope, $auth, $sessionStorage, state, User, Role) {
+    $scope.$session = $sessionStorage;
     $scope.getUserList = function(){
       User.query().$promise
         .then(function(data){
@@ -38,13 +38,67 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     * @role admin only
     */
     $scope.delete = function(user_id){
-      if($sessionStorage.user.role == 'admin'){}
+      if($sessionStorage.roles[0].name == 'admin'){}
         User.delete({id: user_id}).$promise.then(function(){
           $scope.getUserList();
         });
       }
 
-     $scope.getUserList();
+    $scope.editUser = function(id){
+      console.log("ID :: "+id);
+      if($scope.hasPermission('admin')){
+        state.go("dashboard.editUser", {"userId": id})
+      }
+    }
+
+    $scope.hasPermission = function(role){
+      return $scope.$session.roles[0].name == role;
+    }
+    $scope.getUserList();
+  }
+])
+.controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
+  function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
+  {
+    console.log("ID :: "+stateParams.userId);
+
+    $scope.$session = $sessionStorage;
+    $auth.validateUser();
+    $scope.loadUser = function(){
+      console.log(stateParams.userId);
+      if(stateParams.userId != $scope.$session.user.id){
+        $scope.user = User.query({id: stateParams.userId});
+      }
+      else{
+        $scope.user = $scope.$session.user;
+      }
+    }
+
+    $scope.updateUser = function(userValid){
+      if(userValid){
+        User.update($scope.user).$promise.then(function(data){
+          $scope.user = {};
+          state.go("dashboard.analytics", {"userId": id})
+        });
+      }
+    };
+
+    $scope.loadUser();
+    $scope.hasPermission = function(role){
+      return $scope.$session.roles[0].name == role;
+    }
+  }
+])
+
+.controller('UserAccountAccessController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
+  function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
+  {
+    $scope.$session = $sessionStorage;
+    $auth.validateUser();
+
+    $scope.editMyAccount = function(){
+      state.go('dashboard.editUser', {"userId": $scope.$session.user.id});
+    }
   }
 ])
 .controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state', 'User',

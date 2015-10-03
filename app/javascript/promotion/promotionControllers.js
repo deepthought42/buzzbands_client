@@ -4,7 +4,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('promotions', {
-    url: '/promotions/:venueId',
+    url: '/promotions/:promotionId',
     templateUrl: 'app/views/promotion/index.html',
     controller: 'PromotionIndexController'
   })
@@ -37,7 +37,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
     $scope.getPromotionList = function(){
-      return Promotion.query({id: stateParams.venueId});
+      return Promotion.query({id: stateParams.promotionId});
     }
 
     $scope.createPromotion = function(){
@@ -73,4 +73,31 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
   $scope.setUrl = function(files){
     $scope.promotion.ad_location = files[0].url;
   }
-}]);
+}])
+
+.controller('PromotionDetailsController', ['$scope', 'Promotion', '$state', '$stateParams', '$auth', '$rootScope',
+  function($scope, Promotion, state, stateParams, $auth, $rootScope)
+  {
+    $auth.validateUser();
+    $scope.loadPromotion = function(){
+      if(stateParams.id){
+        Promotion.get({id: stateParams.id}).$promise
+          .then(function(data){
+            $scope.promotion = data;
+          })
+          .catch(function(data){
+            console.log("ERR  :: "+ data)
+          });
+      }
+    }
+
+    $scope.updatePromotion = function(promotionValid){
+      if(promotionValid){
+        Promotion.update($scope.promotion).$promise.then(function(data){
+          $scope.promotion = {};
+          $rootScope.$broadcast("showCreatePromotionView");
+        });
+      }
+    }
+  }
+]);

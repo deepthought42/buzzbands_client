@@ -110,12 +110,29 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
                   return $auth.validateUser() && $sessionStorage.roles[0].name == 'admin';
                 }
               }
-          });
+          })
+          .state('dashboard.editUser', {
+              url: '/users/edit/:userId',
+              parent: 'dashboard',
+              views: {
+                '':{
+                  templateUrl: 'app/views/user/edit.html',
+                  controller: 'UserDetailsController'
+                }
+              },
+              resolve: {
+                  auth: function($auth, $sessionStorage) {
+                    //ensure user has admin role
+                    return $auth.validateUser() && $sessionStorage.roles[0].name == 'admin';
+                  }
+                }
+            });
   }
 ])
 
-.controller('DashboardController', ['$scope', '$sessionStorage', function($scope, $sessionStorage) {
+.controller('DashboardController', ['$scope', '$sessionStorage', '$state', function($scope, $sessionStorage, state) {
   $scope.$session = $sessionStorage;
+
   $scope.hasPermission = function(role){0
     return $scope.$session.roles[0].name == role;
   }
