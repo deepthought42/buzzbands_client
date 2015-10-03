@@ -14,6 +14,13 @@ Accounts
       <td>{{user.role}}</td>
       <td>{{user.active}}</td>
       <td>
+        <select ng-model="user.role">
+          <option  ng-repeat="role in roles" value="{{role.name}}">
+            {{role.name}}
+          </option>
+        </select>
+      </td>
+      <td>
         <button class="btn btn-danger" ng-click="delete(user.id)">Delete</button>
       </td>
     </tr>

@@ -1,4 +1,5 @@
-<div style="padding-top:200px;"class="container col-sm-12">
+	<button class="btn add-button col-sm-2" tooltip="New Venue" ng-click="addVenue()">Add Venue</button>
+
 	<div class="row" >
 		<div id="venueCreatePanel" class="col-md-10">
             <span style="color:#808266;font-size:30px;">EDIT VENUE</span><br><br>
@@ -105,16 +106,14 @@
 							</div>
 						</div>
 						<div class="col-sm-12">
-							Active? 
+							Active?
 							<input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />
 						</div>
 						<div class="actions col-md-12">
-							<button type="submit" class="btn btn-primary pull-right" >
+							<button type="submit" class="btn btn-primary" >
 								<i class="fa fa-save"></i>
 								Save
 							</button>
 						</div>
 			</form>
 		</div>
-	</div>
-</div>

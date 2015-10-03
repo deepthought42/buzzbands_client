@@ -2,7 +2,7 @@
  <link rel="stylesheet" href="app/stylesheets/navigation.css">
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300' rel='stylesheet' type='text/css'>
 <div class="container-fluid">
-  <div class="col-sm-12">
+
     <br>
     <button id="buyBandButton" class="pull-right btn" ui-sref="dashboard.shopBands">
       BUY BANDS
@@ -18,14 +18,14 @@
                  ng-click='tog=2'>Accounts</button><br><br><br>
         <button ui-sref="promotions.dashboard"
                 ng-class='{"navButtonActive":tog==3,"navButton":tog!=3}'
-                ng-click='tog=3'>Promotions</button>
+                ng-click='tog=3'>Promotions</button><br><br><br>
         <button ui-sref="dashboard.users"
                 ng-class='{"navButtonActive":tog==4,"navButton":tog!=4}'
                 ng-click='tog=4'
                 ng-show="hasPermission('admin')">Users</button>
       </div>
       <div  style="padding-top:15px;" class=" col-sm-10 col-xs-12">
-        <div class="col-lg-12"ui-view></div>
+        <div class="col-lg-12 col-sm-12"ui-view></div>
       </div>
     </div>
   </div>

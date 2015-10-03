@@ -18,8 +18,9 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
   });
 }])
 .controller('UserIndexController', ['$scope', '$rootScope', '$auth',
-                                   '$sessionStorage', '$state', 'User',
-	function ($scope, $rootScope, $auth, $sessionStorage, $state, User) {
+                                   '$sessionStorage', '$state', 'User', 'Role',
+	function ($scope, $rootScope, $auth, $sessionStorage, $state, User, Role) {
+    $scope.roles = Role;
     $scope.getUserList = function(){
       User.query().$promise
         .then(function(data){

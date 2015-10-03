@@ -42,19 +42,19 @@ angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsServi
    var getPackages = function(){
      return [{
        count: '250',
-       price: '-1.00'
+       price: '-25.00'
      },{
        count: '500',
-       price: '-1.00'
+       price: '-50.00'
      },{
        count: '750',
-       price: '-1.00'
+       price: '-75.00'
      },{
        count: '1000',
-       price: '-1.00'
+       price: '-100.00'
      },{
        count: '10000',
-       price: '-1.00'
+       price: '-1000.00'
      }]
    };
 

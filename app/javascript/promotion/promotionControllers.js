@@ -70,7 +70,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
   }
 
-      $scope.setUrl = function(files){
-        $scope.promotion.ad_location = files[0].url;
-      }
+  $scope.setUrl = function(files){
+    $scope.promotion.ad_location = files[0].url;
+  }
 }]);

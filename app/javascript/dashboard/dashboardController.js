@@ -106,7 +106,6 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
 .controller('DashboardController', ['$scope', '$sessionStorage', function($scope, $sessionStorage) {
   $scope.$session = $sessionStorage;
   $scope.hasPermission = function(role){0
-    console.log("permision : "+ $scope.$session.roles[0].name);
     return $scope.$session.roles[0].name == role;
   }
 }])

@@ -10,8 +10,8 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     });
 }])
 
-.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', function($scope, Venue, state, session) {
-  $scope.userLoaded = false;
+.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$localStorage','$sessionStorage', function($scope, Venue, state, session) {
+  $scope.venueLoaded = false;
 
   $scope.queryVenues = function(){
     Venue.query().$promise
@@ -36,7 +36,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   }
 
   $scope.editVenue = function(venue){
-    $scope.userLoaded = true;
+    $scope.venueLoaded = true;
     $scope.venue = venue;
   }
 
@@ -51,39 +51,62 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   $scope.$on("refreshVenuesList", function(event, data){
     $scope.venueList = $scope.queryVenues();
   })
+
+  $scope.$on("showCreateVenueView", function(event, data){
+    $scope.venueLoaded = false;
+  })
   $scope.venueList = $scope.queryVenues();
 }])
 
-.controller('VenueCreationController', ['$scope', 'Venue', '$state', '$auth', '$rootScope',
-  function($scope, Venue, state, $auth, $rootScope) {
-  $auth.validateUser();
+.controller('VenueCreationController', ['$scope', 'Venue', '$state', '$auth', '$rootScope', '$sessionStorage',
+  function($scope, Venue, state, $auth, $rootScope, $sessionStorage) {
+    $scope.$session = $sessionStorage;
+    $auth.validateUser();
+
+    $scope.hasPermission = function(role){0
+      return $scope.$session.roles[0].name == role;
+    }
+
   $scope.createVenue = function(venueValid){
     if(venueValid){
       Venue.save($scope.venue).$promise
         .then(function(data){
           $rootScope.$broadcast("refreshVenuesList");
-          venue = {};
+          $scope.venue = {};
+
           //clear fields
         })
         .catch(function(data){
           console.log("there was an error creating venue");
         });
     }
+
+  }
+  $scope.previewImage = function(files){
+    $scope.setUrl(files);
+    var reader = new FileReader();
+    if(typeof files[0] === 'object'){
+      reader.readAsDataURL(files[0]);
+    }
+    reader.onload = function(event){
+      $scope.logo_url = reader.result;
+      $scope.venue.url = files[0].url;
+      $scope.$apply()
+    }
   }
 
-  $scope.setUrl = function(data){
-    $scope.venue.url = data[0].url;
+  $scope.setUrl = function(files){
+    $scope.venue.url = files[0].url;
   }
+
 }])
 
-.controller('VenueDetailsController', ['$scope', 'Venue', '$state', '$stateParams', '$auth',
-  function($scope, Venue, state, stateParams, $auth)
+.controller('VenueDetailsController', ['$scope', 'Venue', '$state', '$stateParams', '$auth', '$rootScope',
+  function($scope, Venue, state, stateParams, $auth, $rootScope)
   {
     $auth.validateUser();
-    console.log("EDITING VENUE: "+$scope.venue);
     $scope.loadVenue = function(){
       if(stateParams.id){
-        console.log("ID FOUND FOR VENUE");
         Venue.get({id: stateParams.id}).$promise
           .then(function(data){
             $scope.venue = data;
@@ -96,7 +119,10 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
 
     $scope.updateVenue = function(venueValid){
       if(venueValid){
-        Venue.update($scope.venue)
+        Venue.update($scope.venue).$promise.then(function(data){
+          $scope.venue = {};
+          $rootScope.$broadcast("showCreateVenueView");
+        });
       }
     }
   }

@@ -48,3 +48,57 @@ padding: 5px 15px;
 .text-danger{
 color:#de519b;
 }
+
+.status{
+  color:White;
+width:90px;
+
+}
+.statusbracket{
+  color:#de519b;
+}
+
+.saveButton{
+
+color:#808266;
+border-color:white;
+background: none;
+}
+
+.saveButton:hover{
+border-color:white;
+  background-color: #242831;
+}
+
+.table-responsive{
+  overflow-y: scroll !important;
+}
+
+
+/*
+ *  STYLE 2
+ */
+
+#style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #4BBA4B;
+}
+
+#style-2::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: white;
+}
+.tooltip-inner{
+color:white;
+border:2px solid white;
+}
