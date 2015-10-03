@@ -1,3 +1,4 @@
+
 <div id="promotionCreatePanel" class="col-md-12">
 	<form name="promotionForm"
 				enctype="multipart/form-data"
@@ -40,7 +41,13 @@
 			<div class="row">
       	<div class="col-md-6">
           <p class="input-group">
-            <input type="date" class="form-control" datepicker-popup="{{format}}" ng-model="promotion.start_time" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+            <input type="date" class="form-control" datepicker-popup="{{format}}"
+										ng-model="promotion.start_time" is-open="status.opened"
+										min-date="minDate" max-date="maxDate"
+										datepicker-options="dateOptions"
+										date-disabled="disabled(date, mode)"
+										required
+										close-text="Close" />
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>

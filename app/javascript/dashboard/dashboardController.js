@@ -67,6 +67,17 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
           }
         }
       })
+      .state('dashboard.newPromotion', {
+        url: '/promotions/new',
+        parent: 'dashboard',
+        templateUrl: 'app/views/promotion/new.html',
+        controller: 'PromotionCreationController',
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      })
       .state('dashboard.shopBands', {
           url: '/shopBands',
           parent: 'dashboard',
