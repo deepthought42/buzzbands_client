@@ -103,8 +103,9 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 				$auth.submitRegistration(credentials).then(function(registeredUser) {
           $scope.$session.user = registeredUser.data.data;
           $scope.$session.user.signedIn = $auth.validateUser();
-          $scope.$session.roles = User.getRoles({id: $scope.$session.user.id});
+          $scope.$session.roles = User.getRoles({id: registeredUser.data.data.id});
 					$scope.successfulRegistration = true;
+          $state.go("analytics.dashboard");
 					//show some sort of statement that indicates they are welcome to enjoy
 				}, function(error) {
 					alert("Something went wrong during registration. Womp womp");
@@ -152,8 +153,9 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.$session.user = currentUser;
-				$auth.validateUser();
-        $scope.$session.roles = User.getRoles({id: $scope.$session.user.id});
+				if($auth.validateUser()){
+          $scope.$session.roles = User.getRoles({id: currentUser.id});
+        }
         $state.go('analytics.dashboard');
 			});
 

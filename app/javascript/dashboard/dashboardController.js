@@ -94,18 +94,19 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
               }
             },
             resolve: {
-                auth: function($auth) {
+                auth: function($auth, $sessionStorage) {
                   //ensure user has admin role
-                  return $auth.validateUser() && $session.user.role == 1;
-                },
+                  return $auth.validateUser() && $sessionStorage.roles[0].name == 'admin';
+                }
               }
           });
   }
 ])
 
-.controller('DashboardController', ['$scope', function($scope) {
-  $scope.mainView = 'analytics';
-  $scope.showVenues = function(){
-    $scope.mainView = 'venues';
+.controller('DashboardController', ['$scope', '$sessionStorage', function($scope, $sessionStorage) {
+  $scope.$session = $sessionStorage;
+  $scope.hasPermission = function(role){0
+    console.log("permision : "+ $scope.$session.roles[0].name);
+    return $scope.$session.roles[0].name == role;
   }
 }])

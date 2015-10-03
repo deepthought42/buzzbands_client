@@ -8,7 +8,7 @@
       BUY BANDS
     </button>
     <div id="dashboardcontainer"class="container-fluid">
-      <div class="col-sm-2 col-xs-12">
+      <div class="col-sm-2 col-xs-12" ng-controller="DashboardController">
         <img style="width:50px;padding-top:15px;padding-bottom:100px;"src="images/logo.png"><br>
         <button  ui-sref="analytics.dashboard"
                  ng-class='{"navButtonActive":tog==1,"navButton":tog!=1}'
@@ -22,7 +22,7 @@
         <button ui-sref="dashboard.users"
                 ng-class='{"navButtonActive":tog==4,"navButton":tog!=4}'
                 ng-click='tog=4'
-                ng-show="$session.user.role == 1 || true">Users</button>
+                ng-show="hasPermission('admin')">Users</button>
       </div>
       <div  style="padding-top:15px;" class=" col-sm-10 col-xs-12">
         <div class="col-lg-12"ui-view></div>
