@@ -15,8 +15,8 @@ Accounts
       <td>{{user.active}}</td>
       <td>
         <select ng-model="user.role">
-          <option  ng-repeat="role in roles" value="{{role.name}}">
-            {{role.name}}
+          <option ng-selected="user.role==role" ng-repeat="role in roles" value="{{role}}">
+            {{role}}
           </option>
         </select>
       </td>

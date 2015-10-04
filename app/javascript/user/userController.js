@@ -21,6 +21,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
                                    '$sessionStorage', '$state', 'User', 'Role',
 	function ($scope, $rootScope, $auth, $sessionStorage, state, User, Role) {
     $scope.$session = $sessionStorage;
+    $scope.roles = Role
     $scope.getUserList = function(){
       User.query().$promise
         .then(function(data){
@@ -45,14 +46,14 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       }
 
     $scope.editUser = function(id){
-      console.log("ID :: "+id);
       if($scope.hasPermission('admin')){
         state.go("dashboard.editUser", {"userId": id})
       }
     }
 
     $scope.hasPermission = function(role){
-      return $scope.$session.roles[0].name == role;
+     if ($session.user.role == role) {return true;}
+     return false;
     }
     $scope.getUserList();
   }
@@ -60,7 +61,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 .controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
   function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
   {
-    console.log("ID :: "+stateParams.userId);
+    $scope.roles = Role
 
     $scope.$session = $sessionStorage;
     $auth.validateUser();
@@ -158,7 +159,6 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 				$auth.submitRegistration(credentials).then(function(registeredUser) {
           $scope.$session.user = registeredUser.data.data;
           $scope.$session.user.signedIn = $auth.validateUser();
-          $scope.$session.roles = User.getRoles({id: registeredUser.data.data.id});
 					$scope.successfulRegistration = true;
           $state.go("analytics.dashboard");
 					//show some sort of statement that indicates they are welcome to enjoy
@@ -208,9 +208,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.$session.user = currentUser;
-				if($auth.validateUser()){
-          $scope.$session.roles = User.getRoles({id: currentUser.id});
-        }
+				$auth.validateUser()
         $state.go('analytics.dashboard');
 			});
 

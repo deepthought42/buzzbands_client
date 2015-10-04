@@ -107,7 +107,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
             resolve: {
                 auth: function($auth, $sessionStorage) {
                   //ensure user has admin role
-                  return $auth.validateUser() && $sessionStorage.roles[0].name == 'admin';
+                  return $auth.validateUser() && $sessionStorage.user.role == 'admin';
                 }
               }
           })
@@ -134,6 +134,6 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
   $scope.$session = $sessionStorage;
 
   $scope.hasPermission = function(role){0
-    return $scope.$session.roles[0].name == role;
+    return $scope.$session.user.role == role;
   }
 }])

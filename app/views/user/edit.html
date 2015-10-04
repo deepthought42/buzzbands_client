@@ -2,7 +2,7 @@
 
 	<div class="row" >
 		<div id="userCreatePanel" class="col-md-10">
-      <span style="color:#808266;font-size:30px;">EDIT VENUE</span><br><br>
+      <span style="color:#808266;font-size:30px;">EDIT USER</span><br><br>
 			<div class="col-sm-12">
 				{{user.email}}
 			</div>
@@ -68,7 +68,7 @@
 							</div>
 						<div class="col-sm-12">
 							Active?
-							<input type="checkbox" ng-model="user.active" ng-disabled="hasPermission('admin')" />
+							<input type="checkbox" ng-model="user.active" ng-disabled="!hasPermission('admin')" />
 						</div>
 						<div class="actions col-md-12">
 							<button type="submit" class="btn btn-primary" >
