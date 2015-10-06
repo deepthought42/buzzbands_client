@@ -1,31 +1,39 @@
 <link rel="stylesheet" href="app/stylesheets/dashboard.css">
-<div id="dashboard">
-  <div id="navContainer" class='col-sm-2'>
-    <div id="logoContainer" class="col-sm-12">
-      <img id="logo" href="#" alt="Buzzbands logo" />
-    </div>
-    <link rel="stylesheet" href="app/stylesheets/navigation.css">
+<link rel="stylesheet" href="app/stylesheets/navigation.css">
+<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300' rel='stylesheet' type='text/css'>
+<div class="container-fluid">
+    <br>
+    <button ng-controller="UserAccountAccessController"
+            id"editMyAccountButton"
+            class="pull-right fa fa-user"
+            ng-click="editMyAccount()"></button>
+    <button id="buyBandButton" class="pull-right btn" ui-sref="dashboard.shopBands">
+      BUY BANDS
+    </button>
 
-    <div id="navLinkContainer" class="col-sm-12" ng-init="tog=1">
-      DASHBOARDS
-      <div class="link col-sm-12">
-        <button class="col-sm-10" ui-sref="analytics.dashboard" ng-class='{"navButtonActive":tog==1,"navButton":tog!=1}' ng-click='tog=1'>Overview</button>
+    <div id="dashboardcontainer"class="container-fluid">
+      <div class="col-sm-2 col-xs-12" ng-controller="DashboardController">
+        <img style="width:50px;padding-top:15px;padding-bottom:100px;"src="images/logo.png"><br>
+        <button  ui-sref="analytics.dashboard"
+                 ng-class='{"navButtonActive":tog==1,"navButton":tog!=1}'
+                 ng-click='tog=1'>Overview</button><br><br>
+        <button  ui-sref="venues.dashboard"
+                 ng-class='{"navButtonActive":tog==2,"navButton":tog!=2}'
+                 ng-click='tog=2'>Accounts</button><br><br>
+        <button ui-sref="promotions.dashboard"
+                ng-class='{"navButtonActive":tog==3,"navButton":tog!=3}'
+                ng-click='tog=3'>Promotions</button>
+        <button ui-sref="dashboard.newPromotion"
+                class="btn btn-primary"
+                ng-show="tog==3">Add Promotion</button><br><br>
+        <button ui-sref="dashboard.users"
+                ng-class='{"navButtonActive":tog==4,"navButton":tog!=4}'
+                ng-click='tog=4'
+                ng-show="hasPermission('admin')">Users</button>
       </div>
-      <div class="link col-sm-12">
-        <button class="navButton col-sm-10" ui-sref="venues.dashboard" ng-class='{"navButtonActive":tog==2,"navButton":tog!=2}' ng-click='tog=2'>Venues</button>
-      </div>
-      <div class="link col-sm-12">
-        <button class="navButton col-sm-10" ui-sref="promotions.dashboard" ng-class='{"navButtonActive":tog==3,"navButton":tog!=3}' ng-click='tog=3'>Promotions</button>
+      <div  style="padding-top:15px;" class=" col-sm-10 col-xs-12">
+        <div class="col-lg-12 col-sm-12"ui-view></div>
       </div>
     </div>
-  </div>
-  <div id="mainPanelContainer" class='col-sm-10'>
-    <div id="mainPanelHeader" class='col-sm-12'>
-      Overview
-      <button id="buyBandButton" class="pull-right btn col-sm-2">
-        BUY BANDS
-      </button>
-    </div>
-    <div ui-view></div>
   </div>
 </div>

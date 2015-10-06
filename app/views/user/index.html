@@ -4,13 +4,27 @@ Accounts
     <tr>
       <td>Email</td>
       <td></td>
+      <td></td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>user.email</td>
+    <tr ng-repeat="user in userList">
+      <td>{{user.email}}</td>
+      <td>{{user.role}}</td>
+      <td>{{user.active}}</td>
       <td>
-        <button class="btn btn-danger">Delete</button>
+        <select ng-model="user.role">
+          <option ng-selected="user.role==role" ng-repeat="role in roles" value="{{role}}">
+            {{role}}
+          </option>
+        </select>
+      </td>
+      <td>
+        <button class="btn-caution"
+                ng-click="editUser(user.id)"
+                ng-show="hasPermission('admin')">Edit</button>
+        <button class="btn btn-danger" ng-click="delete(user.id)">Delete</button>
       </td>
     </tr>
   </tbody>

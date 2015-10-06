@@ -1,7 +1,8 @@
-<div class="container  col-sm-12">
+	<button class="btn add-button col-sm-2" tooltip="New Venue" ng-click="addVenue()">Add Venue</button>
+
 	<div class="row" >
 		<div id="venueCreatePanel" class="col-md-10">
-			EDIT VENUE
+            <span style="color:#808266;font-size:30px;">EDIT VENUE</span><br><br>
 			<form name="venueForm"
 						enctype="multipart/form-data"
 						ng-submit="updateVenue(venueForm.$valid)"
@@ -36,22 +37,9 @@
 								</span>
 								<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 										pickerclass="btn btn-default"
-										multiple="true" mimetype="image/*"
+										multiple="false" mimetype="image/jpg"
 										callback="callBackToExecuteAfterUpload(file)"
 										multiple=false>Add Photo</div>
-							</div>
-							<div class="col-sm-12">
-								<input  class="form-control"
-												type="text"
-												name="address"
-												ng-model="venue.address"
-												id="newVenueAddress"
-												placeholder="URL"
-												minlength="3"
-												maxlength="250" />
-								<div ng-messages="venueForm.address.$error" ng-if="venueForm.$submitted" class="text-danger">
-									<p ng-message="minlength">Street address must be at least 3 characters</p>
-								</div>
 							</div>
 							<div class="col-sm-12">
 								<input  class="form-control"
@@ -117,15 +105,15 @@
 								</div>
 							</div>
 						</div>
-
+						<div class="col-sm-12">
+							Active?
+							<input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />
+						</div>
 						<div class="actions col-md-12">
-							<a ui-sref="venues" class="pull-right">Cancel</a>
-							<button type="submit" class="btn btn-primary pull-right" >
+							<button type="submit" class="btn btn-primary" >
 								<i class="fa fa-save"></i>
 								Save
 							</button>
 						</div>
 			</form>
 		</div>
-	</div>
-</div>

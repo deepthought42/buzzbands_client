@@ -21,3 +21,84 @@ thead {
   font-size: .7em;
   background-color: #5f7387;
 }
+
+#venueCreatePanel{
+color:white;
+    text-align: center;
+    font-weight:100;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.form-control{
+    margin-top:5px;
+background-color: #3b4454;
+    border-radius: 0%;
+    border:none;
+    color:#808266;
+}
+
+.addphoto{
+padding: 5px 15px;
+    margin-top: 5px;
+    border-radius: 1em;
+    background-color: #ffffff;
+    color:#4BBA4B;
+}
+
+.text-danger{
+color:#de519b;
+}
+
+.status{
+  color:White;
+width:90px;
+
+}
+.statusbracket{
+  color:#de519b;
+}
+
+.saveButton{
+
+color:#808266;
+border-color:white;
+background: none;
+}
+
+.saveButton:hover{
+border-color:white;
+  background-color: #242831;
+}
+
+.table-responsive{
+  overflow-y: scroll !important;
+}
+
+
+/*
+ *  STYLE 2
+ */
+
+#style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #4BBA4B;
+}
+
+#style-2::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: white;
+}
+.tooltip-inner{
+color:white;
+border:2px solid white;
+}

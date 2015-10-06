@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container" ng-controller="UserAuthController">
   <div class="row col-sm-12">
     Hedsd
@@ -14,4 +15,39 @@
       Right side stuff here
     </div>
   </div>
+=======
+<div id="loginmorph" ng-controller="UserAuthController">
+  <button class="close">X</button>
+  <form style="padding-top:35px;"  role="form"
+        ng-init="loginForm = {}"
+        ng-submit="signIn(userLogin.$valid)"
+        name="userLogin" novalidate>
+        <div class="form-group">
+        <input type="email"
+               name="email"
+               id="userFormEmailField"
+               ng-model="loginForm.email"
+               required="required"
+               class="form-control"
+               placeholder="Email" />
+        <div ng-messages="userLogin.email.$error" ng-if="userLogin.$submitted">
+          <p class="text-danger" ng-message="required">Email is required.</p>
+          <p class="text-danger" ng-message="email">Invalid email address.</p>
+        </div>
+      </div>
+       <div class="form-group">
+        <input placeholder= "Password"
+                type="password"
+                name="password"
+                id="password"
+                ng-model="loginForm.password"
+                class="form-control"
+                required />
+        <div ng-messages="loginForm.password.$error" ng-if="loginForm.$submitted">
+          <p class="text-danger" ng-message="required">Password is required.</p>
+        </div>
+      </div>
+      <button type="submit" class="btn-login btn btn-default">Sign in</button>
+  </form>
+>>>>>>> master
 </div>

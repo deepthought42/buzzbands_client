@@ -1,66 +1,88 @@
-#dashboard{
-  color: white;
+
+
+#dashboardcontainer{
+
+text-align: left;
 }
 
-#navContainer{
-  border: 1px solid black;
-  position:absolute;
-  height:100%;
-  background-color: black;
-}
-
-#mainPanelContainer{
-  border: 1px solid black;
-  position:absolute;
-  height:100%;
-  right:0px;
-  background-color: black;
-}
-
-#mainPanelHeader{
-  height: 10%;
-  border: 1px solid black;
-}
-
-#overviewCards{
-  position: relative;
-  height: 45%;
-  border: 1px solid black;
-}
-
-#quickStatsCardsContainer{
-  position: relative;
-  height: 45%;
-  border: 1px solid black;
-}
-
-#buyBandButton{
-    background-color: #FF3399;
-    top:  30%;
-    height: 2.2em;
-    border: 0px;
-    border-radius: 20px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
-}
-
-.overviewStatCard {
-  height: 225px;
-  margin-top: 40px;
-  margin-left: 40px;
-  margin-right: 40px;
-  border: 1px solid black;
-  text-align: center;
+/*QUERIES*/
+@media only screen and (min-width:0px) and (max-width: 768px)  {
+    #dashboardcontainer{
+    text-align:center;
+    } 
+    
 }
 
 .overviewStat{
-  font-size: 7em;
+    text-align: center;
+    font-size: 70px;
+    font-weight: 100;
+    font-family: 'Josefin Sans', sans-serif;
+
 }
 
-.quickStatCard {
-  height: 225px;
-  margin-top: 40px;
-  margin-left: 85px;
-  margin-right: 85px;
-  background-color: #FF3399;
-  border: 1px solid black;
+.overviewStatCard{
+text-align: center;
+        font-weight: 100;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+#quickStatsCardsContainer{
+text-align: center;
+}
+
+
+.strike {
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap; 
+    }
+
+    .strike > span {
+        position: relative;
+        display: inline-block;
+        color:#888d8f;
+                font-weight: 100;
+    font-family: 'Josefin Sans', sans-serif;
+    }
+	
+    .strike > span:before,
+    .strike > span:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 9999px;
+        height: 1px;
+        background: white;
+    }
+
+    .strike > span:before {
+        right: 100%;
+        margin-right: 15px;
+    }
+
+    .strike > span:after {
+        left: 100%;
+        margin-left: 15px;
+    }
+
+#buyBandButton{
+    color:white;
+background-color:#de519b;
+  font-weight: 100;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+
+.quickStatCard{
+background-color:#de519b;
+
+      font-weight: 100;
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 10px;
+    min-height: 150px;
+
 }

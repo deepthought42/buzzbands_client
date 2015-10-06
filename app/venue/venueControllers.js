@@ -10,7 +10,8 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
     });
 }])
 
-.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', function($scope, Venue, state, session) {
+.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage',
+function($scope, Venue, state, session) {
   $scope.userLoaded = false;
 
   $scope.queryVenues = function(){
@@ -66,6 +67,10 @@ angular.module('buzzbands_client.VenueControllers', ['ui.router', 'buzzbands.Ven
           console.log("there was an error creating venue");
         });
     }
+  }
+
+  $scope.setUrl = function(data){
+    $scope.venue.url = data[0].url;
   }
 }])
 

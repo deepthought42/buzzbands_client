@@ -1,59 +1,83 @@
-<div class="container">
-	<div class="row" >
-		<div id="promotionCreatePanel" class="col-md-10">
-			<form name="promotionForm"
-						enctype="multipart/form-data"
-						ng-submit="createNewPromotion(promotionForm.$valid)"
-						novalidate>
-				<div class="col-md-12">
-					<div class="col-md-5">
-						<div class="field">
-							<!--<input  class="form-control"
-											type="text"
-											name="name"
-											ng-model="promotion.name"
-											id="newPromotionName"
-											placeholder="Name"
-											required
-											minlength="3"
-											maxlength="250"/>
-										-->
-									<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-											 pickerclass="btn btn-default"
-											 multiple="true" mimetype="image/*"
-											 callback="callBackToExecuteAfterUpload(file)"
-											 multiple=false>Add Photo</div>
 
-							<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
-								<p ng-message="required">Name is required.</p>
-								<p ng-message="minlength">Name must be at least 3 characters</p>
-								<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
-							</div>
-						</div>
+<div id="promotionCreatePanel" class="col-md-12">
+	<form name="promotionForm"
+				enctype="multipart/form-data"
+				ng-submit="createPromotion(promotionForm.$valid)"
+				novalidate>
+		<div class="col-md-12">
+			<div class="col-md-5">
+				<div class="field">
+					<input  class="form-control"
+									type="text"
+									name="name"
+									ng-model="promotion.name"
+									id="newPromotionName"
+									placeholder="Name"
+									required
+									minlength="3"
+									maxlength="250"/>
 
-						<div class="text-center field"
-									name="cover_image"
-									ngf-drop
-									ngf-change="previewImage($files)"
-									ng-model="promotion.cover_img"
-									ngf-drop-available="dropSupported"
-									ngf-select="true"
-									ngf-accept="image/*">
-										<img id="promotionCreationImage"
-													ngf-src="file"
-													ng-src="images/No_Image_Available.png" />
-						</div>
+					<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
+						<p ng-message="required">Name is required.</p>
+						<p ng-message="minlength">Name must be at least 3 characters</p>
+						<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
 					</div>
 				</div>
-
-				<div class="actions col-md-12">
-					<button class="btn btn-primary pull-right"
-								  type="submit"
-									ng-disabled="promotionForm.$invalid">
-						Submit
-					</button>
+				<div class="col-sm-12 col-xs-12">
+					<span class="col-sm-6">
+						Cover Photo:</span>
+					<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+						pickerclass="btn addphoto"
+						multiple="true" mimetype="image/*"
+						callback="previewImage(file)">
+							<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
+					</div>
+					<img ng-src="{{promotion.ad_location}}" />
 				</div>
-			</form>
+			</div>
 		</div>
-	</div>
+		<input type="text" class="form-control" ng-model="promotion.description">
+		<div style="display:inline-block; min-height:290px;">
+			<div class="row">
+      	<div class="col-md-6">
+          <p class="input-group">
+            <input type="date" class="form-control" datepicker-popup="{{format}}"
+										ng-model="promotion.start_time" is-open="status.opened"
+										min-date="minDate" max-date="maxDate"
+										datepicker-options="dateOptions"
+										date-disabled="disabled(date, mode)"
+										required
+										close-text="Close" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+      	</div>
+				<!-- Start time date time picker popup -->
+        <div class="col-md-6">
+            <p class="input-group">
+              <input type="date" class="form-control" datepicker-popup="{{format}}" ng-model="promotion.end_time" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+		      </div>
+		    </div>
+	    	<div class="row">
+	        <div class="col-md-6">
+	            <label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
+	        </div>
+		    </div>
+			</div>
+		</div>
+		<input type="text" class="form-control" ng-model="promotion.vendor" >
+		<label>Active</label><input type="checkbox" class="form-control" ng-model="promotion.active">
+		<div class="actions col-md-12">
+			<button class="btn btn-primary pull-right"
+						  type="submit"
+							ng-disabled="promotionForm.$invalid">
+				Submit
+			</button>
+		</div>
+	</form>
 </div>

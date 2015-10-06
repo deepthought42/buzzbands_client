@@ -1,60 +1,58 @@
 <link rel="stylesheet" href="app/stylesheets/venue.css">
-<div ng-switch="userLoaded">
+<div ng-switch="venueLoaded">
   <div ng-switch-when="false">
-    <div ui-view="new.venue@venues.dashboard" class="col-sm-6"></div>
+    <div ui-view="new.venue@venues.dashboard" class="col-sm-4 col-xs-12"></div>
   </div>
   <div ng-switch-when="true">
-    <div ui-view="edit.venue@venues.dashboard" class="col-sm-6"></div>
+    <div ui-view="edit.venue@venues.dashboard" class="col-sm-4 col-xs-12"></div>
   </div>
 </div>
-<div class="container col-sm-6">
-  <div class="row">
-    <span class="col-sm-4"><h1>Venues</h1></span>
-    <button class="btn add-button col-sm-2" tooltip="New Venue" ng-click="addVenue()">Add Venue</button>
-  </div>
-  <div class="row">
-    <div class="col-sm-7">
-      <div class="col-sm-3">
+<div class="col-sm-8">
+      <span class="status">
         All
-        <span>( {{}} )</span>
-      </div>
-      <div class="col-sm-4">
+        <span class="statusbracket" >(</span>
+         <span class="status"> {{venueList.length}}</span>
+         <span class="statusbracket" > )</span>
+      </span>
+      <span class="status">
         Active
-        <span>( {{}} )</span>
-      </div>
-      <div class="col-sm-5">
-        Disabled
-        <span>( {{}} )</span>
-      </div>
-    </div>
-    <div class="col-sm-5">
-      <button class="pull-right">Save Changes</button>
-    </div>
-  </div>
+          <span class="statusbracket"> ( </span>
+          <span class="status"> {{(venueList | filter:{active:true}).length || -1}} </span>
+          <span class="statusbracket"> )</span>
+      </span>
 
-  <div class="row">
-    <table class="col-sm-6 table table-striped table-condensed">
+      <span class=" status">
+        Disabled
+        <span class="statusbracket"> (</span>
+        <span class="status">  {{(venueList | filter:{active:false}).length || -1}} </span>
+        <span class="statusbracket"> )</span>
+      </span>
+
+   <div style="height:350px;" id="style-2" class="table-responsive">
+    <table style="width:100%;"class=" table-striped ">
       <thead>
         <tr>
+          <td></td>
           <td>Active</td>
-          <td>Name</td>
-          <td>Address</td>
+          <td>Details</td>
           <td></td>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="venue in venueList">
+        <tr ng-repeat="venue in venueList" >
+          <td class="col-lg-1">
+            <img style="width:100px;" ng-src="{{venue.url}}" />
+          </td>
           <td>
             <input type="checkbox"
                    ng-model="venue.active"
-                   ng-disabled="{{$session.user.role!='Admin'}}"/>
+                   ng-disabled="hasPermission('admin')"/>
           </td>
-          <td ng-click="showPromotionsList(venue.id)">
-            {{venue.name}}
-          </td>
-          <td>{{venue.address}}
-            <br />
-          {{venue.city}}, {{venue.state}} {{venue.zip_code}}
+          <td ng-click="showPromotionsList(venue.id)" >
+
+              <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
+
+          </div>
           </td>
           <td>
             <button ng-click="editVenue(venue)">Edit</button>
@@ -77,4 +75,4 @@
       </tbody>
     </table>
   </div>
-</div>
+    </div>
