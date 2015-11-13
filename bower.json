@@ -20,7 +20,8 @@
     "angular-resource": "latest",
     "angular-morph":"latest",
     "angular-stripe-checkout": "2.2.1",
-    "angular-qr-scanner" : "0.1.0"
+    "angular-qr-scanner" : "0.1.0",
+    "ngCordova": "latest"
   },
 
   "resolutions": {

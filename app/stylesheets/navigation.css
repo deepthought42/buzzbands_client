@@ -1,32 +1,52 @@
 body{
-
-background-color:#242831;
+  background-color:#242831;
 }
 
-
 .navButtonActive{
+    border-top-left-radius: 1em;
+ border-top-right-radius: 1em;
  border: 0;
-  border-radius: 5px;
- font-weight:100;
-    font-family: 'Josefin Sans', sans-serif;
+  
+  font-weight:100;
+  font-family: 'Josefin Sans', sans-serif;
   background-color: #4BBA4B;
   color: #242831;
-padding:10px 10px;
-
+  padding:10px 10px;
 }
 
 .navButton{
   border: 0;
   border-radius: 5px;
- font-weight:100;
-    font-family: 'Josefin Sans', sans-serif;
-background: none;
+  font-weight:100;
+  font-family: 'Josefin Sans', sans-serif;
+  background: none;
   color: #888d8f;
-padding:10px 10px ;
+  padding:10px 10px ;
+}
+
+.userNavButton{
+  border: 0;
+  border-radius: 5px;
+  font-weight:100;
+  font-family: 'Josefin Sans', sans-serif;
+  background: none;
+  color: #888d8f;
+  padding:10px 10px ;
+}
+
+#overviewCards{
+  color:White;
 }
 
 
-#overviewCards{
-color:White;
-
+.add{
+ 
+  border-color: #434e66;
+  font-size: 10px;
+  text-align: center;
+  font-family: arial;
+    background-color: #434e66;
+  width: 88px;
+      border-bottom-left-radius: 1em;
+      border-bottom-right-radius: 1em;
 }

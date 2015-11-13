@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="app/stylesheets/venue.css">
 <div ng-switch="venueLoaded">
   <div ng-switch-when="false">
-    <div ui-view="new.venue@venues.dashboard" class="col-sm-4 col-xs-12"></div>
+    <div ui-view="new.venue@venues.dashboard" class="col-sm-12 col-xs-12"></div>
   </div>
   <div ng-switch-when="true">
-    <div ui-view="edit.venue@venues.dashboard" class="col-sm-4 col-xs-12"></div>
+    <div ui-view="edit.venue@venues.dashboard" class="col-sm-12 col-xs-12"></div>
   </div>
 </div>
-<div class="col-sm-8">
-      <span class="status">
+
+<span class=" status">
         All
         <span class="statusbracket" >(</span>
          <span class="status"> {{venueList.length}}</span>
@@ -27,6 +27,10 @@
         <span class="status">  {{(venueList | filter:{active:false}).length || -1}} </span>
         <span class="statusbracket"> )</span>
       </span>
+
+
+<div class="col-lg-12">
+      
 
    <div style="height:350px;" id="style-2" class="table-responsive">
     <table style="width:100%;"class=" table-striped ">

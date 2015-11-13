@@ -4,19 +4,20 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
 
 .config(['$stateProvider', 'StripeCheckoutProvider',
   function($stateProvider, StripeCheckoutProvider) {
-    $stateProvider.state('dashboard', {
-        url: '/',
+
+    $stateProvider.state('adminDashboard', {
+        url: '/admin',
         abstract: true,
-        templateUrl: 'app/views/dashboard/index.html',
+        templateUrl: 'app/views/dashboard/admin.html',
         resolve: {
           auth: function($auth) {
             return $auth.validateUser();
           }
         }
       })
-      .state('analytics.dashboard', {
+      .state('analytics.adminDashboard', {
         url: '',
-        parent: 'dashboard',
+        parent: 'adminDashboard',
         templateUrl: 'app/views/analytics/index.html',
         controller: 'AnalyticsController',
         resolve: {
@@ -25,19 +26,19 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
           }
         }
       })
-      .state('venues.dashboard', {
+      .state('venues.adminDashboard', {
         url: '/venues',
-        parent: 'dashboard',
+        parent: 'adminDashboard',
         views: {
           '':{
             templateUrl: 'app/views/venue/index.html',
             controller: 'VenueIndexController',
           },
-          'new.venue@venues.dashboard': {
+          'new.venue@venues.adminDashboard': {
             templateUrl: 'app/views/venue/new.html',
             controller: 'VenueCreationController'
           },
-          'edit.venue@venues.dashboard': {
+          'edit.venue@venues.adminDashboard': {
             templateUrl: 'app/views/venue/edit.html',
             controller: 'VenueDetailsController'
           }
@@ -48,15 +49,15 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
           }
         }
       })
-      .state('promotions.dashboard', {
+      .state('promotions.adminDashboard', {
         url: '/promotions',
-        parent: 'dashboard',
+        parent: 'adminDashboard',
         views: {
           '':{
             templateUrl: 'app/views/promotion/index.html',
             controller: 'PromotionIndexController'
           },
-          'promotion.new@promotions.dashboard': {
+          'promotion.new@promotions.adminDashboard': {
             templateUrl: 'app/views/promotion/new.html',
             controller: 'PromotionCreationController'
           }
@@ -67,20 +68,9 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
           }
         }
       })
-      .state('dashboard.newPromotion', {
-        url: '/promotions/new',
-        parent: 'dashboard',
-        templateUrl: 'app/views/promotion/new.html',
-        controller: 'PromotionCreationController',
-        resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          }
-        }
-      })
-      .state('dashboard.shopBands', {
+      .state('adminDashboard.shopBands', {
           url: '/shopBands',
-          parent: 'dashboard',
+          parent: 'adminDashboard',
           views: {
             '':{
               templateUrl: 'app/views/shop/bandSelection.html',
@@ -95,9 +85,9 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
               stripe: StripeCheckoutProvider.load
             }
         })
-        .state('dashboard.users', {
+        .state('adminDashboard.users', {
             url: '/users',
-            parent: 'dashboard',
+            parent: 'adminDashboard',
             views: {
               '':{
                 templateUrl: 'app/views/user/index.html',
@@ -107,13 +97,13 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
             resolve: {
                 auth: function($auth, $sessionStorage) {
                   //ensure user has admin role
-                  return $auth.validateUser() && $sessionStorage.user.role == 'admin';
+                  return $auth.validateUser() && $sessionStorage.role == 'admin';
                 }
               }
           })
-          .state('dashboard.editUser', {
+          .state('adminDashboard.editUser', {
               url: '/users/edit/:userId',
-              parent: 'dashboard',
+              parent: 'adminDashboard',
               views: {
                 '':{
                   templateUrl: 'app/views/user/edit.html',
@@ -133,7 +123,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
 .controller('DashboardController', ['$scope', '$sessionStorage', '$state', function($scope, $sessionStorage, state) {
   $scope.$session = $sessionStorage;
 
-  $scope.hasPermission = function(role){0
+  $scope.hasPermission = function(role){
     return $scope.$session.user.role == role;
   }
 }])
