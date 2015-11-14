@@ -1,0 +1,53 @@
+#Yellow{    background-color: yellow;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;
+    margin-top:20px;}
+#Yellow>img{
+display:none;
+
+}
+
+
+#Red{    background-color: red;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;  margin-top:20px;}
+#Red>img{
+display:none;
+
+}
+
+
+#Green{    background-color: #0EFF0E;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;  margin-top:20px;}
+#Green>img{
+display:none;
+
+}
+
+#Orange{    background-color: orange;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;  margin-top:20px;}
+#Orange>img{
+display:none;
+
+}
+
+
+#Blue{    background-color: blue;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;  margin-top:20px;}
+#Blue>img{
+display:none;
+
+}

@@ -17,6 +17,7 @@ angular.module('buzzbands_client', [
   'buzzbands.DashboardControllers',
   'buzzbands.AnalyticsControllers',
   'buzzbands.BandsService',
+  'buzzbands.BandsControllers',
   'buzzbands.RoleServices',
   'buzzbands.UserDashboardControllers',
   'buzzbands.QrCodeControllers',
