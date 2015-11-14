@@ -21,7 +21,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
                                    '$sessionStorage', '$state', 'User', 'Role',
 	function ($scope, $rootScope, $auth, $sessionStorage, state, User, Role) {
     $scope.$session = $sessionStorage;
-    $scope.roles = Role
+    $scope.roles = Role;
     $scope.getUserList = function(){
       User.query().$promise
         .then(function(data){
@@ -47,7 +47,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 
     $scope.editUser = function(id){
       if($scope.hasPermission('admin')){
-        state.go("dashboard.editUser", {"userId": id})
+        state.go("adminDashboard.editUser", {"userId": id})
       }
     }
 
@@ -79,7 +79,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       if(userValid){
         User.update($scope.user).$promise.then(function(data){
           $scope.user = {};
-          state.go("dashboard.analytics", {"userId": id})
+          state.go("adminDashboard.analytics", {"userId": id})
         });
       }
     };
@@ -98,7 +98,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     $auth.validateUser();
 
     $scope.editMyAccount = function(){
-      state.go('dashboard.editUser', {"userId": $scope.$session.user.id});
+      state.go('adminDashboard.editUser', {"userId": $scope.$session.user.id});
     }
   }
 ])
@@ -145,7 +145,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
           };
 
     if($scope.$session.signedIn === true){
-        $state.go("analytics.dashboard");
+        $state.go("analytics.adminDashboard");
     }
 
 		$scope.register = function(isValid){
@@ -160,7 +160,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
           $scope.$session.user = registeredUser.data.data;
           $scope.$session.user.signedIn = $auth.validateUser();
 					$scope.successfulRegistration = true;
-          $state.go("analytics.dashboard");
+          $state.go("analytics.adminDashboard");
 					//show some sort of statement that indicates they are welcome to enjoy
 				}, function(error) {
 					alert("Something went wrong during registration. Womp womp");
@@ -170,7 +170,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 					$rootScope.$broadcast('userRegistered', user);
 					$scope.registrationForm={}
 					$scope.userRegistration.$submitted = false;
-          $state.go('analytics.dashboard')
+          $state.go('analytics.adminDashboard')
 				});
 			}
 		}
@@ -209,7 +209,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.$session.user = currentUser;
 				$auth.validateUser()
-        $state.go('analytics.dashboard');
+        $state.go('analytics.adminDashboard');
 			});
 
 			$scope.$on('auth:login-error', function(event, currentUser) {

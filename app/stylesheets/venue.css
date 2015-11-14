@@ -1,5 +1,6 @@
 table {
   color: #5ab553;
+    background-color:grey;
 }
 
 thead {
@@ -50,8 +51,9 @@ color:#de519b;
 }
 
 .status{
+    
   color:White;
-width:90px;
+
 
 }
 .statusbracket{
