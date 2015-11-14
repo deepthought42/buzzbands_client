@@ -2,7 +2,7 @@
 color:white;
 }
 #venueFilter{border-radius:1em;
-background-color: #5f7387;
+
 border-color:#5f7387;}
 
 .table-striped>tbody>tr:nth-child(odd)>td{
@@ -21,6 +21,7 @@ color: red;}
   background-color: #4BBA4B;
   border-radius: 1em;
   border: none;
+  color:white;
 }
 .edit:hover{
 background-color: white;
@@ -39,5 +40,5 @@ background-color: #3b4454;
 
 table{
   color: #5ab553;
-background-color: grey;
+  background-color: grey;
 }

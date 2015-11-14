@@ -37,16 +37,16 @@ angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsServi
 
    var getBandColors = function(){
      return [
-       {'id':'Yellow',
-        'href':''},
-       {'id':'Red',
-        'href':'//href here for image'},
-       {'id':'Green',
-        'href':''},
-       {'id':'Orange',
-        'href':''},
-       {'id':'Blue',
-        'href':''}];
+       {id:'Yellow',
+        href:'./images/buzzbands_Yellow.jpg'},
+       {id:'Red',
+        href:'//href here for image'},
+       {id:'Green',
+        href:'//href here for image'},
+       {id:'Orange',
+        href:'//href here for image'},
+       {id:'Blue',
+        href:'//href here for image'}];
    };
 
    var getPackages = function(){
