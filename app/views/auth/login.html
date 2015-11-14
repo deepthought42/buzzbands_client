@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+<div class="container" ng-controller="UserAuthController">
+  <div class="row col-sm-12">
+    Hedsd
+      <button>Learn More</button>
+      <button class="btn btn-default" ng-click="showLogin()" ng-show="!loginViewVisible">Sign In</button>
+      <button class="btn btn-default" ng-click="showRegistration()" ng-show="!registerViewVisible">Sign Up</button>
+  </div>
+  <div class="row text-center">
+    <div class="col-sm-6">
+      <div ui-view="register" ng-show="registerViewVisible"></div>
+      <div ui-view="login" ng-show="loginViewVisible"></div>
+    </div>
+    <div class="col-sm-6">
+      Right side stuff here
+    </div>
+  </div>
+=======
 <div id="loginmorph" ng-controller="UserAuthController">
   <button class="close">X</button>
   <form style="padding-top:35px;"  role="form"
@@ -31,4 +49,5 @@
       </div>
       <button type="submit" class="btn-login btn btn-default">Sign in</button>
   </form>
+>>>>>>> master
 </div>
