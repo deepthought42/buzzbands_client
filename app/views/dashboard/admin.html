@@ -10,7 +10,7 @@
     <button id="buyBandButton" class="pull-right btn" ui-sref="adminDashboard.shopBands">
       BUY BANDS
     </button>
-      <div id="adminDashboardcontainer"class="container-fluid">
+      <div id="adminDashboardContainer"class="container-fluid">
         <div class="col-sm-2 col-xs-12" ng-controller="DashboardController">
           <img style="width:50px;padding-top:15px;padding-bottom:100px;"src="images/logo.png"><br>
           <button style="border-radius:1em;"  ui-sref="analytics.adminDashboard"
@@ -18,12 +18,17 @@
                    ng-click='tog=1'>Overview</button><br><br>
           <button  ui-sref="venues.adminDashboard"
                    ng-class='{"navButtonActive":tog==2,"navButton":tog!=2}'
+<<<<<<< HEAD
                    ng-click='tog=2'>Accounts</button><br>
         <button ui-sref="adminDashboard.newPromotion"
+=======
+                   ng-click='tog=2'>Accounts</button>
+        <button ui-sref="adminDashboard.newVenue"
+>>>>>>> fixed showing of promotions page and accounts page
                   class="add btn btn-primary"
-                  ng-show="tog==3">Add New</button>
+                  ng-show="tog==2">Add New</button>
             <br><br>
-          <button ui-sref="promotions.adminDashboard"
+          <button ui-sref="adminDashboard.promotions"
                   ng-class='{"navButtonActive":tog==3,"navButton":tog!=3}'
                   ng-click='tog=3'>Promotions</button><br>
           <button ui-sref="adminDashboard.newPromotion"
