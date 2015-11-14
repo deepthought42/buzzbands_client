@@ -34,10 +34,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
             templateUrl: 'app/views/venue/index.html',
             controller: 'VenueIndexController',
           },
-          'new.venue@venues.adminDashboard': {
-            templateUrl: 'app/views/venue/new.html',
-            controller: 'VenueCreationController'
-          },
+
           'edit.venue@venues.adminDashboard': {
             templateUrl: 'app/views/venue/edit.html',
             controller: 'VenueDetailsController'
