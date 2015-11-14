@@ -1,15 +1,15 @@
-  
-  <div class="container col-sm-7">
-    <div style="color:white;font-size:40px;font-Family:arial;font-Family: 'Josefin Sans', sans-serif;
-  font-weight: 100;" class="col-sm-12">
-      Promotions
-      <button style="  background-color: #3b4454;
-  border: none;
-  color: #4BBA4B;
-  font-size: 10px; "class="btn btn-primary" ng-click="createPromotion()">Add new</button>
+
+ <div class="container col-sm-6">
+    <div class="col-sm-12">
+      <span style="font-family:'Josefin Sans', sans-serif;font-weight:100;color:white;font-size:40px;">Promotions</span>
+      <button style="    font-size: 10px;
+    color: #5aba47;
+    background-color: #434e66;
+    border: none;
+    margin-top: -10px; "class="btn btn-primary" ng-click="createPromotion()">Add new</button>
     </div>
-    
-      <div class="status col-sm-4">
+
+      <div style="color:White;" class="col-sm-3">
         All
           <span style="color:#de519b;">(</span>{{promotionList.length || -1}}<span style="color:#de519b;">)</span>
       </div>
@@ -21,26 +21,30 @@
         Disabled
           <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==1).length || -1}}<span style="color:#de519b;">)</span>
       </div>
-    
 
- 
-      <select style="margin-top:30px;" id="venueFilter">
-        <option selected>Select Venue</option>
-      </select>
-            <button style="background-color:#4BBA4B;border-color:transparent;color:white;"> Apply </button>
-                    <button style="background-color:red;color:white;border-color:transparent;">Delete</button>
-      
-    <div style="color:white;" class="col-sm-8">
-      <div class="col-sm-4">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-lg-12">
+        <select style="background-color:white;" id="venueFilter">
+          <option selected>Select Account</option>
+        </select>
+        <button>Delete</button>
+      <button> Apply </button>
+      </div>
+
+
+
+
+    <div class="col-sm-8">
         <table class="table table-striped">
-          <thead>
+          <thead style="color:white;">
             <tr>
               <td>Active</td>
-              <td>Name</td>
+              <td>Title</td>
               <td>Image</td>
               <td>Start Time</td>
               <td>End Time</td>
-              <td>Venues</td>
+              <td>Account</td>
               <td></td>
             </tr>
           </thead>
@@ -55,13 +59,14 @@
               <td>{{promo.end_time | date:'MM/dd/yyyy @ h:mma'}}</td>
               <td>{{promo.venue_id}}</td>
               <td>
-                <button class="edit">Edit</button>
+
+                <button>Edit</button>
 
               </td>
             </tr>
           </tbody>
         </table>
-      </div>
+
     </div>
   </div>
   </div>
