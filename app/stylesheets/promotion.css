@@ -1,0 +1,38 @@
+.status{
+color:white;
+}
+#venueFilter{border-radius:1em;
+background-color: #5f7387;
+border-color:#5f7387;}
+
+.table-striped>tbody>tr:nth-child(odd)>td{
+background-color: #5f7387;
+    border-color: transparent;
+}
+.table-striped>tbody>tr:nth-child(even)>td{
+background-color: #434e66;
+    border-color: transparent;
+}
+
+input[type="checkbox"]:checked {
+color: red;}
+
+.edit{
+  background-color: #4BBA4B;
+  border-radius: 1em;
+  border: none;
+}
+.edit:hover{
+background-color: white;
+    color:#4BBA4B;
+}
+
+.form-control{
+background-color: #3b4454;
+    border-color: transparent;
+}
+.addphoto{  padding: 5px 15px;
+  margin-top: 5px;
+  border-radius: 1em;
+  background-color: #ffffff;
+  color: #4BBA4B;}

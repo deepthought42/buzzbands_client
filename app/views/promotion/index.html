@@ -1,32 +1,36 @@
   
-  <div class="container col-sm-6">
-    <div class="col-sm-10">
+  <div class="container col-sm-7">
+    <div style="color:white;font-size:40px;font-Family:arial;font-Family: 'Josefin Sans', sans-serif;
+  font-weight: 100;" class="col-sm-12">
       Promotions
-      <button class="btn btn-primary" ng-click="createPromotion()">Add new</button>
+      <button style="  background-color: #3b4454;
+  border: none;
+  color: #4BBA4B;
+  font-size: 10px; "class="btn btn-primary" ng-click="createPromotion()">Add new</button>
     </div>
-    <div class="row">
-      <div class="col-sm-3">
+    
+      <div class="status col-sm-4">
         All
-        <span>({{promotionList.length || -1}})</span>
+          <span style="color:#de519b;">(</span>{{promotionList.length || -1}}<span style="color:#de519b;">)</span>
       </div>
-      <div class="col-sm-3">
+      <div  class="status col-sm-4">
         Active
-        <span>({{($scope.promotionList | filter:active==0).length || -1}})</span>
+          <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==0).length || -1}}<span style="color:#de519b;">)</span>
       </div>
-      <div class="col-sm-3">
+      <div class="status col-sm-4">
         Disabled
-        <span>({{($scope.promotionList | filter:active==1).length || -1}})</span>
+          <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==1).length || -1}}<span style="color:#de519b;">)</span>
       </div>
-    </div>
-    <div class="row">
-      <button> Apply </button>
-      <select id="venueFilter">
+    
+
+ 
+      <select style="margin-top:30px;" id="venueFilter">
         <option selected>Select Venue</option>
       </select>
-      <button id="listButton">list</button>
-      <button id="tileButton">tile</button>
-    </div>
-    <div class="col-sm-8">
+            <button style="background-color:#4BBA4B;border-color:transparent;color:white;"> Apply </button>
+                    <button style="background-color:red;color:white;border-color:transparent;">Delete</button>
+      
+    <div style="color:white;" class="col-sm-8">
       <div class="col-sm-4">
         <table class="table table-striped">
           <thead>
@@ -51,8 +55,8 @@
               <td>{{promo.end_time | date:'MM/dd/yyyy @ h:mma'}}</td>
               <td>{{promo.venue_id}}</td>
               <td>
-                <button>Edit</button>
-                <button>Delete</button>
+                <button class="edit">Edit</button>
+
               </td>
             </tr>
           </tbody>

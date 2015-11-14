@@ -7,12 +7,13 @@
 		<div class="col-md-12">
 			<div class="col-md-5">
 				<div class="field">
+                    <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">Add New Promotion</h1>
 					<input  class="form-control"
 									type="text"
 									name="name"
 									ng-model="promotion.name"
 									id="newPromotionName"
-									placeholder="Name"
+									placeholder="ENTER TITLE HERE"
 									required
 									minlength="3"
 									maxlength="250"/>
@@ -24,20 +25,19 @@
 					</div>
 				</div>
 				<div class="col-sm-12 col-xs-12">
-					<span class="col-sm-6">
-						Cover Photo:</span>
-					<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+					
+					<div   filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 						pickerclass="btn addphoto"
 						multiple="true" mimetype="image/*"
 						callback="previewImage(file)">
-							<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
+                        <span  tooltip-placement="right" tooltip="cover photo"><i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>Add Photo</span>
 					</div>
 					<img ng-src="{{promotion.ad_location}}" />
 				</div>
 			</div>
 		</div>
-		<input type="text" class="form-control" ng-model="promotion.description">
-		<div style="display:inline-block; min-height:290px;">
+		<input placeholder="URL" type="text" class="form-control" ng-model="promotion.description">
+		<div style="display:inline-block;">
 			<div class="row">
       	<div class="col-md-6">
           <p class="input-group">
@@ -63,20 +63,16 @@
             </p>
 		      </div>
 		    </div>
-	    	<div class="row">
-	        <div class="col-md-6">
-	            <label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
-	        </div>
-		    </div>
+	    	
 			</div>
 		</div>
-		<input type="text" class="form-control" ng-model="promotion.vendor" >
-		<label>Active</label><input type="checkbox" class="form-control" ng-model="promotion.active">
-		<div class="actions col-md-12">
-			<button class="btn btn-primary pull-right"
+		
+		
+		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
+			<button style="background-color:#de519b;"class="btn btn-primary"
 						  type="submit"
 							ng-disabled="promotionForm.$invalid">
-				Submit
+				CREATE
 			</button>
 		</div>
 	</form>
