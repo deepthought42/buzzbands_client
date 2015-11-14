@@ -1,11 +1,14 @@
-  
-  <div class="container col-sm-6">
-    <div class="col-sm-10">
-      Promotions
-      <button class="btn btn-primary" ng-click="createPromotion()">Add new</button>
+ <div class="container col-sm-6">
+    <div class="col-sm-12">
+      <span style="font-family:'Josefin Sans', sans-serif;font-weight:100;color:white;font-size:40px;">Promotions</span>
+      <button style="    font-size: 10px;
+    color: #5aba47;
+    background-color: #434e66;
+    border: none;
+    margin-top: -10px; "class="btn btn-primary" ng-click="createPromotion()">Add new</button>
     </div>
-    <div class="row">
-      <div class="col-sm-3">
+
+      <div style="color:White;" class="col-sm-3">
         All
         <span>({{promotionList.length || -1}})</span>
       </div>
@@ -17,26 +20,30 @@
         Disabled
         <span>({{($scope.promotionList | filter:active==1).length || -1}})</span>
       </div>
-    </div>
-    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-lg-12">
+        <select style="background-color:white;" id="venueFilter">
+          <option selected>Select Account</option>
+        </select>
+        <button>Delete</button>
       <button> Apply </button>
-      <select id="venueFilter">
-        <option selected>Select Venue</option>
-      </select>
-      <button id="listButton">list</button>
-      <button id="tileButton">tile</button>
-    </div>
+      </div>
+
+
+
+
     <div class="col-sm-8">
-      <div class="col-sm-4">
+
         <table class="table table-striped">
-          <thead>
+          <thead style="color:white;">
             <tr>
               <td>Active</td>
-              <td>Name</td>
+              <td>Title</td>
               <td>Image</td>
               <td>Start Time</td>
               <td>End Time</td>
-              <td>Venues</td>
+              <td>Account</td>
               <td></td>
             </tr>
           </thead>
@@ -52,12 +59,12 @@
               <td>{{promo.venue_id}}</td>
               <td>
                 <button>Edit</button>
-                <button>Delete</button>
+
               </td>
             </tr>
           </tbody>
         </table>
-      </div>
+
     </div>
   </div>
   </div>
