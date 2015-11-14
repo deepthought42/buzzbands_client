@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('buzzbands', [
+angular.module('buzzbands_client', [
   'ngResource',
   'ui.router',
   'ui.bootstrap',
@@ -16,7 +16,7 @@ angular.module('buzzbands', [
   'buzzbands.version',
   'buzzbands.DashboardControllers',
   'buzzbands.AnalyticsControllers',
-  'buzzbands.BandsControllers',
+  'buzzbands.BandsService',
   'buzzbands.RoleServices',
   'buzzbands.UserDashboardControllers',
   'buzzbands.QrCodeControllers',
