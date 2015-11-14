@@ -1,82 +1,193 @@
 <link rel="stylesheet" href="app/stylesheets/venue.css">
 <div ng-switch="venueLoaded">
   <div ng-switch-when="false">
-    <div ui-view="new.venue@venues.dashboard" class="col-sm-12 col-xs-12"></div>
+
+    <div id="venueCreatePanel" class="col-sm-5">
+            <span style="color:#808266;font-size:30px;">ADD NEW ACCOUNT</span><br><br>
+			<form name="venueForm"
+						enctype="multipart/form-data"
+						ng-init="venue = {}"
+						ng-submit="createVenue(venueForm.$valid)"
+						novalidate>
+				<div class="col-md-12">
+					<div class="col-sm-12">
+						<input  class="form-control"
+										type="text"
+										name="name"
+										ng-model="venue.name"
+										id="newVenueName"
+										placeholder="Name"
+										required
+										minlength="3"
+										maxlength="250"/>
+						<div ng-messages="venueForm.name.$error" ng-if="venueForm.$submitted" class="text-danger">
+							<p ng-message="required">Name is required.</p>
+							<p ng-message="minlength">Name must be at least 3 characters</p>
+						</div>
+					</div>
+					<div class="col-sm-12 col-xs-12">
+						<select class="form-control">
+							<option selected> Category Type</option>
+							<option selected> Category Type</option>
+						</select>
+					</div>
+					<div class="col-sm-12 col-xs-12">
+						<span tooltip-placement="left" tooltip="Cover Photo">
+
+						<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+							pickerclass="btn addphoto"
+							multiple="true" mimetype="image/*"
+							callback="previewImage(file)">
+								<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
+						</div>	</span>
+						<img ng-src="{{venue.url}}" />
+					</div>
+
+					<div class="col-sm-12 col-xs-12">
+						<input  class="form-control"
+										type="text"
+										name="address"
+										ng-model="venue.address"
+										id="newVenueAddress"
+										placeholder="Street"
+										required
+										minlength="3"
+										maxlength="250" />
+						<div ng-messages="venueForm.address.$error" ng-if="venueForm.$submitted" class="text-danger">
+							<p ng-message="required">Street address is required.</p>
+							<p ng-message="minlength">Street address must be at least 3 characters</p>
+						</div>
+					</div>
+					<div class="col-sm-12 col-xs-12">
+						<input  class="form-control"
+										type="text"
+										name="city"
+										ng-model="venue.city"
+										id="newVenueCity"
+										placeholder="City"
+										required
+										minlength="3"
+										maxlength="250"/>
+						<div ng-messages="venueForm.city.$error" ng-if="venueForm.$submitted" class="text-danger">
+							<p ng-message="required">City is required.</p>
+							<p ng-message="minlength">City must be at least 3 characters</p>
+						</div>
+					</div>
+					<div class="col-sm-6 col-xs-12">
+						<input  class="form-control col-sm-6"
+										type="text"
+										name="state"
+										ng-model="venue.state"
+										id="newVenueState"
+										placeholder="State"
+										required
+										minlength="2"
+										maxlength="2"/>
+						<div ng-messages="venueForm.state.$error" ng-if="venueForm.$submitted" class="text-danger">
+							<p ng-message="required">State is required.</p>
+							<p ng-message="minlength">State must be 2 letter abbreviation</p>
+						</div>
+					</div>
+					<div class="col-sm-6 col-xs-12">
+						<input  class="form-control"
+										type="text"
+										name="zip_code"
+										ng-model="venue.zip_code"
+										id="newVenueZipCode"
+										placeholder="Zip Code"
+										required
+										minlength="5"
+										maxlength="5"
+										pattern="[0-9]*"
+										venue-name-availability-validator="/venues.json"/>
+						<div ng-messages="venueForm.zip_code.$error" ng-if="venueForm.$submitted" class="text-danger">
+							<p ng-message="required">Zip code is required.</p>
+							<p ng-message="minlength">Zip code must be 5 digits.</p>
+							<p ng-message="pattern">Zip code can only contain numbers.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="actions col-md-12">Active	<input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />
+				<br>	<button type="submit" class="saveButton btn btn-primary"
+						<i class="fa fa-save"></i>
+						Save
+					</button>
+				</div>
+			</form>
+		</div>
+    <!--<div ui-view="new.venue@venues.dashboard" class="col-sm-12 col-xs-12"></div>-->
   </div>
   <div ng-switch-when="true">
     <div ui-view="edit.venue@venues.dashboard" class="col-sm-12 col-xs-12"></div>
   </div>
 </div>
+<div class="col-sm-7">
+  <span class="status">
+    All
+    <span class="statusbracket" >(</span>
+     <span class="status"> {{venueList.length}}</span>
+     <span class="statusbracket" > )</span>
+  </span>
+  <span class="status">
+    Active
+      <span class="statusbracket"> ( </span>
+      <span class="status"> {{(venueList | filter:{active:true}).length || -1}} </span>
+      <span class="statusbracket"> )</span>
+  </span>
 
-<span class=" status">
-        All
-        <span class="statusbracket" >(</span>
-         <span class="status"> {{venueList.length}}</span>
-         <span class="statusbracket" > )</span>
-      </span>
-      <span class="status">
-        Active
-          <span class="statusbracket"> ( </span>
-          <span class="status"> {{(venueList | filter:{active:true}).length || -1}} </span>
-          <span class="statusbracket"> )</span>
-      </span>
+  <span class=" status">
+    Disabled
+    <span class="statusbracket"> (</span>
+    <span class="status">  {{(venueList | filter:{active:false}).length || -1}} </span>
+    <span class="statusbracket"> )</span>
+  </span>
+  <div class="col-lg-12">
+    <div style="height:350px;" id="style-2" class="table-responsive">
+      <table style="width:100%;"class=" table-striped ">
+        <thead>
+          <tr>
+            <td></td>
+            <td>Active</td>
+            <td>Details</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="venue in venueList" >
+            <td>
+              <img style="width:100px;" ng-src="{{venue.url}}" />
+            </td>
+            <td>
+              <input type="checkbox"
+                     ng-model="venue.active"
+                     ng-disabled="hasPermission('admin')"/>
+            </td>
+            <td ng-click="showPromotionsList(venue.id)" >
 
-      <span class=" status">
-        Disabled
-        <span class="statusbracket"> (</span>
-        <span class="status">  {{(venueList | filter:{active:false}).length || -1}} </span>
-        <span class="statusbracket"> )</span>
-      </span>
+                <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
 
-
-<div class="col-lg-12">
-      
-
-   <div style="height:350px;" id="style-2" class="table-responsive">
-    <table style="width:100%;"class=" table-striped ">
-      <thead>
-        <tr>
-          <td></td>
-          <td>Active</td>
-          <td>Details</td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="venue in venueList" >
-          <td>
-            <img style="width:100px;" ng-src="{{venue.url}}" />
-          </td>
-          <td>
-            <input type="checkbox"
-                   ng-model="venue.active"
-                   ng-disabled="hasPermission('admin')"/>
-          </td>
-          <td ng-click="showPromotionsList(venue.id)" >
-
-              <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
-
-          </div>
-          </td>
-          <td>
-            <button ng-click="editVenue(venue)">Edit</button>
-            <button ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
-                    cancel-button-type="default"
-                    confirm-button-type="danger"
-                    on-cancel="vm.cancelClicked = true"
-                    on-confirm="deleteVenue(venue.id)"
-                    placement="bottom"
-                    cancel-text="No &lt;i class='glyphicon glyphicon-remove'&gt;&lt;/i&gt;"
-                    confirm-text="Yes &lt;i class='glyphicon glyphicon-ok'&gt;&lt;/i&gt;"
-                    message="Are you really &lt;b&gt;sure&lt;/b&gt; you want to do this?"
-                    title="Are you sure?"
-                    mwl-confirm=""
-                    class="btn btn-default ng-binding ng-isolate-scope">
-                Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+            </div>
+            </td>
+            <td>
+              <button ng-click="editVenue(venue)">Edit</button>
+              <button ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
+                      cancel-button-type="default"
+                      confirm-button-type="danger"
+                      on-cancel="vm.cancelClicked = true"
+                      on-confirm="deleteVenue(venue.id)"
+                      placement="bottom"
+                      cancel-text="No &lt;i class='glyphicon glyphicon-remove'&gt;&lt;/i&gt;"
+                      confirm-text="Yes &lt;i class='glyphicon glyphicon-ok'&gt;&lt;/i&gt;"
+                      message="Are you really &lt;b&gt;sure&lt;/b&gt; you want to do this?"
+                      title="Are you sure?"
+                      mwl-confirm=""
+                      class="btn btn-default ng-binding ng-isolate-scope">
+                  Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
