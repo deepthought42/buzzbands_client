@@ -2,7 +2,9 @@
   <form name="shopBandsForm" ng-init="shopBands={}" novalidate>
     <div ng-model="shopBands.color">
       <span ng-repeat="bandColor in bandColors" ng-click="shopBands.color=bandColor">
-        <button >{{bandColor}}</button>
+          <div id="{{bandColor}}">
+            <img src="">
+          </div>
       </span>
     </div>
     <img ng-src="buzzbands_{{shopBands.color}}.jpg" />
