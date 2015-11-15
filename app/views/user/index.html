@@ -23,7 +23,7 @@ Accounts
       <td>
         <button class="btn-caution"
                 ng-click="editUser(user.id)"
-                ng-show="hasPermission('admin')">Edit</button>
+                ng-show="hasPermission(2)">Edit</button>
         <button class="btn btn-danger" ng-click="delete(user.id)">Delete</button>
       </td>
     </tr>
