@@ -20,7 +20,18 @@
           <option selected>Select Venue</option>
         </select>
         <button style="background-color:#4BBA4B;border-color:transparent;color:white;"> Apply </button>
-        <button style="background-color:red;color:white;border-color:transparent;">Delete</button>
+        <button style="background-color:red;color:white;border-color:transparent;" ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
+                cancel-button-type="default"
+                confirm-button-type="danger"
+                on-cancel="vm.cancelClicked = true"
+                on-confirm="deletePromotions()"
+                placement="bottom"
+                cancel-text="No &lt;i class='glyphicon glyphicon-remove'&gt;&lt;/i&gt;"
+                confirm-text="Yes &lt;i class='glyphicon glyphicon-ok'&gt;&lt;/i&gt;"
+                message="Are you really &lt;b&gt;sure&lt;/b&gt; you want to do this?"
+                title="Are you sure?"
+                mwl-confirm=""
+                class="btn btn-default ng-binding ng-isolate-scope">Delete</button>
     </div>
     <div style="color:white;" class="col-sm-12 col-lg-12">
   <div style="text-align:right;" class="col-lg-12">
@@ -39,7 +50,7 @@
       <table class="table-responsive table table-striped" >
         <thead style="color:white;">
           <tr>
-            <td>Selected</td>
+            <td><input type="checkbox" ng-click="selectAll()" /></td>
             <td>Active</td>
             <td>Title</td>
             <td>Image</td>

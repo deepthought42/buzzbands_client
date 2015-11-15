@@ -51,9 +51,9 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     $scope.deletePromotions = function(){
       for(var i =0;i < $scope.promotionList.length; i++){
         if($scope.promotionList[i].selected){
-          console.log("PROMOTION SELECTED :: "+$scope.promotionList[i].id);
-          Promotion.delete({id:$scope.promotionList[i].id}).then(function(data){
-            $scope.promotionList = $scope.queryPromotions();
+          Promotion.remove({id:$scope.promotionList[i].id}).$promise.
+          then(function(data){
+            $scope.promotionList = $scope.getPromotionList();
           })
           .catch(function(data){
             console.log("an error occurred while deleting venue");
