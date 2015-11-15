@@ -1,0 +1,69 @@
+#Yellow{    background-color: yellow;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;
+    margin-top:20px;}
+#Yellow>img{
+display:none;
+
+}
+
+
+#Red{    background-color: red;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;  margin-top:20px;}
+#Red>img{
+display:none;
+
+}
+
+
+#Green{    background-color: #0EFF0E;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;  margin-top:20px;}
+#Green>img{
+display:none;
+
+}
+
+#Orange{    background-color: orange;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;  margin-top:20px;}
+#Orange>img{
+display:none;
+
+}
+
+
+#Blue{    background-color: blue;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;  margin-top:20px;}
+#Blue>img{
+display:none;
+
+}
+
+#bandsimg{
+margin-top:200px;
+  position: absolute;
+  max-width: 300px;
+}
+@media only screen and (min-width:0px) and (max-width: 992px)  {
+#bandsimg{
+position: relative;
+max-width: 100%;
+margin-top:50px;
+
+}
+
+
+}

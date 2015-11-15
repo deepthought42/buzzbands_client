@@ -110,7 +110,7 @@
 					</div>
 				</div>
 
-				<div class="actions col-md-12">Active	<input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />
+				<div style="z-index:-1;"class="actions col-md-12">Active	<input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />
 				<br>	<button type="submit" class="saveButton btn btn-primary"
 						<i class="fa fa-save"></i>
 						Save
@@ -262,53 +262,61 @@
     <span class="statusbracket"> (</span>
     <span class="status">  {{(venueList | filter:{active:false}).length || -1}} </span>
     <span class="statusbracket"> )</span>
+    <button ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
+            cancel-button-type="default"
+            confirm-button-type="danger"
+            on-cancel="vm.cancelClicked = true"
+            on-confirm="deleteVenue(venue.id)"
+            placement="bottom"
+            cancel-text="No &lt;i class='glyphicon glyphicon-remove'&gt;&lt;/i&gt;"
+            confirm-text="Yes &lt;i class='glyphicon glyphicon-ok'&gt;&lt;/i&gt;"
+            message="Are you really &lt;b&gt;sure&lt;/b&gt; you want to do this?"
+            title="Are you sure?"
+            mwl-confirm=""
+            class="btn btn-default ng-binding ng-isolate-scope">
+        Delete
+    </button>
   </span>
   <div class="col-lg-12">
-    <div style="height:350px;" id="style-2" class="table-responsive">
-      <table style="width:100%;"class=" table-striped ">
-        <thead>
-          <tr>
-            <td></td>
-            <td>Active</td>
-            <td>Details</td>
-            <td></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="venue in venueList" >
-            <td>
-              <img style="width:100px;" ng-src="{{venue.url}}" />
-            </td>
-            <td>
-              <input type="checkbox"
-                     ng-model="venue.active"
-                     ng-disabled="hasPermission('admin')"/>
-            </td>
-            <td ng-click="showPromotionsList(venue.id)" >
 
-                <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
 
-            </div>
-            </td>
-            <td>
-              <button ng-click="editVenue(venue)">Edit</button>
-              <button ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
-                      cancel-button-type="default"
-                      confirm-button-type="danger"
-                      on-cancel="vm.cancelClicked = true"
-                      on-confirm="deleteVenue(venue.id)"
-                      placement="bottom"
-                      cancel-text="No &lt;i class='glyphicon glyphicon-remove'&gt;&lt;/i&gt;"
-                      confirm-text="Yes &lt;i class='glyphicon glyphicon-ok'&gt;&lt;/i&gt;"
-                      message="Are you really &lt;b&gt;sure&lt;/b&gt; you want to do this?"
-                      title="Are you sure?"
-                      mwl-confirm=""
-                      class="btn btn-default ng-binding ng-isolate-scope">
-                  Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+<div class="col-lg-12">
+
+
+   <div style="height:350px;" id="style-2" class="table-responsive">
+    <table style="width:100%;"class=" table-striped ">
+      <thead style="color:White;">
+        <tr>
+          <td></td>
+          <td>Active</td>
+          <td>Name</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="venue in venueList" >
+          <td>
+            <img style="width:100px;" ng-src="{{venue.url}}" />
+          </td>
+          <td>
+            <input type="checkbox"
+                   ng-model="venue.active"
+                   ng-disabled="hasPermission('admin')"/>
+          </td>
+          <td ng-click="showPromotionsList(venue.id)" >
+
+              <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
+
+          </div>
+          </td>
+          <td>
+            <button ng-click="editVenue(venue)">Edit</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
     </div>
   </div>
