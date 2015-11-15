@@ -294,6 +294,9 @@
             <input type="checkbox" ng-click="venue.selected = !venue.selected" />
           </td>
           <td>
+            <input type="checkbox" ng-disabled="true" ng-model="venue.active" />
+          </td>
+          <td>
             <img style="width:100px;" ng-src="{{venue.url}}" />
           </td>
           <td>
