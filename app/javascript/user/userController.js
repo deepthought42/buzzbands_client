@@ -46,7 +46,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       }
 
     $scope.editUser = function(id){
-      if($scope.hasPermission('admin')){
+      if($scope.hasPermission(2)){
         state.go("adminDashboard.editUser", {"userId": id})
       }
     }
@@ -61,8 +61,6 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 .controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
   function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
   {
-    $scope.roles = Role
-
     $scope.$session = $sessionStorage;
     $auth.validateUser();
     $scope.loadUser = function(){
@@ -73,6 +71,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       else{
         $scope.user = $scope.$session.user;
       }
+      return $scope.user
     }
 
     $scope.updateUser = function(userValid){
@@ -84,9 +83,9 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       }
     };
 
-    $scope.loadUser();
+    $scope.user = $scope.loadUser();
     $scope.hasPermission = function(role){
-      return $scope.$session.roles[0].name == role;
+      return $scope.$session.user.role == role;
     }
   }
 ])

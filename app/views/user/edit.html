@@ -6,7 +6,7 @@
 			<div class="col-sm-12">
 				{{user.email}}
 			</div>
-			<div class="col-sm-12" ng-show="hasPermission('manager') || $session.user.id==user.id">
+			<div class="col-sm-12" ng-show="hasPermission(2)">
 				<img ng-src="user.image" />
 			</div>
 			<form name="userForm"
@@ -27,7 +27,7 @@
 										multiple=false
 										ng-show="$session.user.id==user.id"
 										ng-model="user.image">Add Photo</div>
-							<div ng-show="hasPermission('admin') && $session.user.id != user.id">
+							<div ng-show="hasPermission(2)">
 								<button class="btn">Send password reset email</button>
 							</div>
 							<div ng-show="$session.user.id==user.id">
@@ -68,7 +68,7 @@
 							</div>
 						<div class="col-sm-12">
 							Active?
-							<input type="checkbox" ng-model="user.active" ng-disabled="!hasPermission('admin')" />
+							<input type="checkbox" ng-model="user.active" ng-disabled="!hasPermission(2)" />
 						</div>
 						<div class="actions col-md-12">
 							<button type="submit" class="btn btn-primary" >
