@@ -83,8 +83,8 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     $scope.$session = $sessionStorage;
     $auth.validateUser();
 
-    $scope.hasPermission = function(role){0
-      return $scope.$session.roles[0].name == role;
+    $scope.hasPermission = function(role){
+      return $scope.$session.role == role;
     }
 
   $scope.createVenue = function(venueValid){
