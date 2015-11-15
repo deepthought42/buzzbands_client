@@ -45,6 +45,7 @@
       <table class="table-responsive table table-striped" >
         <thead style="color:white;">
           <tr>
+            <td>Selected</td>
             <td>Active</td>
             <td>Title</td>
             <td>Image</td>
@@ -56,6 +57,9 @@
         </thead>
         <tbody>
           <tr ng-repeat="promo in promotionList">
+            <td>
+              <input type="checkbox" ng-click="promo.selected=!promo.selected" />
+            </td>
             <td><input type="checkbox" ng-model="promo.active"/></td>
             <td>{{promo.name}}
                 <br/>
