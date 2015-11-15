@@ -36,7 +36,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
 
-
     $scope.getPromotionList = function(){
       return Promotion.query();
     }
