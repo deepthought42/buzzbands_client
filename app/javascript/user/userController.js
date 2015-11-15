@@ -52,7 +52,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     }
 
     $scope.hasPermission = function(role){
-     if ($session.user.role == role) {return true;}
+     if ($scope.$session.user.role == role) {return true;}
      return false;
     }
     $scope.getUserList();

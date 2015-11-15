@@ -9,8 +9,8 @@ text-align: left;
 @media only screen and (min-width:0px) and (max-width: 768px)  {
     #dashboardcontainer{
     text-align:center;
-    } 
-    
+    }
+
 }
 
 .overviewStat{
@@ -37,7 +37,7 @@ text-align: center;
         display: block;
         text-align: center;
         overflow: hidden;
-        white-space: nowrap; 
+        white-space: nowrap;
     }
 
     .strike > span {
@@ -47,7 +47,7 @@ text-align: center;
                 font-weight: 100;
     font-family: 'Josefin Sans', sans-serif;
     }
-	
+
     .strike > span:before,
     .strike > span:after {
         content: "";
@@ -69,6 +69,7 @@ text-align: center;
     }
 
 #buyBandButton{
+  border:none;
     color:white;
 background-color:#de519b;
   font-weight: 100;
@@ -79,10 +80,63 @@ background-color:#de519b;
 
 .quickStatCard{
 background-color:#de519b;
-
+border-right:2px solid #242831;
       font-weight: 100;
     font-family: 'Josefin Sans', sans-serif;
     padding: 10px;
-    min-height: 150px;
+    min-height: 185px;
 
+}
+
+@media only screen and (min-width:0px) and (max-width: 767px)  {
+.quickStatCard{
+border-bottom: 2px solid #242831;
+
+}
+
+
+.new{position: absolute;
+margin-left: -71px;
+border: none;
+margin-top: 30px;
+background-color: #3b4454;
+color:white;
+width:69px;}
+
+
+.newpromo{
+  position: absolute;
+      margin-left: -83px;
+      border: none;
+      width: 79px;
+      margin-top: 30px;
+      background-color: #3b4454;
+      color:white;
+
+}
+
+#logo{
+      margin-left: -60%;
+padding-bottom:0px!important;
+padding-top:0px!important;
+}
+
+.overviewStat{
+font-size:35px;
+
+}
+#quickStatsCardsContainer{
+margin-top:40px;
+
+}
+
+.analyticstitle{
+font-size:14px!important;
+
+}
+}
+
+#buyBandButton:hover{
+background-color:white;
+  color:#de519b;
 }

@@ -26,6 +26,8 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     $scope.promotion = {};
     $scope.promotionLoaded = false;
 
+    $scope.listView = "thumbnail";
+
     $scope.editPromotion = function(id){
       state.go("promotion/edit", {"promotionId": id})
       $scope.promotionList = getPromotionList();
@@ -46,7 +48,22 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       //state.go("new@promotions.dashboard");
     }
 
+    $scope.setActiveTab = function(viewName){
+      $scope.listView = viewName;
+    }
+
     $scope.promotionList = $scope.getPromotionList();
+
+    $scope.setShowContent = function(promotion){
+      for(var i = 0; i < $scope.promotionList.length; i++){
+        if($scope.promotionList[i] == promotion){
+          $scope.promotionList[i].showContent = true;
+        }
+        else{
+          $scope.promotionList[i].showContent = false;
+        }
+      }
+    }
   }
 ])
 
