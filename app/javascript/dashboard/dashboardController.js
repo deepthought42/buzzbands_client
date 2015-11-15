@@ -114,7 +114,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
               }
           })
           .state('adminDashboard.editUser', {
-              url: '/users/edit/:userId',
+              url: '/admin/users/edit/:userId',
               parent: 'adminDashboard',
               views: {
                 '':{
@@ -123,11 +123,13 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
                 }
               },
               resolve: {
-                  auth: function($auth, $sessionStorage) {
-                    //ensure user has admin role
-                    return $auth.validateUser() && $sessionStorage.roles[0].name == 'admin';
-                  }
-                }
+                auth: function($auth) {
+                  return $auth.validateUser();
+                },
+                userId: ['$stateParams', function($stateParams){
+                    return $stateParams.userId;
+                }]
+              }
             })
             .state('adminDashboard.newPromotion', {
                 url: '/promotions/new/:promotionId',
@@ -157,7 +159,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
                     auth: function($auth) {
                       return $auth.validateUser();
                     },
-                    contactId: ['$stateParams', function($stateParams){
+                    promotionId: ['$stateParams', function($stateParams){
                         return $stateParams.promotionId;
                     }]
                   }
