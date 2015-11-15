@@ -7,6 +7,7 @@
   color: #4BBA4B;
   font-size: 10px; "class="btn btn-primary" ng-click="createPromotion()"ui-sref="adminDashboard.newPromotion">Add new</button>
     </div>
+<<<<<<< HEAD
     <div class="status col-sm-12">
       All
       <span style="color:#de519b;">(</span>{{promotionList.length || -1}}<span style="color:#de519b;">)</span>
@@ -33,13 +34,32 @@
                 mwl-confirm=""
                 class="btn btn-default ng-binding ng-isolate-scope">Delete</button>
     </div>
+=======
+      <div class="status col-sm-4">
+        All
+          <span style="color:#de519b;">(</span>{{promotionList.length || -1}}<span style="color:#de519b;">)</span>
+      </div>
+      <div  class="status col-sm-4">
+        Active
+          <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==0).length || -1}}<span style="color:#de519b;">)</span>
+      </div>
+      <div class="status col-sm-4">
+        Disabled
+          <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==1).length || -1}}<span style="color:#de519b;">)</span>
+      </div>
+>>>>>>> added delete capability to promotions
 
+      <select style="margin-top:30px;" id="venueFilter">
+        <option selected>Select Venue</option>
+      </select>
+      <button style="background-color:#4BBA4B;border-color:transparent;color:white;"> Apply </button>
+      <button style="background-color:red;color:white;border-color:transparent;" ng-click="deletePromotions()">Delete</button>
     <div style="color:white;" class="col-sm-8">
       <div class="col-sm-4">
-
         <table class="table table-striped">
           <thead style="color:white;">
             <tr>
+              <td>Selected</td>
               <td>Active</td>
               <td>Title</td>
               <td>Image</td>
@@ -51,7 +71,8 @@
           </thead>
           <tbody>
             <tr ng-repeat="promo in promotionList">
-              <td><input type="checkbox" ng-model="promo.active"/></td>
+              <td><input type="checkbox" ng-click="promo.selected=!promo.selected" /></td>
+              <td><input type="checkbox" ng-disabled="true" ng-model="promo.active"/></td>
               <td>{{promo.name}}
                   <br/>
                   {{promo.description}}</td>

@@ -35,7 +35,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       $scope.promotionList = $scope.getPromotionList();
     }
 
-
     $scope.getPromotionList = function(){
       return Promotion.query();
     }
@@ -51,17 +50,15 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     $scope.deletePromotions = function(){
       for(var i =0;i < $scope.promotionList.length; i++){
         if($scope.promotionList[i].selected){
-          Promotion.remove({id:$scope.promotionList[i].id}).$promise.
-          then(function(data){
+          Promotion.delete({id:$scope.promotionList[i].id}).then(function(){
             $scope.promotionList = $scope.getPromotionList();
+
           })
           .catch(function(data){
-            console.log("an error occurred while deleting venue");
+            console.log("an error occurred while deleting promotion");
           });
         }
       }
-    }
-
     }
   }
 ])
