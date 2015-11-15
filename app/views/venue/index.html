@@ -1,11 +1,10 @@
 <link rel="stylesheet" href="app/stylesheets/venue.css">
-<button ng-show="venueLoaded" class="btn add-button col-sm-3" tooltip="New Venue" ng-click="showCreatePanel()">Add Venue</button>
 
 <div ng-switch="venueLoaded">
   <div ng-switch-when="false">
 
     <div id="venueCreatePanel" class="col-sm-5">
-            <span style="color:#808266;font-size:30px;">ADD NEW ACCOUNT</span><br><br>
+            <span style="color:#808266;font-size:30px;">ADD NEW VENUE</span><br><br>
 			<form name="venueForm"
 						enctype="multipart/form-data"
 						ng-init="venue = {}"
@@ -243,7 +242,9 @@
     <!--<div ui-view="edit.venue@venues.dashboard" class="col-sm-12 col-xs-12"></div>-->
   </div>
 </div>
-<div class="col-sm-7">
+
+<div class="col-sm-1"></div>
+<div class="col-sm-6">
   <span class="status">
     All
     <span class="statusbracket" >(</span>
