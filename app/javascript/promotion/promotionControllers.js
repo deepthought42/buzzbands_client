@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService'])
+angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'ui.bootstrap'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('promotions', {
@@ -90,6 +90,8 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
   $scope.setUrl = function(files){
     $scope.promotion.ad_location = files[0].url;
   }
+
+
 }])
 
 .controller('PromotionDetailsController', ['$scope', 'Promotion', '$state', '$stateParams', '$auth', '$rootScope',
@@ -118,6 +120,14 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
     }
 
+    $scope.open = function($event) {
+        $scope.status.opened = true;
+      };
+
+    $scope.status = {
+      opened: false
+    };
     $scope.loadPromotion();
+
   }
 ]);
