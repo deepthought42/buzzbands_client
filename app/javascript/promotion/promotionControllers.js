@@ -127,6 +127,5 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       opened: false
     };
     $scope.loadPromotion();
-
   }
 ]);
