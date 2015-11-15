@@ -26,13 +26,14 @@
         <option selected>Select Venue</option>
       </select>
       <button style="background-color:#4BBA4B;border-color:transparent;color:white;"> Apply </button>
-      <button style="background-color:red;color:white;border-color:transparent;">Delete</button>
+      <button style="background-color:red;color:white;border-color:transparent;" ng-click="deletePromotions()">Delete</button>
 
     <div style="color:white;" class="col-sm-8">
       <div class="col-sm-4">
         <table class="table table-striped">
           <thead>
             <tr>
+              <td>Selected</td>
               <td>Active</td>
               <td>Name</td>
               <td>Image</td>
@@ -44,7 +45,8 @@
           </thead>
           <tbody>
             <tr ng-repeat="promo in promotionList">
-              <td><input type="checkbox" ng-model="promo.active"/></td>
+              <td><input type="checkbox" ng-click="promo.selected=!promo.selected" /></td>
+              <td><input type="checkbox" ng-disabled="true" ng-model="promo.active"/></td>
               <td>{{promo.name}}
                   <br/>
                   {{promo.description}}</td>

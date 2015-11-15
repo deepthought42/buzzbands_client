@@ -32,11 +32,13 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 
     $scope.deletePromotion = function(id){
       Promotion.delete(id);
-      $scope.promotionList = getPromotionList();
+      $scope.promotionList = $scope.getPromotionList();
     }
 
+
+
     $scope.getPromotionList = function(){
-      return Promotion.query({id: stateParams.promotionId});
+      return Promotion.query();
     }
 
     $scope.createPromotion = function(){
@@ -46,6 +48,19 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
     $scope.promotionList = $scope.getPromotionList();
+
+    $scope.deletePromotions = function(){
+      for(var i =0;i < $scope.promotionList.length; i++){
+        if($scope.promotionList[i].selected){
+          console.log("PROMOTION SELECTED :: "+$scope.promotionList[i].id);
+          Promotion.delete({id:$scope.promotionList[i].id}).then(function(){
+            $scope.promotionList = $scope.getPromotionList();
+
+          });
+        }
+      }
+
+    }
   }
 ])
 
