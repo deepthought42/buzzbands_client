@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="app/stylesheets/venue.css">
+<button ng-show="venueLoaded" class="btn add-button col-sm-3" tooltip="New Venue" ng-click="showCreatePanel()">Add Venue</button>
 
 <div ng-switch="venueLoaded">
   <div ng-switch-when="false">
