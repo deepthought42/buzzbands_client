@@ -52,7 +52,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         if($scope.promotionList[i].selected){
           Promotion.delete({id:$scope.promotionList[i].id}).then(function(){
             $scope.promotionList = $scope.getPromotionList();
-
           })
           .catch(function(data){
             console.log("an error occurred while deleting promotion");
