@@ -40,7 +40,6 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     $scope.venue = venue;
   }
 
-
   $scope.showCreatePanel = function(venue){
     $scope.venueLoaded = false;
     $scope.venue = {};

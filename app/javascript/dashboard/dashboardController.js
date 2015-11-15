@@ -130,7 +130,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
                 }
             })
             .state('adminDashboard.newPromotion', {
-                url: '/users/new/:userId',
+                url: '/promotions/new/:promotionId',
                 parent: 'adminDashboard',
                 views: {
                   '':{
@@ -143,7 +143,25 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
                     return $auth.validateUser();
                   }
                 }
-              });
+              })
+              .state('adminDashboard.editPromotion', {
+                  url: '/promotions/edit/:promotionId',
+                  parent: 'adminDashboard',
+                  views: {
+                    '':{
+                      templateUrl: 'app/views/promotion/edit.html',
+                      controller: 'PromotionDetailsController'
+                    }
+                  },
+                  resolve: {
+                    auth: function($auth) {
+                      return $auth.validateUser();
+                    },
+                    contactId: ['$stateParams', function($stateParams){
+                        return $stateParams.promotionId;
+                    }]
+                  }
+                });
   }
 ])
 

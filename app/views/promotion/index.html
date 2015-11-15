@@ -1,4 +1,4 @@
-  
+
   <div class="container col-sm-7">
     <div style="color:white;font-size:40px;font-Family:arial;font-Family: 'Josefin Sans', sans-serif;
   font-weight: 100;" class="col-sm-12">
@@ -8,7 +8,7 @@
   color: #4BBA4B;
   font-size: 10px; "class="btn btn-primary" ng-click="createPromotion()">Add new</button>
     </div>
-    
+
       <div class="status col-sm-4">
         All
           <span style="color:#de519b;">(</span>{{promotionList.length || -1}}<span style="color:#de519b;">)</span>
@@ -21,15 +21,13 @@
         Disabled
           <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==1).length || -1}}<span style="color:#de519b;">)</span>
       </div>
-    
 
- 
       <select style="margin-top:30px;" id="venueFilter">
         <option selected>Select Venue</option>
       </select>
-            <button style="background-color:#4BBA4B;border-color:transparent;color:white;"> Apply </button>
-                    <button style="background-color:red;color:white;border-color:transparent;">Delete</button>
-      
+      <button style="background-color:#4BBA4B;border-color:transparent;color:white;"> Apply </button>
+      <button style="background-color:red;color:white;border-color:transparent;">Delete</button>
+
     <div style="color:white;" class="col-sm-8">
       <div class="col-sm-4">
         <table class="table table-striped">
@@ -55,8 +53,7 @@
               <td>{{promo.end_time | date:'MM/dd/yyyy @ h:mma'}}</td>
               <td>{{promo.venue_id}}</td>
               <td>
-                <button class="edit">Edit</button>
-
+                <button ng-click="editPromotion(promo.id)" class="edit">Edit</button>
               </td>
             </tr>
           </tbody>
