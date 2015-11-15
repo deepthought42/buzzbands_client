@@ -35,6 +35,20 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
       });
   }
 
+  $scope.deleteVenues = function(){
+    for(var i=0; i<$scope.venueList.length; i++){
+      if($scope.venueList[i].selected){
+        Venue.remove({id: $scope.venueList[i].id}).$promise
+          .then(function(data){
+            $scope.venueList = $scope.queryVenues();
+          })
+          .catch(function(data){
+            console.log("an error occurred while deleting venue");
+          });
+        }
+      }
+  }
+
   $scope.editVenue = function(venue){
     $scope.venueLoaded = true;
     $scope.venue = venue;
@@ -60,6 +74,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   $scope.$on("showCreateVenueView", function(event, data){
     $scope.venueLoaded = false;
   })
+
   $scope.venueList = $scope.queryVenues();
 }])
 

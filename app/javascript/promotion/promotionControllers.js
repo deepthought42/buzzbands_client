@@ -59,12 +59,15 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       for(var i =0;i < $scope.promotionList.length; i++){
         if($scope.promotionList[i].selected){
           console.log("PROMOTION SELECTED :: "+$scope.promotionList[i].id);
-          Promotion.delete({id:$scope.promotionList[i].id}).then(function(){
-            $scope.promotionList = $scope.getPromotionList();
-
+          Promotion.delete({id:$scope.promotionList[i].id}).then(function(data){
+            $scope.promotionList = $scope.queryPromotions();
+          })
+          .catch(function(data){
+            console.log("an error occurred while deleting venue");
           });
         }
       }
+    }
 
     $scope.setShowContent = function(promotion){
       for(var i = 0; i < $scope.promotionList.length; i++){
