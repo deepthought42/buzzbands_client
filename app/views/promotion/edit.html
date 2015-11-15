@@ -1,59 +1,79 @@
-<div class="container">
-	<div class="row" >
-		<div id="promotionCreatePanel" class="col-md-10">
-			<form name="promotionForm"
-						enctype="multipart/form-data"
-						ng-submit="updatePromotion(promotionForm.$valid)"
-						novalidate>
-				<div class="col-md-12">
-					<div class="col-md-5">
-						<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-								pickerclass="btn btn-default"
-								multiple="true" mimetype="image/*"
-								callback="callBackToExecuteAfterUpload(file)"
-								multiple=false>Add Photo</div>
 
-						<div class="text-center field"
-									name="cover_image"
-									ng-file-drop
-									ng-file-change="previewImage($files)"
-									ng-model="promotion.cover_img"
-									drop-available="dropSupported"
-									ng-file-select
-									accept="image/*"
-									ng-show="formStep==2">
-										<img id="promotionCreationImage"
-													class=""
-													ng-src="{{promotion.cover_img || '../images/No_Image_Available.png'}}" />
-						</div>
-						<div class="field"
-								 ng-show="formStep==1">
-							<input  class="form-control"
-											type="text"
-											name="name"
-											ng-model="promotion.name"
-											id="newPromotionName"
-											placeholder="Name"
-											required
-											minlength="3"
-											maxlength="250"
-											promotion-name-availability-validator="/promotions.json"/>
-							<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$submitted" class="text-danger">
-								<p ng-message="required">Name is required.</p>
-								<p ng-message="minlength">Name must be at least 3 characters</p>
-								<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
-							</div>
-						</div>
+<div id="promotionUpdatePanel" class="col-md-12">
+	<form name="promotionForm"
+				enctype="multipart/form-data"
+				ng-submit="updatePromotion(promotionForm.$valid)"
+				novalidate>
+		<div class="col-md-12">
+			<div class="col-md-5">
+				<div class="field">
+          <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">Update Promotion</h1>
+					<input  class="form-control"
+									type="text"
+									name="name"
+									ng-model="promotion.name"
+									id="newPromotionName"
+									placeholder="ENTER TITLE HERE"
+									required
+									minlength="3"
+									maxlength="250"/>
+
+					<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
+						<p ng-message="required">Name is required.</p>
+						<p ng-message="minlength">Name must be at least 3 characters</p>
+						<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
 					</div>
 				</div>
+				<div class="col-sm-12 col-xs-12">
 
-				<div class="actions col-md-12">
-					<button type="submit" class="btn btn-primary pull-right" >
-						<i class="fa fa-save"></i>
-						Next
-					</button>
+					<div   filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+						pickerclass="btn addphoto"
+						multiple="true" mimetype="image/*"
+						callback="previewImage(file)">
+                        <span  tooltip-placement="right" tooltip="cover photo"><i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>Add Photo</span>
+					</div>
+					<img ng-src="{{promotion.ad_location}}" />
 				</div>
-			</form>
+			</div>
 		</div>
-	</div>
+		<input placeholder="URL" type="text" class="form-control" ng-model="promotion.description">
+		<div style="display:inline-block;">
+			<div class="row">
+      	<div class="col-md-6">
+          <p class="input-group">
+            <input type="date" class="form-control" datepicker-popup="{{format}}"
+										ng-model="promotion.start_time" is-open="status.opened"
+										min-date="minDate" max-date="maxDate"
+										datepicker-options="dateOptions"
+										date-disabled="disabled(date, mode)"
+										required
+										close-text="Close" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+      	</div>
+				<!-- Start time date time picker popup -->
+        <div class="col-md-6">
+            <p class="input-group">
+              <input type="date" class="form-control" datepicker-popup="{{format}}" ng-model="promotion.end_time" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+		      </div>
+		    </div>
+
+			</div>
+		</div>
+
+
+		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
+			<button style="background-color:#de519b;"class="btn btn-primary"
+						  type="submit"
+							ng-disabled="promotionForm.$invalid">
+				Update
+			</button>
+		</div>
+	</form>
 </div>

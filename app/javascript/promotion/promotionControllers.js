@@ -24,13 +24,12 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
   function($scope, Promotion, state, stateParams) {
     $scope.promoPanel='index';
     $scope.promotion = {};
-    $scope.promotionLoaded = false;
+    $scope.promotionLoaded = true;
 
     $scope.listView = "thumbnail";
 
     $scope.editPromotion = function(id){
-      state.go("promotion/edit", {"promotionId": id})
-      $scope.promotionList = getPromotionList();
+      state.go("adminDashboard.editPromotion", {"promotionId": id})
     }
 
     $scope.deletePromotion = function(id){
@@ -96,9 +95,10 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
   function($scope, Promotion, state, stateParams, $auth, $rootScope)
   {
     $auth.validateUser();
+
     $scope.loadPromotion = function(){
-      if(stateParams.id){
-        Promotion.get({id: stateParams.id}).$promise
+      if(stateParams.promotionId){
+        Promotion.get({id: stateParams.promotionId}).$promise
           .then(function(data){
             $scope.promotion = data;
           })
@@ -116,5 +116,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         });
       }
     }
+
+    $scope.loadPromotion();
   }
 ]);

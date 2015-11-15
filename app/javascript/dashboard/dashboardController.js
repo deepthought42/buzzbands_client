@@ -114,7 +114,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
               }
           })
           .state('adminDashboard.editUser', {
-              url: '/users/edit/:userId',
+              url: '/admin/users/edit/:userId',
               parent: 'adminDashboard',
               views: {
                 '':{
@@ -123,14 +123,16 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
                 }
               },
               resolve: {
-                  auth: function($auth, $sessionStorage) {
-                    //ensure user has admin role
-                    return $auth.validateUser() && $sessionStorage.roles[0].name == 'admin';
-                  }
-                }
+                auth: function($auth) {
+                  return $auth.validateUser();
+                },
+                userId: ['$stateParams', function($stateParams){
+                    return $stateParams.userId;
+                }]
+              }
             })
             .state('adminDashboard.newPromotion', {
-                url: '/users/new/:userId',
+                url: '/promotions/new/:promotionId',
                 parent: 'adminDashboard',
                 views: {
                   '':{
@@ -143,7 +145,25 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
                     return $auth.validateUser();
                   }
                 }
-              });
+              })
+              .state('adminDashboard.editPromotion', {
+                  url: '/promotions/edit/:promotionId',
+                  parent: 'adminDashboard',
+                  views: {
+                    '':{
+                      templateUrl: 'app/views/promotion/edit.html',
+                      controller: 'PromotionDetailsController'
+                    }
+                  },
+                  resolve: {
+                    auth: function($auth) {
+                      return $auth.validateUser();
+                    },
+                    promotionId: ['$stateParams', function($stateParams){
+                        return $stateParams.promotionId;
+                    }]
+                  }
+                });
   }
 ])
 

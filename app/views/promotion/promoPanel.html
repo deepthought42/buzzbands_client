@@ -1,8 +1,10 @@
-<div ng-switch="promoPanel">
-  <div >
+<div ng-switch="promotionLoaded">
+  <div ng-switch-when="false">
+    new promotion should be shown
     <div ui-view="promotion.new@promotions.dashboard"></div>
   </div>
-  <div >
-    <div ui-view="promotion.index@promotions.dashboard"></div>
+  <div ng-switch-when="true" >
+    <div ui-view="promotion.edit@promotions.dashboard"></div>
   </div>
 </div>
+<div ui-view="promotion.index@promotions.dashboard"></div>

@@ -40,6 +40,11 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     $scope.venue = venue;
   }
 
+  $scope.showCreatePanel = function(venue){
+    $scope.venueLoaded = false;
+    $scope.venue = {};
+  }
+
   $scope.showPromotionsList = function(venueId){
     state.go("promotions.dashboard", {"venueId": venueId});
   }
@@ -125,5 +130,6 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         });
       }
     }
+
   }
 ])
