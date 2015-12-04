@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 
-<html lang="en" ng-app="buzzbands_client"> <!--<![endif]-->
+<html lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,65 +32,64 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  <script src="app/bower_components/angular/angular.min.js"></script>
-  <script src="app/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="app/bower_components/angular-resource/angular-resource.min.js"></script>
-  <script src="app/bower_components/ngstorage/ngStorage.min.js"></script>
-  <script src="app/bower_components/angular-cookie/angular-cookie.min.js"></script>
-  <script src="app/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-  <script src="app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-  <script src="app/bower_components/ng-token-auth/dist/ng-token-auth.min.js"></script>
-  <script src="app/bower_components/ngstorage/ngStorage.min.js"></script>
-  <script src="app/bower_components/angular-messages/angular-messages.min.js"></script>
-  <script src="app/bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
-  <script src="app/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
-  <script src="app/bower_components/angular-bootstrap-confirm/dist/angular-bootstrap-confirm.min.js"></script>
-  <script src="app/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-  <script src="app/bower_components/angular-stripe-checkout/angular-stripe-checkout.min.js"></script>
-  <script src="app/bower_components/angular-qr-scanner/qr-scanner.js"></script>
-  <script src="app/bower_components/ngCordova/dist/ng-cordova.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+  <script src="bower_components/angular-cookie/angular-cookie.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="bower_components/ng-token-auth/dist/ng-token-auth.min.js"></script>
+  <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+  <script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+  <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+  <script src="bower_components/angular-bootstrap-confirm/dist/angular-bootstrap-confirm.min.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="bower_components/angular-stripe-checkout/angular-stripe-checkout.min.js"></script>
+  <script src="bower_components/angular-qr-scanner/qr-scanner.js"></script>
+  <script src="bower_components/ngCordova/dist/ng-cordova.min.js"></script>
 
-  <script src="app/javascript/serviceConfig.js"></script>
+  <script src="javascript/serviceConfig.js"></script>
 
 
-  <script src="app/javascript/landing/landingController.js"></script>
+  <script src="javascript/landing/landingController.js"></script>
 
   <!-- load scripts for users -->
-  <script src="app/javascript/user/userController.js"></script>
-  <script src="app/javascript/user/userServices.js"></script>
-  <script src="app/javascript/user/roleServices.js"></script>
+  <script src="javascript/user/userController.js"></script>
+  <script src="javascript/user/userServices.js"></script>
+  <script src="javascript/user/roleServices.js"></script>
 
   <!-- load scripts for venues -->
-  <script src="app/javascript/venue/venueControllers.js"></script>
-  <script src="app/javascript/venue/venueServices.js"></script>
+  <script src="javascript/venue/venueControllers.js"></script>
+  <script src="javascript/venue/venueServices.js"></script>
 
   <!-- load scripts for dashboard -->
-  <script src="app/javascript/dashboard/dashboardController.js"></script>
-  <script src="app/javascript/dashboard/userDashboardController.js"></script>
+  <script src="javascript/dashboard/dashboardController.js"></script>
+  <script src="javascript/dashboard/userDashboardController.js"></script>
 
   <!-- load scripts for dashboard -->
-  <script src="app/javascript/qrCode/qrCodeControllers.js"></script>
-  <script src="app/javascript/qrCode/qrCodeServices.js"></script>
+  <script src="javascript/qrCode/qrCodeControllers.js"></script>
+  <script src="javascript/qrCode/qrCodeServices.js"></script>
 
   <!-- load scripts for navigation -->
-  <script src="app/javascript/analytics/analyticsController.js"></script>
+  <script src="javascript/analytics/analyticsController.js"></script>
 
   <!-- load scripts for promotions -->
-  <script src="app/javascript/promotion/promotionControllers.js"></script>
-  <script src="app/javascript/promotion/promotionServices.js"></script>
+  <script src="javascript/promotion/promotionControllers.js"></script>
+  <script src="javascript/promotion/promotionServices.js"></script>
 
-  <script src="app/javascript/shop/bandsServices.js"></script>
-  <script src="app/javascript/shop/buyBandsControllers.js"></script>
+  <script src="javascript/shop/bandsServices.js"></script>
+  <script src="javascript/shop/buyBandsControllers.js"></script>
 
-
-  <script src="app/javascript/components/version/version.js"></script>
-  <script src="app/javascript/components/version/version-directive.js"></script>
-  <script src="app/javascript/components/version/interpolate-filter.js"></script>
+  <script src="javascript/components/version/version.js"></script>
+  <script src="javascript/components/version/version-directive.js"></script>
+  <script src="javascript/components/version/interpolate-filter.js"></script>
   <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
-  <script src="app/javascript/components/directives/angular-filepicker.js"></script>
-  <script src="app/bower_components/angular-morph/dist/angular-morph.min.js"></script>
+  <script src="javascript/components/filepicker/angular-filepicker.js"></script>
+  <script src="bower_components/angular-morph/dist/angular-morph.min.js"></script>
 
-  <script src="app/javascript/app.js"></script>
+  <script src="javascript/app.js"></script>
 
 </body>
 
