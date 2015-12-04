@@ -3,10 +3,11 @@ body{
 }
 
 .navButtonActive{
+
     border-top-left-radius: 1em;
  border-top-right-radius: 1em;
  border: 0;
-  
+
   font-weight:100;
   font-family: 'Josefin Sans', sans-serif;
   background-color: #4BBA4B;
@@ -40,13 +41,23 @@ body{
 
 
 .add{
- 
-  border-color: #434e66;
+
+  border-color: transparent;
   font-size: 10px;
   text-align: center;
   font-family: arial;
     background-color: #434e66;
-  width: 88px;
+color:white;
       border-bottom-left-radius: 1em;
       border-bottom-right-radius: 1em;
+}
+button:focus {
+    outline:none;
+}
+
+.navButton:hover{
+
+  background-color:#434e66;
+  color:white;
+  border-radius:1em;
 }

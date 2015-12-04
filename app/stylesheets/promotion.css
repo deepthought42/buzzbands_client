@@ -39,5 +39,40 @@ background-color: #3b4454;
   color: #4BBA4B;}
 
 table{
+<<<<<<< HEAD
   background-color: grey;
+=======
+background-color: grey;
+
+}
+
+.thumbcontent{
+display:none;
+
+}
+
+.thumbhover:hover{
+display:visible;
+
+}
+.edit2{
+  border:2px solid #4BBA4B;
+background-color: transparent;
+
+  color:white;
+  width:100%;
+  max-width:30%;
+  margin-top:10%;
+
+}
+.edit2:hover{
+background-color:white;
+  color:#4BBA4B;
+}
+
+.viewicon{
+background-color:#de519b;
+font-size:20px;
+color:white;
+>>>>>>> bd5863e4e910519454d0501218675e6168db00be
 }

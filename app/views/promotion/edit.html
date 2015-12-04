@@ -7,7 +7,7 @@
 		<div class="col-md-12">
 			<div class="col-md-5">
 				<div class="field">
-          <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">Update Promotion</h1>
+          <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">EDIT PROMOTION</h1>
 					<input  class="form-control"
 									type="text"
 									name="name"
@@ -32,7 +32,7 @@
 						callback="previewImage(file)">
                         <span  tooltip-placement="right" tooltip="cover photo"><i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>Add Photo</span>
 					</div>
-					<img ng-src="{{promotion.ad_location}}" />
+					<img style="max-width:100%;"ng-src="{{promotion.ad_location}}" />
 				</div>
 			</div>
 		</div>
@@ -41,10 +41,9 @@
 			<div class="row">
       	<div class="col-md-6">
           <p class="input-group">
-            <input type="date" class="form-control" datepicker-popup="{{format}}"
+            <input type="text" class="form-control" datepicker-popup="{{format}}"
 										ng-model="promotion.start_time" is-open="status.opened"
 										min-date="minDate" max-date="maxDate"
-										datepicker-options="dateOptions"
 										date-disabled="disabled(date, mode)"
 										required
 										close-text="Close" />
@@ -56,7 +55,11 @@
 				<!-- Start time date time picker popup -->
         <div class="col-md-6">
             <p class="input-group">
-              <input type="date" class="form-control" datepicker-popup="{{format}}" ng-model="promotion.end_time" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <input type="text" class="form-control" datepicker-popup="{{format}}"
+							ng-model="promotion.end_time" is-open="status.opened"
+							min-date="minDate" max-date="maxDate"
+							date-disabled="disabled(date, mode)" ng-required="true"
+							close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -66,8 +69,6 @@
 
 			</div>
 		</div>
-
-
 		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
 			<button style="background-color:#de519b;"class="btn btn-primary"
 						  type="submit"

@@ -51,3 +51,22 @@ display:none;
 display:none;
 
 }
+<<<<<<< HEAD
+=======
+
+#bandsimg{
+margin-top:200px;
+  position: absolute;
+  max-width: 300px;
+}
+@media only screen and (min-width:0px) and (max-width: 992px)  {
+#bandsimg{
+position: relative;
+max-width: 100%;
+margin-top:50px;
+
+}
+
+
+}
+>>>>>>> bd5863e4e910519454d0501218675e6168db00be

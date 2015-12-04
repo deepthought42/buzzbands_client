@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService'])
+angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'ui.bootstrap'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('promotions', {
@@ -25,6 +25,11 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     $scope.promoPanel='index';
     $scope.promotion = {};
     $scope.promotionLoaded = true;
+<<<<<<< HEAD
+=======
+
+    $scope.listView = "thumbnail";
+>>>>>>> bd5863e4e910519454d0501218675e6168db00be
 
     $scope.editPromotion = function(id){
       state.go("adminDashboard.editPromotion", {"promotionId": id})
@@ -46,14 +51,24 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       //state.go("new@promotions.dashboard");
     }
 
+    $scope.setActiveTab = function(viewName){
+      $scope.listView = viewName;
+    }
+
     $scope.promotionList = $scope.getPromotionList();
 
     $scope.deletePromotions = function(){
       for(var i =0;i < $scope.promotionList.length; i++){
         if($scope.promotionList[i].selected){
+<<<<<<< HEAD
           console.log("PROMOTION SELECTED :: "+$scope.promotionList[i].id);
           Promotion.delete({id:$scope.promotionList[i].id}).then(function(data){
             $scope.promotionList = $scope.queryPromotions();
+=======
+          Promotion.remove({id:$scope.promotionList[i].id}).$promise.
+          then(function(data){
+            $scope.promotionList = $scope.getPromotionList();
+>>>>>>> bd5863e4e910519454d0501218675e6168db00be
           })
           .catch(function(data){
             console.log("an error occurred while deleting venue");
@@ -62,6 +77,18 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
     }
 
+<<<<<<< HEAD
+=======
+    $scope.setShowContent = function(promotion){
+      for(var i = 0; i < $scope.promotionList.length; i++){
+        if($scope.promotionList[i] == promotion){
+          $scope.promotionList[i].showContent = true;
+        }
+        else{
+          $scope.promotionList[i].showContent = false;
+        }
+      }
+>>>>>>> bd5863e4e910519454d0501218675e6168db00be
     }
   }
 ])
@@ -89,6 +116,8 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
   $scope.setUrl = function(files){
     $scope.promotion.ad_location = files[0].url;
   }
+
+
 }])
 
 .controller('PromotionDetailsController', ['$scope', 'Promotion', '$state', '$stateParams', '$auth', '$rootScope',
@@ -117,6 +146,18 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
     }
 
+<<<<<<< HEAD
     $scope.loadPromotion();
+=======
+    $scope.open = function($event) {
+        $scope.status.opened = true;
+      };
+
+    $scope.status = {
+      opened: false
+    };
+    $scope.loadPromotion();
+
+>>>>>>> bd5863e4e910519454d0501218675e6168db00be
   }
 ]);
