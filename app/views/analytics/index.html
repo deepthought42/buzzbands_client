@@ -1,5 +1,7 @@
 
- <span style="color:white;font-size:50px;font-weight:100;font-family: 'Josefin Sans', sans-serif;">Overview</span> <br><hr><br>
+ <span style="color:white;font-size:50px;font-weight:100;font-family: 'Josefin Sans', sans-serif;"
+        ng-controller="AnalyticsController">Overview</span>
+ <br><hr><br>
  <div id="overviewCards" class="col-sm-12">
   <div class="col-sm-4 overviewStatCard">
     <div class="overviewStat">
@@ -28,7 +30,7 @@
   <div class="col-sm-4 overviewStatCard">
     <div class="overviewStat">
       <!-- total active accounts here. Following is temporary placeholder -->
-      5
+      <span class="status"> {{(activeAccounts | filter:{active:true}).length || -1}} </span>
     </div>
      <div style="color:#888d8f;">
       Total
@@ -41,36 +43,29 @@
 <div id="quickStatsCardsContainer" class="col-sm-12"><br><br>
   <div class="strike">
     <span>QUICK STATS</span><br><br><br>
-</div> 
-
-  <div class="col-sm-4 ">
-   
-     <div class="quickStatCard">
-         <span style="color:rgba(235,238,239,0.5);">  TOTAL SCANS</span>
-   <br><br><br>
-
-   
+</div>
+<div class="col-sm-4 ">
+   <div class="quickStatCard">
+      <span style="color:rgba(235,238,239,0.5);">  TOTAL SCANS</span>
+      <br><br><br>
       <!-- Total Scans here. Following is temporary placeholder-->
-         <span style="font-size:30px;color:white;">  1500
- 
+       <span style="font-size:30px;color:white;">  1500
       <!-- change percentage since last month here. Following is temporary placeholder -->
              ^5%</span>
     </div>
   </div>
-  
- 
   <div class="col-sm-4 ">
     <div class="quickStatCard">
         <span style="color:rgba(235,238,239,0.5);">   TOP ACCOUNTS</span>
     <br><br><br>
-   
+
       <!-- Total Scans here. Following is temporary placeholder -->
         <span style="font-size:30px;color:white;"> 10574</span>
      <br>
         <span style="color:rgba(235,238,239,0.5);">    SCANS</span><br><br>
-    
-  
-    
+
+
+
       <!-- Account name here. Following is temporary placeholder -->
         <span style="color:white;">Temporary Account</span>
     </div>
