@@ -7,14 +7,6 @@
   color: #4BBA4B;
   font-size: 10px; "class="btn btn-primary" ng-click="createPromotion()"ui-sref="adminDashboard.newPromotion">Add new</button>
     </div>
-    <div class="status col-sm-12">
-      All
-      <span style="color:#de519b;">(</span>{{promotionList.length || -1}}<span style="color:#de519b;">)</span>
-      Active
-      <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==0).length || -1}}<span style="color:#de519b;">)</span>
-      Disabled
-      <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==1).length || -1}}<span style="color:#de519b;">)</span>
-    </div>
     <div class="col-sm-12">
        <select style="margin-top:30px;" id="venueFilter">
           <option selected>Select Venue</option>
@@ -34,18 +26,18 @@
                 class="btn btn-default ng-binding ng-isolate-scope">Delete</button>
     </div>
 
-      <div class="status col-sm-4">
-        All
-          <span style="color:#de519b;">(</span>{{promotionList.length || -1}}<span style="color:#de519b;">)</span>
-      </div>
-      <div  class="status col-sm-4">
-        Active
-          <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==0).length || -1}}<span style="color:#de519b;">)</span>
-      </div>
-      <div class="status col-sm-4">
-        Disabled
-          <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==1).length || -1}}<span style="color:#de519b;">)</span>
-      </div>
+    <div class="status col-sm-4">
+      All
+        <span style="color:#de519b;">(</span>{{promotionList.length || -1}}<span style="color:#de519b;">)</span>
+    </div>
+    <div  class="status col-sm-4">
+      Active
+        <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==0).length || -1}}<span style="color:#de519b;">)</span>
+    </div>
+    <div class="status col-sm-4">
+      Disabled
+        <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==1).length || -1}}<span style="color:#de519b;">)</span>
+    </div>
   <div class="col-lg-12">
     <button class="btn btn-default btn-sm" ng-click="setActiveTab('thumbnail')">
       thumbnail

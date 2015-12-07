@@ -25,14 +25,17 @@
 					</div>
 				</div>
 				<div class="col-sm-12 col-xs-12">
+            <span  class="col-sm-6" tooltip-placement="right" tooltip="cover photo">
+							<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+										pickerclass="btn addphoto"
+										multiple="true" mimetype="image/*"
+										callback="previewImage(file)">
+								 <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
+									Add Photo
+							</div>
+						</span>
 
-					<div   filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-						pickerclass="btn addphoto"
-						multiple="true" mimetype="image/*"
-						callback="previewImage(file)">
-            <span  tooltip-placement="right" tooltip="cover photo"><i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>Add Photo</span>
-					</div>
-					<img ng-src="{{promotion.ad_location}}" />
+					<img class="col-sm-6 col-xs-6" ng-src="{{promotion.ad_location}}" />
 				</div>
 			</div>
 		</div>
