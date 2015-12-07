@@ -281,19 +281,16 @@
     <table style="width:100%;" class="table-striped ">
       <thead style="color:White;">
         <tr>
-          <td><input type="checkbox" ng-click="selectAll()"</td>
-          <td>Active</td>
+          <td><input type="checkbox" ng-model="selectAllPromos" ng-click="selectAll(selectAllPromos)"</td>
           <td>Name</td>
+          <td>Active</td>
           <td></td>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="venue in venueList" >
           <td>
-            <input type="checkbox" ng-click="venue.selected = !venue.selected" />
-          </td>
-          <td>
-            <input type="checkbox" ng-disabled="true" ng-model="venue.active" />
+            <input type="checkbox" ng-model="venue.selected" ng-click="venue.selected = !venue.selected" />
           </td>
           <td>
             <img style="width:100px;" ng-src="{{venue.url}}" />
@@ -308,7 +305,6 @@
           </td>
           <td>
             <button ng-click="editVenue(venue)">Edit</button>
-
           </td>
         </tr>
       </tbody>

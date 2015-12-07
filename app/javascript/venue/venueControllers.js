@@ -76,6 +76,14 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   })
 
   $scope.venueList = $scope.queryVenues();
+
+  $scope.selectAll = function(selected){
+    for(var i=0; i<$scope.venueList.length; i++){
+      console.log("selecting all");
+
+      $scope.venueList[i].selected = selected
+    }
+  }
 }])
 
 .controller('VenueCreationController', ['$scope', 'Venue', '$state', '$auth', '$rootScope', '$sessionStorage',

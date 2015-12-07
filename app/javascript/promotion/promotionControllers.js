@@ -59,6 +59,13 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         }
       }
     }
+
+    $scope.selectAll = function(selected){
+      console.log("selecting all");
+      for(promotion in promotionList){
+        promotion.selected = selected
+      }
+    }
   }
 ])
 
