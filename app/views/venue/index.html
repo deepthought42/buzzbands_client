@@ -295,7 +295,7 @@
                 <input type="checkbox" ng-model="venue.selected" ng-click="venue.selected = !venue.selected" />
               </td>
               <td>
-                <img style="width:100px;" ng-src="{{venue.url}}" />
+                  <img style="width:100px;" ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
               </td>
               <td>
                 <input type="checkbox"
