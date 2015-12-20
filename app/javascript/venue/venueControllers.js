@@ -75,7 +75,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     $scope.venueLoaded = false;
   })
 
-  $scope.venueList = $scope.queryVenues();
+  $scope.queryVenues();
 
   $scope.selectAll = function(selected){
     for(var i=0; i<$scope.venueList.length; i++){
