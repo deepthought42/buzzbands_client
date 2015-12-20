@@ -3,6 +3,7 @@
 angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.UserServices'])
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('authenticate', {
+    url: '/authenticate',
     templateUrl: 'app/views/landing/index.html',
     controller: 'UserAuthController'
   })

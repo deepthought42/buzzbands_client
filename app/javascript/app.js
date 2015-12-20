@@ -20,14 +20,12 @@ angular.module('buzzbands_client', [
   'buzzbands.BandsControllers',
   'buzzbands.RoleServices',
   'buzzbands.UserDashboardControllers',
-  'buzzbands.QrCodeControllers',
-  'filepicker',
-  'ngCordova'
+  'filepicker'
 ]).
 config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider',
  function($urlRouterProvider, $stateProvider, $authProvider, $httpProvider) {
 
-  $urlRouterProvider.otherwise('/user');
+  $urlRouterProvider.otherwise('/authenticate');
   // the following shows the default values. values passed to this method
   // will extend the defaults using angular.extend
 
