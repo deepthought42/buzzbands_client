@@ -23,9 +23,9 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 .controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams',
   function($scope, Promotion, state, stateParams) {
     $scope.promoPanel='index';
-    $scope.promotion = {};
     $scope.promotionLoaded = true;
-
+    $scope.visibleTab = 'thumbnail';
+    
     $scope.editPromotion = function(id){
       state.go("adminDashboard.editPromotion", {"promotionId": id})
     }
@@ -43,6 +43,10 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       $scope.promoPanel='create';
       console.log("CREATE PROMOTION CICKED");
       //state.go("new@promotions.dashboard");
+    }
+
+    $scope.setActiveTab = function(tabName){
+      $scope.visibleTab = tabName;
     }
 
     $scope.promotionList = $scope.getPromotionList();
@@ -72,16 +76,20 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 .controller('PromotionCreationController', ['$scope', 'Promotion', function($scope, Promotion) {
   $scope.promotion = {}
 
-  $scope.createPromotion = function(promotion){
-    Promotion.save($scope.promotion);
+  $scope.createPromotion = function(isValid){
+    console.log("Creating program...");
+    if(isValid){
+      Promotion.save($scope.promotion);
+    }
+    else{
+      console.log("FAILDED TO CREATE PROGRAM!!!!!!!");
+    }
   }
 
   $scope.previewImage = function(files){
     $scope.setUrl(files);
     var reader = new FileReader();
-    if(typeof files[0] === 'object'){
-      reader.readAsDataURL(files[0]);
-    }
+
     reader.onload = function(event){
       $scope.logo_url = reader.result;
       $scope.promotion.ad_location = files[0].url;

@@ -7,11 +7,7 @@
 		<div class="col-md-12">
 			<div class="col-md-5">
 				<div class="field">
-<<<<<<< HEAD
           <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">EDIT PROMOTION</h1>
-=======
-          <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">Update Promotion</h1>
->>>>>>> added in support for edit for promotion and venues
 					<input  class="form-control"
 									type="text"
 									name="name"
@@ -36,29 +32,18 @@
 						callback="previewImage(file)">
                         <span  tooltip-placement="right" tooltip="cover photo"><i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>Add Photo</span>
 					</div>
-<<<<<<< HEAD
 					<img style="max-width:100%;"ng-src="{{promotion.ad_location}}" />
-=======
-					<img ng-src="{{promotion.ad_location}}" />
->>>>>>> added in support for edit for promotion and venues
 				</div>
 			</div>
 		</div>
-		<input placeholder="URL" type="text" class="form-control" ng-model="promotion.description">
 		<div style="display:inline-block;">
 			<div class="row">
       	<div class="col-md-6">
           <p class="input-group">
-<<<<<<< HEAD
-            <input type="text" class="form-control" datepicker-popup="{{format}}"
-										ng-model="promotion.start_time" is-open="status.opened"
-										min-date="minDate" max-date="maxDate"
-=======
             <input type="date" class="form-control" datepicker-popup="{{format}}"
 										ng-model="promotion.start_time" is-open="status.opened"
 										min-date="minDate" max-date="maxDate"
 										datepicker-options="dateOptions"
->>>>>>> added in support for edit for promotion and venues
 										date-disabled="disabled(date, mode)"
 										required
 										close-text="Close" />
@@ -70,22 +55,21 @@
 				<!-- Start time date time picker popup -->
         <div class="col-md-6">
             <p class="input-group">
-<<<<<<< HEAD
-              <input type="text" class="form-control" datepicker-popup="{{format}}"
-							ng-model="promotion.end_time" is-open="status.opened"
-							min-date="minDate" max-date="maxDate"
-							date-disabled="disabled(date, mode)" ng-required="true"
-							close-text="Close" />
-=======
-              <input type="date" class="form-control" datepicker-popup="{{format}}" ng-model="promotion.end_time" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
->>>>>>> added in support for edit for promotion and venues
+              <input type="date" class="form-control" datepicker-popup="{{format}}"
+										 ng-model="promotion.end_time"
+										 is-open="status.opened"
+										 min-date="minDate"
+										 max-date="maxDate"
+										 datepicker-options="dateOptions"
+										 date-disabled="disabled(date, mode)"
+										 ng-required="true"
+										 close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
             </p>
 		      </div>
 		    </div>
-
 			</div>
 		</div>
 

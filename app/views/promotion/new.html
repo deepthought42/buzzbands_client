@@ -39,8 +39,7 @@
 				</div>
 			</div>
 		</div>
-		<input placeholder="URL" type="text" class="form-control" ng-model="promotion.description">
-		<div style="display:inline-block;">
+			<div style="display:inline-block;">
 			<div class="row">
       	<div class="col-md-6">
           <p class="input-group">
@@ -71,6 +70,7 @@
 		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
 			<button style="background-color:#de519b;"class="btn btn-primary"
 						  type="submit"
+							ng-click="createPromotion(promotionForm.$valid)"
 							ng-disabled="promotionForm.$invalid">
 				CREATE
 			</button>
