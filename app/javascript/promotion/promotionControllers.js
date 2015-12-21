@@ -46,7 +46,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       //state.go("new@promotions.dashboard");
     }
 
-<
     $scope.setActiveTab = function(tabName){
       $scope.visibleTab = tabName;
     }
@@ -74,7 +73,8 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         else{
           $scope.promotionList[i].showContent = false;
         }
-
+      }
+    }
     $scope.selectAll = function(selected){
       console.log("selecting all");
       for(promotion in promotionList){
