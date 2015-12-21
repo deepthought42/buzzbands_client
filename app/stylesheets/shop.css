@@ -49,49 +49,43 @@ display:none;
     border-radius: 5em;
     height: 100px;
     width: 100px;
-<<<<<<< HEAD
-      margin: auto;  margin-top:20px;
-      -webkit-transition-property: width, height; /* Safari */
+    margin: auto;  margin-top:20px;
+    -webkit-transition-property: width, height; /* Safari */
 
-      -webkit-transition-duration: .5s; /* Safari */
-      transition-property: width, height;
-      transition-duration: .5s;}
-=======
-      margin: auto;  margin-top:20px;}
->>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-property: width, height;
+    transition-duration: .5s;
+}
+
 #Green>img{
 display:none;
 
 }
-<<<<<<< HEAD
+
 #Green:hover{
   width: 120px;
      height: 120px;
 
 }
 
-=======
->>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
-
 #Orange{    background-color: orange;
     border-radius: 5em;
     height: 100px;
     width: 100px;
-<<<<<<< HEAD
+
       margin: auto;  margin-top:20px;
       -webkit-transition-property: width, height; /* Safari */
 
       -webkit-transition-duration: .5s; /* Safari */
       transition-property: width, height;
       transition-duration: .5s;}
-=======
-      margin: auto;  margin-top:20px;}
->>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
+
+ 
+
 #Orange>img{
 display:none;
 
 }
-<<<<<<< HEAD
 #Orange:hover{
   width: 120px;
      height: 120px;
@@ -119,25 +113,17 @@ display:none;
 
 }
 
-
-=======
->>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
-
-
 #Blue{    background-color: blue;
     border-radius: 5em;
     height: 100px;
     width: 100px;
-<<<<<<< HEAD
       margin: auto;  margin-top:20px;
       -webkit-transition-property: width, height; /* Safari */
 
       -webkit-transition-duration: .5s; /* Safari */
       transition-property: width, height;
       transition-duration: .5s;}
-=======
-      margin: auto;  margin-top:20px;}
->>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
+
 #Blue>img{
 display:none;
 
@@ -154,15 +140,11 @@ margin-top:200px;
   position: absolute;
   max-width: 300px;
 }
+
 @media only screen and (min-width:0px) and (max-width: 992px)  {
-#bandsimg{
-position: relative;
-max-width: 100%;
-margin-top:50px;
-
+    #bandsimg{
+        position: relative;
+        max-width: 100%;
+        margin-top:50px;
+    }
 }
-
-
-}
-=======
->>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
