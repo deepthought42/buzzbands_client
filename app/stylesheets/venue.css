@@ -51,7 +51,7 @@ color:#de519b;
 }
 
 .status{
-    
+
   color:White;
 
 
@@ -103,4 +103,7 @@ border-color:white;
 .tooltip-inner{
 color:white;
 border:2px solid white;
+}
+input:focus {
+    outline:none;
 }

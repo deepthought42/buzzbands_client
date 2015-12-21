@@ -1,8 +1,9 @@
 <div class="col-sm-12" style="color:orange" >
-  <form name="shopBandsForm" ng-init="shopBands={}" novalidate>
+  <form style="text-align:center;" name="shopBandsForm" ng-init="shopBands={}" novalidate>
     <div ng-model="shopBands.color">
       <span class="col-lg-12 col-md-12 col-xs-6" ng-repeat="bandColor in bandColors" ng-click="shopBands.color=bandColor">
           <div id="{{bandColor.id}}">
+            <img ng-src="bandColor.href">
           </div>
       </span>
     </div>
@@ -10,17 +11,16 @@
 
     <img class=" col-lg-12 col-xs-12 img-responsive" id="bandsimg" ng-src="{{shopBands.color.href}}" />
     <div>
-      <select ng-model="shopBands.package" class="form-control" required >
+      <select style="max-width:400px;margin:auto;" ng-model="shopBands.package" class="form-control" required >
         <option value="">Select Band Count</option>
         <option ng-repeat="bandPackage in bandPackages" value="{{bandPackage.price}}" >
           {{bandPackage.count}}</option>
       </select>
-      <div>
+      <div style="color:white;text-align:center;">
         ${{shopBands.package || 0.00}}
       </div>
     </div>
-
-  <button stripe-checkout="BuyBandsController.doCheckout"
+  <button id="buyBandButton" stripe-checkout="BuyBandsController.doCheckout"
             data-key="pk_test_kZbH5pE5QrS1wyz7tHeLYY27"
             data-name="Band Package"
             data-description="{{shopBands.package}}"

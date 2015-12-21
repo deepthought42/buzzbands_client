@@ -38,33 +38,35 @@ angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsServi
    var getBandColors = function(){
      return [
        {id:'Yellow',
-        href:'./images/buzzbands_Yellow.jpg'},
+        href:'./images/yellow.png'},
        {id:'Red',
-        href:'//href here for image'},
+        href:'./images/red.png'},
        {id:'Green',
         href:'//href here for image'},
        {id:'Orange',
         href:'//href here for image'},
        {id:'Blue',
-        href:'//href here for image'}];
+        href:'//href here for image'},
+        {id:'White',
+         href:'//href here for image'}];
    };
 
    var getPackages = function(){
      return [{
        count: '250',
-       price: '-25.00'
+       price: '25.00'
      },{
        count: '500',
-       price: '-50.00'
+       price: '50.00'
      },{
        count: '750',
-       price: '-75.00'
+       price: '75.00'
      },{
        count: '1000',
-       price: '-100.00'
+       price: '100.00'
      },{
        count: '10000',
-       price: '-1000.00'
+       price: '1000.00'
      }]
    };
 

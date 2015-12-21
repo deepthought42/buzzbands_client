@@ -25,7 +25,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     $scope.promoPanel='index';
     $scope.promotionLoaded = true;
     $scope.visibleTab = 'thumbnail';
-    
+
     $scope.editPromotion = function(id){
       state.go("adminDashboard.editPromotion", {"promotionId": id})
     }
@@ -34,6 +34,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       Promotion.delete(id);
       $scope.promotionList = $scope.getPromotionList();
     }
+
 
     $scope.getPromotionList = function(){
       return Promotion.query();
@@ -64,6 +65,16 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
     }
 
+    $scope.setShowContent = function(promotion){
+      for(var i = 0; i < $scope.promotionList.length; i++){
+        if($scope.promotionList[i] == promotion){
+          $scope.promotionList[i].showContent = true;
+        }
+        else{
+          $scope.promotionList[i].showContent = false;
+        }
+      }
+    }
     $scope.selectAll = function(selected){
       console.log("selecting all");
       for(promotion in promotionList){
@@ -138,5 +149,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       opened: false
     };
     $scope.loadPromotion();
+
   }
 ]);

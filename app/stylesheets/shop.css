@@ -3,51 +3,166 @@
     height: 100px;
     width: 100px;
       margin: auto;
-    margin-top:20px;}
+    margin-top:20px;
+    -webkit-transition-property: width, height; /* Safari */
+    -webkit-transition-duration: .5s; /* Safari */
+    transition-property: width, height;
+    transition-duration: .5s;
+  }
+
 #Yellow>img{
 display:none;
 
 }
 
+#Yellow:hover{
+  width: 120px;
+     height: 120px;
 
-#Red{    background-color: red;
+}
+
+#Red{
+  background-color: red;
     border-radius: 5em;
     height: 100px;
     width: 100px;
-      margin: auto;  margin-top:20px;}
+      margin: auto;  margin-top:20px;
+      -webkit-transition-property: width, height; /* Safari */
+
+      -webkit-transition-duration: .5s; /* Safari */
+      transition-property: width, height;
+      transition-duration: .5s;
+    }
+
 #Red>img{
 display:none;
 
 }
 
+#Red:hover{
+  width: 120px;
+     height: 120px;
+
+}
 
 #Green{    background-color: #0EFF0E;
     border-radius: 5em;
     height: 100px;
     width: 100px;
+<<<<<<< HEAD
+      margin: auto;  margin-top:20px;
+      -webkit-transition-property: width, height; /* Safari */
+
+      -webkit-transition-duration: .5s; /* Safari */
+      transition-property: width, height;
+      transition-duration: .5s;}
+=======
       margin: auto;  margin-top:20px;}
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
 #Green>img{
 display:none;
 
 }
+<<<<<<< HEAD
+#Green:hover{
+  width: 120px;
+     height: 120px;
+
+}
+
+=======
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
 
 #Orange{    background-color: orange;
     border-radius: 5em;
     height: 100px;
     width: 100px;
+<<<<<<< HEAD
+      margin: auto;  margin-top:20px;
+      -webkit-transition-property: width, height; /* Safari */
+
+      -webkit-transition-duration: .5s; /* Safari */
+      transition-property: width, height;
+      transition-duration: .5s;}
+=======
       margin: auto;  margin-top:20px;}
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
 #Orange>img{
 display:none;
 
 }
+<<<<<<< HEAD
+#Orange:hover{
+  width: 120px;
+     height: 120px;
+
+}
+
+
+#White{    background-color: white;
+    border-radius: 5em;
+    height: 100px;
+    width: 100px;
+      margin: auto;  margin-top:20px;
+      -webkit-transition-property: width, height; /* Safari */
+
+      -webkit-transition-duration: .5s; /* Safari */
+      transition-property: width, height;
+      transition-duration: .5s;}
+#White>img{
+display:none;
+
+}
+#White:hover{
+  width: 120px;
+     height: 120px;
+
+}
+
+
+=======
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
 
 
 #Blue{    background-color: blue;
     border-radius: 5em;
     height: 100px;
     width: 100px;
+<<<<<<< HEAD
+      margin: auto;  margin-top:20px;
+      -webkit-transition-property: width, height; /* Safari */
+
+      -webkit-transition-duration: .5s; /* Safari */
+      transition-property: width, height;
+      transition-duration: .5s;}
+=======
       margin: auto;  margin-top:20px;}
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
 #Blue>img{
 display:none;
 
 }
+<<<<<<< HEAD
+#Blue:hover{
+  width: 120px;
+     height: 120px;
+
+}
+
+#bandsimg{
+margin-top:200px;
+  position: absolute;
+  max-width: 300px;
+}
+@media only screen and (min-width:0px) and (max-width: 992px)  {
+#bandsimg{
+position: relative;
+max-width: 100%;
+margin-top:50px;
+
+}
+
+
+}
+=======
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
