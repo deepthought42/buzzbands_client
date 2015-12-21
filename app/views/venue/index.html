@@ -145,9 +145,9 @@
   								</div>
   							</div>
   							<div class="col-sm-12">
-  								<select class="form-control">
-  									<option selected> Category Type</option>
-  								</select>
+                  <select class="form-control" ng-options="category.name for category in categories" ng-model="venue.category">
+                    <option value="" ng-selected>Select Category</option>
+                  </select>
   							</div>
   							<div class="col-sm-12">
   								<span class="col-sm-5">
