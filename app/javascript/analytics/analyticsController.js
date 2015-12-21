@@ -13,10 +13,10 @@ angular.module('buzzbands.AnalyticsControllers', ['ui.router', 'buzzbands.VenueS
   })
 }])
 
-.controller('AnalyticsController', ['$scope', 'Venue', function($scope, Venue) {
-  
+.controller('AnalyticsController', ['$scope', 'Venue','Promotion', function($scope, Venue, Promotion) {
+
   $scope._init = function(){
-    $scope.promotionCount;
+    $scope.promotions = Promotion.query();
     $scope.bandsOrdered;
     $scope.activeAccounts = Venue.query();
     $scope.totalScans;

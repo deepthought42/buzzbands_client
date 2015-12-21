@@ -25,6 +25,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     $scope.promoPanel='index';
     $scope.promotion = {};
     $scope.promotionLoaded = true;
+    $scope.visibleTab = "thumbnail";
 
     $scope.editPromotion = function(id){
       state.go("adminDashboard.editPromotion", {"promotionId": id})

@@ -43,10 +43,10 @@
         <span style="color:#de519b;">(</span>{{($scope.promotionList | filter:active==1).length || -1}}<span style="color:#de519b;">)</span>
     </div>
   <div class="col-lg-12">
-    <button class="btn btn-default btn-sm fa fa-th" ng-click="setActiveTab('thumbnail')">
+    <button class="btn btn-default btn-sm fa fa-th" ng-click="visibleTab='thumbnail'">
       Thumbnail
     </button>
-    <button class="btn btn-default btn-sm fa fa-list-ul" ng-click="setActiveTab('list')">
+    <button class="btn btn-default btn-sm fa fa-list-ul" ng-click="visibleTab='list'">
       List
     </button>
 </div>
