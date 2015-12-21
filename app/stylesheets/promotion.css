@@ -71,3 +71,24 @@ background-color:white;
   font-size:20px;
   color:white;
 }
+
+.md-calendar{
+background: #3b4454;
+    color:white;
+}
+
+.md-calendar-date.md-focus .md-calendar-date-selection-indicator{
+background-color: #242831;
+
+}
+
+thead{
+background-color: #242831!important;
+color:white;
+}
+    
+    
+.md-calendar-date-selection-indicator:hover{
+ background-color: #de519b;
+    color:#4BBA4B;
+}
