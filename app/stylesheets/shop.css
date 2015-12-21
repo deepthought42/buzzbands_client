@@ -45,7 +45,8 @@ display:none;
 
 }
 
-#Green{    background-color: #0EFF0E;
+#Green{  
+    background-color: #0EFF0E;
     border-radius: 5em;
     height: 100px;
     width: 100px;
@@ -80,12 +81,11 @@ display:none;
       transition-property: width, height;
       transition-duration: .5s;}
 
- 
-
 #Orange>img{
 display:none;
 
 }
+
 #Orange:hover{
   width: 120px;
      height: 120px;
@@ -128,7 +128,7 @@ display:none;
 display:none;
 
 }
-<<<<<<< HEAD
+
 #Blue:hover{
   width: 120px;
      height: 120px;

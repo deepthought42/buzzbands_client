@@ -1,9 +1,9 @@
-	<button class="btn add-button col-sm-2" tooltip="New User" ng-click="addUser()">Add User</button>
+	
 
 	<div class="row" >
 		<div id="userCreatePanel" class="col-md-10">
       <span style="color:#808266;font-size:30px;">EDIT USER</span><br><br>
-			<div class="col-sm-12">
+			<div style="color:white;" class="col-sm-12">
 				{{user.email}}
 			</div>
 			<div class="col-sm-12" ng-show="hasPermission(2)">
@@ -14,12 +14,12 @@
 						ng-submit="updateUser(userForm.$valid)"
 						novalidate>
 							<div class="col-sm-12">
-								<span class="col-sm-5">
-									Cover Photo:
+								<span style="color:white;"class="col-sm-3">
+									Avatar Photo:
 								</span>
 								<span class="col-sm-2">
 									<img href="/no-image.jpg" />
-								</span>
+								</span><br>
 								<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 										pickerclass="btn btn-default"
 										multiple="false" mimetype="image/jpg"

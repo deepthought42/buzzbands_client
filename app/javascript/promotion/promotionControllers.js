@@ -35,7 +35,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       $scope.promotionList = $scope.getPromotionList();
     }
 
-
     $scope.getPromotionList = function(){
       return Promotion.query();
     }
@@ -55,7 +54,8 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     $scope.deletePromotions = function(){
       for(var i =0;i < $scope.promotionList.length; i++){
         if($scope.promotionList[i].selected){
-          Promotion.delete({id:$scope.promotionList[i].id}).then(function(){
+          Promotion.remove({id:$scope.promotionList[i].id}).$promise.
+          then(function(data){
             $scope.promotionList = $scope.getPromotionList();
           })
           .catch(function(data){
@@ -75,6 +75,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         }
       }
     }
+
     $scope.selectAll = function(selected){
       console.log("selecting all");
       for(promotion in promotionList){
