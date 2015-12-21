@@ -2,7 +2,7 @@
 <button ng-show="venueLoaded" class="btn add-button col-sm-3" tooltip="New Venue" ng-click="showCreatePanel()">Add Venue</button>
 <div ng-switch="venueLoaded" ng-show="true">
   <div ng-switch-when="false">
-    <div id="venueCreatePanel" class="col-sm-5">
+    <div id="venueCreatePanel" class="col-sm-5" ng-controller="VenueCreationController">
       <span style="color:#808266;font-size:30px;">ADD NEW ACCOUNT</span>
       <br /><br />
 			<form name="venueForm"
@@ -27,10 +27,9 @@
 						</div>
 					</div>
 					<div class="col-sm-12 col-xs-12">
-						<select class="form-control">
-							<option selected> Category Type</option>
-							<option selected> Category Type</option>
-						</select>
+              <select class="form-control" ng-options="category.name for category in categories" ng-model="venue.category">
+                <option value="" ng-selected>Select Category</option>
+  						</select>
 					</div>
 					<div class="col-sm-12 col-xs-12">
 						<span tooltip-placement="left" tooltip="Cover Photo">
@@ -109,7 +108,7 @@
 					</div>
 				</div>
 
-				<div class="actions col-md-12">Active	<input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />
+				<div class="actions col-md-12">
   				<br>
             <button type="submit" class="saveButton btn btn-primary"
   						<i class="fa fa-save"></i>
@@ -294,7 +293,7 @@
                 <input type="checkbox" ng-model="venue.selected" ng-click="venue.selected = !venue.selected" />
               </td>
               <td>
-                <img style="width:100px;" ng-src="{{venue.url}}" />
+                  <img style="width:100px;" ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
               </td>
               <td>
                 <input type="checkbox"

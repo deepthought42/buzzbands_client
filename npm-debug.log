@@ -1,36 +1,26 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
-2 info using npm@2.5.1
-3 info using node@v0.12.0
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart buzzbands_client@0.0.0
-6 verbose unsafe-perm in lifecycle true
-7 info start buzzbands_client@0.0.0
-8 verbose unsafe-perm in lifecycle true
-9 info buzzbands_client@0.0.0 Failed to exec start script
-10 verbose stack Error: buzzbands_client@0.0.0 start: `http-server -a localhost -p 8000 -c-1`
-10 verbose stack Exit status 1
-10 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
-10 verbose stack     at EventEmitter.emit (events.js:110:17)
-10 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:14:12)
-10 verbose stack     at ChildProcess.emit (events.js:110:17)
-10 verbose stack     at maybeClose (child_process.js:1008:16)
-10 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1080:5)
-11 verbose pkgid buzzbands_client@0.0.0
-12 verbose cwd /Users/ConnecTheDots/Desktop/buzzbands_client
-13 error Darwin 15.2.0
-14 error argv "node" "/usr/local/bin/npm" "start"
-15 error node v0.12.0
-16 error npm  v2.5.1
-17 error code ELIFECYCLE
-18 error buzzbands_client@0.0.0 start: `http-server -a localhost -p 8000 -c-1`
-18 error Exit status 1
-19 error Failed at the buzzbands_client@0.0.0 start script 'http-server -a localhost -p 8000 -c-1'.
-19 error This is most likely a problem with the buzzbands_client package,
-19 error not with npm itself.
-19 error Tell the author that this fails on your system:
-19 error     http-server -a localhost -p 8000 -c-1
-19 error You can get their info via:
-19 error     npm owner ls buzzbands_client
-19 error There is likely additional logging output above.
-20 verbose exit [ 1, true ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.37
+4 verbose node symlink /usr/bin/node
+5 verbose run-script [ 'prestart', 'start', 'poststart' ]
+6 info prestart buzzbands_client@0.0.0
+7 verbose unsafe-perm in lifecycle true
+8 info buzzbands_client@0.0.0 Failed to exec prestart script
+9 error buzzbands_client@0.0.0 prestart: `npm install`
+9 error Exit status 1
+10 error Failed at the buzzbands_client@0.0.0 prestart script.
+10 error This is most likely a problem with the buzzbands_client package,
+10 error not with npm itself.
+10 error Tell the author that this fails on your system:
+10 error     npm install
+10 error You can get their info via:
+10 error     npm owner ls buzzbands_client
+10 error There is likely additional logging output above.
+11 error System Linux 3.13.0-68-generic
+12 error command "/usr/bin/node" "/usr/bin/npm" "start"
+13 error cwd /home/deepthought/development/buzzbands_client
+14 error node -v v0.10.37
+15 error npm -v 1.4.28
+16 error code ELIFECYCLE
+17 verbose exit [ 1, true ]
