@@ -10,8 +10,14 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     });
 }])
 
-.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$localStorage','$sessionStorage', function($scope, Venue, state, session) {
+.controller('VenueIndexController', ['$scope', 'Venue', '$state','$sessionStorage', function($scope, Venue, state, $sessionStorage) {
   $scope.venueLoaded = false;
+  $scope.$session = $sessionStorage;
+
+  $scope.hasPermission = function(role){
+    console.log("checking permissions "+$scope.$session.user.role);
+    return $scope.$session.user !== undefined && $scope.$session.user.role == role;
+  }
 
   $scope.queryVenues = function(){
     Venue.query().$promise
@@ -75,7 +81,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     $scope.venueLoaded = false;
   })
 
-  $scope.queryVenues();
+  $scope.venueList = $scope.queryVenues();
 
   $scope.selectAll = function(selected){
     for(var i=0; i<$scope.venueList.length; i++){
@@ -89,12 +95,10 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
 .controller('VenueCreationController', ['$scope', 'Venue', '$state', '$auth', '$rootScope', '$sessionStorage',
   function($scope, Venue, state, $auth, $rootScope, $sessionStorage) {
     $scope.$session = $sessionStorage;
-    $scope.categories = [{name:"Bar"},
-                        {name:"Night Club"}];
     $auth.validateUser();
 
     $scope.hasPermission = function(role){
-      return $scope.$session.role == role;
+      return $scope.$session.role === role;
     }
 
   $scope.createVenue = function(venueValid){
@@ -148,6 +152,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     }
 
     $scope.updateVenue = function(venueValid){
+      console.log("venue valid");
       if(venueValid){
         Venue.update($scope.venue).$promise.then(function(data){
           $scope.venue = {};
@@ -155,5 +160,6 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         });
       }
     }
+
   }
 ])

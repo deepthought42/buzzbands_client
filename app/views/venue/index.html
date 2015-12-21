@@ -119,12 +119,10 @@
 				</div>
 			</form>
 		</div>
-    <!--<div ui-view="new.venue@venues.dashboard" class="col-sm-12 col-xs-12"></div>-->
   </div>
   <div ng-switch-when="true">
-    <div id="venueEditPanel" class="col-sm-12">
+    <div id="venueEditPanel" class="col-sm-12" ng-controller="VenueDetailsController">
   	<div class="row" >
-  		<div id="venueCreatePanel" class="col-md-12">
         <span style="color:#808266;font-size:30px;">EDIT VENUE</span><br><br>
   			<form name="venueForm"
   						enctype="multipart/form-data"
@@ -239,7 +237,6 @@
   							</button>
   						</div>
   			</form>
-  		</div>
     </div>
     <div ng-switch-when="true">
       <div id="venueEditPanel" class="col-sm-12">
@@ -350,7 +347,7 @@
       						</div>
       						<div class="col-sm-12">
       							Active?
-      							<input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />
+      							<input type="checkbox" ng-model="venue.active" ng-disabled="!hasPermission(4)" />
       						</div>
       						<div class="actions col-md-12">
       							<button type="submit" class="btn btn-primary" >
@@ -415,15 +412,14 @@
           <tbody>
             <tr ng-repeat="venue in venueList" >
               <td>
-                <input type="checkbox" ng-model="venue.selected" ng-click="venue.selected = !venue.selected" />
+                <input type="checkbox" ng-model="venue.selected" />
               </td>
               <td>
                   <img style="width:100px;" ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
               </td>
               <td>
-                <input type="checkbox"
-                       ng-model="venue.active"
-                       ng-disabled="hasPermission('admin')"/>
+                <i ng-show="venue.active" class="success fa fa-check "></i>
+               <i ng-show="!venue.active" class="fa fa-times-circle danger"></i>
               </td>
               <td ng-click="showPromotionsList(venue.id)" >
                 <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
