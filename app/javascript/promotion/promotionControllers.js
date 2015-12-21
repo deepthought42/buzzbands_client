@@ -23,10 +23,8 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 .controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams',
   function($scope, Promotion, state, stateParams) {
     $scope.promoPanel='index';
-    $scope.promotion = {};
     $scope.promotionLoaded = true;
-
-    $scope.listView = "thumbnail";
+    $scope.visibleTab = 'thumbnail';
 
     $scope.editPromotion = function(id){
       state.go("adminDashboard.editPromotion", {"promotionId": id})
@@ -48,8 +46,9 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       //state.go("new@promotions.dashboard");
     }
 
-    $scope.setActiveTab = function(viewName){
-      $scope.listView = viewName;
+<
+    $scope.setActiveTab = function(tabName){
+      $scope.visibleTab = tabName;
     }
 
     $scope.promotionList = $scope.getPromotionList();
@@ -57,12 +56,11 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     $scope.deletePromotions = function(){
       for(var i =0;i < $scope.promotionList.length; i++){
         if($scope.promotionList[i].selected){
-          Promotion.remove({id:$scope.promotionList[i].id}).$promise.
-          then(function(data){
+          Promotion.delete({id:$scope.promotionList[i].id}).then(function(){
             $scope.promotionList = $scope.getPromotionList();
           })
           .catch(function(data){
-            console.log("an error occurred while deleting venue");
+            console.log("an error occurred while deleting promotion");
           });
         }
       }
@@ -76,6 +74,11 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         else{
           $scope.promotionList[i].showContent = false;
         }
+
+    $scope.selectAll = function(selected){
+      console.log("selecting all");
+      for(promotion in promotionList){
+        promotion.selected = selected
       }
     }
   }
@@ -84,16 +87,20 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 .controller('PromotionCreationController', ['$scope', 'Promotion', function($scope, Promotion) {
   $scope.promotion = {}
 
-  $scope.createPromotion = function(promotion){
-    Promotion.save($scope.promotion);
+  $scope.createPromotion = function(isValid){
+    console.log("Creating program...");
+    if(isValid){
+      Promotion.save($scope.promotion);
+    }
+    else{
+      console.log("FAILDED TO CREATE PROGRAM!!!!!!!");
+    }
   }
 
   $scope.previewImage = function(files){
     $scope.setUrl(files);
     var reader = new FileReader();
-    if(typeof files[0] === 'object'){
-      reader.readAsDataURL(files[0]);
-    }
+
     reader.onload = function(event){
       $scope.logo_url = reader.result;
       $scope.promotion.ad_location = files[0].url;

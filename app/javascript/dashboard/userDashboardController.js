@@ -15,21 +15,6 @@ angular.module('buzzbands.UserDashboardControllers', ['ui.router', 'stripe.check
           }
         }
       })
-      .state('qrReader.userDashboard', {
-        url: '',
-        parent: 'userDashboard',
-        views: {
-          '':{
-            templateUrl: 'app/views/qrCode/reader.html',
-            controller: 'QrCodeController',
-          },
-        },
-        resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          }
-        }
-      })
       .state('venues.userDashboard', {
         url: '/venues',
         parent: 'userDashboard',
@@ -67,6 +52,9 @@ angular.module('buzzbands.UserDashboardControllers', ['ui.router', 'stripe.check
   $scope.$session = $sessionStorage;
 
   $scope.hasPermission = function(role){
+    if($scope.$session.user === undefined){
+      return false;
+    }
     return $scope.$session.user.role == role;
   }
 }])

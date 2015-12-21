@@ -7,7 +7,9 @@
     -webkit-transition-property: width, height; /* Safari */
     -webkit-transition-duration: .5s; /* Safari */
     transition-property: width, height;
-    transition-duration: .5s;}
+    transition-duration: .5s;
+  }
+
 #Yellow>img{
 display:none;
 
@@ -19,8 +21,8 @@ display:none;
 
 }
 
-
-#Red{    background-color: red;
+#Red{
+  background-color: red;
     border-radius: 5em;
     height: 100px;
     width: 100px;
@@ -29,54 +31,67 @@ display:none;
 
       -webkit-transition-duration: .5s; /* Safari */
       transition-property: width, height;
-      transition-duration: .5s;}
+      transition-duration: .5s;
+    }
+
 #Red>img{
 display:none;
 
 }
+
 #Red:hover{
   width: 120px;
      height: 120px;
 
 }
 
-
-
 #Green{    background-color: #0EFF0E;
     border-radius: 5em;
     height: 100px;
     width: 100px;
+<<<<<<< HEAD
       margin: auto;  margin-top:20px;
       -webkit-transition-property: width, height; /* Safari */
 
       -webkit-transition-duration: .5s; /* Safari */
       transition-property: width, height;
       transition-duration: .5s;}
+=======
+      margin: auto;  margin-top:20px;}
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
 #Green>img{
 display:none;
 
 }
+<<<<<<< HEAD
 #Green:hover{
   width: 120px;
      height: 120px;
 
 }
 
+=======
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
 
 #Orange{    background-color: orange;
     border-radius: 5em;
     height: 100px;
     width: 100px;
+<<<<<<< HEAD
       margin: auto;  margin-top:20px;
       -webkit-transition-property: width, height; /* Safari */
 
       -webkit-transition-duration: .5s; /* Safari */
       transition-property: width, height;
       transition-duration: .5s;}
+=======
+      margin: auto;  margin-top:20px;}
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
 #Orange>img{
 display:none;
 
 }
+<<<<<<< HEAD
 #Orange:hover{
   width: 120px;
      height: 120px;
@@ -105,22 +120,29 @@ display:none;
 }
 
 
+=======
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
 
 
 #Blue{    background-color: blue;
     border-radius: 5em;
     height: 100px;
     width: 100px;
+<<<<<<< HEAD
       margin: auto;  margin-top:20px;
       -webkit-transition-property: width, height; /* Safari */
 
       -webkit-transition-duration: .5s; /* Safari */
       transition-property: width, height;
       transition-duration: .5s;}
+=======
+      margin: auto;  margin-top:20px;}
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93
 #Blue>img{
 display:none;
 
 }
+<<<<<<< HEAD
 #Blue:hover{
   width: 120px;
      height: 120px;
@@ -142,3 +164,5 @@ margin-top:50px;
 
 
 }
+=======
+>>>>>>> 40265dfc8da249d03bef31aef38ac4a9947dda93

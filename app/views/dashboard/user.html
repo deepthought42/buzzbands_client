@@ -10,11 +10,11 @@
   <button  ui-sref="venues.userDashboard"
          ng-class='{"navButtonActive":tog==1,"userNavButton":tog!=1}'
          ng-click='tog=1'>Venue</button>
-  <button  ui-sref="qrReader.userDashboard"
+  <button  ui-sref="promotions.userDashboard"
           ng-class='{"navButtonActive":tog==2,"userNavButton":tog!=2}'
-          ng-click='tog=2'>Scan</button>
-  <button ui-sref="promotions.userDashboard"
+          ng-click='tog=2'>Promotions</button>
+  <button ui-sref="settings.userDashboard"
           ng-class='{"navButtonActive":tog==3,"userNavButton":tog!=3}'
-          ng-click='tog=3'>Promotions</button>
+          ng-click='tog=3'>Settings</button>
 </div>
 <div class="col-lg-12 col-sm-12" ui-view></div>

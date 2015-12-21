@@ -25,19 +25,21 @@
 					</div>
 				</div>
 				<div class="col-sm-12 col-xs-12">
+            <span  class="col-sm-6" tooltip-placement="right" tooltip="cover photo">
+							<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+										pickerclass="btn addphoto"
+										multiple="true" mimetype="image/*"
+										callback="previewImage(file)">
+								 <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
+									Add Photo
+							</div>
+						</span>
 
-					<div   filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-						pickerclass="btn addphoto"
-						multiple="true" mimetype="image/*"
-						callback="previewImage(file)">
-            <span  tooltip-placement="right" tooltip="cover photo"><i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>Add Photo</span>
-					</div>
-					<img ng-src="{{promotion.ad_location}}" />
+					<img class="col-sm-6 col-xs-6" ng-src="{{promotion.ad_location}}" />
 				</div>
 			</div>
 		</div>
-		<input placeholder="URL" type="text" class="form-control" ng-model="promotion.description">
-		<div style="display:inline-block;">
+			<div style="display:inline-block;">
 			<div class="row">
       	<div class="col-md-6">
           <p class="input-group">
@@ -68,6 +70,7 @@
 		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
 			<button style="background-color:#de519b;"class="btn btn-primary"
 						  type="submit"
+							ng-click="createPromotion(promotionForm.$valid)"
 							ng-disabled="promotionForm.$invalid">
 				CREATE
 			</button>

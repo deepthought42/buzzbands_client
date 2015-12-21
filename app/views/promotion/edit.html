@@ -36,14 +36,14 @@
 				</div>
 			</div>
 		</div>
-		<input placeholder="URL" type="text" class="form-control" ng-model="promotion.description">
 		<div style="display:inline-block;">
 			<div class="row">
       	<div class="col-md-6">
           <p class="input-group">
-            <input type="text" class="form-control" datepicker-popup="{{format}}"
+            <input type="date" class="form-control" datepicker-popup="{{format}}"
 										ng-model="promotion.start_time" is-open="status.opened"
 										min-date="minDate" max-date="maxDate"
+										datepicker-options="dateOptions"
 										date-disabled="disabled(date, mode)"
 										required
 										close-text="Close" />
@@ -55,21 +55,23 @@
 				<!-- Start time date time picker popup -->
         <div class="col-md-6">
             <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}"
-							ng-model="promotion.end_time" is-open="status.opened"
-							min-date="minDate" max-date="maxDate"
-							date-disabled="disabled(date, mode)" ng-required="true"
-							close-text="Close" />
+              <input type="date" class="form-control" datepicker-popup="{{format}}"
+										 ng-model="promotion.end_time"
+										 is-open="status.opened"
+										 min-date="minDate"
+										 max-date="maxDate"
+										 datepicker-options="dateOptions"
+										 date-disabled="disabled(date, mode)"
+										 ng-required="true"
+										 close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
             </p>
 		      </div>
 		    </div>
-
 			</div>
 		</div>
-
 
 		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
 			<button style="background-color:#de519b;"class="btn btn-primary"

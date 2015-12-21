@@ -7,7 +7,7 @@
 6 error If you need help, you may report this *entire* log,
 6 error including the npm and node versions, at:
 6 error     <http://github.com/npm/npm/issues>
-7 error System Linux 3.13.0-53-generic
+7 error System Linux 3.13.0-68-generic
 8 error command "/usr/bin/node" "/usr/bin/npm" "start"
 9 error cwd /home/deepthought/development/buzzbands_client/app
 10 error node -v v0.10.37
