@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'ui.bootstrap'])
+angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'ui.bootstrap', 'ngMaterial'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('promotions', {
@@ -86,6 +86,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 
 .controller('PromotionCreationController', ['$scope', 'Promotion', function($scope, Promotion) {
   $scope.promotion = {}
+  $scope.myDate = new Date();
 
   $scope.createPromotion = function(isValid){
     console.log("Creating program...");

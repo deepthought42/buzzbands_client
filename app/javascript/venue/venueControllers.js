@@ -153,6 +153,5 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         });
       }
     }
-
   }
 ])
