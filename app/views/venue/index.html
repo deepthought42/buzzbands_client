@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="app/stylesheets/venue.css">
 <button ng-show="venueLoaded" class="btn add-button col-sm-3" tooltip="New Venue" ng-click="showCreatePanel()">Add Venue</button>
-<div ng-switch="venueLoaded" ng-show="true">
+<div ng-switch="venueLoaded" ng-show="true" class="col-sm-5">
   <div ng-switch-when="false">
-    <div id="venueCreatePanel" class="col-sm-5" ng-controller="VenueCreationController">
+    <div id="venueCreatePanel" class="col-sm-12" ng-controller="VenueCreationController">
       <span style="color:#808266;font-size:30px;">ADD NEW ACCOUNT</span>
       <br /><br />
 			<form name="venueForm"
@@ -38,9 +38,9 @@
 							callback="previewImage(file)">
 								<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
 
-						</div>	
+						</div>
 
-                    </div>	
+                    </div>
 
 						<img ng-src="{{venue.url}}" />
 					</div>
@@ -108,7 +108,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="actions col-md-12">	
+				<div class="actions col-md-12">
   				<br>
 
 				<div class="actions col-md-12">
@@ -122,9 +122,9 @@
     <!--<div ui-view="new.venue@venues.dashboard" class="col-sm-12 col-xs-12"></div>-->
   </div>
   <div ng-switch-when="true">
-    <div id="venueEditPanel" class="col-sm-5">
+    <div id="venueEditPanel" class="col-sm-12">
   	<div class="row" >
-  		<div id="venueCreatePanel" class="col-md-10">
+  		<div id="venueCreatePanel" class="col-md-12">
         <span style="color:#808266;font-size:30px;">EDIT VENUE</span><br><br>
   			<form name="venueForm"
   						enctype="multipart/form-data"
@@ -242,7 +242,7 @@
   		</div>
     </div>
     <div ng-switch-when="true">
-      <div id="venueEditPanel" class="col-sm-5">
+      <div id="venueEditPanel" class="col-sm-12">
       	<div class="row" >
       		<div id="venueCreatePanel" class="col-md-10">
             <span style="color:#808266;font-size:30px;">EDIT VENUE</span><br><br>
@@ -365,6 +365,8 @@
       </div>
     </div>
   </div>
+</div>
+</div>
   <div class="col-sm-7">
     <span class="status">
       All
@@ -435,4 +437,3 @@
       </div>
     </div>
   </div>
-</div>
