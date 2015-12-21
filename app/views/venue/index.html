@@ -34,14 +34,14 @@
 						</select>
 					</div>
 					<div class="col-sm-12 col-xs-12">
-						<span tooltip-placement="left" tooltip="Cover Photo">
+						
 
 						<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 							pickerclass="btn addphoto"
 							multiple="true" mimetype="image/*"
 							callback="previewImage(file)">
 								<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
-						</div>	</span>
+						</div>	
 						<img ng-src="{{venue.url}}" />
 					</div>
 
@@ -110,9 +110,9 @@
 					</div>
 				</div>
 
-				<div class="actions col-md-12">Active	<input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />
+				<div class="actions col-md-12">	
   				<br>
-            <button type="submit" class="saveButton btn btn-primary"
+            <button ng-model="venue.active"  type="submit" class="saveButton btn btn-primary"
   						<i class="fa fa-save"></i>
   						Save
   					</button>

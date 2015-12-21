@@ -13,29 +13,33 @@
       <div id="adminDashboardcontainer"class="container-fluid">
         <div style="text-align:center;" class="col-sm-2 col-xs-12" ng-controller="DashboardController">
           <img style="width:50px;padding-top:15px;padding-bottom:100px;"src="images/logo.png"><br>
-          <div class="col-sm-12 col-xs-12">
+          <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
             <button style="border-radius:1em;"  ui-sref="analytics.adminDashboard"
                     ng-class='{"navButtonActive":tog==1,"navButton":tog!=1}'
                     ng-click='tog=1'>Overview</button>
           </div>
-          <div class="col-sm-12 col-xs-12">
+          <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
             <button  ui-sref="venues.adminDashboard"
                    ng-class='{"navButtonActive":tog==2,"navButton":tog!=2}'
                    ng-click='tog=2'>Accounts</button>
           </div>
-          <div class="col-sm-12 col-xs-12">
+          <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
             <button ui-sref="adminDashboard.promotions"
                     ng-class='{"navButtonActive":tog==3,"navButton":tog!=3}'
-                    ng-click='tog=3'>Promotions</button>
+                    ng-click='tog=3'>Promotions</button><br>
             <button ui-sref="adminDashboard.newPromotion"
                     class="add btn btn-primary"
                     ng-show="tog==3">Add New</button>
           </div>
           <div class="col-sm-12 col-xs-12">
-            <button ui-sref="adminDashboard.users"
+            <button style="margin-top:10px;" ui-sref="adminDashboard.users"
                     ng-class='{"navButtonActive":tog==4,"navButton":tog!=4}'
                     ng-click='tog=4'
-                    ng-show="hasPermission('admin')">Users</button>
+                    ng-show="hasPermission('admin')">Users</button><br>
+                     <button ui-sref="#"
+                    class="add btn btn-primary"
+                    ng-show="tog==4"ng-click="addUser()">Add New</button>
+       
           </div>
         </div>
 
