@@ -45,7 +45,7 @@ display:none;
 
 }
 
-#Green{  
+#Green{
     background-color: #0EFF0E;
     border-radius: 5em;
     height: 100px;
@@ -113,16 +113,18 @@ display:none;
 
 }
 
-#Blue{    background-color: blue;
-    border-radius: 5em;
-    height: 100px;
-    width: 100px;
-      margin: auto;  margin-top:20px;
-      -webkit-transition-property: width, height; /* Safari */
+#Blue{
+  background-color: blue;
+  border-radius: 5em;
+  height: 100px;
+  width: 100px;
+  margin: auto;  margin-top:20px;
+  -webkit-transition-property: width, height; /* Safari */
 
-      -webkit-transition-duration: .5s; /* Safari */
-      transition-property: width, height;
-      transition-duration: .5s;}
+  -webkit-transition-duration: .5s; /* Safari */
+  transition-property: width, height;
+  transition-duration: .5s;
+}
 
 #Blue>img{
 display:none;
