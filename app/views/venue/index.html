@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="app/stylesheets/venue.css">
 <button ng-show="venueLoaded" class="btn add-button col-sm-3" tooltip="New Venue" ng-click="showCreatePanel()">Add Venue</button>
-
 <div ng-switch="venueLoaded" ng-show="true">
   <div ng-switch-when="false">
     <div id="venueCreatePanel" class="col-sm-5">
@@ -34,14 +33,22 @@
 						</select>
 					</div>
 					<div class="col-sm-12 col-xs-12">
+
 						
+
+						
+
 
 						<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 							pickerclass="btn addphoto"
 							multiple="true" mimetype="image/*"
 							callback="previewImage(file)">
 								<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
+
 						</div>	
+
+						</div>	
+
 						<img ng-src="{{venue.url}}" />
 					</div>
 
@@ -110,9 +117,11 @@
 					</div>
 				</div>
 
+
 				<div class="actions col-md-12">	
   				<br>
-            <button ng-model="venue.active"  type="submit" class="saveButton btn btn-primary"
+            <button ng-model="venue.active"  type="submit" class="saveButton btn btn-primary">
+
   						<i class="fa fa-save"></i>
   						Save
   					</button>
