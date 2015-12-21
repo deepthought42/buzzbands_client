@@ -89,6 +89,8 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
 .controller('VenueCreationController', ['$scope', 'Venue', '$state', '$auth', '$rootScope', '$sessionStorage',
   function($scope, Venue, state, $auth, $rootScope, $sessionStorage) {
     $scope.$session = $sessionStorage;
+    $scope.categories = [{name:"Bar"},
+                        {name:"Night Club"}];
     $auth.validateUser();
 
     $scope.hasPermission = function(role){

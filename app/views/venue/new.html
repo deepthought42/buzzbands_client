@@ -24,9 +24,9 @@
 						</div>
 					</div>
 					<div class="col-sm-12 col-xs-12">
+						{{categories}}
 						<select class="form-control">
-							<option selected> Category Type</option>
-							<option selected> Category Type</option>
+							<option ng-model="venue.category" ng-selected="category" ng-repeat="category in categories">{{category}}</option>
 						</select>
 					</div>
 					<div class="col-sm-12 col-xs-12">
