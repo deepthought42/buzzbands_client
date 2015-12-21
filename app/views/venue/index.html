@@ -2,102 +2,85 @@
 
 
 <div class="container-fluid">
-    <div class="col-sm-12 col-xs-12">
-        <div ng-switch="userLoaded">
-  <div ng-switch-when="false">
-    <div ui-view="new.venue@venues.dashboard" class="col-sm-6 col-xs-12"></div>
-  </div>
-  <div ng-switch-when="true">
-    <div ui-view="edit.venue@venues.dashboard" class="col-sm-6 col-xs-12"></div>
-  </div>
-</div>
-
-        
-        <div class="container col-sm-6 col-xs-12">
-  <div class="row">
-    <span class="col-sm-4"><h1>Venues</h1></span>
-    <button class="btn add-button col-sm-2" tooltip="New Venue" ng-click="addVenue()">Add Venue</button>
-  </div>
-  <div class="row">
-    <div class="col-sm-7">
-      <div class="col-sm-3">
-        All
-        <span>( {{}} )</span>
+    <div class="col-sm-12 col-xs-12" ng-switch="userLoaded">
+          <div ng-switch-when="false">
+            <div ui-view="new.venue@venues.dashboard" class="col-sm-6 col-xs-12"></div>
+          </div>
+          <div ng-switch-when="true">
+            <div ui-view="edit.venue@venues.dashboard" class="col-sm-6 col-xs-12"></div>
+          </div>
       </div>
-      <div class="col-sm-4">
-        Active
-        <span>( {{}} )</span>
+
+
+  <div class="container col-sm-6 col-xs-12">
+    <div class="row">
+      <span class="col-sm-4"><h1>Venues</h1></span>
+      <button class="btn add-button col-sm-2" tooltip="New Venue" ng-click="addVenue()">Add Venue</button>
+    </div>
+    <div class="row">
+      <div class="col-sm-7">
+        <div class="col-sm-3">
+          All
+          <span>( {{}} )</span>
+        </div>
+        <div class="col-sm-4">
+          Active
+          <span>( {{}} )</span>
+        </div>
+        <div class="col-sm-5">
+          Disabled
+          <span>( {{}} )</span>
+        </div>
       </div>
       <div class="col-sm-5">
-        Disabled
-        <span>( {{}} )</span>
+        <button class="pull-right">Save Changes</button>
       </div>
     </div>
-    <div class="col-sm-5">
-      <button class="pull-right">Save Changes</button>
-    </div>
-  </div>
 
-  <div class="row">
-    <table class="col-sm-6 table table-striped table-condensed">
-      <thead>
-        <tr>
-          <td>Active</td>
-          <td>Name</td>
-          <td>Address</td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="venue in venueList">
-          <td>
-            <input type="checkbox"
-                   ng-model="venue.active"
-                   ng-disabled="{{$session.user.role!='Admin'}}"/>
-          </td>
-          <td ng-click="showPromotionsList(venue.id)">
-            {{venue.name}}
-          </td>
-          <td>{{venue.address}}
-            <br />
-          {{venue.city}}, {{venue.state}} {{venue.zip_code}}
-          </td>
-          <td>
-            <button ng-click="editVenue(venue)">Edit</button>
-            <button ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
-                    cancel-button-type="default"
-                    confirm-button-type="danger"
-                    on-cancel="vm.cancelClicked = true"
-                    on-confirm="deleteVenue(venue.id)"
-                    placement="bottom"
-                    cancel-text="No &lt;i class='glyphicon glyphicon-remove'&gt;&lt;/i&gt;"
-                    confirm-text="Yes &lt;i class='glyphicon glyphicon-ok'&gt;&lt;/i&gt;"
-                    message="Are you really &lt;b&gt;sure&lt;/b&gt; you want to do this?"
-                    title="Are you sure?"
-                    mwl-confirm=""
-                    class="btn btn-default ng-binding ng-isolate-scope">
-                Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="row">
+      <table class="col-sm-6 table table-striped table-condensed">
+        <thead>
+          <tr>
+            <td>Active</td>
+            <td>Name</td>
+            <td>Address</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="venue in venueList">
+            <td>
+              <input type="checkbox"
+                     ng-model="venue.active"
+                     ng-disabled="{{$session.user.role!='Admin'}}"/>
+            </td>
+            <td ng-click="showPromotionsList(venue.id)">
+              {{venue.name}}
+            </td>
+            <td>{{venue.address}}
+              <br />
+            {{venue.city}}, {{venue.state}} {{venue.zip_code}}
+            </td>
+            <td>
+              <button ng-click="editVenue(venue)">Edit</button>
+              <button ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
+                      cancel-button-type="default"
+                      confirm-button-type="danger"
+                      on-cancel="vm.cancelClicked = true"
+                      on-confirm="deleteVenue(venue.id)"
+                      placement="bottom"
+                      cancel-text="No &lt;i class='glyphicon glyphicon-remove'&gt;&lt;/i&gt;"
+                      confirm-text="Yes &lt;i class='glyphicon glyphicon-ok'&gt;&lt;/i&gt;"
+                      message="Are you really &lt;b&gt;sure&lt;/b&gt; you want to do this?"
+                      title="Are you sure?"
+                      mwl-confirm=""
+                      class="btn btn-default ng-binding ng-isolate-scope">
+                  Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    </div>
-    </div>
