@@ -82,6 +82,16 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         promotion.selected = selected
       }
     }
+    
+  
+    
+    
+
+
+
+
+    
+    
   }
 ])
 

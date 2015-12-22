@@ -20,7 +20,8 @@ angular.module('buzzbands_client', [
   'buzzbands.BandsControllers',
   'buzzbands.RoleServices',
   'buzzbands.UserDashboardControllers',
-  'filepicker'
+  'filepicker',
+  'ngDraggable'
 ]).
 config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider',
  function($urlRouterProvider, $stateProvider, $authProvider, $httpProvider) {

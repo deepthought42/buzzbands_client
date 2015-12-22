@@ -17,7 +17,8 @@
     "ngstorage": "0.3.4",
     "angular-resource": "latest",
     "angular-morph": "latest",
-    "angular-stripe-checkout": "2.2.1"
+    "angular-stripe-checkout": "2.2.1",
+    "ngDraggable":"latest"
   },
   "resolutions": {
     "angular": "1.4.8",

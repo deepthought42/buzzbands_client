@@ -42,13 +42,13 @@ angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsServi
        {id:'Red',
         href:'./images/red.png'},
        {id:'Green',
-        href:'//href here for image'},
+        href:'./images/green.png'},
        {id:'Orange',
-        href:'//href here for image'},
+        href:'./images/orange.png'},
        {id:'Blue',
-        href:'//href here for image'},
+        href:'./images/blue.png'},
         {id:'White',
-         href:'//href here for image'}];
+         href:'./images/white.png'}];
    };
 
    var getPackages = function(){
