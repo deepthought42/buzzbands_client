@@ -61,7 +61,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   $scope.editVenue = function(venue_id){
     $scope.venueLoaded = true;
     $scope.$session.last_venue_id = venue_id;
-    $state.go('adminDashboard.editVenue', {id: venue_id})
+    $state.go('adminDashboard.editVenue', {venue_id: venue_id})
   }
 
   $scope.showCreatePanel = function(venue){
@@ -156,7 +156,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
 
     $scope.loadVenue = function(){
       if(stateParams.venue_id){
-        Venue.get({id: stateParams.id}).$promise
+        Venue.get({id: stateParams.venue_id}).$promise
           .then(function(data){
             $scope.venue = data;
           })
