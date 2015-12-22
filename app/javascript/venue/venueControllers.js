@@ -66,7 +66,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   }
 
   $scope.showPromotionsList = function(venueId){
-    state.go("promotions.dashboard", {"venueId": venueId});
+    state.go("adminDashboard.venuePromotions", {venue_id: venueId});
   }
 
   $scope.isActive = function(object) {
@@ -162,3 +162,15 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
 
   }
 ])
+
+.controller('VenuePromotionsIndexController', ['$scope', 'VenuePromotion', '$stateParams','$sessionStorage',
+  function($scope, VenuePromotion, stateParams, $sessionStorage) {
+    VenuePromotion.query({venue_id: stateParams.venue_id}).$promise
+      .then(function(data){
+        console.log("successfully queried venue promotions :: "+data);
+        $scope.promotionList = data;
+      })
+      .catch(function(data){
+        console.log("error querying venues")
+      });
+}])

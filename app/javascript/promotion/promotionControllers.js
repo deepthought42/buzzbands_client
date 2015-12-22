@@ -20,8 +20,8 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
   });
 }])
 
-.controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams',
-  function($scope, Promotion, state, stateParams) {
+.controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams', 'VenuePromotion',
+  function($scope, Promotion, state, $stateParams, VenuePromotion) {
     $scope.promoPanel='index';
     $scope.promotion = {};
     $scope.promotionLoaded = true;
@@ -40,13 +40,25 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       return Promotion.query();
     }
 
+    $scope.getVenuePromotionList = function(venue_id){
+      return VenuePromotion.query({venue_id: venue_id});
+    }
+
     $scope.createPromotion = function(){
       $scope.promoPanel='create';
       console.log("CREATE PROMOTION CICKED");
       //state.go("new@promotions.dashboard");
     }
+console.log("VENUE ID :: "+ $stateParams.venue_id);
+    if(!$stateParams.venue_id){
+      console.log("show promotions");
 
-    $scope.promotionList = $scope.getPromotionList();
+      $scope.promotionList = $scope.getPromotionList();
+    }
+    else{
+      console.log("show promotions for venue");
+      $scope.promotionList = $scope.getVenuePromotionList($stateParams.venue_id);
+    }
 
     $scope.deletePromotions = function(){
       for(var i =0;i < $scope.promotionList.length; i++){

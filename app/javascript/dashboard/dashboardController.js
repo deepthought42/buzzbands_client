@@ -80,6 +80,21 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
           }
         }
       })
+      .state('adminDashboard.venuePromotions', {
+        url: '/venue/:venue_id/promotions',
+        parent: 'adminDashboard',
+        views: {
+          '':{
+            templateUrl: 'app/views/promotion/index.html',
+            controller: 'PromotionIndexController'
+          }
+        },
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      })
       .state('adminDashboard.shopBands', {
           url: '/shopBands',
           parent: 'adminDashboard',
@@ -171,8 +186,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
   $scope.$session = $sessionStorage;
   $scope.tog = $scope.$session.activeViewId;
   $scope.hasPermission = function(role){
-    return true;
-    //return $scope.$session.user.role == role;
+    return $scope.$session.user.role === role;
   }
 
   $scope.setPage = function(pageVal){
