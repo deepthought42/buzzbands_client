@@ -10,7 +10,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     });
 }])
 
-.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', function($scope, Venue, state, $sessionStorage) {
+.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', function($scope, Venue, $state, $sessionStorage) {
   $scope.venueLoaded = false;
   $scope.$session = $sessionStorage;
   $scope.venue = {};
@@ -36,7 +36,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     Venue.remove({id: venueId}).$promise
       .then(function(data){
         $scope.venueList = $scope.queryVenues();
-        state.go("venues");
+        $state.go("venues");
       })
       .catch(function(data){
         console.log("an error occurred while deleting venue");
@@ -58,9 +58,10 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
       }
   }
 
-  $scope.editVenue = function(venue){
+  $scope.editVenue = function(venue_id){
     $scope.venueLoaded = true;
-    $scope.venue = venue;
+    $scope.$session.last_venue_id = venue_id;
+    $state.go('adminDashboard.editVenue', {id: venue_id})
   }
 
   $scope.showCreatePanel = function(venue){
@@ -113,6 +114,8 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     $scope.$session = $sessionStorage;
     $auth.validateUser();
     $scope.categories = [{name: "Bar"},{name: "Night Club"}];
+    $scope.venue = {};
+
     $scope.hasPermission = function(role){
       return $scope.$session.user.role === role;
     }
@@ -122,7 +125,6 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
       Venue.save($scope.venue).$promise
         .then(function(data){
           $rootScope.$broadcast("refreshVenuesList");
-          $scope.venue = {};
         })
         .catch(function(data){
           console.log("there was an error creating venue");
@@ -131,6 +133,8 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
 
   }
   $scope.previewImage = function(files){
+    $scope.venue.url = files[0].url;
+
     var reader = new FileReader();
     if(typeof files[0] == 'Blob'){
       reader.readAsDataURL(files[0]);
@@ -148,9 +152,10 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   {
     $auth.validateUser();
     $scope.categories = [{name: "Bar"},{name: "Night Club"}]
+    $scope.venue = {};
 
     $scope.loadVenue = function(){
-      if(stateParams.id){
+      if(stateParams.venue_id){
         Venue.get({id: stateParams.id}).$promise
           .then(function(data){
             $scope.venue = data;
@@ -171,12 +176,13 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     }
 
     $scope.previewImage = function(files){
+      $scope.venue.url = files[0].url;
+
       var reader = new FileReader();
-      if(typeof files[0] === 'Blob'){
+      if(typeof files[0] == 'Blob'){
         reader.readAsDataURL(files[0]);
       }
       reader.onload = function(event){
-        $scope.logo_url = reader.result;
         $scope.venue.url = files[0].url;
         $scope.$apply()
       }

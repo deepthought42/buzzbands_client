@@ -38,11 +38,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
             templateUrl: 'app/views/venue/new.html',
             controller: 'VenueCreationController'
           },
-          'edit.venue@venues.adminDashboard': {
-            templateUrl: 'app/views/venue/edit.html',
-            controller: 'VenueDetailsController'
-          },
-          'index.venue@venues.adminDashboard': {
+          'edit.venues.adminDashboard': {
             templateUrl: 'app/views/venue/edit.html',
             controller: 'VenueDetailsController'
           }
@@ -182,7 +178,26 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
                         return $stateParams.promotionId;
                     }]
                   }
-                });
+                })
+                .state('adminDashboard.editVenue', {
+                    url: '/venues/edit/:venue_id',
+                    parent: 'adminDashboard',
+                    views: {
+                      '':{
+                        templateUrl: 'app/views/venue/edit.html',
+                        controller: 'VenueDetailsController'
+                      }
+                    },
+                    resolve: {
+                      auth: function($auth) {
+                        return $auth.validateUser();
+                      },
+                      promotionId: ['$stateParams', function($stateParams){
+                          return $stateParams.venue_id;
+                      }]
+                    }
+                  });
+
   }
 ])
 

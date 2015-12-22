@@ -6,7 +6,7 @@
     <div ui-view="new.venue@venues.adminDashboard"></div>
   </div>
   <div ng-switch-when="true">
-    <div ui-view="edit.venue@venues.adminDashboard"></div>  
+    <div ui-view="adminDashboard.editVenue"></div>
   </div>
 </div>
 
@@ -76,7 +76,7 @@
                 <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
               </td>
               <td>
-                <button ng-click="editVenue(venue)">Edit</button>
+                <button ng-click="editVenue(venue.id)">Edit</button>
               </td>
             </tr>
           </tbody>
