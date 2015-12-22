@@ -117,7 +117,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   $scope.previewImage = function(files){
     $scope.setUrl(files);
     var reader = new FileReader();
-    if(typeof files[0] === 'object'){
+    if(typeof files[0] === 'Blob'){
       reader.readAsDataURL(files[0]);
     }
     reader.onload = function(event){

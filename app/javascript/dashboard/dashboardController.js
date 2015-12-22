@@ -169,9 +169,14 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
 
 .controller('DashboardController', ['$scope', '$sessionStorage', '$state', function($scope, $sessionStorage, state) {
   $scope.$session = $sessionStorage;
-  $scope.tog = 1;
+  $scope.tog = $scope.$session.activeViewId;
   $scope.hasPermission = function(role){
     return true;
     //return $scope.$session.user.role == role;
+  }
+
+  $scope.setPage = function(pageVal){
+    $scope.tog = pageVal;
+    $scope.$session.activeViewId = pageVal;
   }
 }])
