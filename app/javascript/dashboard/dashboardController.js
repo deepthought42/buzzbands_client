@@ -27,7 +27,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
         }
       })
       .state('venues.adminDashboard', {
-        url: '/venues',
+        url: '/venues/:id',
         parent: 'adminDashboard',
         views: {
           '':{
@@ -67,6 +67,21 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
 
       .state('adminDashboard.promotions', {
         url: '/promotions',
+        parent: 'adminDashboard',
+        views: {
+          '':{
+            templateUrl: 'app/views/promotion/index.html',
+            controller: 'PromotionIndexController'
+          }
+        },
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      })
+      .state('adminDashboard.venuePromotions', {
+        url: '/venue/:venue_id/promotions',
         parent: 'adminDashboard',
         views: {
           '':{
@@ -169,9 +184,13 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
 
 .controller('DashboardController', ['$scope', '$sessionStorage', '$state', function($scope, $sessionStorage, state) {
   $scope.$session = $sessionStorage;
-  $scope.tog = 1;
+  $scope.tog = $scope.$session.activeViewId;
   $scope.hasPermission = function(role){
-    return true;
-    //return $scope.$session.user.role == role;
+    return $scope.$session.user.role === role;
+  }
+
+  $scope.setPage = function(pageVal){
+    $scope.tog = pageVal;
+    $scope.$session.activeViewId = pageVal;
   }
 }])

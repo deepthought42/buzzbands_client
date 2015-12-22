@@ -10,14 +10,22 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     });
 }])
 
-.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$localStorage','$sessionStorage', function($scope, Venue, state, session) {
+.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', function($scope, Venue, state, $sessionStorage) {
   $scope.venueLoaded = false;
+  $scope.$session = $sessionStorage;
+  $scope.venue = {};
+
+  $scope.hasPermission = function(role){
+    console.log("checking permissions "+$scope.$session.user.role);
+    return $scope.$session.user !== undefined && $scope.$session.user.role == role;
+  }
 
   $scope.queryVenues = function(){
     Venue.query().$promise
       .then(function(data){
         console.log("successfully queried venues :: "+data);
         $scope.venueList = data;
+        $scope.$session.venues = $scope.venueList;
       })
       .catch(function(data){
         console.log("error querying venues")
@@ -41,6 +49,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         Venue.remove({id: $scope.venueList[i].id}).$promise
           .then(function(data){
             $scope.venueList = $scope.queryVenues();
+            $scope.$session.venues = $scope.venueList;
           })
           .catch(function(data){
             console.log("an error occurred while deleting venue");
@@ -60,7 +69,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   }
 
   $scope.showPromotionsList = function(venueId){
-    state.go("promotions.dashboard", {"venueId": venueId});
+    state.go("adminDashboard.venuePromotions", {venue_id: venueId});
   }
 
   $scope.isActive = function(object) {
@@ -75,7 +84,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     $scope.venueLoaded = false;
   })
 
-  $scope.queryVenues();
+  $scope.venueList = $scope.queryVenues();
 
   $scope.selectAll = function(selected){
     for(var i=0; i<$scope.venueList.length; i++){
@@ -84,17 +93,28 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
       $scope.venueList[i].selected = selected
     }
   }
+
+  $scope.previewImage = function(files){
+    var reader = new FileReader();
+    console.log("Previewing image");
+    if(typeof files[0] === 'object' && typeof files[1] === 'Blob'){
+      reader.readAsDataURL(files[0]);
+    }
+    reader.onload = function(event){
+      console.log("applied preview");
+      $scope.venue.url = files[0].url;
+      $scope.$apply()
+    }
+  }
 }])
 
 .controller('VenueCreationController', ['$scope', 'Venue', '$state', '$auth', '$rootScope', '$sessionStorage',
   function($scope, Venue, state, $auth, $rootScope, $sessionStorage) {
     $scope.$session = $sessionStorage;
-    $scope.categories = [{name:"Bar"},
-                        {name:"Night Club"}];
     $auth.validateUser();
-
+    $scope.categories = [{name: "Bar"},{name: "Night Club"}];
     $scope.hasPermission = function(role){
-      return $scope.$session.role == role;
+      return $scope.$session.user.role === role;
     }
 
   $scope.createVenue = function(venueValid){
@@ -103,8 +123,6 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         .then(function(data){
           $rootScope.$broadcast("refreshVenuesList");
           $scope.venue = {};
-
-          //clear fields
         })
         .catch(function(data){
           console.log("there was an error creating venue");
@@ -113,20 +131,14 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
 
   }
   $scope.previewImage = function(files){
-    $scope.setUrl(files);
     var reader = new FileReader();
-    if(typeof files[0] === 'object'){
+    if(typeof files[0] == 'Blob'){
       reader.readAsDataURL(files[0]);
     }
     reader.onload = function(event){
-      $scope.logo_url = reader.result;
       $scope.venue.url = files[0].url;
       $scope.$apply()
     }
-  }
-
-  $scope.setUrl = function(files){
-    $scope.venue.url = files[0].url;
   }
 
 }])
@@ -135,6 +147,8 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   function($scope, Venue, state, stateParams, $auth, $rootScope)
   {
     $auth.validateUser();
+    $scope.categories = [{name: "Bar"},{name: "Night Club"}]
+
     $scope.loadVenue = function(){
       if(stateParams.id){
         Venue.get({id: stateParams.id}).$promise
@@ -155,5 +169,30 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         });
       }
     }
+
+    $scope.previewImage = function(files){
+      var reader = new FileReader();
+      if(typeof files[0] === 'Blob'){
+        reader.readAsDataURL(files[0]);
+      }
+      reader.onload = function(event){
+        $scope.logo_url = reader.result;
+        $scope.venue.url = files[0].url;
+        $scope.$apply()
+      }
+    }
+    $scope.loadVenue();
   }
 ])
+
+.controller('VenuePromotionsIndexController', ['$scope', 'VenuePromotion', '$stateParams','$sessionStorage',
+  function($scope, VenuePromotion, stateParams, $sessionStorage) {
+    VenuePromotion.query({venue_id: stateParams.venue_id}).$promise
+      .then(function(data){
+        console.log("successfully queried venue promotions :: "+data);
+        $scope.promotionList = data;
+      })
+      .catch(function(data){
+        console.log("error querying venues")
+      });
+}])

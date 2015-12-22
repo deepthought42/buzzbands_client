@@ -6,7 +6,7 @@
   <div class="col-sm-4 col-xs-4 overviewStatCard">
     <div class="overviewStat">
       <!-- active promotion count here. Following is temporary placeholder-->
-      15
+      {{(promotions | filter:{active:true}).length || 0}}
     </div>
     <div style="color:#888d8f;">
       Last Month
@@ -30,7 +30,7 @@
   <div class="col-sm-4 col-xs-4 overviewStatCard">
     <div class="overviewStat">
       <!-- total active accounts here. Following is temporary placeholder -->
-      <span class="status"> {{(activeAccounts | filter:{active:true}).length || -1}} </span>
+      <span class="status"> {{(activeAccounts | filter:{active:true}).length || 0}} </span>
     </div>
      <div style="color:#888d8f;">
       Total

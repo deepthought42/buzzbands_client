@@ -59,11 +59,12 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     $scope.getUserList();
   }
 ])
-.controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
-  function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
+.controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$sessionStorage',
+  function($scope, User, state, stateParams, $auth, $sessionStorage)
   {
     $scope.$session = $sessionStorage;
     $auth.validateUser();
+
     $scope.loadUser = function(){
       console.log(stateParams.userId);
       if(stateParams.userId != $scope.$session.user.id){
@@ -79,14 +80,32 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       if(userValid){
         User.update($scope.user).$promise.then(function(data){
           $scope.user = {};
-          state.go("adminDashboard.analytics", {"userId": id})
+          if($scope.hasPermission(2)){
+            state.go("analytics.adminDashboard");
+          }
+          else{
+            state.go("analytics.userDashboard");
+          }
         });
       }
     };
 
+    $scope.previewImage = function(files){
+      $scope.user.image = files[0].url;
+
+      var reader = new FileReader();
+      if(typeof files[0] === 'Blob'){
+        reader.readAsDataURL(files[0]);
+      }
+      reader.onload = function(event){
+        $scope.user.image = files[0].url;
+        $scope.$apply();
+      }
+    }
+
     $scope.user = $scope.loadUser();
     $scope.hasPermission = function(role){
-      return $scope.$session.user.role == role;
+      return $scope.$session.user.role >= role;
     }
   }
 ])
@@ -138,7 +157,6 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
               templateUrl: 'app/views/auth/register.html',
               position: {
                top: '30%',
-
               },
               fade: true
             }

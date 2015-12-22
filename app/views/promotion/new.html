@@ -25,7 +25,7 @@
 					</div>
 				</div>
 				<div class="col-sm-12 col-xs-12">
-          
+
 							<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 										pickerclass="btn addphoto"
 										multiple="true" mimetype="image/*"
@@ -33,9 +33,9 @@
 								 <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
 									Add Photo
 							</div>
-						
 
-					<img class="col-sm-6 col-xs-6" ng-src="{{promotion.ad_location}}" />
+
+					<img class="col-sm-6 col-xs-6" ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
 				</div>
 			</div>
 		</div>
@@ -49,25 +49,25 @@
             <input type="date" class="form-control" datepicker-popup="{{format}}"
 										ng-model="promotion.start_time" is-open="status.opened"
 										min-date="minDate" max-date="maxDate"
-										
+
 										date-disabled="disabled(date, mode)"
 										required
 										close-text="Close" />
-            
+
           </p>
       	</div>
-      	
-      	
-      	
-      	
-      	
-      	
-      	
+
+
+
+
+
+
+
 				<!-- Start time date time picker popup -->
         <div class="col-md-6">
             <p class="input-group">
               <input type="date" class="form-control"  ng-model="promotion.end_time" is-open="status.opened" min-date="minDate" max-date="maxDate"  date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-              
+
             </p>
 		      </div>
 		    </div>

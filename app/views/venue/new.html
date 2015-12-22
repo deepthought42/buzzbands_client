@@ -32,12 +32,13 @@
 					<div class="col-sm-12 col-xs-12">
 						<span tooltip-placement="left" tooltip="Cover Photo">
 
-						<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-							pickerclass="btn addphoto"
-							multiple="true" mimetype="image/*"
-							callback="previewImage(file)">
-								<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
-						</div>	</span>
+							<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+										pickerclass="btn addphoto"
+										multiple=false mimetype="image/*"
+										callback="previewImage(file)">
+									<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
+							</div>
+							</span>
 						<img ng-src="{{venue.url}}" />
 					</div>
 
