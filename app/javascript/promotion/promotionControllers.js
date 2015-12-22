@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'ui.bootstrap'])
+angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'ui.bootstrap', 'ngMaterial'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('promotions', {
@@ -24,6 +24,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
   function($scope, Promotion, state, $stateParams, VenuePromotion) {
     $scope.promoPanel='index';
     $scope.promotion = {};
+
     $scope.promotionLoaded = true;
     $scope.visibleTab = "thumbnail";
 
@@ -44,12 +45,15 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       return VenuePromotion.query({venue_id: venue_id});
     }
 
+    $scope.getVenue = function(venue_id){
+      $scope.venues.push(Venue.query({id: venue_id}));
+    }
     $scope.createPromotion = function(){
       $scope.promoPanel='create';
       console.log("CREATE PROMOTION CICKED");
       //state.go("new@promotions.dashboard");
     }
-console.log("VENUE ID :: "+ $stateParams.venue_id);
+
     if(!$stateParams.venue_id){
       console.log("show promotions");
 
@@ -92,7 +96,7 @@ console.log("VENUE ID :: "+ $stateParams.venue_id);
   $scope.previewImage = function(files){
     $scope.setUrl(files);
     var reader = new FileReader();
-    if(typeof files[0] === 'object'){
+    if(typeof files[0] === 'Blob'){
       reader.readAsDataURL(files[0]);
     }
     reader.onload = function(event){
@@ -105,12 +109,10 @@ console.log("VENUE ID :: "+ $stateParams.venue_id);
   $scope.setUrl = function(files){
     $scope.promotion.ad_location = files[0].url;
   }
-
-
 }])
 
 .controller('PromotionDetailsController', ['$scope', 'Promotion', '$state', '$stateParams', '$auth', '$rootScope',
-  function($scope, Promotion, state, stateParams, $auth, $rootScope)
+  function($scope, Promotion, $state, stateParams, $auth, $rootScope)
   {
     $auth.validateUser();
 
@@ -119,6 +121,8 @@ console.log("VENUE ID :: "+ $stateParams.venue_id);
         Promotion.get({id: stateParams.promotionId}).$promise
           .then(function(data){
             $scope.promotion = data;
+            $scope.promotion.start_time = new Date($scope.promotion.start_time );
+            $scope.promotion.end_time = new Date($scope.promotion.end_time );
           })
           .catch(function(data){
             console.log("ERR  :: "+ data)
@@ -126,18 +130,34 @@ console.log("VENUE ID :: "+ $stateParams.venue_id);
       }
     }
 
-    $scope.updatePromotion = function(promotionValid){
-      if(promotionValid){
-        Promotion.update($scope.promotion).$promise.then(function(data){
+    $scope.updatePromotion = function(promotion){
+      console.log("Updateing promotion");
+      promotion.start_time = new Date(promotion.start_time);
+      promotion.end_time = new Date(promotion.end_time);
+        Promotion.update(promotion).$promise.then(function(data){
           $scope.promotion = {};
-          $rootScope.$broadcast("showCreatePromotionView");
+          console.log("promotion updated");
+          $state.go("adminDashboard.promotions");
         });
-      }
     }
 
     $scope.open = function($event) {
         $scope.status.opened = true;
       };
+
+      $scope.previewImage = function(files){
+        $scope.promotion.ad_location = files[0].url;
+
+        var reader = new FileReader();
+        if(typeof files[0] === 'object' || typeof files[0] == 'Blob'){
+          reader.readAsDataURL(files[0]);
+        }
+        reader.onload = function(event){
+          $scope.logo_url = reader.result;
+          $scope.promotion.ad_location = files[0].url;
+          $scope.$apply()
+        }
+      }
 
     $scope.status = {
       opened: false

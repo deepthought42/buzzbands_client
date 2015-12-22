@@ -2,7 +2,7 @@
 <div id="promotionUpdatePanel" class="col-md-12">
 	<form name="promotionForm"
 				enctype="multipart/form-data"
-				ng-submit="updatePromotion(promotionForm.$valid)"
+				ng-submit="updatePromotion(promotion)"
 				novalidate>
 		<div class="col-md-12">
 			<div class="col-md-5">
@@ -27,9 +27,9 @@
 				<div class="col-sm-12 col-xs-12">
 
 					<div   filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-						pickerclass="btn addphoto"
-						multiple="true" mimetype="image/*"
-						callback="previewImage(file)">
+									pickerclass="btn addphoto"
+									multiple="false" mimetype="image/*"
+									callback="previewImage(file)">
                         <span  tooltip-placement="right" tooltip="cover photo"><i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>Add Photo</span>
 					</div>
 					<img style="max-width:100%;"ng-src="{{promotion.ad_location}}" />
@@ -39,36 +39,11 @@
 		<div style="display:inline-block;">
 			<div class="row">
       	<div class="col-md-6">
-          <p class="input-group">
-            <input type="date" class="form-control" datepicker-popup="{{format}}"
-										ng-model="promotion.start_time" is-open="status.opened"
-										min-date="minDate" max-date="maxDate"
-										datepicker-options="dateOptions"
-										date-disabled="disabled(date, mode)"
-										required
-										close-text="Close" />
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-          </p>
+					<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker>
       	</div>
 				<!-- Start time date time picker popup -->
         <div class="col-md-6">
-            <p class="input-group">
-              <input type="date" class="form-control" datepicker-popup="{{format}}"
-										 ng-model="promotion.end_time"
-										 is-open="status.opened"
-										 min-date="minDate"
-										 max-date="maxDate"
-										 datepicker-options="dateOptions"
-										 date-disabled="disabled(date, mode)"
-										 ng-required="true"
-										 close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>
-		      </div>
+					<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker>
 		    </div>
 			</div>
 		</div>
@@ -76,6 +51,7 @@
 		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
 			<button style="background-color:#de519b;"class="btn btn-primary"
 						  type="submit"
+							ng-click="updatePromotion(promotion)"
 							ng-disabled="promotionForm.$invalid">
 				Update
 			</button>
