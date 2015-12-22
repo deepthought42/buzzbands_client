@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'buzzbands.VenueService', 'ui.bootstrap', 'ngMaterial'])
+angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'buzzbands.VenueService', 'ui.bootstrap', 'ngMaterial', 'angularMoment'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('promotions', {
@@ -88,16 +88,16 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         promotion.selected = selected
       }
     }
-    
-  
-    
-    
 
 
 
 
-    
-    
+
+
+
+
+
+
   }
 ])
 
