@@ -10,7 +10,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     });
 }])
 
-.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', function($scope, Venue, $state, $sessionStorage) {
+.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', '$rootScope', function($scope, Venue, $state, $sessionStorage, $rootScope) {
   $scope.venueLoaded = false;
   $scope.$session = $sessionStorage;
   $scope.venue = {};
@@ -60,6 +60,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   $scope.editVenue = function(venue_id){
     $scope.venueLoaded = true;
     $scope.$session.last_venue_id = venue_id;
+    $rootScope.$broadcast('reloadVenueForEdit');
   }
 
   $scope.showCreatePanel = function(venue){
@@ -180,6 +181,11 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     }
 
     $scope.loadVenue();
+
+    $scope.$on('reloadVenueForEdit', function(event, data){
+      console.log("reladed venue for edit");
+      $scope.loadVenue();
+    });
   }
 ])
 
