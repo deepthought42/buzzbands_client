@@ -1,4 +1,7 @@
 <div id="venueCreatePanel" class="col-sm-12" >
+	<div class="col-sm-5 col-offset-2">
+		<img ng-src="{{venue.url ? venue.url : 'images/venue_img_missing.jpg'}}" />
+	</div>
 	<span style="color:#808266;font-size:30px;">ADD NEW ACCOUNT</span>
 	<br /><br />
 	<form name="venueForm"
@@ -32,14 +35,11 @@
 					pickerclass="btn addphoto"
 					multiple=false
 					mimetype="image/*"
-					callback="previewImage(file)">
+					callback="previewImage(file)"
+					class="pull-left">
 						<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
 				</div>
 			</div>
-
-			<span class="col-sm-2">
-				<img ng-src="{{venue.url ? venue.url : 'images/venue_img_missing.jpg'}}" />
-			</span>
 			<div class="col-sm-12 col-xs-12">
 				<input  class="form-control"
 								type="text"

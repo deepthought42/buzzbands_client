@@ -1,7 +1,11 @@
 
-<div id="venueEditPanel" class="col-sm-12">
+<div id="venueEditPanel" class="col-sm-11">
   <div class="row" >
-      <span style="color:#808266;font-size:30px;">EDIT VENUE</span><br><br>
+      <span style="color:#808266;font-size:30px;">EDIT VENUE</span>
+      <span class="col-sm-2 pull-right">
+        <img ng-src="{{venue.url ? venue.url : 'images/logo.png'}}" />
+      </span>
+      <br><br>
       <form name="venueForm"
             enctype="multipart/form-data"
             ng-submit="updateVenue(venueForm.$valid)"
@@ -23,7 +27,7 @@
                 </div>
               </div>
               <div class="col-sm-12">
-                <select class="form-control" ng-options="category.name for category in categories" ng-model="venue.category">
+                <select class="form-control" ng-options="category.name for category in categories" ng-model="venue.category" ng-required>
                   <option value="" ng-selected>Select Category</option>
                 </select>
               </div>
@@ -31,9 +35,7 @@
                 <span class="col-sm-5">
                   Cover Photo:
                 </span>
-                <span class="col-sm-2">
-                  <img ng-src="{{venue.url ? venue.url : 'images/logo.png'}}" />
-                </span>
+
                 <div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
                     pickerclass="btn btn-default"
                     mimetype="image/*"
