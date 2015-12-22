@@ -98,7 +98,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     $auth.validateUser();
     $scope.categories = [{name: "Bar"},{name: "Night Club"}];
     $scope.hasPermission = function(role){
-      return $scope.$session.role === role;
+      return $scope.$session.user.role === role;
     }
 
   $scope.createVenue = function(venueValid){
@@ -107,8 +107,6 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         .then(function(data){
           $rootScope.$broadcast("refreshVenuesList");
           $scope.venue = {};
-
-          //clear fields
         })
         .catch(function(data){
           console.log("there was an error creating venue");
@@ -154,7 +152,6 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     }
 
     $scope.updateVenue = function(venueValid){
-      console.log("venue valid");
       if(venueValid){
         Venue.update($scope.venue).$promise.then(function(data){
           $scope.venue = {};
