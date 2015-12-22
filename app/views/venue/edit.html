@@ -32,13 +32,16 @@
 									Cover Photo:
 								</span>
 								<span class="col-sm-2">
-									<img href="/no-image.jpg" />
+									<img ng-src="{{venue.url}}" />
+
+									<img href="images/logo.png" />
 								</span>
 								<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 										pickerclass="btn btn-default"
-										multiple="false" mimetype="image/*"
-										callback="callBackToExecuteAfterUpload(file)"
+										mimetype="image/*"
+										callback="previewImage(file)"
 										multiple=false>Add Photo</div>
+
 							</div>
 							<div class="col-sm-12">
 								<input  class="form-control"

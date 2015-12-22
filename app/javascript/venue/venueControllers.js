@@ -10,9 +10,10 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     });
 }])
 
-.controller('VenueIndexController', ['$scope', 'Venue', '$state','$sessionStorage', function($scope, Venue, state, $sessionStorage) {
+.controller('VenueIndexController', ['$scope', 'Venue', '$state', '$sessionStorage', function($scope, Venue, state, $sessionStorage) {
   $scope.venueLoaded = false;
   $scope.$session = $sessionStorage;
+  $scope.venue = {};
 
   $scope.hasPermission = function(role){
     console.log("checking permissions "+$scope.$session.user.role);
@@ -24,6 +25,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
       .then(function(data){
         console.log("successfully queried venues :: "+data);
         $scope.venueList = data;
+        $scope.$session.venues = $scope.venueList;
       })
       .catch(function(data){
         console.log("error querying venues")
@@ -47,6 +49,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         Venue.remove({id: $scope.venueList[i].id}).$promise
           .then(function(data){
             $scope.venueList = $scope.queryVenues();
+            $scope.$session.venues = $scope.venueList;
           })
           .catch(function(data){
             console.log("an error occurred while deleting venue");
@@ -90,6 +93,19 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
       $scope.venueList[i].selected = selected
     }
   }
+
+  $scope.previewImage = function(files){
+    var reader = new FileReader();
+    console.log("Previewing image");
+    if(typeof files[0] === 'object' && typeof files[1] === 'Blob'){
+      reader.readAsDataURL(files[0]);
+    }
+    reader.onload = function(event){
+      console.log("applied preview");
+      $scope.venue.url = files[0].url;
+      $scope.$apply()
+    }
+  }
 }])
 
 .controller('VenueCreationController', ['$scope', 'Venue', '$state', '$auth', '$rootScope', '$sessionStorage',
@@ -115,20 +131,14 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
 
   }
   $scope.previewImage = function(files){
-    $scope.setUrl(files);
     var reader = new FileReader();
-    if(typeof files[0] === 'Blob'){
+    if(typeof files[0] == 'Blob'){
       reader.readAsDataURL(files[0]);
     }
     reader.onload = function(event){
-      $scope.logo_url = reader.result;
       $scope.venue.url = files[0].url;
       $scope.$apply()
     }
-  }
-
-  $scope.setUrl = function(files){
-    $scope.venue.url = files[0].url;
   }
 
 }])
@@ -160,6 +170,18 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
       }
     }
 
+    $scope.previewImage = function(files){
+      var reader = new FileReader();
+      if(typeof files[0] === 'Blob'){
+        reader.readAsDataURL(files[0]);
+      }
+      reader.onload = function(event){
+        $scope.logo_url = reader.result;
+        $scope.venue.url = files[0].url;
+        $scope.$apply()
+      }
+    }
+    $scope.loadVenue();
   }
 ])
 

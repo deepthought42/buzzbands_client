@@ -27,7 +27,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
         }
       })
       .state('venues.adminDashboard', {
-        url: '/venues',
+        url: '/venues/:id',
         parent: 'adminDashboard',
         views: {
           '':{

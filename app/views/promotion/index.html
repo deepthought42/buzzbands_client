@@ -78,7 +78,7 @@
             <td><img style="max-width:200px;"class="img-responsive" ng-src="{{promo.ad_location}}"></td>
             <td>{{promo.start_time | date:'MM/dd/yyyy @ h:mma'}}</td>
             <td>{{promo.end_time | date:'MM/dd/yyyy @ h:mma'}}</td>
-            <td>{{promo.venue_id}}</td>
+            <td><img ng-src="{{getVenueName(promo.venue_id) || 'app/img/missing_user.png'}}" /></td>
             <td>
               <button ng-click="editPromotion(promo.id)" class="edit">Edit</button>
             </td>

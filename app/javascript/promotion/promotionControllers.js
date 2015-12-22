@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'ui.bootstrap', 'ngMaterial'])
+angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'buzzbands.VenueService', 'ui.bootstrap', 'ngMaterial'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('promotions', {
@@ -20,11 +20,12 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
   });
 }])
 
-.controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams', 'VenuePromotion',
-  function($scope, Promotion, state, $stateParams, VenuePromotion) {
+.controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams', 'VenuePromotion', 'Venue', '$sessionStorage',
+  function($scope, Promotion, state, $stateParams, VenuePromotion, Venue, $sessionStorage) {
+    $scope.$session = $sessionStorage;
     $scope.promoPanel='index';
     $scope.promotion = {};
-
+    $scope.venues = $scope.$session.venues;
     $scope.promotionLoaded = true;
     $scope.visibleTab = "thumbnail";
 
@@ -45,8 +46,12 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       return VenuePromotion.query({venue_id: venue_id});
     }
 
-    $scope.getVenue = function(venue_id){
-      $scope.venues.push(Venue.query({id: venue_id}));
+    $scope.getVenueName = function(venue_id){
+      for(var i =0; i<$scope.venues.length ;i++){
+        if($scope.venues[i].id == venue_id){
+          return $scope.venues[i].url;
+        }
+      }
     }
     $scope.createPromotion = function(){
       $scope.promoPanel='create';

@@ -1,0 +1,9 @@
+<div ng-switch="venueLoaded">
+  <div ng-switch-when="false">
+    <div ui-view="new.venue@venues.adminDashboard"></div>
+  </div>
+  <div ng-switch-when="true" >
+    <div ui-view="edit.venue@venues.adminDashboard"></div>
+  </div>
+</div>
+<div ui-view="venue.index@venues.adminDashboard"></div>
