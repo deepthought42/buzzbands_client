@@ -1,7 +1,7 @@
 
 
 	<div class="row" >
-		<div id="userCreatePanel" class="col-md-10">
+		<div id="userEditPanel" class="col-md-10">
       <span style="color:#808266;font-size:30px;">{{user.email}}</span><br><br>
 			<div style="color:white;" class="col-sm-12">
 
@@ -14,15 +14,13 @@
 								<span style="color:white;"class="col-sm-6 col-md-6 col-lg-6">
 										<img style="max-width:50%;" ng-src="{{user.image != null ? user.image : 'app/img/missing_user.png'}}" /><br>
 									Avatar Photo:
-
-
-
 								<br>
 								<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 											pickerclass="btn addphoto"
 											multiple="false" mimetype="*"
 											callback="previewImage(file)">
-									 <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
+									 <i  style="margin-right:10px;"
+											 class="addphoto fa fa-camera"></i>
 										Add Photo
 								</div>
 						<div  ng-show="user.email != $session.user.email">
@@ -30,7 +28,9 @@
 								<button class="btn">Send password reset email</button>
 							</div>
 							<div class="col-sm-6" ng-show="$session.user.email != user.email">
-								<select ng-options="role.id as role.name for role in roles | filter:lessThan('id',$session.user.role) " ng-selected="user.role.id == role.id" ng-model="user.role">
+								<select ng-options="role.id as role.name for role in roles | filter:lessThan('id',$session.user.role) "
+												ng-selected="user.role.id == role.id"
+												ng-model="user.role">
 									<option value="">Select role</option>
 								</select>
 							</div>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.UserServices'])
+angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.UserServices', 'buzzbands.VenueService'])
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('authenticate', {
     url: '/authenticate',
@@ -90,7 +90,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       else{
         $scope.user = $scope.$session.user;
       }
-      return $scope.user
+      return $scope.user;
     }
 
     $scope.updateUser = function(user){
@@ -140,15 +140,58 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     }
   }
 ])
-.controller('UserCreationController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
-  function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
+.controller('UserCreationController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage', 'Role', 'Venue',
+  function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage, Role, Venue)
   {
     $scope.$session = $sessionStorage;
     $auth.validateUser();
+    $scope.user = {};
+    $scope.roles = Role;
 
-    $scope.editMyAccount = function(){
-      state.go('adminDashboard.editUser', {"userId": $scope.$session.user.id});
+    $scope.queryVenues = function(){
+      Venue.query().$promise
+        .then(function(data){
+          console.log("successfully queried venues :: "+data);
+          $scope.venues = $scope.$session.venues;
+        })
+        .catch(function(data){
+          console.log("error querying venues")
+        });
     }
+
+    /**
+    * Generate random string of 10 characters for temp password
+    */
+    $scope.generatePassword = function(){
+      var generatedPass = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      for( var i=0; i < 10; i++ ){
+        generatedPass += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+
+      $scope.user.password = generatedPass;
+      $scope.user.password_confirmation = generatedPass;
+    }
+
+    $scope.createUser = function(user){
+      console.log("creating user");
+      $auth.submitRegistration(user)
+        .then(function(resp) {
+          console.log("SUCCESSFUL USER CREATION!!!");
+        })
+        .catch(function(resp) {
+          console.log("FAILED USER CREATION!!!");
+        });
+
+      state.go('adminDashboard.users', {"userId": $scope.$session.user.id});
+    }
+
+    $scope.hasPermission = function(role){
+      return $scope.$session.user.role >= role;
+    }
+
+    $scope.queryVenues();
   }
 ])
 .controller('UserAccountAccessController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
@@ -164,7 +207,6 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 ])
 .controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state', 'User',
 	function ($scope, $rootScope, $auth, $sessionStorage, $state, User) {
-
     $scope.settings = {
        closeEl: '.close',
        modal: {
@@ -217,7 +259,6 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 			if(isValid){
 				$auth.submitRegistration(credentials).then(function(registeredUser) {
           $scope.$session.user = registeredUser.data.data;
-          $scope.$session.user.signedIn = $auth.validateUser();
 					$scope.successfulRegistration = true;
           $state.go("analytics.adminDashboard");
 					//show some sort of statement that indicates they are welcome to enjoy
