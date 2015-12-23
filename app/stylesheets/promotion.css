@@ -121,3 +121,9 @@ body, html{
 background-color: #242831!important;
 
 }
+
+
+#promotion{
+  
+  z-index: 10;
+}
