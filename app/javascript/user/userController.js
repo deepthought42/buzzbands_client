@@ -59,11 +59,12 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     $scope.getUserList();
   }
 ])
-.controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$sessionStorage',
-  function($scope, User, state, stateParams, $auth, $sessionStorage)
+.controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$sessionStorage', 'Role',
+  function($scope, User, state, stateParams, $auth, $sessionStorage, Role)
   {
     $scope.$session = $sessionStorage;
     $auth.validateUser();
+    $scope.roles = Role;
 
     $scope.loadUser = function(){
       console.log(stateParams.userId);
@@ -97,6 +98,12 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
           console.log("FAILED reset password");
         });
     };
+
+    $scope.lessThan = function(prop, val){
+        return function(item){
+          return item[prop] <= val;
+        }
+    }
 
     $scope.previewImage = function(files){
       $scope.user.image = files[0].url;

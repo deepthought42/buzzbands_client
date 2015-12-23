@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div ng-switch="venueLoaded" ng-show="true" class="col-sm-12">
+=======
+<div ng-switch="venueLoaded" ng-show="hasPermission(2)" class="col-sm-5">
+>>>>>>> b18801f2e35ffb1542484277a0f0cb340f688781
   <div ng-switch-when="false">
     <div ui-view="new@venues.adminDashboard"></div>
   </div>
@@ -41,43 +45,38 @@
           Delete
       </button>
     </span>
-
-  </div>
-
-  <div class="col-lg-12 col-md-12 col-sm-12 ">
-    <table style="width:100%;">
-    <thead style="color:White;">
-      <tr>
-        <td><input type="checkbox" ng-model="selectAllPromos" ng-click="selectAll(selectAllPromos)"</td>
-        <td>Name</td>
-        <td>Active</td>
-        <td></td>
-      </tr>
-    </thead>
-    </table
-    <div style="height:350px;" id="style-2" class="table-responsive">
-      <table style="width:100%;" class="table-striped">
-
-        <tbody>
-          <tr ng-repeat="venue in venueList" >
-            <td>
-              <input type="checkbox" ng-model="venue.selected" />
-            </td>
-            <td>
-                <img style="width:100px;" ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
-            </td>
-            <td>
-              <i ng-show="venue.active" class="success fa fa-check "></i>
-             <i ng-show="!venue.active" class="fa fa-times-circle danger"></i>
-            </td>
-            <td ng-click="showPromotionsList(venue.id)" >
-              <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
-            </td>
-            <td>
-              <button ng-click="editVenue(venue.id)">Edit</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-lg-12">
+      <div style="height:350px;" id="style-2" class="table-responsive">
+        <table style="width:100%;" class="table-striped">
+          <thead style="color:White;">
+            <tr>
+              <td><input type="checkbox" ng-model="selectAllPromos" ng-click="selectAll(selectAllPromos)"</td>
+              <td>Name</td>
+              <td>Active</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="venue in venueList"   >
+              <td>
+                <input type="checkbox" ng-model="venue.selected" />
+              </td>
+              <td ng-click="showPromotionsList(venue.id)">
+                  <img style="width:100px;" ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
+              </td>
+              <td ng-click="showPromotionsList(venue.id)">
+                <i ng-show="venue.active" class="success fa fa-check "></i>
+               <i ng-show="!venue.active" class="fa fa-times-circle danger"></i>
+              </td>
+              <td ng-click="showPromotionsList(venue.id)">
+                <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
+              </td>
+              <td>
+                <button ng-show="hasPermission(3)" ng-click="editVenue(venue.id)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
