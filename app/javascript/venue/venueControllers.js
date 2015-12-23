@@ -69,7 +69,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   }
 
   $scope.showPromotionsList = function(venueId){
-    state.go("adminDashboard.venuePromotions", {venue_id: venueId});
+    $state.go("adminDashboard.venuePromotions", {venue_id: venueId});
   }
 
   $scope.isActive = function(object) {

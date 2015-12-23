@@ -54,22 +54,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="venue in venueList" >
+            <tr ng-repeat="venue in venueList"   >
               <td>
                 <input type="checkbox" ng-model="venue.selected" />
               </td>
-              <td>
+              <td ng-click="showPromotionsList(venue.id)">
                   <img style="width:100px;" ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
               </td>
-              <td>
+              <td ng-click="showPromotionsList(venue.id)">
                 <i ng-show="venue.active" class="success fa fa-check "></i>
                <i ng-show="!venue.active" class="fa fa-times-circle danger"></i>
               </td>
-              <td ng-click="showPromotionsList(venue.id)" >
+              <td ng-click="showPromotionsList(venue.id)">
                 <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
               </td>
               <td>
-                <button ng-click="editVenue(venue.id)">Edit</button>
+                <button ng-show="hasPermission(3)" ng-click="editVenue(venue.id)">Edit</button>
               </td>
             </tr>
           </tbody>
