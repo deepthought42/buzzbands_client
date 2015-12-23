@@ -27,7 +27,12 @@
 							<div ng-show="hasPermission(2)">
 								<button class="btn">Send password reset email</button>
 							</div>
-						<div class="col-sm-12" ng-show="user.email != $session.user.email">
+							<div class="col-sm-6" ng-show="$session.user.email != user.email">
+								<select ng-options="role.id as role.name for role in roles | filter: lessThan('id', session.user.role )" ng-selected="user.role.id == role.id" ng-model="user.role">
+									<option value="">Select role</option>
+								</select>
+							</div>
+						<div class="col-sm-6" ng-show="user.email != $session.user.email">
 							Active?
 							<input type="checkbox" ng-model="user.active" ng-disabled="!hasPermission(2)" />
 						</div>
@@ -38,7 +43,7 @@
 							</button>
 						</div>
 			</form>
-			<form ng-submit="updatePassword(changePasswordForm)" role="form" ng-init="changePasswordForm = {}">
+			<form ng-submit="updatePassword(changePasswordForm)" role="form" ng-init="changePasswordForm = {}" ng-show="$session.user.email == user.email">
 			  <div class="form-group">
 			    <label>password</label>
 			    <input type="password" name="password" ng-model="changePasswordForm.password" required="required" class="form-control" placeholder="Password">

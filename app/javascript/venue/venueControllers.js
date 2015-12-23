@@ -16,7 +16,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   $scope.venue = {};
 
   $scope.hasPermission = function(role){
-    return $scope.$session.user !== undefined && $scope.$session.user.role == role;
+    return $scope.$session.user !== undefined && $scope.$session.user.role >= role;
   }
 
   $scope.queryVenues = function(){
