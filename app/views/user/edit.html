@@ -28,7 +28,7 @@
 								<button class="btn">Send password reset email</button>
 							</div>
 							<div class="col-sm-6" ng-show="$session.user.email != user.email">
-								<select ng-options="role.id as role.name for role in roles | filter: lessThan('id', session.user.role )" ng-selected="user.role.id == role.id" ng-model="user.role">
+								<select ng-options="role.id as role.name for role in roles | filter:lessThan('id',$session.user.role) " ng-selected="user.role.id == role.id" ng-model="user.role">
 									<option value="">Select role</option>
 								</select>
 							</div>
