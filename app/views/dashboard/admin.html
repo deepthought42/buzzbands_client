@@ -29,16 +29,18 @@
                     ng-click='setPage(3)'>Promotions</button><br>
             <button ui-sref="adminDashboard.newPromotion"
                     class="add btn btn-primary"
-                    ng-show="tog==3">Add New</button>
+                    ng-show="tog==3 && hasPermission(3)">Add New</button>
           </div>
-          <div class="col-sm-12 col-xs-12">
+          <div class="col-sm-12 col-xs-12" ng-show="hasPermission(4)">
             <button style="margin-top:10px;" ui-sref="adminDashboard.users"
                     ng-class='{"navButtonActive":$session.activeViewId==4,"navButton":$session.activeViewId!=4}'
-                    ng-click='setPage(4)'
-                    ng-show="hasPermission('admin')">Users</button><br>
-                     <button ui-sref="#"
-                    class="add btn btn-primary"
-                    ng-show="$session.activeViewId==4"ng-click="addUser()">Add New</button>
+                    ng-click='setPage(4)'>
+                      Users
+            </button><br/>
+            <<button ui-sref="#"
+                     class="add btn btn-primary"
+                     ng-show="$session.activeViewId==4"
+                     ng-click="addUser()">Add New</button>
 
           </div>
         </div>

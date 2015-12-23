@@ -53,7 +53,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     }
 
     $scope.hasPermission = function(role){
-     if ($scope.$session.user.role == role) {return true;}
+     if ($scope.$session.user.role >= role) {return true;}
      return false;
     }
     $scope.getUserList();
@@ -76,8 +76,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       return $scope.user
     }
 
-    $scope.updateUser = function(userValid){
-      if(userValid){
+    $scope.updateUser = function(user){
         User.update($scope.user).$promise.then(function(data){
           $scope.user = {};
           if($scope.hasPermission(2)){
@@ -87,7 +86,16 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
             state.go("analytics.userDashboard");
           }
         });
-      }
+    };
+
+    $scope.updatePassword = function() {
+      $auth.updatePassword($scope.updatePasswordForm)
+        .then(function(resp) {
+          console.log("Sucessfully reset password");
+        })
+        .catch(function(resp) {
+          console.log("FAILED reset password");
+        });
     };
 
     $scope.previewImage = function(files){
