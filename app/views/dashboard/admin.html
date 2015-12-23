@@ -3,7 +3,7 @@
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300' rel='stylesheet' type='text/css'>
 <div class="container-fluid">
     <br>
-    <button id="settings" 
+    <button id="settings"
             ng-controller="UserAccountAccessController"
             id"editMyAccountButton"
             class="pull-right fa fa-user"
@@ -38,7 +38,7 @@
                     ng-click='setPage(4)'>
                       Users
             </button><br/>
-            <button ui-sref="#"
+            <button ui-sref="adminDashboard.createUser"
                      class="add btn btn-primary"
                      ng-show="$session.activeViewId==4"
                      ng-click="addUser()">Add New</button>

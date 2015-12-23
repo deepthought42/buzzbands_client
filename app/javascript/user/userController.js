@@ -23,15 +23,31 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 	function ($scope, $rootScope, $auth, $sessionStorage, state, User, Role) {
     $scope.$session = $sessionStorage;
     $scope.roles = Role;
+
+    /**
+    *
+    */
     $scope.getUserList = function(){
-      User.query().$promise
-        .then(function(data){
-          console.log("successfully queried users :: "+data);
-          return $scope.userList = data;
-        })
-        .catch(function(data){
-          console.log("error querying users")
-        });
+      if($scope.$session.user.role == 3){
+        User.query().$promise
+          .then(function(data){
+            console.log("successfully queried users :: "+data);
+            return $scope.userList = data;
+          })
+          .catch(function(data){
+            console.log("error querying users")
+          });
+      }
+      else {
+        User.query().$promise
+          .then(function(data){
+            console.log("successfully queried users :: "+data);
+            return $scope.userList = data;
+          })
+          .catch(function(data){
+            console.log("error querying users")
+          });
+      }
     }
 
     /**
@@ -124,7 +140,17 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     }
   }
 ])
+.controller('UserCreationController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
+  function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
+  {
+    $scope.$session = $sessionStorage;
+    $auth.validateUser();
 
+    $scope.editMyAccount = function(){
+      state.go('adminDashboard.editUser', {"userId": $scope.$session.user.id});
+    }
+  }
+])
 .controller('UserAccountAccessController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
   function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
   {

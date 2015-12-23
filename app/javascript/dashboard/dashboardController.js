@@ -149,6 +149,24 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
                 }]
               }
             })
+            .state('adminDashboard.createUser', {
+                url: 'admin/users/new',
+                parent: 'adminDashboard',
+                views: {
+                  '':{
+                    templateUrl: 'app/views/user/new.html',
+                    controller: 'UserCreationController'
+                  }
+                },
+                resolve: {
+                  auth: function($auth) {
+                    return $auth.validateUser();
+                  },
+                  userId: ['$stateParams', function($stateParams){
+                      return $stateParams.userId;
+                  }]
+                }
+              })
             .state('adminDashboard.newPromotion', {
                 url: '/promotions/new/:promotionId',
                 parent: 'adminDashboard',
