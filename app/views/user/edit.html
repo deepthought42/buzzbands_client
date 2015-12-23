@@ -27,43 +27,7 @@
 							<div ng-show="hasPermission(2)">
 								<button class="btn">Send password reset email</button>
 							</div>
-							<div ng-show="$session.user.id==user.id">
-						    <div class="form-group">
-						      <input placeholder= "Password"
-						              type="password"
-						              name="password"
-						              id="password"
-						              ng-model="user.password"
-						              class="form-control"
-						              required
-						              minlength="8"
-													ng-show="$session.user.id==user.id"/>
-						      <div ng-messages="userForm.password.$error" ng-if="userForm.$submitted">
-						        <p ng-message="minlength">
-						            Password must be at least 8 characters.
-						        </p>
-						      </div>
-						    </div>
-						    <div class="form-group">
-						      <input placeholder= "Confirm Password"
-						              type="password"
-						              name="confirmation_password"
-						              id="confirmation_password"
-						              ng-model="user.confirmation_password"
-						              class="form-control"
-						              required
-													ng-show="$session.user.id==user.id" />
-						      <div ng-messages="userForm.confirmation_password.$error" ng-if="userForm.$submitted">
-						        <p ng-message="required" >
-						              Confirmation password is required.
-						        </p>
-						        <p 	ng-if="registrationForm.password != userForm.confirmation_password" >
-						              Passwords do not match.
-						        </p>
-						      </div>
-								</div>
-							</div>
-						<div class="col-sm-12">
+						<div class="col-sm-12" ng-show="user.email != $session.user.email">
 							Active?
 							<input type="checkbox" ng-model="user.active" ng-disabled="!hasPermission(2)" />
 						</div>
