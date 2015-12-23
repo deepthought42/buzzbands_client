@@ -178,7 +178,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       console.log("creating user");
       user.uid = user.email;
       user.provider="email";
-      $auth.submitRegistration({"user" : user, 'venue_id': venue_id})
+      $auth.submitRegistration({"user" : user, 'venue_id': venue_id, 'role': user.role})
         .then(function(resp) {
           console.log("SUCCESSFUL USER CREATION!!!");
         })
