@@ -90,15 +90,13 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
 
-
-
-
-
-
-
+ $scope.time = '2012-04-23T18:25:43Z';
 
 
   }
+
+
+
 ])
 
 .controller('PromotionCreationController', ['$scope', 'Promotion', function($scope, Promotion) {

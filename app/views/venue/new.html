@@ -1,7 +1,5 @@
-<div id="venueCreatePanel" class="col-sm-12" >
-	<div class="col-sm-5 col-offset-2">
-		<img style="width:200px;" ng-src="{{venue.url ? venue.url : 'images/venue_img_missing.jpg'}}" />
-	</div>
+<div id="venueCreatePanel" class="col-sm-6" >
+
 	<span style="color:#808266;font-size:30px;">ADD NEW ACCOUNT</span>
 	<br /><br />
 	<form name="venueForm"
@@ -114,4 +112,8 @@
 		</div>
 	</form>
 </div>
+</div>
+
+<div class="col-sm-6 col-lg-6">
+	<img style="width:100%; max-width:450px;" class="img-responsive" ng-src="{{venue.url ? venue.url : 'images/venue_img_missing.jpg'}}" />
 </div>

@@ -18,7 +18,7 @@
     "angular-resource": "latest",
     "angular-morph": "latest",
     "angular-stripe-checkout": "2.2.1",
-    "ngDraggable":"latest"
+    "angular-dragdrop": "1.0.7"
   },
   "resolutions": {
     "angular": "1.4.8",
