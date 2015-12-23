@@ -226,7 +226,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
   $scope.$session = $sessionStorage;
   $scope.tog = $scope.$session.activeViewId;
   $scope.hasPermission = function(role){
-    return $scope.$session.user.role >= role;
+    return $scope.$session.user && $scope.$session.user.role >= role;
   }
 
   $scope.setPage = function(pageVal){

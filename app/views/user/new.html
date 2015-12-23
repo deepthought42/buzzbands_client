@@ -7,7 +7,7 @@
 			</div>
 			<form name="userForm"
 						enctype="multipart/form-data"
-						ng-submit="createUser(user)"
+						ng-submit="createUser(user, venue_id)"
 						novalidate
 						ng-init="user = {}">
 							<div class="col-sm-12">
@@ -42,7 +42,7 @@
 								<button type="button" class="form-control" ng-click="generatePassword()">Generate Password </button>
 							</div>
 						<div class="form-group">
-							<select ng-options="venue.id as venue.name for venue in venues " ng-selected="user.venue_id==ve	nue" ng-model="user.venue_id" class="form-control">
+							<select ng-options="venue.id as venue.name for venue in venues" ng-model="venue_id" class="form-control">
 								<option value="">Select Venue</option>
 							</select>
 						</div>
