@@ -140,3 +140,17 @@ font-size:14px!important;
 background-color:white;
   color:#de519b;
 }
+
+#settings{
+background-color:#4BBA4B;
+color:white;
+border:none;
+font-size:30px;
+}
+
+#settings:hover{
+background-color: white;
+color:#4BBA4B;
+
+
+}

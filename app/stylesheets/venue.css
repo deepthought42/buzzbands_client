@@ -138,4 +138,7 @@ margin-bottom: 10px;
 	padding: 0 0 0.6em 0.1em;
 }
 
+.fa-times-circle ,.danger{
+color:red;
 
+}

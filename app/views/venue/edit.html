@@ -1,9 +1,9 @@
 
-<div id="venueEditPanel" class="col-sm-11">
+<div id="venueEditPanel" class="col-sm-12 col-lg-12">
   <div class="row" >
       <span style="color:#808266;font-size:30px;">EDIT VENUE</span>
-      <span class="col-sm-2 pull-right">
-        <img ng-src="{{venue.url ? venue.url : 'images/logo.png'}}" />
+      <span class="col-sm-12 col-lg-12 ">
+        <img style="width:500px;" ng-src="{{venue.url ? venue.url : 'images/logo.png'}}" />
       </span>
       <br><br>
       <form name="venueForm"
@@ -31,16 +31,15 @@
                   <option value="" ng-selected>Select Category</option>
                 </select>
               </div>
-              <div class="col-sm-12">
-                <span class="col-sm-5">
-                  Cover Photo:
-                </span>
+              <div  style="text-align:center;"class="col-sm-12">
+
 
                 <div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-                    pickerclass="btn btn-default"
+                  	pickerclass="btn addphoto"
                     mimetype="image/*"
                     callback="previewImage(file)"
-                    multiple=false>Add Photo</div>
+                    multiple=false>	<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
+                  </div>
               </div>
               <div class="col-sm-12">
                 <input  class="form-control"
@@ -111,7 +110,7 @@
               <input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />
             </div>
             <div class="actions col-md-12">
-              <button type="submit" class="btn btn-primary" >
+              <button type="submit" class="saveButton btn btn-primary" >
                 <i class="fa fa-save"></i>
                 Save
               </button>

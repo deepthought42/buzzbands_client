@@ -1,14 +1,15 @@
 
-<div id="promotionUpdatePanel" class="col-md-12">
+<div id="promotionUpdatePanel">
 	<form name="promotionForm"
 				enctype="multipart/form-data"
 				ng-submit="updatePromotion(promotion)"
 				novalidate>
 		<div class="col-md-12">
-			<div class="col-md-5">
+				<img style="max-width:50%;"ng-src="{{promotion.ad_location}}" />
 				<div class="field">
           <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">EDIT PROMOTION</h1>
-					<input  class="form-control"
+					<input  style="margin:initial;"
+									class="form-control"
 									type="text"
 									name="name"
 									ng-model="promotion.name"
@@ -30,31 +31,36 @@
 									pickerclass="btn addphoto"
 									multiple="false" mimetype="image/*"
 									callback="previewImage(file)">
-                        <span  tooltip-placement="right" tooltip="cover photo"><i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>Add Photo</span>
+                        <span>  <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>Add Photo</span>
 					</div>
-					<img style="max-width:100%;"ng-src="{{promotion.ad_location}}" />
+
 				</div>
-			</div>
-		</div>
-		<div style="display:inline-block;">
-			<div class="row">
-      	<div class="col-md-6">
-					<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker>
-      	</div>
-				<!-- Start time date time picker popup -->
-        <div class="col-md-6">
-					<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker>
-		    </div>
-			</div>
+
 		</div>
 
-		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
-			<button style="background-color:#de519b;"class="btn btn-primary"
-						  type="submit"
-							ng-click="updatePromotion(promotion)"
-							ng-disabled="promotionForm.$invalid">
-				Update
-			</button>
-		</div>
-	</form>
+
+
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
+				<div class="col-md-6 col-sm-12">
+					<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
+					<label style="color:white;" class="control-label"><i class="fa fa-clock-o"></i> Time </label>
+					<input style="max-width:100px;margin:initial;" type="text" class="form-control" size="8" ng-model="time" name="time" bs-timepicker>
+				</div>
+				<!-- Start time date time picker popup -->
+				<div id="datepicker2" class="col-md-6 col-sm-12">
+					<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker><br><br>
+					<label style="color:white;" class="control-label"><i class="fa fa-clock-o"></i> Time </label>
+					<input style="max-width:100px;margin:initial;" type="text" class="form-control" size="8" ng-model="time" name="time" bs-timepicker>
+				</div>
+
+
+	<div style="margin-top:35px;" class="actions col-md-12">
+		<button style="background-color:#de519b;"class="btn btn-primary"
+						type="submit"
+						ng-click="updatePromotion(promotion)"
+						ng-disabled="promotionForm.$invalid">
+			Update
+		</button>
+	</div>
+</form>
 </div>

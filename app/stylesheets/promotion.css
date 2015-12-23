@@ -86,9 +86,38 @@ thead{
 background-color: #242831!important;
 color:white;
 }
-    
-    
+
+
 .md-calendar-date-selection-indicator:hover{
  background-color: #de519b;
     color:#4BBA4B;
+}
+
+
+.md-datepicker-input-container{
+
+    border-bottom-style: none!important;
+
+}
+
+
+md-datepicker{
+
+  padding: 30px;
+}
+
+@media only screen and (min-width:0px) and (max-width: 767px)  {
+
+
+  #datepicker2{
+        margin-top: 60px;
+
+  }
+}
+
+
+body, html{
+
+background-color: #242831!important;
+
 }

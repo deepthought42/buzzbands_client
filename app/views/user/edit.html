@@ -2,21 +2,22 @@
 
 	<div class="row" >
 		<div id="userCreatePanel" class="col-md-10">
-      <span style="color:#808266;font-size:30px;">EDIT USER</span><br><br>
+      <span style="color:#808266;font-size:30px;">{{user.email}}</span><br><br>
 			<div style="color:white;" class="col-sm-12">
-				{{user.email}}
+
 			</div>
 			<form name="userForm"
 						enctype="multipart/form-data"
 						ng-submit="updateUser(userForm)"
 						novalidate>
 							<div class="col-sm-12">
-								<span style="color:white;"class="col-sm-3">
+								<span style="color:white;"class="col-sm-6 col-md-6 col-lg-6">
+										<img style="max-width:50%;" ng-src="{{user.image != null ? user.image : 'app/img/missing_user.png'}}" /><br>
 									Avatar Photo:
-								</span>
-								<span class="col-sm-2">
-									<img ng-src="{{user.image != null ? user.image : 'app/img/missing_user.png'}}" />
-								</span><br>
+
+
+
+								<br>
 								<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 											pickerclass="btn addphoto"
 											multiple="false" mimetype="*"
@@ -24,36 +25,44 @@
 									 <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
 										Add Photo
 								</div>
-							<div ng-show="hasPermission(2)">
-								<button class="btn">Send password reset email</button>
-							</div>
-						<div class="col-sm-12" ng-show="user.email != $session.user.email">
+
+									</span>
+
+						<div  ng-show="user.email != $session.user.email">
 							Active?
 							<input type="checkbox" ng-model="user.active" ng-disabled="!hasPermission(2)" />
 						</div>
-						<div class="actions col-md-12">
-							<button type="submit" class="btn btn-primary" >
-								<i class="fa fa-save"></i>
-								Save
-							</button>
-						</div>
+
 			</form>
-			<form ng-submit="updatePassword(changePasswordForm)" role="form" ng-init="changePasswordForm = {}">
+			<form  class="col-lg-6" ng-submit="updatePassword(changePasswordForm)" role="form" ng-init="changePasswordForm = {}">
 			  <div class="form-group">
-			    <label>password</label>
+
 			    <input type="password" name="password" ng-model="changePasswordForm.password" required="required" class="form-control" placeholder="Password">
 			  </div>
 
 			  <div class="form-group">
-			    <label>password confirmation</label>
+
 			    <input type="password" name="password_confirmation" ng-model="changePasswordForm.password_confirmation" required="required" class="form-control" placeholder="Confirm password">
 			  </div>
 
-				<div class="actions col-md-12">
-					<button type="submit" class="btn btn-primary" >
-						<i class="fa fa-save"></i>
-						Reset password
-					</button>
-				</div>
+
 			</form>
+		</div>
+
+		<div style="text-align:center;" class="col-lg-12 actions">
+			<div class="actions">
+				<button type="submit" class="saveButton btn btn-primary" >
+					<i class="fa fa-save"></i>
+					Reset password
+				</button>
+
+			</div>
+			<br>
+			<button type="submit" class="saveButton btn btn-primary" >
+				<i class="fa fa-save"></i>
+				Save
+			</button>
+			<div ng-show="hasPermission(2)"><br>
+				<button class="btn">Send password reset email</button>
+			</div>
 		</div>
