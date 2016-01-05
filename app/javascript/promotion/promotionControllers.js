@@ -90,73 +90,81 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
 
- $scope.time = '2012-04-23T18:25:43Z';
-
-
+    $scope.time = '';
   }
-
-
-
 ])
 
-.controller('PromotionCreationController', ['$scope', 'Promotion', function($scope, Promotion) {
-  $scope.promotion = {}
-
-  $scope.createPromotion = function(promotion){
-    Promotion.save($scope.promotion);
-  }
-
-  $scope.previewImage = function(files){
-    $scope.setUrl(files);
-    var reader = new FileReader();
-    if(typeof files[0] === 'Blob'){
-      reader.readAsDataURL(files[0]);
+.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue',
+  function($scope, Promotion, Venue) {
+    this.init = function(){
+      $scope.promotion = {};
+      $scope.venues = Venue.query();
     }
-    reader.onload = function(event){
-      $scope.logo_url = reader.result;
-      $scope.promotion.ad_location = files[0].url;
-      $scope.$apply()
+
+    this.createPromotion = function(promotion){
+      Promotion.save($scope.promotion);
     }
-  }
 
-  $scope.setUrl = function(files){
-    $scope.promotion.ad_location = files[0].url;
-  }
-}])
-
-.controller('PromotionDetailsController', ['$scope', 'Promotion', '$state', '$stateParams', '$auth', '$rootScope',
-  function($scope, Promotion, $state, stateParams, $auth, $rootScope)
-  {
-    $auth.validateUser();
-
-    $scope.loadPromotion = function(){
-      if(stateParams.promotionId){
-        Promotion.get({id: stateParams.promotionId}).$promise
-          .then(function(data){
-            $scope.promotion = data;
-            $scope.promotion.start_time = new Date($scope.promotion.start_time );
-            $scope.promotion.end_time = new Date($scope.promotion.end_time );
-          })
-          .catch(function(data){
-            console.log("ERR  :: "+ data)
-          });
+    this.previewImage = function(files){
+      $scope.setUrl(files);
+      var reader = new FileReader();
+      if(typeof files[0] === 'Blob'){
+        reader.readAsDataURL(files[0]);
+      }
+      reader.onload = function(event){
+        $scope.logo_url = reader.result;
+        $scope.promotion.ad_location = files[0].url;
+        $scope.$apply()
       }
     }
 
-    $scope.updatePromotion = function(promotion){
-      console.log("Updateing promotion");
-      promotion.start_time = new Date(promotion.start_time);
-      promotion.end_time = new Date(promotion.end_time);
-        Promotion.update(promotion).$promise.then(function(data){
-          $scope.promotion = {};
-          console.log("promotion updated");
-          $state.go("adminDashboard.promotions");
-        });
+    this.setUrl = function(files){
+      $scope.promotion.ad_location = files[0].url;
     }
 
-    $scope.open = function($event) {
-        $scope.status.opened = true;
-      };
+    this.init();
+  }
+])
+
+.controller('PromotionDetailsController',
+  ['$scope', 'Promotion', 'Venue', '$state', '$stateParams', '$auth',
+    function($scope, Promotion, Venue, $state, stateParams, $auth)
+    {
+
+      this.init = function(){
+        $auth.validateUser();
+        $scope.loadPromotion();
+        $scope.venues = Venue.query();
+      }
+
+      $scope.loadPromotion = function(){
+        if(stateParams.promotionId){
+          Promotion.get({id: stateParams.promotionId}).$promise
+            .then(function(data){
+              $scope.promotion = data;
+              $scope.promotion.start_time = new Date($scope.promotion.start_time );
+              $scope.promotion.end_time = new Date($scope.promotion.end_time );
+            })
+            .catch(function(data){
+              console.log("ERR  :: "+ data)
+            });
+        }
+      }
+
+      $scope.updatePromotion = function(promotion){
+        console.log("Updateing promotion");
+        promotion.start_time = new Date(promotion.start_time);
+        promotion.end_time = new Date(promotion.end_time);
+          Promotion.update(promotion).$promise.then(function(data){
+            $scope.promotion = {};
+            console.log("promotion updated");
+            $state.go("adminDashboard.promotions");
+          });
+      }
+
+      $scope.open = function($event) {
+          $scope.status.opened = true;
+        };
 
       $scope.previewImage = function(files){
         $scope.promotion.ad_location = files[0].url;
@@ -172,9 +180,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         }
       }
 
-    $scope.status = {
-      opened: false
-    };
-    $scope.loadPromotion();
-  }
-]);
+      this.init();
+    }
+  ]
+);
