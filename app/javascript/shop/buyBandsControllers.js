@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsService', 'stripe.checkout'])
+angular.module('buzzbands.BandsControllers', ['ui.router',
+                                              'buzzbands.BandsService',
+                                              'buzzbands.VenueService',
+                                              'stripe.checkout'])
 
 .config(['StripeCheckoutProvider',
   function(StripeCheckoutProvider) {
@@ -21,7 +24,11 @@ angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsServi
     }
   });
 })
-.controller('BuyBandsController', ['$scope', 'Bands', 'Packages', '$state', '$sessionStorage',
+.controller('BuyBandsController', ['$scope',
+                                   'Bands',
+                                   'Packages',
+                                   '$state',
+                                   '$sessionStorage',
   function($scope, Bands, Packages, state, session) {
     // You should configure a handler when the view is loaded,
    // just as you would if you were using checkout.js directly.
@@ -37,12 +44,12 @@ angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsServi
    */
    this.init = function(){
      $scope.bandColors = this.getBandColors();
-
-     $scope.shopBands = {};
+     $scope.venues = session.venues;
+     $scope.order = {};
 
      Packages.query().$promise.then(function(data){
        $scope.packages = data;
-       $scope.shopBands.package = $scope.packages[0];
+       $scope.order.package = $scope.packages[0];
      });
    }
 
