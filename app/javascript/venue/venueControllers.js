@@ -113,7 +113,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   function($scope, Venue, state, $auth, $rootScope, $sessionStorage) {
     $scope.$session = $sessionStorage;
     $auth.validateUser();
-    $scope.categories = [{name: "Bar"},{name: "Night Club"}];
+    $scope.categories = ["Bar","Night Club"];
     $scope.venue = {};
 
     $scope.hasPermission = function(role){
@@ -150,7 +150,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   function($scope, Venue, state, stateParams, $auth, $rootScope)
   {
     $auth.validateUser();
-    $scope.categories = [{name: "Bar"},{name: "Night Club"}]
+    $scope.categories = ["Bar","Night Club"];
 
     $scope.loadVenue = function(){
       if($scope.$session.last_venue_id){

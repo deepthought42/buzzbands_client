@@ -21,13 +21,19 @@
                         required
                         minlength="3"
                         maxlength="250"/>
-                <div ng-messages="venueForm.name.$error" ng-if="venueForm.$submitted" class="text-danger">
+                <div ng-messages="venueForm.name.$error"
+                     ng-if="venueForm.$submitted"
+                     class="text-danger">
                   <p ng-message="required">Name is required.</p>
                   <p ng-message="minlength">Name must be at least 3 characters</p>
                 </div>
               </div>
               <div class="col-sm-12">
-                <select class="form-control" ng-options="category.name for category in categories" ng-model="venue.category" ng-required>
+                <select class="form-control"
+                        ng-options="category for category in categories"
+                        ng-model="venue.category"
+                        ng-selected="category == venue.category"
+                        ng-required>
                   <option value="" ng-selected>Select Category</option>
                 </select>
               </div>
@@ -36,8 +42,10 @@
                   	pickerclass="btn addphoto"
                     mimetype="image/*"
                     callback="previewImage(file)"
-                    multiple=false>	<i style="margin-right:10px;"class="fa fa-camera"></i>Add Photo
-                  </div>
+                    multiple=false>
+                  <i style="margin-right:10px;"class="fa fa-camera"></i>
+                  Add Photo
+                </div>
               </div>
               <div class="col-sm-12">
                 <input  class="form-control"
@@ -49,7 +57,9 @@
                         required
                         minlength="3"
                         maxlength="250" />
-                <div ng-messages="venueForm.address.$error" ng-if="venueForm.$submitted" class="text-danger">
+                <div ng-messages="venueForm.address.$error"
+                     ng-if="venueForm.$submitted"
+                     class="text-danger">
                   <p ng-message="required">Street address is required.</p>
                   <p ng-message="minlength">Street address must be at least 3 characters</p>
                 </div>
