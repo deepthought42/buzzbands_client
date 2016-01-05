@@ -84,7 +84,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="promo in promotionList">
+          <tr ng-repeat="promo in promotionList | orderBy:active:true">
             <td>
               <input type="checkbox" ng-click="promo.selected=!promo.selected" />
             </td>
