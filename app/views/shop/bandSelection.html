@@ -1,36 +1,38 @@
-
- 
-<img class=" col-lg-12 col-xs-12 img-responsive" id="bandsimg" ng-src="{{shopBands.color.href}}" />
- <div class="col-sm-12" style="color:orange" >
-  <form style="text-align:center;" name="shopBandsForm" ng-init="shopBands={}" novalidate>
+<img class=" col-lg-12 col-xs-12 img-responsive" id="bandsimg"
+     ng-src="{{shopBands.color.href || bandColors[0].href}}" />
+<div class="col-sm-12" style="color:orange" >
+  <form style="text-align:center;"
+        name="shopBandsForm"
+        novalidate>
     <div ng-model="shopBands.color">
-      <span  class="col-lg-2 col-md-2 col-xs-2" ng-repeat="bandColor in bandColors" ng-click="shopBands.color=bandColor">
+      <span  class="col-lg-2 col-md-2 col-xs-2"
+             ng-repeat="bandColor in bandColors"
+             ng-click="shopBands.color=bandColor">
           <div style="cursor:pointer;" id="{{bandColor.id}}">
             <img ng-src="bandColor.href">
           </div>
       </span>
     </div>
-
-
-    
-    <div>
-     <br>
-      <select style="margin-top:200px;max-width:400px;" ng-model="shopBands.package" class="form-control" required >
-        <br><br><option value="">Select Band Count</option>
-        <option ng-repeat="bandPackage in bandPackages" value="{{bandPackage.price}}" >
-          {{bandPackage.count}}</option>
+    <div class="col-sm-12">
+      <select style="margin-top:200px;max-width:400px;"
+              ng-model="shopBands.package"
+              class="form-control"
+              ng-options="bandPackage.count for bandPackage in bandPackages"
+              ng-selected="{{bandPackage == shopBands.package}}"
+              ng-required >
       </select>
       <div style="color:white;text-align:center;">
-        ${{shopBands.package || 0.00}}
+        ${{shopBands.package.price || 0.00}}
       </div>
     </div>
   <button id="buyBandButton" stripe-checkout="BuyBandsController.doCheckout"
             data-key="pk_test_kZbH5pE5QrS1wyz7tHeLYY27"
             data-name="Band Package"
-            data-description="{{shopBands.package}}"
+            data-description="{{shopBands.package.price}}"
             data-amount="{{shopBands.package*100}}"
             class="btn btn-primary"
             ng-disabled="shopBandsForm.$invalid">
       Buy
     </button>
+  </form>
 </div>
