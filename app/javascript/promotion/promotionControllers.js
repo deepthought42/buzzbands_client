@@ -34,7 +34,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
     $scope.deletePromotion = function(id){
-      Promotion.delete(id);
+      Promotion.remove(id);
       $scope.promotionList = $scope.getPromotionList();
     }
 
@@ -60,19 +60,19 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
     if(!$stateParams.venue_id){
-      console.log("show promotions");
-
+      //Show all promotions
       $scope.promotionList = $scope.getPromotionList();
     }
     else{
-      console.log("show promotions for venue");
+      //show promotions for the venuw with the provided ID
       $scope.promotionList = $scope.getVenuePromotionList($stateParams.venue_id);
     }
 
     $scope.deletePromotions = function(){
       for(var i =0;i < $scope.promotionList.length; i++){
         if($scope.promotionList[i].selected){
-          Promotion.delete({id:$scope.promotionList[i].id}).then(function(){
+          Promotion.remove({id:$scope.promotionList[i].id}).$promise.
+          then(function(){
             $scope.promotionList = $scope.getPromotionList();
           })
           .catch(function(data){
