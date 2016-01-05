@@ -21,8 +21,8 @@ angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsServi
     }
   });
 })
-.controller('BuyBandsController', ['$scope', 'Bands', '$state', '$sessionStorage',
-  function($scope, Bands, state, session) {
+.controller('BuyBandsController', ['$scope', 'Bands', 'Packages', '$state', '$sessionStorage',
+  function($scope, Bands, Packages, state, session) {
     // You should configure a handler when the view is loaded,
    // just as you would if you were using checkout.js directly.
    var handler = StripeCheckout.configure({
@@ -31,11 +31,26 @@ angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsServi
          $log.debug("Got stripe token: " + token.id);
        }
    });
+
+  /**
+   * Initializes controller
+   */
+   this.init = function(){
+     $scope.bandColors = this.getBandColors();
+
+     $scope.shopBands = {};
+
+     Packages.query().$promise.then(function(data){
+       $scope.packages = data;
+       $scope.shopBands.package = $scope.packages[0];
+     });
+   }
+
    this.doCheckout = function(token) {
        alert("Got Stripe token: " + token.id);
    };
 
-   var getBandColors = function(){
+   this.getBandColors = function(){
      return [
        {id:'Yellow',
         href:'./images/yellow.png'},
@@ -51,27 +66,5 @@ angular.module('buzzbands.BandsControllers', ['ui.router', 'buzzbands.BandsServi
          href:'./images/white.png'}];
    };
 
-   var getPackages = function(){
-     return [{
-       count: 250,
-       price: '25.00'
-     },{
-       count: 500,
-       price: '50.00'
-     },{
-       count: 750,
-       price: '75.00'
-     },{
-       count: 1000,
-       price: '100.00'
-     },{
-       count: 10000,
-       price: '1000.00'
-     }]
-   };
-
-   $scope.bandPackages = getPackages();
-   $scope.bandColors = getBandColors();
-   $scope.shopBands = {};
-   $scope.shopBands.package = $scope.bandPackages[0];
+   this.init();
 }]);
