@@ -22,12 +22,15 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 
 .controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams', 'VenuePromotion', 'Venue', '$sessionStorage',
   function($scope, Promotion, state, $stateParams, VenuePromotion, Venue, $sessionStorage) {
-    $scope.$session = $sessionStorage;
-    $scope.promoPanel='index';
-    $scope.promotion = {};
-    $scope.venues = $scope.$session.venues;
-    $scope.promotionLoaded = true;
-    $scope.visibleTab = "thumbnail";
+    this.init = function(){
+      $scope.$session = $sessionStorage;
+      $scope.promoPanel='index';
+      $scope.promotion = {};
+      $scope.venues = $scope.$session.venues;
+      $scope.promotionLoaded = true;
+      $scope.visibleTab = "thumbnail";
+      $scope.time = '';
+    }
 
     $scope.editPromotion = function(id){
       state.go("adminDashboard.editPromotion", {"promotionId": id})
@@ -89,16 +92,15 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
     }
 
-
-    $scope.time = '';
+    this.init();
   }
 ])
 
-.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue',
-  function($scope, Promotion, Venue) {
+.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue', '$sessionStorage',
+  function($scope, Promotion, Venue, $sessionStorage) {
     this.init = function(){
       $scope.promotion = {};
-      $scope.venues = Venue.query();
+      $scope.venues = $sessionStorage.venues;
     }
 
     this.createPromotion = function(promotion){
@@ -127,14 +129,14 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 ])
 
 .controller('PromotionDetailsController',
-  ['$scope', 'Promotion', 'Venue', '$state', '$stateParams', '$auth',
-    function($scope, Promotion, Venue, $state, stateParams, $auth)
+  ['$scope', 'Promotion', 'Venue', '$state', '$stateParams', '$auth', '$sessionStorage',
+    function($scope, Promotion, Venue, $state, stateParams, $auth, $sessionStorage)
     {
 
       this.init = function(){
         $auth.validateUser();
         $scope.loadPromotion();
-        $scope.venues = Venue.query();
+        $scope.venues = $sessionStorage.venues;
       }
 
       $scope.loadPromotion = function(){
