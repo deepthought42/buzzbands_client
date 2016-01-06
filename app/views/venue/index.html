@@ -1,5 +1,6 @@
 
-<div ng-switch="venueLoaded" ng-show="hasPermission(2)" class="col-sm-12">
+
+ <div ng-switch="venueLoaded" ng-show="hasPermission(2)" class="col-sm-12">
   <div ng-switch-when="false">
     <div ui-view="new@venues.adminDashboard"></div>
   </div>
@@ -8,7 +9,11 @@
     <div ui-view="edit@venues.adminDashboard"></div>
   </div>
 </div>
-
+<div style="color:white;font-size:40px;font-Family:arial;font-Family: 'Josefin Sans', sans-serif;
+  font-weight: 100;" class="col-lg-6 col-sm-12">
+      Events
+    
+    </div>
 <div class="col-sm-12">
     <span class="status">
       All

@@ -6,8 +6,11 @@
     <button id="settings"
             ng-controller="UserAccountAccessController"
             id"editMyAccountButton"
-            class="pull-right fa fa-user"
-            ng-click="editMyAccount()"></button>
+            class="pull-right"
+            ng-click="editMyAccount()">
+            <img style="width:50px;" ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
+
+          </button>
     <button id="buyBandButton" class="pull-right btn" ui-sref="adminDashboard.shopBands">
       BUY BANDS
     </button>
@@ -22,7 +25,7 @@
           <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
             <button  ui-sref="venues.adminDashboard"
                    ng-class='{"navButtonActive":tog==2,"navButton":tog!=2}'
-                   ng-click='setPage(2)'>Accounts</button>
+                   ng-click='setPage(2)'>Events</button>
           </div>
           <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
             <button ui-sref="adminDashboard.promotions"

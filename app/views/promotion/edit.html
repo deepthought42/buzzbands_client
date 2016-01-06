@@ -40,17 +40,16 @@
 
 
 
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
+		<div  ng-controller="timectrl" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
 				<div class="col-md-6 col-sm-12">
 					<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
-					<label style="color:white;" class="control-label"><i class="fa fa-clock-o"></i> Time </label>
-					<input style="max-width:100px;margin:initial;" type="text" class="form-control" size="8" ng-model="time" name="time" bs-timepicker>
+					<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+					
 				</div>
 				<!-- Start time date time picker popup -->
-				<div id="datepicker2" class="col-md-6 col-sm-12">
+				<div  ng-controller="timectrl" id="datepicker2" class="col-md-6 col-sm-12">
 					<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker><br><br>
-					<label style="color:white;" class="control-label"><i class="fa fa-clock-o"></i> Time </label>
-					<input style="max-width:100px;margin:initial;" type="text" class="form-control" size="8" ng-model="time" name="time" bs-timepicker>
+					<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
 				</div>
 
 

@@ -118,12 +118,47 @@ md-datepicker{
 
 body, html{
 
-background-color: #242831!important;
+background-color: #242831;
 
 }
 
 
 #promotion{
-  
-  z-index: 10;
+background-color: #434e66;
+    margin:-10px;
+padding: 30px;
+}
+
+md-icon{
+color:white;
+}
+
+
+md-datepicker{
+background-color:transparent;
+}
+.md-datepicker-input{
+color:white;
+}
+
+.md-datepicker-triangle-button.md-button.md-icon-button{
+background-color: white;
+}
+
+.md-datepicker-triangle-button .md-datepicker-expand-triangle{
+border-top-color: #de519b;
+}
+
+.md-button:not([disabled]).md-icon-button:hover{
+border-top-color:white;
+background-color:#4BBA4B ;
+}
+.btn-link{
+color:White;
+
+}
+
+.btn-link:focus, .btn-link:hover{
+
+color:#4BBA4B;
 }
