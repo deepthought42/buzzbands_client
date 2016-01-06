@@ -100,7 +100,7 @@
             <td>{{promo.name}}
                 <br/>
                 {{promo.description}}</td>
-            <td><img style="max-width:100px;"class="img-responsive" ng-src="{{promo.ad_location}}"></td>
+            <td><img style="max-width:100px;"class="img-responsive" ng-src="{{promo.ad_location ? promo.ad_location : 'images/venue_img_missing.jpg'}}"></td>
             <td>{{promo.start_time | date:'MM/dd/yyyy @ h:mma'}}</td>
             <td>{{promo.end_time | date:'MM/dd/yyyy @ h:mma'}}</td>
             <td>
@@ -123,20 +123,18 @@
 
     <ul id="thumbnail" class=" grid   cs-style-3"  ng-switch-when="thumbnail">
       <li ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id}">
-
-      <div class=" col-lg-3 col-sm-2" >
-					<figure>
-            <img id="promotion"   class="promotion img-responsive" src="{{promo.ad_location}}" />
-
-             <figcaption>
-							<h3>{{promo.name}}</h3>
-
-							<button class="edit"  ng-click="editPromotion(promo.id)" >Edit</button>
-						</figcaption>
-          </figure>
-      </div>
-    </li>
-
+        <div class=" col-lg-3 col-sm-2" >
+  					<figure>
+              <img id="promotion"
+                   class="promotion img-responsive"
+                   src="{{promo.ad_location ? promo.ad_location : 'images/venue_img_missing.jpg'}}" />
+               <figcaption>
+  							<h3>{{promo.name}}</h3>
+  							<button class="edit"  ng-click="editPromotion(promo.id)" >Edit</button>
+  						</figcaption>
+            </figure>
+        </div>
+      </li>
     </ul>
   </div>
 </div>
