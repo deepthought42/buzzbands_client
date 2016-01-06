@@ -55,29 +55,12 @@
 			</div>
 
 		</div>
-
 		<div class="col-sm-12">
+			VENUES:
 			<select ng-options="venue.id as venue.name for venue in venues"
-							ng-model="promotion.venue_id">
+							ng-model="promotion.venue_id"
+							ng-required>
 			</select>
-		</div>
-		<div class="col-md-6 col-sm-12">
-			<md-datepicker ng-model="promotion.start_time"
-										 md-placeholder="Enter date">
-				</md-datepicker>
-				<br><br>
-			  <uib-timepicker ng-model="mytime"
-												ng-change="changed()"
-												hour-step="hstep"
-												minute-step="mstep"
-												show-meridian="ismeridian">
-				</uib-timepicker>
-		</div>
-		<!-- Start time date time picker popup -->
-		<div id="datepicker2" class="col-md-6 col-sm-12">
-			<md-datepicker ng-model="promotion.end_time"
-										 md-placeholder="Enter date">
-			</md-datepicker>
 		</div>
 		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
 			<button style="background-color:#de519b;"

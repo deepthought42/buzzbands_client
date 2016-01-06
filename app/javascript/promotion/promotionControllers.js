@@ -62,6 +62,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         }
       }
     }
+
     $scope.createPromotion = function(){
       $scope.promoPanel='create';
       console.log("CREATE PROMOTION CICKED");
@@ -109,11 +110,12 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       $scope.venues = $sessionStorage.venues;
     }
 
-    this.createPromotion = function(promotion){
-      Promotion.save($scope.promotion);
+    $scope.createPromotion = function(promotion){
+      Promotion.save(promotion);
+      //state.go("new@promotions.dashboard");
     }
 
-    this.previewImage = function(files){
+    $scope.previewImage = function(files){
       $scope.setUrl(files);
       var reader = new FileReader();
       if(typeof files[0] === 'Blob'){
@@ -126,7 +128,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
     }
 
-    this.setUrl = function(files){
+    $scope.setUrl = function(files){
       $scope.promotion.ad_location = files[0].url;
     }
 
@@ -191,7 +193,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     $scope.status = {
       opened: false
     };
-    $scope.loadPromotion();
     this.init();
   }
 ])
