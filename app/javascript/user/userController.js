@@ -28,7 +28,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     *
     */
     $scope.getUserList = function(){
-      if($scope.$session.user.role == 3){
+      if($scope.$session.user && $scope.$session.user.role == 3){
         User.query().$promise
           .then(function(data){
             console.log("successfully queried users :: "+data);
@@ -69,7 +69,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     }
 
     $scope.hasPermission = function(role){
-     if ($scope.$session.user.role >= role) {return true;}
+     if ($scope.$session.user && $scope.$session.user.role >= role) {return true;}
      return false;
     }
     $scope.getUserList();
@@ -174,9 +174,11 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       $scope.user.password_confirmation = generatedPass;
     }
 
-    $scope.createUser = function(user){
+    $scope.createUser = function(user, venue_id){
       console.log("creating user");
-      $auth.submitRegistration(user)
+      user.uid = user.email;
+      user.provider="email";
+      $auth.submitRegistration({"user" : user, 'venue_id': venue_id, 'role': user.role})
         .then(function(resp) {
           console.log("SUCCESSFUL USER CREATION!!!");
         })
@@ -184,7 +186,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
           console.log("FAILED USER CREATION!!!");
         });
 
-      state.go('adminDashboard.users', {"userId": $scope.$session.user.id});
+      state.go('adminDashboard.users');
     }
 
     $scope.hasPermission = function(role){

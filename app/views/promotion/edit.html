@@ -26,40 +26,69 @@
 					</div>
 				</div>
 				<div class="col-sm-12 col-xs-12">
-
 					<div   filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 									pickerclass="btn addphoto"
 									multiple="false" mimetype="image/*"
 									callback="previewImage(file)">
-                        <span>  <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>Add Photo</span>
+              <span>
+								<i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
+								Add Photo
+							</span>
 					</div>
-
 				</div>
-
 		</div>
-
-
-
 		<div  ng-controller="timectrl" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
+
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<select ng-options="venue.id as venue.name for venue in venues"
+							ng-selected="venue.id == promotion.venue_id"
+							ng-model="promotion.venue_id">
+			</select>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
 				<div class="col-md-6 col-sm-12">
 					<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
 					<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
-					
+
 				</div>
 				<!-- Start time date time picker popup -->
 				<div  ng-controller="timectrl" id="datepicker2" class="col-md-6 col-sm-12">
 					<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker><br><br>
 					<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
 				</div>
+				<div id="datepicker2" class="col-md-6 col-sm-12">
+					<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date">
+					</md-datepicker>
 
+					<br><br>
 
-	<div style="margin-top:35px;" class="actions col-md-12">
-		<button style="background-color:#de519b;"class="btn btn-primary"
-						type="submit"
-						ng-click="updatePromotion(promotion)"
-						ng-disabled="promotionForm.$invalid">
-			Update
-		</button>
-	</div>
-</form>
+					<label style="color:white;" class="control-label">
+						<i class="fa fa-clock-o"></i>
+						Time
+					</label>
+					<input style="max-width:100px;margin:initial;"
+								 type="text"
+								 class="form-control"
+								 size="8"
+								 ng-model="time"
+								 name="time"
+								 bs-timepicker>
+				</div>
+				<div class="col-sm-12" >
+					<label style="color:white;" class="control-label">
+					Active:
+					</label>
+
+					<input type="checkbox" ng-model="promotion.active"/>
+				</div>
+				<div style="margin-top:35px;" class="actions col-md-12">
+					<button style="background-color:#de519b;"class="btn btn-primary"
+									type="submit"
+									ng-click="updatePromotion(promotion)"
+									ng-disabled="promotionForm.$invalid">
+						Update
+					</button>
+				</div>
+			</div>
+	</form>
 </div>

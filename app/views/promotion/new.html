@@ -1,64 +1,87 @@
 
 <div id="promotionCreatePanel" class="col-md-12">
-		<img style="max-width:500px;" class="col-sm-12 col-xs-12" ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" /><br>
-			<form name="promotionForm"
-				enctype="multipart/form-data"
-				ng-submit="createPromotion(promotionForm.$valid)"
-				novalidate>
-			<div style="padding-bottom:100px;" class="col-md-12">
-				<div class="col-md-5">
-					<div class="field">
-	          <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">Add New Promotion</h1>
-						<input  class="form-control"
-										type="text"
-										name="name"
-										ng-model="promotion.name"
-										id="newPromotionName"
-										placeholder="ENTER TITLE HERE"
-										required
-										minlength="3"
-										maxlength="250"/>
-
-						<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
-							<p ng-message="required">Name is required.</p>
-							<p ng-message="minlength">Name must be at least 3 characters</p>
-							<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
-						</div>
-						
-						<div style="float:right;"  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-											pickerclass="btn addphoto"
-											multiple="true" mimetype="image/*"
-											callback="previewImage(file)">
-									 <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
-										Add Photo
-								</div>
+	<img class="col-sm-6 col-xs-6"
+			ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
+		<form name="promotionForm"
+			enctype="multipart/form-data"
+			ng-submit="createPromotion(promotionForm.$valid)"
+			novalidate>
+		<div class="col-md-12">
+			<div class="col-md-5">
+				<div class="field">
+          <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">Add New Promotion</h1>
+					<input  class="form-control"
+									type="text"
+									name="name"
+									ng-model="promotion.name"
+									id="newPromotionName"
+									placeholder="ENTER TITLE HERE"
+									required
+									minlength="3"
+									maxlength="250"/>
+					<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
+						<p ng-message="required">Name is required.</p>
+						<p ng-message="minlength">Name must be at least 3 characters</p>
+						<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
 					</div>
-					
 				</div>
 			</div>
 
 <br><br>
 			<div ng-controller="timectrl"  class="col-md-6 col-sm-12">
-                
+
 				<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
 
-  <uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+  		<uib-timepicker  style="width:232px;background-color:#242831;"
+  									ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
 
 			</div>
 			<!-- Start time date time picker popup -->
 			<div  ng-controller="timectrl" id="datepicker2" class="col-md-6 col-sm-12">
-			
-				<md-datepicker  ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker><br><br>
-				
-				<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
 
+				<md-datepicker  ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker><br><br>
+
+				<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+				<div class="col-sm-12 col-xs-12">
+							<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+										pickerclass="btn addphoto"
+										multiple="true" mimetype="image/*"
+										callback="previewImage(file)">
+								 <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
+									Add Photo
+							</div><br><br>
+
+				</div>
 			</div>
-			
+
 		</div>
-		
-		
+
+		<div class="col-sm-12">
+			<select ng-options="venue.id as venue.name for venue in venues"
+							ng-model="promotion.venue_id">
+			</select>
+		</div>
+		<div class="col-md-6 col-sm-12">
+			<md-datepicker ng-model="promotion.start_time"
+										 md-placeholder="Enter date">
+				</md-datepicker>
+				<br><br>
+			  <uib-timepicker ng-model="mytime"
+												ng-change="changed()"
+												hour-step="hstep"
+												minute-step="mstep"
+												show-meridian="ismeridian">
+				</uib-timepicker>
+		</div>
+		<!-- Start time date time picker popup -->
+		<div id="datepicker2" class="col-md-6 col-sm-12">
+			<md-datepicker ng-model="promotion.end_time"
+										 md-placeholder="Enter date">
+			</md-datepicker>
+		</div>
 		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
-			<button style="background-color:#de519b;"class="btn btn-primary"
+			<button style="background-color:#de519b;"
+							class="btn btn-primary"
 						  type="submit"
 							ng-click="createPromotion(promotionForm.$valid)"
 							ng-disabled="promotionForm.$invalid">
