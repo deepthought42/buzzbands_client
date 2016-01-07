@@ -1,9 +1,10 @@
 <style>
       .thumbnail { height: 280px !important; }
     </style>
-  <div class="container col-sm-7">
+    <div class="container col-sm-12">
+
     <div style="color:white;font-size:40px;font-Family:arial;font-Family: 'Josefin Sans', sans-serif;
-  font-weight: 100;" class="col-sm-12">
+  font-weight: 100;" class="col-lg-6 col-sm-12">
       Promotions
       <button style="background-color: #3b4454;
                       border: none;
@@ -15,6 +16,8 @@
           Add new
       </button>
     </div>
+
+
     <div class="col-sm-12">
       <select style="margin-top:30px;"
               ng-options="venue.id as venue.name for venue in venues"
@@ -22,9 +25,6 @@
               id="venueFilter">
         <option value="" selected>All Venues</option>
       </select>
-      <button style="background-color:#4BBA4B;border-color:transparent;color:white;">
-        Apply
-      </button>
       <button style="background-color:red;color:white;border-color:transparent;"
               ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
               cancel-button-type="default"
@@ -94,21 +94,17 @@
             <td>
               <input type="checkbox" ng-click="promo.selected=!promo.selected" />
             </td>
-            <td>
-              <input type="checkbox" ng-model="promo.active"/>
-            </td>
-            <td>
-              {{promo.name}}
-              <br/>
-              {{promo.description}}
-            </td>
-            <td>
-              <img style="max-width:200px;"
-                   class="img-responsive"
-                   ng-src="{{promo.ad_location}}" />
-            </td>
+            <td><input type="checkbox" ng-model="promo.active"/></td>
+            <td>{{promo.name}}
+                <br/>
+                {{promo.description}}</td>
+            <td><img style="max-width:100px;"class="img-responsive" ng-src="{{promo.ad_location ? promo.ad_location : 'images/venue_img_missing.jpg'}}"></td>
             <td>{{promo.start_time | date:'MM/dd/yyyy @ h:mma'}}</td>
             <td>{{promo.end_time | date:'MM/dd/yyyy @ h:mma'}}</td>
+            <td>
+              <img style="width:100px;"
+                   ng-src="{{getVenueName(promo.venue_id) || 'app/img/missing_user.png'}}" />
+            </td>
             <td>
               <img ng-src="{{getVenueName(promo.venue_id) || 'app/img/missing_user.png'}}" />
             </td>
@@ -123,38 +119,20 @@
       </table>
     </div>
 
-    <div id="thumbnail" class="thumbhover"  ng-switch-when="thumbnail">
-      <div  ng-mouseover="setShowContent(promo)"
-            ng-mouseout="promo.showContent = false"
-            class=" col-lg-4"
-            ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id || ''}">
-        <div class="col-lg-12"
-             style="height:100%;width:100%;padding-top:20%;background-color: rgba(36, 40, 49, 0.53);text-align:center;position:absolute;"
-             ng-show="promo.showContent">
-          {{promo.name}}<br>
-          <button class="edit2"> Edit </button>
+    <ul id="thumbnail" class=" grid   cs-style-3"  ng-switch-when="thumbnail">
+      <li ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id}">
+        <div class=" col-lg-3 col-sm-2" >
+  					<figure>
+              <img id="promotion"
+                   class="promotion img-responsive"
+                   src="{{promo.ad_location ? promo.ad_location : 'images/venue_img_missing.jpg'}}" />
+               <figcaption>
+  							<h3>{{promo.name}}</h3>
+  							<button class="edit"  ng-click="editPromotion(promo.id)" >Edit</button>
+  						</figcaption>
+            </figure>
         </div>
-        <img id="promotion"
-             data-drag="true"
-             data-jqyoui-options="{revert: 'invalid'}"
-             jqyoui-draggable="{animate:true}"
-             class="promotion img-responsive"
-             src="{{promo.ad_location}}" />
-      </div>
-      <div id="deactive"
-           style="background-color:red;"
-           class=" col-lg-12 thumbnail"
-           data-drop="true"
-           data-jqyoui-options
-           jqyoui-droppable
-           style='height:50px;'>
-      </div>
-      <div style="background-color:#4BBA4B!important;"
-           class=" col-lg-12 thumbnail"
-           data-drop="true"
-           data-jqyoui-options
-           jqyoui-droppable style='height:50px;'>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </div>

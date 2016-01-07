@@ -1,105 +1,208 @@
 <link rel="stylesheet" href="app/stylesheets/landing.css">
+<link rel="stylesheet" type="text/css" href="app/bower_components/PageStackNavigation/css/demo.css" />
+<link rel="stylesheet" type="text/css" href="app/bower_components/PageStackNavigation/css/component.css" />
+<script src="app/bower_components/PageStackNavigation/js/modernizr-custom.js"></script>
+<link rel="stylesheet" type="text/css" href="app/bower_components/FullWidthTabs/css/component.css" />
 
-<div class="container-fluid" ng-controller="UserAuthController">
-<div class="col-lg-12">
-  <div style="width:100px;margin:auto;padding-bottom:100px;">
-    <img style="width:100px;"src="images/logo.png" />
+
+
+<nav class="pages-nav">
+
+  <div class="pages-nav__item"><a class="link link--page" href="#page-docu">
+    <svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 48 48"><g transform="translate(0, 0)"> <rect x="2" y="4" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" width="44" height="40" stroke-linejoin="miter"></rect> <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="2" y1="12" x2="46" y2="12" stroke-linejoin="miter"></line> <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="12" y1="4" x2="12" y2="12" stroke-linejoin="miter"></line> <line data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="30" y1="28" x2="18" y2="28" stroke-linejoin="miter"></line> </g></svg><br>Dashboard
+  </a></div>
+  <div class="pages-nav__item"><a class="link link--page" href="#page-docu"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 48 48"><g transform="translate(0, 0)"> <polyline data-cap="butt" data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" points="6,12 24,20 42,12 " stroke-linejoin="miter" stroke-linecap="butt"></polyline> <line data-cap="butt" data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="24" y1="20" x2="24" y2="44" stroke-linejoin="miter" stroke-linecap="butt"></line> <polygon fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="42,36 24,44 6,36 6,12 24,4 42,12 " stroke-linejoin="miter"></polygon> </g></svg><br>App</a></div>
+  <div class="pages-nav__item"><a class="link link--page" href="#page-manuals">
+    <svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 48 48"><g transform="translate(0, 0)"> <polyline fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="2,2 8,2 8,32 46,32 " stroke-linejoin="miter"></polyline> <circle data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" cx="12" cy="42" r="4" stroke-linejoin="miter"></circle> <circle data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" cx="42" cy="42" r="4" stroke-linejoin="miter"></circle> <polyline fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="8,8 42,8 38,26 8,26 " stroke-linejoin="miter"></polyline> </g></svg><br>Where to buy?</a></div>
+  <div class="pages-nav__item"><a class="link link--page" href="#page-software"></a></div>
+  <div class="pages-nav__item"><a class="link link--page" href="#page-custom"></a></div>
+  <div class="pages-nav__item"><a class="link link--page" href="#page-training"></a></div>
+  <div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-buy"></a></div>
+  <div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-home">  <img style="width:100px;"src="images/logo.png" /></a></div>
+  <div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-contact">Contact</a></div>
+  <div class="pages-nav__item pages-nav__item--social">
+    <a class="link link--social link--faded" href="#"><i class="fa fa-twitter"></i><span class="text-hidden">Twitter</span></a>
+    <a class="link link--social link--faded" href="#"><i class="fa fa-linkedin"></i><span class="text-hidden">LinkedIn</span></a>
+    <a class="link link--social link--faded" href="#"><i class="fa fa-facebook"></i><span class="text-hidden">Facebook</span></a>
+    <a class="link link--social link--faded" href="#"><i class="fa fa-youtube-play"></i><span class="text-hidden">YouTube</span></a>
+  </div>
+</nav>
+
+<div class="pages-stack">
+  <!-- page -->
+  <div class="page" id="page-home">
+
+
+    <!-- Blueprint header -->
+    <header id="intro" class="bp-header cf">
+
+
+      <h1 class="bp-header__title">Bands that attract and buzz</h1>
+      <form id="email" action="email.php" method="post">
+
+    <input id="inputemail" placeholder="email" type="text" name="email">
+      <button id="staytuned" type="submit">Stay tuned</button
+      </form>
+        <br>
+
+    </header>
+
+    <div style="background-color:white;padding:20px;position:absolute;width:100%;left:0;right:0;bottom:0;" class="container-fluid">
+
+          <div class="col-lg-3">
+            <div class="container-btn-signup">
+              <button class="btn-login btn btn-default" ng-morph-modal="signInSettings" ng-click="showLogin()" ng-show="!loginViewVisible">Sign In</button>
+            </div>
+          </div>
+
+      <div style="color:black;text-align:center;font-size:23px;" class="col-lg-6">Engage with your audience like never before!</div>
+          <div  class="col-lg-3">
+            <div class="container-btn-signup">
+              <button class="btn-signup btn btn-default" ng-morph-modal="signUpSettings" ng-click="showRegistration()" ng-show="!registerViewVisible">Sign Up</button>
+            </div>
+          </div>
+
+        </div>
+  </div>
+  <!-- /page -->
+  <div class="page" id="page-docu">
+        <header id="dashboard">
+
+    <div class="container">
+      <div style="position:absolute;left:0;right:0;bottom:0;" id="tabs" class="tabs">
+        <nav id="myWorkContent">
+          <ul>
+            <li><a href="#section-1"><i class="fa fa-thumb-tack"></i><span>Venues</span></a></li>
+            <li><a href="#section-2"><i class="fa fa-cloud-upload"></i><span>Upload</span></a></li>
+            <li><a href="#section-3"><i class="fa fa-calendar-check-o"></i><span>Schedule</span></a></li>
+            <li><a href="#section-4"><i class="fa fa-users"></i><span>Team</span></a></li>
+            <li><a href="#section-5"><i class="fa fa-circle-o-notch"></i><span> bands</span></a></li>
+
+          </ul>
+        </nav>
+        <div  class="content">
+          <section id="section-1">
+            <div class="mediabox">
+
+              <h3>Sushi Gumbo Beetroot</h3>
+              <p>Sushi gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato.</p>
+            </div>
+            <div class="mediabox">
+
+              <h3>Pea Sprouts Fava Soup</h3>
+              <p>Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea.</p>
+            </div>
+            <div class="mediabox">
+
+              <h3>Turnip Broccoli Sashimi</h3>
+              <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.</p>
+            </div>
+          </section>
+          <section id="section-2">
+            <div class="mediabox">
+
+              <h3>Asparagus Cucumber Cake</h3>
+              <p>Chickweed okra pea winter purslane coriander yarrow sweet pepper radish garlic brussels sprout groundnut summer purslane earthnut pea tomato spring onion azuki bean gourd. </p>
+            </div>
+            <div class="mediabox">
+
+              <h3>Magis Kohlrabi Gourd</h3>
+              <p>Salsify taro catsear garlic gram celery bitterleaf wattle seed collard greens nori. Grape wattle seed kombu beetroot horseradish carrot squash brussels sprout chard.</p>
+            </div>
+            <div class="mediabox">
+
+              <h3>Ricebean Rutabaga</h3>
+              <p>Celery quandong swiss chard chicory earthnut pea potato. Salsify taro catsear garlic gram celery bitterleaf wattle seed collard greens nori. </p>
+            </div>
+          </section>
+          <section id="section-3">
+            <div class="mediabox">
+
+              <h3>Noodle Curry</h3>
+              <p>Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea.Sushi gumbo beet greens corn soko endive gumbo gourd.</p>
+            </div>
+            <div class="mediabox">
+
+              <h3>Leek Wasabi</h3>
+              <p>Sushi gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato.</p>
+            </div>
+            <div class="mediabox">
+
+              <h3>Green Tofu Wrap</h3>
+              <p>Pea horseradish azuki bean lettuce avocado asparagus okra. Kohlrabi radish okra azuki bean corn fava bean mustard tigernut wasabi tofu broccoli mixture soup.</p>
+            </div>
+          </section>
+          <section id="section-4">
+            <div class="mediabox">
+
+              <h3>Tomato Cucumber Curd</h3>
+              <p>Chickweed okra pea winter purslane coriander yarrow sweet pepper radish garlic brussels sprout groundnut summer purslane earthnut pea tomato spring onion azuki bean gourd. </p>
+            </div>
+            <div class="mediabox">
+              <h3>Mushroom Green</h3>
+              <p>Salsify taro catsear garlic gram celery bitterleaf wattle seed collard greens nori. Grape wattle seed kombu beetroot horseradish carrot squash brussels sprout chard.</p>
+            </div>
+            <div class="mediabox">
+              <h3>Swiss Celery Chard</h3>
+              <p>Celery quandong swiss chard chicory earthnut pea potato. Salsify taro catsear garlic gram celery bitterleaf wattle seed collard greens nori. </p>
+            </div>
+          </section>
+          <section id="section-5">
+            <div class="mediabox">
+              <h3>Radish Tomato</h3>
+              <p>Catsear cauliflower garbanzo yarrow salsify chicory garlic bell pepper napa cabbage lettuce tomato kale arugula melon sierra leone bologi rutabaga tigernut.</p>
+            </div>
+            <div class="mediabox">
+              <h3>Fennel Wasabi</h3>
+              <p>Sea lettuce gumbo grape kale kombu cauliflower salsify kohlrabi okra sea lettuce broccoli celery lotus root carrot winter purslane turnip greens garlic.</p>
+            </div>
+            <div class="mediabox">
+              <h3>Red Tofu Wrap</h3>
+              <p>Green horseradish azuki bean lettuce avocado asparagus okra. Kohlrabi radish okra azuki bean corn fava bean mustard tigernut wasabi tofu broccoli mixture soup.</p>
+            </div>
+          </section>
+        </div><!-- /content -->
+      </div><!-- /tabs -->
+
+    </div>
+
+        </header>
+  </div>
+    <!-- /page -->
+  <div class="page" id="page-manuals">
+    <header class="bp-header cf">
+      <h1 class="bp-header__title">App</h1>
+      <p class="bp-header__desc">Based on Ilya Kostin's Dribbble shot <a href="https://dribbble.com/shots/2286042-Stacked-navigation">Stacked navigation</a></p>
+      <p class="info">
+        "When you adopt a vegan diet we make a connection, you don't go back, it is not a diet, it is a lifestyle." &mdash; Freelee Frugivore
+      </p>
+    </header>
+    <img class="poster" src="images/2.jpg" alt="img02" />
+  </div>
+    <!-- /page -->
+
+
+
+
+
+  <div class="page" id="page-contact">
+    <header class="bp-header cf">
+      <h1 class="bp-header__title">Contact</h1>
+      <p class="bp-header__desc">Based on Ilya Kostin's Dribbble shot <a href="https://dribbble.com/shots/2286042-Stacked-navigation">Stacked navigation</a></p>
+      <p class="info">
+        "Man is the only animal that can remain on friendly terms with the victims he intends to eat until he eats them." &mdash; Samuel Butler
+      </p>
+    </header>
+    <img class="poster" src="images/4.jpg" alt="img04" />
   </div>
 </div>
-  </div>
 
-<div class="col-lg-6">
-  <div class="container-btn-signup">
-    <button class="btn-login btn btn-default" ng-morph-modal="signInSettings" ng-click="showLogin()" ng-show="!loginViewVisible">Sign In</button>
-  </div>
-</div>
+<!-- /pages-stack -->
+<button class="menu-button"><span>Menu</span></button>
+<script src="app/bower_components/PageStackNavigation/js/classie.js"></script>
+<script src="app/bower_components/PageStackNavigation/js/main.js"></script>
 
-<br>
-<div  class="col-lg-6">
-  <div class="container-btn-signup">
-    <button class="btn-signup btn btn-default" ng-morph-modal="signUpSettings" ng-click="showRegistration()" ng-show="!registerViewVisible">Sign Up</button>
-  </div>
-</div>
-
-<div style="margin-left:185px;margin-top:-7px;">
-  <i class="my-icon"></i>
-</div>
-</div>
-
-<div id="iconscrolleffect" style="width:100%;" class="container-fluid">
-  <div style="margin-top:140px;text-align:center;"class="col-lg-12">
-    <ul class="cd-container">
-    	<li class="cd-service cd-service-divider"></li>
-
-    	<li class="cd-service cd-service-1">
-    		<h2>Raise Awareness</h2>
-    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis pariatur tenetur quod veritatis nulla aspernatur architecto! Fugit, reprehenderit amet deserunt molestiae ut libero facere quasi velit perferendis ullam quis necessitatibus!</p>
-    	</li> <!-- cd-service -->
-
-    	<li class="cd-service cd-service-2">
-    		<h2>Through a bracelet</h2>
-    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis pariatur tenetur quod veritatis nulla aspernatur architecto! Fugit, reprehenderit amet deserunt molestiae ut libero facere quasi velit perferendis ullam quis necessitatibus!</p>
-    	</li> <!-- cd-service -->
-
-    	<li class="cd-service cd-service-3">
-    		<h2>But this isn't a regular bracelet</h2>
-    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis pariatur tenetur quod veritatis nulla aspernatur architecto! Fugit, reprehenderit amet deserunt molestiae ut libero facere quasi velit perferendis ullam quis necessitatibus!</p>
-    	</li> <!-- cd-service -->
-
-    	<li  class="cd-service cd-service-4">
-    		<h2>As a promotor</h2>
-    		<p>You have access to your own dashboard where you can...<ul>
-    		    <li>Create Accounts</li>
-    		    <li>Create Promotions </li>
-    		    <li>Measure Performance</li>
-    		</ul></p>
-    	</li>
-    </ul>
-  </div>
-</div>
-
-<!-- The content of your page would go here. -->
-
-	<footer class="footer-distributed">
-
-		<div class="footer-left">
-
-              <a href="#"><img style="width:50px;" src="images/buzzpsychlogo.png"></a>
-
-			<p class="footer-links">
-
-
-				<a href="#">Blog</a>
-
-				<a href="#">Pricing</a>
-
-			</p>
-
-			<p class="footer-company-name">Company Name &copy; 2015</p>
-
-			<div class="footer-icons">
-
-				<a href="#"><i class="fa fa-facebook"></i></a>
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-linkedin"></i></a>
-				<a href="#"><i class="fa fa-github"></i></a>
-
-			</div>
-
-		</div>
-
-		<div class="footer-right">
-
-			<p>Get in touch</p>
-
-			<form action="#" method="post">
-
-				<input type="text" name="email" placeholder="Email" />
-				<textarea name="message" placeholder="Message"></textarea>
-				<button>Send</button>
-
-			</form>
-
-		</div>
-
-	</footer>
+<script src="app/bower_components/FullWidthTabs/js/cbpFWTabs.js"></script>
+<script>
+  new CBPFWTabs( document.getElementById( 'tabs' ) );
+</script>

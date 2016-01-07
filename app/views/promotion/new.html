@@ -1,7 +1,7 @@
 
 <div id="promotionCreatePanel" class="col-md-12">
-	<img class="col-sm-6 col-xs-6" n
-				 g-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
+	<img class="col-sm-6 col-xs-6"
+			ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
 		<form name="promotionForm"
 			enctype="multipart/form-data"
 			ng-submit="createPromotion(promotionForm.$valid)"
@@ -25,6 +25,23 @@
 						<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
 					</div>
 				</div>
+			</div>
+
+<br><br>
+			<div ng-controller="timectrl"  class="col-md-6 col-sm-12">
+
+				<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
+
+  		<uib-timepicker  style="width:232px;background-color:#242831;"
+  									ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+
+			</div>
+			<!-- Start time date time picker popup -->
+			<div  ng-controller="timectrl" id="datepicker2" class="col-md-6 col-sm-12">
+
+				<md-datepicker  ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker><br><br>
+
+				<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
 				<div class="col-sm-12 col-xs-12">
 							<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 										pickerclass="btn addphoto"
@@ -36,29 +53,14 @@
 
 				</div>
 			</div>
+
 		</div>
 		<div class="col-sm-12">
+			VENUES:
 			<select ng-options="venue.id as venue.name for venue in venues"
-							ng-model="promotion.venue_id">
+							ng-model="promotion.venue_id"
+							ng-required>
 			</select>
-		</div>
-		<div class="col-md-6 col-sm-12">
-			<md-datepicker ng-model="promotion.start_time"
-										 md-placeholder="Enter date">
-				</md-datepicker>
-				<br><br>
-			  <uib-timepicker ng-model="mytime"
-												ng-change="changed()"
-												hour-step="hstep"
-												minute-step="mstep"
-												show-meridian="ismeridian">
-				</uib-timepicker>
-		</div>
-		<!-- Start time date time picker popup -->
-		<div id="datepicker2" class="col-md-6 col-sm-12">
-			<md-datepicker ng-model="promotion.end_time"
-										 md-placeholder="Enter date">
-			</md-datepicker>
 		</div>
 		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
 			<button style="background-color:#de519b;"

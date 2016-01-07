@@ -5,7 +5,7 @@
 				ng-submit="updatePromotion(promotion)"
 				novalidate>
 		<div class="col-md-12">
-				<img style="max-width:50%;"ng-src="{{promotion.ad_location}}" />
+				<img style="max-width:50%;" ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
 				<div class="field">
           <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">EDIT PROMOTION</h1>
 					<input  style="margin:initial;"
@@ -37,36 +37,29 @@
 					</div>
 				</div>
 		</div>
+
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<select ng-options="venue.id as venue.name for venue in venues"
 							ng-selected="venue.id == promotion.venue_id"
 							ng-model="promotion.venue_id">
 			</select>
 		</div>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
+		<div ng-controller="timectrl"  class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
 				<div class="col-md-6 col-sm-12">
 					<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
-					<label style="color:white;" class="control-label"><i class="fa fa-clock-o"></i> Time </label>
-					<input style="max-width:100px;margin:initial;" type="text" class="form-control" size="8" ng-model="time" name="time" bs-timepicker>
+					<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+
 				</div>
 				<!-- Start time date time picker popup -->
-				<div id="datepicker2" class="col-md-6 col-sm-12">
-					<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date">
-					</md-datepicker>
+				<div  ng-controller="timectrl" id="datepicker2" class="col-md-6 col-sm-12">
+					<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker><br><br>
+					<uib-timepicker  style="width:232px;background-color:#242831;"
+													 ng-model="mytime"
+													 ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+				</div>
 
 					<br><br>
 
-					<label style="color:white;" class="control-label">
-						<i class="fa fa-clock-o"></i>
-						Time
-					</label>
-					<input style="max-width:100px;margin:initial;"
-								 type="text"
-								 class="form-control"
-								 size="8"
-								 ng-model="time"
-								 name="time"
-								 bs-timepicker>
 				</div>
 				<div class="col-sm-12" >
 					<label style="color:white;" class="control-label">

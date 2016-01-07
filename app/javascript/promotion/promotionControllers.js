@@ -18,6 +18,12 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     templateUrl: 'app/views/promotion/new.html',
     controller: 'PromotionCreationController'
   });
+
+
+
+
+
+
 }])
 
 .controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams', 'VenuePromotion', 'Venue', '$sessionStorage',
@@ -56,6 +62,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         }
       }
     }
+
     $scope.createPromotion = function(){
       $scope.promoPanel='create';
       console.log("CREATE PROMOTION CICKED");
@@ -103,11 +110,12 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       $scope.venues = $sessionStorage.venues;
     }
 
-    this.createPromotion = function(promotion){
-      Promotion.save($scope.promotion);
+    $scope.createPromotion = function(promotion){
+      Promotion.save(promotion);
+      //state.go("new@promotions.dashboard");
     }
 
-    this.previewImage = function(files){
+    $scope.previewImage = function(files){
       $scope.setUrl(files);
       var reader = new FileReader();
       if(typeof files[0] === 'Blob'){
@@ -120,7 +128,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
     }
 
-    this.setUrl = function(files){
+    $scope.setUrl = function(files){
       $scope.promotion.ad_location = files[0].url;
     }
 
@@ -182,7 +190,42 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         }
       }
 
-      this.init();
-    }
-  ]
-);
+    $scope.status = {
+      opened: false
+    };
+    this.init();
+  }
+])
+
+
+.controller('timectrl', function ($scope, $log) {
+  $scope.mytime = new Date();
+
+  $scope.hstep = 1;
+  $scope.mstep = 15;
+
+  $scope.options = {
+    hstep: [1, 2, 3],
+    mstep: [1, 5, 10, 15, 25, 30]
+  };
+
+  $scope.ismeridian = true;
+  $scope.toggleMode = function() {
+    $scope.ismeridian = ! $scope.ismeridian;
+  };
+
+  $scope.update = function() {
+    var d = new Date();
+    d.setHours( 14 );
+    d.setMinutes( 0 );
+    $scope.mytime = d;
+  };
+
+  $scope.changed = function () {
+    $log.log('Time changed to: ' + $scope.mytime);
+  };
+
+  $scope.clear = function() {
+    $scope.mytime = null;
+  };
+});

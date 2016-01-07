@@ -60,11 +60,11 @@ max-width: 300px;;
 }
 
 .my-icon {
-  
+
 }
 .my-icon > i {
     z-index: 9;
-  
+
     position: absolute;
     display: inline-block;
     width: 0;
@@ -76,7 +76,7 @@ max-width: 300px;;
         top:358px;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -99,7 +99,7 @@ body {
   background-color: white;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Modules - reusable parts of our design
 
@@ -116,9 +116,9 @@ Modules - reusable parts of our design
   clear: both;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Main components 
+Main components
 
 -------------------------------- */
 @media only screen and (min-width: 1170px) {
@@ -140,7 +140,7 @@ body::before, body::after {
   position: fixed;
   /* trick to remove some annoying flickering on webkit browsers */
   width: 100%;
-  
+
   left: 50%;
   right: auto;
   -webkit-transform: translateX(-50%);
@@ -150,7 +150,7 @@ body::before, body::after {
   transform: translateX(-50%);
   height:440px;
   z-index: -1;
- 
+
 }
 
 body::before {
@@ -166,30 +166,7 @@ body::after {
   background-color: white;
 }
 
-header {
-  position: relative;
-  height: 50%;
-  background-color: #242831;
-  z-index: 2;
-}
-header h1 {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  bottom: auto;
-  right: auto;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -o-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  width: 90%;
-  max-width: 1170px;
-  text-align: center;
-  color: #699ec0;
-  font-size: 26px;
-  font-size: 1.625rem;
-}
+
 
 .cd-service {
   position: relative;
@@ -324,7 +301,7 @@ padding-bottom:570px;
 	text-align: left;
 
 	padding: 50px 60px 40px;
-	
+
 	overflow: hidden;
 }
 
@@ -514,4 +491,48 @@ padding-bottom:570px;
 	.footer-distributed form button{
 		float: none;
 	}
+}
+
+
+#email{
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  top: 65%;
+
+}
+
+#inputemail{
+  width: 376px;
+  font-size: 29px;
+  border: none;
+
+}
+
+
+#staytuned{
+  font-size:29px;
+  color:#5aba47;
+
+}
+
+#staytuned:hover{
+
+  background-color: #de519b;
+  color:white;
+  border:none;
+}
+
+
+#dashboard{
+width: 100%;
+height: 100vh;
+background-image: url(http://localhost:8000/images/dash.jpg);
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+
 }
