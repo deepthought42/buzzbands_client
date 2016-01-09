@@ -84,10 +84,10 @@
             <td>Selected</td>
             <td>Active</td>
             <td>Title</td>
-            <td>Image</td>
+            <td>Promotion</td>
             <td>Start Time</td>
             <td>End Time</td>
-            <td>Account</td>
+            <td>Venue</td>
             <td></td>
           </tr>
         </thead>
@@ -107,9 +107,7 @@
               <img style="width:100px;"
                    ng-src="{{getVenueName(promo.venue_id) || 'app/img/missing_user.png'}}" />
             </td>
-            <td>
-              <img ng-src="{{getVenueName(promo.venue_id) || 'app/img/missing_user.png'}}" />
-            </td>
+
             <td>
               <button ng-click="editPromotion(promo.id)"
                       class="edit">
