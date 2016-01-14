@@ -29,19 +29,24 @@
 
 <br><br>
 			<div ng-controller="timectrl"  class="col-md-6 col-sm-12">
-
 				<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
-
-  		<uib-timepicker  style="width:232px;background-color:#242831;"
-  									ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
-
+  			<uib-timepicker style="width:232px;background-color:#242831;"
+  											ng-model="mytime" ng-change="changed()"
+												hour-step="hstep" minute-step="mstep"
+												show-meridian="ismeridian"></uib-timepicker>
 			</div>
 			<!-- Start time date time picker popup -->
 			<div  ng-controller="timectrl" id="datepicker2" class="col-md-6 col-sm-12">
 
-				<md-datepicker  ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker><br><br>
-
-				<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+				<md-datepicker ng-model="promotion.end_time"
+											 md-placeholder="Enter date"></md-datepicker>
+				<br><br>
+				<uib-timepicker style="width:232px;background-color:#242831;"
+												ng-model="mytime"
+												ng-change="changed()"
+												hour-step="hstep"
+												minute-step="mstep"
+												show-meridian="ismeridian"></uib-timepicker>
 				<div class="col-sm-12 col-xs-12">
 							<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 										pickerclass="btn addphoto"
@@ -50,7 +55,6 @@
 								 <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
 									Add Photo
 							</div><br><br>
-
 				</div>
 			</div>
 
