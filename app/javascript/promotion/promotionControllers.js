@@ -18,12 +18,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     templateUrl: 'app/views/promotion/new.html',
     controller: 'PromotionCreationController'
   });
-
-
-
-
-
-
 }])
 
 .controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams', 'VenuePromotion', 'Venue', '$sessionStorage',
@@ -110,8 +104,10 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       $scope.venues = $sessionStorage.venues;
     }
 
-    $scope.createPromotion = function(promotion){
-      Promotion.save(promotion);
+    $scope.createPromotion = function(promotion, isValid){
+      if(isValid){
+        Promotion.save(promotion);
+      }
       //state.go("new@promotions.dashboard");
     }
 

@@ -4,7 +4,7 @@
 			ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
 		<form name="promotionForm"
 			enctype="multipart/form-data"
-			ng-submit="createPromotion(promotionForm.$valid)"
+			ng-submit="createPromotion(promotion, promotionForm.$valid)"
 			novalidate>
 		<div class="col-md-12">
 			<div class="col-md-5">
@@ -29,17 +29,25 @@
 
 <br><br>
 			<div ng-controller="timectrl"  class="col-md-6 col-sm-12">
-				<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
+				<md-datepicker ng-model="promotion.start_time"
+											 md-placeholder="Enter date"
+											 required></md-datepicker>
+
+				<br><br>
   			<uib-timepicker style="width:232px;background-color:#242831;"
-  											ng-model="mytime" ng-change="changed()"
-												hour-step="hstep" minute-step="mstep"
+  											ng-model="mytime"
+												ng-change="changed()"
+												hour-step="hstep"
+												minute-step="mstep"
 												show-meridian="ismeridian"></uib-timepicker>
 			</div>
 			<!-- Start time date time picker popup -->
 			<div  ng-controller="timectrl" id="datepicker2" class="col-md-6 col-sm-12">
 
 				<md-datepicker ng-model="promotion.end_time"
-											 md-placeholder="Enter date"></md-datepicker>
+											 md-placeholder="Enter date"
+											 required>
+				</md-datepicker>
 				<br><br>
 				<uib-timepicker style="width:232px;background-color:#242831;"
 												ng-model="mytime"
@@ -63,14 +71,16 @@
 			VENUES:
 			<select ng-options="venue.id as venue.name for venue in venues"
 							ng-model="promotion.venue_id"
-							ng-required>
+							required>
 			</select>
+			<div ng-messages="promotionForm.venue.$error" ng-if="promotionForm.$invalid" class="text-danger">
+				<p ng-message="required">Venue is required.</p>
+			</div>
 		</div>
 		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
 			<button style="background-color:#de519b;"
 							class="btn btn-primary"
 						  type="submit"
-							ng-click="createPromotion(promotionForm.$valid)"
 							ng-disabled="promotionForm.$invalid">
 				CREATE
 			</button>
