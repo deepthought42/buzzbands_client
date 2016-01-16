@@ -1,7 +1,7 @@
-var services = angular.module('buzzbands.PromotionService', ['ngResource', 'buzzbands.serviceConfig']);
+var services = angular.module('buzzbands.OrderService', ['ngResource', 'buzzbands.serviceConfig']);
 
-services.factory('Promotion', ['$resource', 'buzzbands.serviceConfig', function ($resource, config) {
-  return $resource(config.basePath + '/promotions/:id.json', {id: '@id'}, {
+services.factory('Order', ['$resource', 'buzzbands.serviceConfig', function ($resource, config) {
+  return $resource(config.basePath + '/orders/:id.json', {id: '@id'}, {
     update: { method: 'PUT'}
   });
 }]);
