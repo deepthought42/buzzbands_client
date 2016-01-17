@@ -59,8 +59,7 @@
               </td>
               <td>Venue Photo</td>
               <td>Name</td>
-              <td></td>
-              <td></td>
+              <td ng-show="hasPermission(3)"></td>
             </tr>
           </thead>
           <tbody>
@@ -75,7 +74,7 @@
               <td ng-click="showPromotionsList(venue.id)">
                 <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
               </td>
-              <td>
+              <td ng-show="hasPermission(3)">
                 <button ng-show="hasPermission(3)" ng-click="editVenue(venue.id)">Edit</button>
               </td>
             </tr>
