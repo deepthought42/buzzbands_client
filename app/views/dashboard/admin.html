@@ -20,17 +20,24 @@
           <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
             <button style="border-radius:1em;"  ui-sref="analytics.adminDashboard"
                     ng-class='{"navButtonActive":tog==1,"navButton":tog!=1}'
-                    ng-click='setPage(1)'>Overview</button>
+                    ng-click='setPage(1)'
+                    ng-show="hasPermission(3) || hasPermission(4)">
+                  Overview
+            </button>
           </div>
           <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
             <button  ui-sref="venues.adminDashboard"
                    ng-class='{"navButtonActive":tog==2,"navButton":tog!=2}'
-                   ng-click='setPage(2)'>Venues</button>
+                   ng-click='setPage(2)'>
+                 Venues
+           </button>
           </div>
           <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
             <button ui-sref="adminDashboard.promotions"
                     ng-class='{"navButtonActive":$session.activeViewId==3,"navButton":$session.activeViewId!=3}'
-                    ng-click='setPage(3)'>Promotions</button><br>
+                    ng-click='setPage(3)'>
+                  Promotions
+            </button><br>
             <button ui-sref="adminDashboard.newPromotion"
                     class="add btn btn-primary"
                     ng-show="tog==3 && hasPermission(3)">Add New</button>
