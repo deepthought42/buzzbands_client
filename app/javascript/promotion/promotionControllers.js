@@ -57,12 +57,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
     }
 
-    $scope.createPromotion = function(){
-      $scope.promoPanel='create';
-      console.log("CREATE PROMOTION CICKED");
-      //state.go("new@promotions.dashboard");
-    }
-
     if(!$stateParams.venue_id){
       //Show all promotions
       $scope.promotionList = $scope.getPromotionList();

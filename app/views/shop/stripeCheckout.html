@@ -1,7 +1,31 @@
 <div >
-  <h1>No Stripe Checkout here</h1>
-  <a href="#/buy">Go to buy page</a>
-
-  <h1>Stripe Checkout has been loaded</h1>
-  <button ng-click="BuyBandsCtrl.doCheckout()">Buy</button>
+  <form stripe-form="submitPayment" style="color:white">
+    <label for="cardNumber">Name</label>
+    <input id="cardNumber"
+           type="text" ng-model="name"
+           class="form-control"
+           placholder="Name on card"/>
+    <label>Card Number</label>
+    <input type="text" ng-model="number"
+           class="form-control"
+           payments-validate="card"
+           payments-type-model="type"
+           payments-format="card"
+           placholder="Card Number"/>
+    <label>Expiration</label>
+    <input type="text" ng-model="expiry"
+           class="form-control"
+           payments-validate="expiry" payments-format="expiry"
+           placholder="mm/yyyy"/>
+    <label>CVC</label>
+    <input type="text" ng-model="cvc"
+           class="form-control"
+           payments-validate="cvc"
+           payments-type-model="type" payments-format="cvc"
+           placholder="CVC"/>
+    <button type="submit"
+            class="btn btn-primary">
+          Submit Payment
+    </button>
+  </form>
 </div>

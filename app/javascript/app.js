@@ -20,6 +20,7 @@ angular.module('buzzbands_client', [
   'buzzbands.BandsControllers',
   'buzzbands.RoleServices',
   'buzzbands.UserDashboardControllers',
+  'buzzbands.OrderService',
   'filepicker',
   'ngDragDrop'
 ]).

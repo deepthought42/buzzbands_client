@@ -3,42 +3,21 @@
 angular.module('buzzbands.BandsControllers', ['ui.router',
                                               'buzzbands.BandsService',
                                               'buzzbands.VenueService',
-                                              'stripe.checkout'])
+                                              'buzzbands.OrderService',
+                                              'angularPayments'])
 
-.config(['StripeCheckoutProvider',
-  function(StripeCheckoutProvider) {
-    // You can use the provider to set defaults for all handlers
-    // you create. Any of the options you'd pass to
-    // StripeCheckout.configure() are valid.
-    StripeCheckoutProvider.defaults({
-      key: "YOUR PUBLISHABLE STRIPE KEY"
-    });
-}]).run(function( StripeCheckout) {
-  // Setting defaults
-  StripeCheckout.defaults({
-    opened: function() {
-    //  $log.debug("Stripe Checkout opened");
-    },
-    closed: function() {
-    //  $log.debug("Stripe Checkout closed");
-    }
-  });
+.config(
+  function() {
+    Stripe.setPublishableKey('pk_test_kZbH5pE5QrS1wyz7tHeLYY27');
+
 })
 .controller('BuyBandsController', ['$scope',
                                    'Bands',
                                    'Packages',
+                                   'Order',
                                    '$state',
                                    '$sessionStorage',
-  function($scope, Bands, Packages, state, session) {
-    // You should configure a handler when the view is loaded,
-   // just as you would if you were using checkout.js directly.
-   var handler = StripeCheckout.configure({
-       name: "Buy Bands",
-       token: function(token, args) {
-         $log.debug("Got stripe token: " + token.id);
-       }
-   });
-
+  function($scope, Bands, Packages, Order, state, session) {
   /**
    * Initializes controller
    */
@@ -49,13 +28,32 @@ angular.module('buzzbands.BandsControllers', ['ui.router',
 
      Packages.query().$promise.then(function(data){
        $scope.packages = data;
-       $scope.order.package = $scope.packages[0];
+       //$scope.order.package = $scope.packages[0];
      });
    }
 
-   this.doCheckout = function(token) {
-       alert("Got Stripe token: " + token.id);
-   };
+   $scope.submitPayment = function(status, response){
+     if(response.error) {
+       // there was an error. Fix it.
+     } else {
+       // got stripe token, now charge it or smt
+       session.order.paymentToken = response.id
+
+       Order.save(session.order);
+
+       session.order = {};
+     }
+   }
+
+   $scope.placeOrder = function(order){
+     order.price = $scope.package.price;
+     order.band_count = $scope.package.count;
+     order.user_id = session.user.id;
+     order.status = "submitted";
+     session.order = order;
+
+     state.go("adminDashboard.checkout");
+   }
 
    this.getBandColors = function(){
      return [

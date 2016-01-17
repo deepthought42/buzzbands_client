@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'])
+angular.module('buzzbands.DashboardControllers', ['ui.router'])
 
-.config(['$stateProvider', 'StripeCheckoutProvider',
-  function($stateProvider, StripeCheckoutProvider) {
+.config(['$stateProvider',
+  function($stateProvider) {
 
     $stateProvider.state('adminDashboard', {
         url: '/admin',
@@ -105,16 +105,33 @@ angular.module('buzzbands.DashboardControllers', ['ui.router', 'stripe.checkout'
             '':{
               templateUrl: 'app/views/shop/bandSelection.html',
               controller: 'BuyBandsController'
+            },
+            '/checkout':{
+              templateUrl: 'app/views/shop/stripeCheckout.html',
+              controller: 'BuyBandsController'
             }
           },
           resolve: {
               auth: function($auth) {
                 return $auth.validateUser();
-              },
-              // checkout.js isn't fetched until this is resolved.
-              stripe: StripeCheckoutProvider.load
+              }
             }
         })
+        .state('adminDashboard.checkout', {
+            url: '/checkout',
+            parent: 'adminDashboard',
+            views: {
+              '':{
+                templateUrl: 'app/views/shop/stripeCheckout.html',
+                controller: 'BuyBandsController'
+              }
+            },
+            resolve: {
+                auth: function($auth) {
+                  return $auth.validateUser();
+                }
+              }
+          })
         .state('adminDashboard.users', {
             url: '/users',
             parent: 'adminDashboard',

@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('buzzbands.UserDashboardControllers', ['ui.router', 'stripe.checkout'])
+angular.module('buzzbands.UserDashboardControllers', ['ui.router'])
 
-.config(['$stateProvider', 'StripeCheckoutProvider',
-  function($stateProvider, StripeCheckoutProvider) {
+.config(['$stateProvider',
+  function($stateProvider) {
 
     $stateProvider.state('userDashboard', {
         url: '/user',

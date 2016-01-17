@@ -1,13 +1,15 @@
-<img class=" col-lg-12 col-xs-12 img-responsive" id="bandsimg"
+<img class=" col-lg-12 col-xs-12 img-responsive"
+     id="bandsimg"
      ng-src="{{order.color.href || bandColors[0].href}}" />
 <div class="col-sm-12" style="color:orange" >
   <form style="text-align:center;"
         name="orderForm"
+        ng-submit="placeOrder(order)"
         novalidate>
     <div ng-model="order.color">
       <span  class="col-lg-2 col-md-2 col-xs-2"
              ng-repeat="bandColor in bandColors"
-             ng-click="order.color=bandColor">
+             ng-click="order.color=bandColor.id">
           <div style="cursor:pointer;" id="{{bandColor.id}}">
             <img ng-src="bandColor.href">
           </div>
@@ -23,23 +25,21 @@
     </div>
     <div class="col-sm-12">
       <select style="margin-top:200px;max-width:400px;"
-              ng-model="order.package"
+              ng-model="package"
               class="form-control"
               ng-options="bandPackage.count for bandPackage in packages"
-              ng-selected="{{bandPackage == order.package}}"
+              ng-selected="{{bandPackage == package}}"
               ng-required >
       </select>
       <div style="color:white;text-align:center;">
-        ${{order.package.price || 0.00}}
+        ${{package.price || 0.00}}
       </div>
     </div>
-  <button id="buyBandButton" stripe-checkout="BuyBandsController.doCheckout"
-            data-key="pk_test_kZbH5pE5QrS1wyz7tHeLYY27"
-            data-name="Band Package"
-            data-description="{{order.package.price}}"
-            data-amount="{{order.package.price*100}}"
-            class="btn btn-primary"
-            ng-disabled="orderForm.$invalid">
+  <button id="buyBandButton"
+          data-name="Band Package"
+          class="btn btn-primary"
+          ng-disabled="orderForm.$invalid"
+          type="submit">
       Buy
     </button>
   </form>
