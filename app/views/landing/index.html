@@ -17,122 +17,171 @@
     <div class="pages-nav__item"><a class="link link--page" href="#page-software"></a></div>
     <div class="pages-nav__item"><a class="link link--page" href="#page-custom"></a></div>
     <div class="pages-nav__item"><a class="link link--page" href="#page-training"></a></div>
-    <div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-buy"></a></div>
-    <div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-home">  <img style="width:100px;"src="images/logo.png" /></a></div>
-    <div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-contact">Contact</a></div>
+    <div class="pages-nav__item pages-nav__item--small">
+			<a class="link link--page link--faded" href="#page-buy"></a>
+		</div>
+    <div class="pages-nav__item pages-nav__item--small">
+			<a class="link link--page link--faded" href="#page-home">
+				<img style="width:100px;"src="images/logo.png" />
+			</a>
+		</div>
+    <div class="pages-nav__item pages-nav__item--small">
+			<a class="link link--page link--faded" href="#page-contact">
+				Contact
+			</a>
+		</div>
     <div class="pages-nav__item pages-nav__item--social">
 
-    <a class="link link--social link--faded" href="#"><i class="fa fa-twitter"></i><span class="text-hidden">Twitter</span></a>
-    <a class="link link--social link--faded" href="#"><i class="fa fa-linkedin"></i><span class="text-hidden">LinkedIn</span></a>
-    <a class="link link--social link--faded" href="#"><i class="fa fa-facebook"></i><span class="text-hidden">Facebook</span></a>
-    <a class="link link--social link--faded" href="#"><i class="fa fa-youtube-play"></i><span class="text-hidden">YouTube</span></a>
-  </div>
-</nav>
+	    <a class="link link--social link--faded" href="#">
+				<i class="fa fa-twitter"></i>
+				<span class="text-hidden">Twitter</span>
+			</a>
+	    <a class="link link--social link--faded" href="#">
+				<i class="fa fa-linkedin"></i>
+				<span class="text-hidden">LinkedIn</span>
+			</a>
+	    <a class="link link--social link--faded" href="#">
+				<i class="fa fa-facebook"></i>
+				<span class="text-hidden">Facebook</span>
+			</a>
+	    <a class="link link--social link--faded" href="#">
+				<i class="fa fa-youtube-play"></i>
+				<span class="text-hidden">YouTube</span>
+			</a>
+	  </div>
+	</nav>
 
-<div class="pages-stack">
-  <!-- page -->
-  <div class="page" id="page-home">
+	<div class="pages-stack">
+  	<!-- page -->
+  	<div class="page" id="page-home">
+    	<!-- Blueprint header -->
+    	<header id="intro" class="bp-header cf">
+      	<h1 class="bp-header__title">Bands that attract and buzz</h1>
+      	<form id="email" action="email.php" method="post">
+
+    			<input id="inputemail" placeholder="email" type="text" name="email" />
+      		<button id="staytuned" type="submit">Stay tuned</button>
+      	</form>
+      </header>
+    	<div style="background-color:white;padding:20px;position:absolute;width:100%;left:0;right:0;bottom:0;" class="container-fluid">
+      	<div class="col-lg-3">
+        	<div class="container-btn-signup">
+	          <button class="btn-login btn btn-default"
+										ng-morph-modal="signInSettings"
+										ng-click="showLogin()"
+										ng-show="!loginViewVisible">
+									Sign In
+						</button>
+	        </div>
+	      </div>
+
+	      <div style="color:black;text-align:center;font-size:23px;"
+						 class="col-lg-6">
+						Engage with your audience like never before!
+				</div>
+	      <div  class="col-lg-3">
+	        <div class="container-btn-signup">
+	          <button class="btn-signup btn btn-default"
+										ng-morph-modal="signUpSettings"
+										ng-click="showRegistration()"
+										ng-show="!registerViewVisible">
+									Sign Up
+						</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	  <!-- /page -->
+	  <div class="page" id="page-docu">
+      <header id="dashboard">
+
+		    <div class="container">
+		      <div style="position:absolute;left:0;right:0;bottom:0;"
+							 id="tabs"
+							 class="tabs">
+		        <nav id="myWorkContent">
+		          <ul>
+		            <li><a href="#section-1"><i class="fa fa-thumb-tack"></i><span>Venues</span></a></li>
+		            <li><a href="#section-2"><i class="fa fa-cloud-upload"></i><span>Upload</span></a></li>
+		            <li><a href="#section-3"><i class="fa fa-calendar-check-o"></i><span>Schedule</span></a></li>
+		            <li><a href="#section-4"><i class="fa fa-users"></i><span>Team</span></a></li>
+		            <li><a href="#section-5"><i class="fa fa-circle-o-notch"></i><span> bands</span></a></li>
+		          </ul>
+		        </nav>
+		        <div  class="content">
+		          <section id="section-1">
+		            <div class="mediabox">
+		              <h3>Pea Sprouts Fava Soup</h3>
+		              <p>Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea.</p>
+		            </div>
+		          </section>
+		          <section id="section-2">
 
 
-    <!-- Blueprint header -->
-    <header id="intro" class="bp-header cf">
+		            <div class="mediabox">
 
+		              <h3>Ricebean Rutabaga</h3>
+		              <p>Celery quandong swiss chard chicory earthnut pea potato. Salsify taro catsear garlic gram celery bitterleaf wattle seed collard greens nori. </p>
+		            </div>
+		          </section>
+		          <section id="section-3">
+		            <div class="mediabox">
+		              <h3>Green Tofu Wrap</h3>
+		              <p>Pea horseradish azuki bean lettuce avocado asparagus okra. Kohlrabi radish okra azuki bean corn fava bean mustard tigernut wasabi tofu broccoli mixture soup.</p>
+		            </div>
+		          </section>
+		          <section id="section-4">
 
-      <h1 class="bp-header__title">Bands that attract and buzz</h1>
-      <form id="email" action="email.php" method="post">
+		            <div class="mediabox">
+		              <h3>Swiss Celery Chard</h3>
+		              <p>Celery quandong swiss chard chicory earthnut pea potato. Salsify taro catsear garlic gram celery bitterleaf wattle seed collard greens nori. </p>
+		            </div>
+		          </section>
+		          <section id="section-5">
 
-    <input id="inputemail" placeholder="email" type="text" name="email">
-      <button id="staytuned" type="submit">Stay tuned</button
-      </form>
-        <br>
-
-    </header>
-
-    <div style="background-color:white;padding:20px;position:absolute;width:100%;left:0;right:0;bottom:0;" class="container-fluid">
-
-          <div class="col-lg-3">
-            <div class="container-btn-signup">
-              <button class="btn-login btn btn-default" ng-morph-modal="signInSettings" ng-click="showLogin()" ng-show="!loginViewVisible">Sign In</button>
-            </div>
-          </div>
-
-      <div style="color:black;text-align:center;font-size:23px;" class="col-lg-6">Engage with your audience like never before!</div>
-          <div  class="col-lg-3">
-            <div class="container-btn-signup">
-              <button class="btn-signup btn btn-default" ng-morph-modal="signUpSettings" ng-click="showRegistration()" ng-show="!registerViewVisible">Sign Up</button>
-            </div>
-          </div>
-
-        </div>
-  </div>
-  <!-- /page -->
-  <div class="page" id="page-docu">
-        <header id="dashboard">
-
-    <div class="container">
-      <div style="position:absolute;left:0;right:0;bottom:0;" id="tabs" class="tabs">
-        <nav id="myWorkContent">
-          <ul>
-            <li><a href="#section-1"><i class="fa fa-thumb-tack"></i><span>Venues</span></a></li>
-            <li><a href="#section-2"><i class="fa fa-cloud-upload"></i><span>Upload</span></a></li>
-            <li><a href="#section-3"><i class="fa fa-calendar-check-o"></i><span>Schedule</span></a></li>
-            <li><a href="#section-4"><i class="fa fa-users"></i><span>Team</span></a></li>
-            <li><a href="#section-5"><i class="fa fa-circle-o-notch"></i><span> bands</span></a></li>
-
-          </ul>
-        </nav>
-        <div  class="content">
-          <section id="section-1">
-
-            <div class="mediabox">
-
-              <h3>Pea Sprouts Fava Soup</h3>
-              <p>Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea.</p>
-            </div>
-
-          </section>
-          <section id="section-2">
-
-
-            <div class="mediabox">
-
-              <h3>Ricebean Rutabaga</h3>
-              <p>Celery quandong swiss chard chicory earthnut pea potato. Salsify taro catsear garlic gram celery bitterleaf wattle seed collard greens nori. </p>
-            </div>
-          </section>
-          <section id="section-3">
-            <div class="mediabox">
-              <h3>Green Tofu Wrap</h3>
-              <p>Pea horseradish azuki bean lettuce avocado asparagus okra. Kohlrabi radish okra azuki bean corn fava bean mustard tigernut wasabi tofu broccoli mixture soup.</p>
-            </div>
-          </section>
-          <section id="section-4">
-
-            <div class="mediabox">
-              <h3>Swiss Celery Chard</h3>
-              <p>Celery quandong swiss chard chicory earthnut pea potato. Salsify taro catsear garlic gram celery bitterleaf wattle seed collard greens nori. </p>
-            </div>
-          </section>
-          <section id="section-5">
-
-            <div class="mediabox">
-              <h3>Red Tofu Wrap</h3>
-              <p>Green horseradish azuki bean lettuce avocado asparagus okra. Kohlrabi radish okra azuki bean corn fava bean mustard tigernut wasabi tofu broccoli mixture soup.</p>
-            </div>
-          </section>
-        </div><!-- /content -->
-      </div><!-- /tabs -->
-
-    </div>
-
-        </header>
+		            <div class="mediabox">
+		              <h3>Red Tofu Wrap</h3>
+		              <p>Green horseradish azuki bean lettuce avocado asparagus okra. Kohlrabi radish okra azuki bean corn fava bean mustard tigernut wasabi tofu broccoli mixture soup.</p>
+		            </div>
+		          </section>
+		        </div><!-- /content -->
+		      </div><!-- /tabs -->
+		    </div>
+      </header>
   </div>
     <!-- /page -->
   <div class="page" id="page-manuals">
     <section id="cd-timeline" class="cd-container">
   		<div class="cd-timeline-block">
   			<div class="cd-timeline-img cd-picture">
-  			<svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 48 48"><g transform="translate(0, 0)"> <circle data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" cx="24" cy="38" r="2" stroke-linejoin="miter"></circle> <line data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="10" y1="12" x2="38" y2="12" stroke-linejoin="miter"></line> <line data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="10" y1="30" x2="38" y2="30" stroke-linejoin="miter"></line> <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M34,46H14c-2.2,0-4-1.8-4-4 V6c0-2.2,1.8-4,4-4h20c2.2,0,4,1.8,4,4v36C38,44.2,36.2,46,34,46z" stroke-linejoin="miter"></path> </g></svg>
+  				<svg class="nc-icon outline"
+							 xmlns="http://www.w3.org/2000/svg"
+							 xmlns:xlink="http://www.w3.org/1999/xlink"
+							 x="0px"
+							 y="0px"
+							 width="48px"
+							 height="48px"
+							 viewBox="0 0 48 48" />
+							<g transform="translate(0, 0)">
+								<circle data-color="color-2"
+												fill="none"
+												stroke="#ffffff"
+												stroke-width="2"
+												stroke-linecap="square"
+												stroke-miterlimit="10"
+												cx="24"
+												cy="38"
+												r="2"
+												stroke-linejoin="miter">
+								</circle>
+								<line data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="10" y1="12" x2="38" y2="12" stroke-linejoin="miter">
+								</line>
+								<line data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="10" y1="30" x2="38" y2="30" stroke-linejoin="miter">
+								</line>
+								<path fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M34,46H14c-2.2,0-4-1.8-4-4 V6c0-2.2,1.8-4,4-4h20c2.2,0,4,1.8,4,4v36C38,44.2,36.2,46,34,46z" stroke-linejoin="miter">
+								</path>
+							</g>
+						</svg>
   			</div> <!-- cd-timeline-img -->
 
   			<div class="cd-timeline-content">
