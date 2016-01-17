@@ -265,7 +265,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
           $state.go("analytics.adminDashboard");
 					//show some sort of statement that indicates they are welcome to enjoy
 				}, function(error) {
-					alert("Something went wrong during registration. Womp womp");
+					console.log("Something went wrong during registration. Womp womp");
 				});
 
 				$scope.$on('auth:registration-email-success', function(event, user) {

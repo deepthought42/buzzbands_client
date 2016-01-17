@@ -18,7 +18,8 @@
     "angular-resource": "latest",
     "angular-morph": "latest",
     "angular-payments": "latest",
-    "angular-dragdrop": "1.0.7"
+    "angular-dragdrop": "1.0.7",
+    "angular-nvd3": "latest"
   },
   "resolutions": {
     "angular": "1.4.8",
