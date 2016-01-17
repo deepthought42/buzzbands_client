@@ -11,7 +11,10 @@
             <img style="width:50px;" ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
 
           </button>
-    <button id="buyBandButton" class="pull-right btn" ui-sref="adminDashboard.shopBands">
+    <button id="buyBandButton"
+            class="pull-right btn"
+            ui-sref="adminDashboard.shopBands"
+            ng-show="hasPermission(3)">
       BUY BANDS
     </button>
       <div id="adminDashboardcontainer"class="container-fluid">
