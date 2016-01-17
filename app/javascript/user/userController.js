@@ -263,7 +263,6 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
           $scope.$session.user = registeredUser.data.data;
 					$scope.successfulRegistration = true;
           $state.go("analytics.adminDashboard");
-					//show some sort of statement that indicates they are welcome to enjoy
 				}, function(error) {
 					alert("Something went wrong during registration. Womp womp");
 				});
@@ -305,7 +304,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 				console.log(response.data)
 				console.log($scope.$session.user); // => {id: 1, ect: '...'}
 			}, function(error) {
-				alert("Failed to log in");
+				$scope.error = "Failed to log in "+error;
 			});
 
 			$scope.$on('auth:login-success', function(event, currentUser) {

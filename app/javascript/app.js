@@ -32,7 +32,7 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
   // will extend the defaults using angular.extend
 
   $authProvider.configure({
-    apiUrl:                  'http://localhost:3000/api'
+    apiUrl:                  'http://staging-api.buzzbands.io:3001/api'
   });
     //$httpProvider.defaults.headers.common['X-CSRF-Token'] =
 		//	$('meta[name=csrf-token]').attr('content');
