@@ -19,7 +19,9 @@
 									required
 									minlength="3"
 									maxlength="250"/>
-					<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
+					<div ng-messages="promotionForm.name.$error"
+							 ng-if="promotionForm.$valid"
+							 class="text-danger">
 						<p ng-message="required">Name is required.</p>
 						<p ng-message="minlength">Name must be at least 3 characters</p>
 						<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
@@ -27,34 +29,39 @@
 				</div>
 			</div>
 
-<br><br>
-			<div ng-controller="timectrl"  class="col-md-6 col-sm-12">
-				<md-datepicker ng-model="promotion.start_time"
-											 md-placeholder="Enter date"
-											 required></md-datepicker>
+			<br><br>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
+				<div class="col-md-4 col-sm-12">
+					<md-datepicker ng-model="promotion.start_time"
+												 md-placeholder="Enter date">
+					</md-datepicker>
+					<br><br>
+					<uib-timepicker style="width:232px;background-color:#242831;"
+													ng-model="start_time"
+													ng-change="changed()"
+													hour-step="hstep"
+													minute-step="mstep"
+													show-meridian="ismeridian">
+					</uib-timepicker>
+				</div>
+				<!-- Start time date time picker popup -->
+				<div id="datepicker2" class="col-md-4 col-sm-12">
+					<md-datepicker ng-model="promotion.end_time"
+												md-placeholder="Enter date">
+					</md-datepicker><br><br>
+					<uib-timepicker  style="width:232px;background-color:#242831;"
+													ng-model="end_time"
+													ng-change="changed()"
+													hour-step="hstep"
+													minute-step="mstep"
+													show-meridian="ismeridian">
+					</uib-timepicker>
+				</div>
 
-				<br><br>
-  			<uib-timepicker style="width:232px;background-color:#242831;"
-  											ng-model="mytime"
-												ng-change="changed()"
-												hour-step="hstep"
-												minute-step="mstep"
-												show-meridian="ismeridian"></uib-timepicker>
+					<br><br>
+
 			</div>
-			<!-- Start time date time picker popup -->
-			<div  ng-controller="timectrl" id="datepicker2" class="col-md-6 col-sm-12">
 
-				<md-datepicker ng-model="promotion.end_time"
-											 md-placeholder="Enter date"
-											 required>
-				</md-datepicker>
-				<br><br>
-				<uib-timepicker style="width:232px;background-color:#242831;"
-												ng-model="mytime"
-												ng-change="changed()"
-												hour-step="hstep"
-												minute-step="mstep"
-												show-meridian="ismeridian"></uib-timepicker>
 				<div class="col-sm-12 col-xs-12">
 							<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
 										pickerclass="btn addphoto"

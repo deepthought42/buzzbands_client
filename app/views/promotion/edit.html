@@ -47,38 +47,43 @@
 							ng-model="promotion.venue_id">
 			</select>
 		</div>
-		<div ng-controller="timectrl"  class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
-				<div class="col-md-6 col-sm-12">
-					<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
-					<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
+			<div class="col-md-6 col-sm-12">
+				<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
+				<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="start_time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
 
-				</div>
-				<!-- Start time date time picker popup -->
-				<div  ng-controller="timectrl" id="datepicker2" class="col-md-6 col-sm-12">
-					<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker><br><br>
-					<uib-timepicker  style="width:232px;background-color:#242831;"
-													 ng-model="mytime"
-													 ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
-				</div>
+			</div>
+			<!-- Start time date time picker popup -->
+			<div id="datepicker2" class="col-md-6 col-sm-12">
+				<md-datepicker ng-model="promotion.end_time"
+											 md-placeholder="Enter date">
+				</md-datepicker><br><br>
+				<uib-timepicker  style="width:232px;background-color:#242831;"
+												 ng-model="end_time"
+												 ng-change="changed()"
+												 hour-step="hstep"
+												 minute-step="mstep"
+												 show-meridian="ismeridian">
+				</uib-timepicker>
+			</div>
 
-					<br><br>
+				<br><br>
 
-				</div>
-				<div class="col-sm-12" >
-					<label style="color:white;" class="control-label">
-					Active:
-					</label>
+		</div>
+			<div class="col-sm-12" >
+				<label style="color:white;" class="control-label">
+				Active:
+				</label>
 
-					<input type="checkbox" ng-model="promotion.active"/>
-				</div>
-				<div style="margin-top:35px;" class="actions col-md-12">
-					<button style="background-color:#de519b;"class="btn btn-primary"
-									type="submit"
-									ng-click="updatePromotion(promotion)"
-									ng-disabled="promotionForm.$invalid">
-						Update
-					</button>
-				</div>
+				<input type="checkbox" ng-model="promotion.active"/>
+			</div>
+			<div style="margin-top:35px;" class="actions col-md-12">
+				<button style="background-color:#de519b;"class="btn btn-primary"
+								type="submit"
+								ng-click="updatePromotion(promotion)"
+								ng-disabled="promotionForm.$invalid">
+					Update
+				</button>
 			</div>
 	</form>
 </div>

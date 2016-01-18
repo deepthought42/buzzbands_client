@@ -20,8 +20,11 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
   });
 }])
 
-.controller('PromotionIndexController', ['$scope', 'Promotion', '$state', '$stateParams', 'VenuePromotion', 'Venue', '$sessionStorage',
-  function($scope, Promotion, state, $stateParams, VenuePromotion, Venue, $sessionStorage) {
+.controller('PromotionIndexController', ['$scope', 'Promotion', '$state',
+                                         '$stateParams', 'VenuePromotion',
+                                         'Venue', '$sessionStorage', '$log',
+  function($scope, Promotion, state, $stateParams,
+            VenuePromotion, Venue, $sessionStorage, $log) {
     this.init = function(){
       $scope.$session = $sessionStorage;
       $scope.promoPanel='index';
@@ -87,23 +90,68 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
     }
 
+    $scope.hasPermission = function(role){
+      return $scope.$session.user !== undefined && $scope.$session.user.role >= role;
+    }
+
     this.init();
   }
 ])
 
-.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue', '$sessionStorage',
-  function($scope, Promotion, Venue, $sessionStorage) {
+.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue',
+                                            '$sessionStorage', '$log',
+  function($scope, Promotion, Venue, $sessionStorage, $log) {
     this.init = function(){
       $scope.promotion = {};
-      $scope.venues = $sessionStorage.venues;
+      $scope.venues = Venue.query();
+      $scope.start_time = new Date();
+      $scope.end_time = new Date();
+
+      $scope.hstep = 1;
+      $scope.mstep = 1;
+
+      $scope.options = {
+        hstep: [1, 2, 3],
+        mstep: [1, 5, 10, 15, 25, 30]
+      };
+
+      $scope.ismeridian = true;
     }
 
     $scope.createPromotion = function(promotion, isValid){
+      promotion.start_time = new Date(promotion.start_time);
+      promotion.start_time.setHours($scope.start_time.getHours());
+      promotion.start_time.setMinutes($scope.start_time.getMinutes());
+
+      promotion.end_time = new Date(promotion.end_time);
+      promotion.end_time.setHours($scope.end_time.getHours());
+      promotion.end_time.setMinutes($scope.end_time.getMinutes());
+
+      if(promotion.start_time > promotion.end_time){
+        //promotion.start_time = promotion.end_time;
+        $log.log("start time is after end time");
+        //display error
+        isValid = false;
+        return;
+      }
+
       if(isValid){
         Promotion.save(promotion);
       }
       //state.go("new@promotions.dashboard");
     }
+    $scope.toggleMode = function() {
+      $scope.ismeridian = ! $scope.ismeridian;
+    };
+
+    $scope.update = function() {
+
+    };
+
+    //executed with hour:minutes changes
+    $scope.changed = function () {
+
+    };
 
     $scope.previewImage = function(files){
       $scope.setUrl(files);
@@ -122,20 +170,48 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       $scope.promotion.ad_location = files[0].url;
     }
 
+    $scope.hasPermission = function(role){
+      return $scope.$session.user !== undefined && $scope.$session.user.role >= role;
+    }
+
     this.init();
   }
 ])
 
 .controller('PromotionDetailsController',
-  ['$scope', 'Promotion', 'Venue', '$state', '$stateParams', '$auth', '$sessionStorage',
-    function($scope, Promotion, Venue, $state, stateParams, $auth, $sessionStorage)
+  ['$scope', 'Promotion', 'Venue', '$state', '$stateParams', '$auth', '$sessionStorage', '$log',
+    function($scope, Promotion, Venue, $state, stateParams, $auth, $sessionStorage, $log)
     {
 
       this.init = function(){
         $auth.validateUser();
         $scope.loadPromotion();
-        $scope.venues = $sessionStorage.venues;
+        $scope.venues = Venue.query();
+        $scope.start_time = new Date();
+        $scope.end_time = new Date();
+
+        $scope.hstep = 1;
+        $scope.mstep = 1;
+
+        $scope.options = {
+          hstep: [1, 2, 3],
+          mstep: [1, 5, 10, 15, 25, 30]
+        };
+
+        $scope.ismeridian = true;
       }
+
+      $scope.toggleMode = function() {
+        $scope.ismeridian = ! $scope.ismeridian;
+      };
+
+      $scope.update = function() {
+
+      };
+
+      $scope.changed = function () {
+        //$log.log('Time changed to: ' + $scope.start_time);
+      };
 
       $scope.loadPromotion = function(){
         if(stateParams.promotionId){
@@ -152,14 +228,25 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
 
       $scope.updatePromotion = function(promotion){
-        console.log("Updateing promotion");
+
         promotion.start_time = new Date(promotion.start_time);
+        promotion.start_time.setHours($scope.start_time.getHours());
+        promotion.start_time.setMinutes($scope.start_time.getMinutes());
+
         promotion.end_time = new Date(promotion.end_time);
-          Promotion.update(promotion).$promise.then(function(data){
-            $scope.promotion = {};
-            console.log("promotion updated");
-            $state.go("adminDashboard.promotions");
-          });
+        promotion.end_time.setHours($scope.end_time.getHours());
+        promotion.end_time.setMinutes($scope.end_time.getMinutes());
+
+        if(promotion.start_time > promotion.end_time){
+          promotion.start_time = promotion.end_time;
+          $log.log("start time is after end time");
+          //display error
+          return;
+        }
+        Promotion.update(promotion).$promise.then(function(data){
+          $scope.promotion = {};
+          $state.go("adminDashboard.promotions");
+        });
       }
 
       $scope.open = function($event) {
@@ -180,42 +267,13 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         }
       }
 
+      $scope.hasPermission = function(role){
+        return $scope.$session.user !== undefined && $scope.$session.user.role >= role;
+      }
+
     $scope.status = {
       opened: false
     };
     this.init();
   }
 ])
-
-
-.controller('timectrl', function ($scope, $log) {
-  $scope.mytime = new Date();
-
-  $scope.hstep = 1;
-  $scope.mstep = 15;
-
-  $scope.options = {
-    hstep: [1, 2, 3],
-    mstep: [1, 5, 10, 15, 25, 30]
-  };
-
-  $scope.ismeridian = true;
-  $scope.toggleMode = function() {
-    $scope.ismeridian = ! $scope.ismeridian;
-  };
-
-  $scope.update = function() {
-    var d = new Date();
-    d.setHours( 14 );
-    d.setMinutes( 0 );
-    $scope.mytime = d;
-  };
-
-  $scope.changed = function () {
-    $log.log('Time changed to: ' + $scope.mytime);
-  };
-
-  $scope.clear = function() {
-    $scope.mytime = null;
-  };
-});
