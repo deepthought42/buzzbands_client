@@ -187,8 +187,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         $auth.validateUser();
         $scope.loadPromotion();
         $scope.venues = Venue.query();
-        $scope.start_time = new Date();
-        $scope.end_time = new Date();
 
         $scope.hstep = 1;
         $scope.mstep = 1;
@@ -220,6 +218,9 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
               $scope.promotion = data;
               $scope.promotion.start_time = new Date($scope.promotion.start_time );
               $scope.promotion.end_time = new Date($scope.promotion.end_time );
+
+              $scope.start_time = new Date($scope.promotion.start_time);
+              $scope.end_time = new Date($scope.promotion.end_time);
             })
             .catch(function(data){
               console.log("ERR  :: "+ data)
