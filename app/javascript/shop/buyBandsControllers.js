@@ -13,7 +13,7 @@ angular.module('buzzbands.BandsControllers', ['ui.router',
 })
 .controller('BuyBandsController', ['$scope',
                                    'Bands',
-                                   'Packages',
+                                   'BandPackages',
                                    'Order',
                                    '$state',
                                    '$sessionStorage',
