@@ -172,7 +172,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
     $scope.hasPermission = function(role){
-      return $scope.$session.user !== undefined && $scope.$session.user.role >= role;
+      return $scope.$session.user !== undefined && $scope.$session.user.role === role;
     }
 
     this.init();

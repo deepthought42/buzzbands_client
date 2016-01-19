@@ -1,6 +1,6 @@
 
 
- <div ng-switch="venueLoaded" ng-show="hasPermission(2)" class="col-sm-12">
+ <div ng-switch="venueLoaded" ng-show="hasPermission('account_user') || hasPermission('admin')" class="col-sm-12">
   <div ng-switch-when="false">
     <div ui-view="new@venues.adminDashboard"></div>
   </div>
@@ -59,7 +59,7 @@
               </td>
               <td>Venue Photo</td>
               <td>Name</td>
-              <td ng-show="hasPermission(3)"></td>
+              <td ng-show="hasPermission('admin')"></td>
             </tr>
           </thead>
           <tbody>
@@ -74,8 +74,8 @@
               <td ng-click="showPromotionsList(venue.id)">
                 <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
               </td>
-              <td ng-show="hasPermission(3)">
-                <button ng-show="hasPermission(3)" ng-click="editVenue(venue.id)">Edit</button>
+              <td ng-show="hasPermission('admin')">
+                <button ng-show="hasPermission('admin')" ng-click="editVenue(venue.id)">Edit</button>
               </td>
             </tr>
           </tbody>
