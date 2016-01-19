@@ -1,0 +1,156 @@
+
+
+#dashboardcontainer{
+
+text-align: left;
+}
+
+/*QUERIES*/
+@media only screen and (min-width:0px) and (max-width: 768px)  {
+    #dashboardcontainer{
+    text-align:center;
+    }
+
+}
+
+.overviewStat{
+    text-align: center;
+    font-size: 70px;
+    font-weight: 100;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.overviewStatCard{
+text-align: center;
+        font-weight: 100;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+#quickStatsCardsContainer{
+text-align: center;
+}
+
+
+.strike {
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .strike > span {
+        position: relative;
+        display: inline-block;
+        color:#888d8f;
+                font-weight: 100;
+    font-family: 'Josefin Sans', sans-serif;
+    }
+
+    .strike > span:before,
+    .strike > span:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 9999px;
+        height: 1px;
+        background: white;
+    }
+
+    .strike > span:before {
+        right: 100%;
+        margin-right: 15px;
+    }
+
+    .strike > span:after {
+        left: 100%;
+        margin-left: 15px;
+    }
+
+#buyBandButton{
+  border:none;
+    color:white;
+background-color:#de519b;
+  font-weight: 100;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+
+.quickStatCard{
+background-color:#de519b;
+border-right:2px solid #242831;
+      font-weight: 100;
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 10px;
+    min-height: 185px;
+
+}
+
+@media only screen and (min-width:0px) and (max-width: 767px)  {
+.quickStatCard{
+border-bottom: 2px solid #242831;
+
+}
+
+
+.new{position: absolute;
+margin-left: -71px;
+border: none;
+margin-top: 30px;
+background-color: #3b4454;
+color:white;
+width:69px;}
+
+
+.newpromo{
+  position: absolute;
+      margin-left: -83px;
+      border: none;
+      width: 79px;
+      margin-top: 30px;
+      background-color: #3b4454;
+      color:white;
+
+}
+
+#logo{
+      margin-left: -60%;
+padding-bottom:0px!important;
+padding-top:0px!important;
+}
+
+.overviewStat{
+font-size:35px;
+
+}
+#quickStatsCardsContainer{
+margin-top:40px;
+
+}
+
+.analyticstitle{
+font-size:14px!important;
+
+}
+}
+
+#buyBandButton:hover{
+background-color:white;
+  color:#de519b;
+}
+
+#settings{
+background-color:#4BBA4B;
+color:white;
+border:none;
+font-size:30px;
+}
+
+#settings:hover{
+background-color: white;
+color:#4BBA4B;
+
+
+}

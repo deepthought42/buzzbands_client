@@ -1,0 +1,64 @@
+body{
+  background-color:#242831!important;
+}
+
+.navButtonActive{
+
+    border-top-left-radius: 1em;
+ border-top-right-radius: 1em;
+ border: 0;
+
+  font-weight:100;
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #4BBA4B;
+  color: #242831;
+  padding:10px 10px;
+    min-width: 100px;
+}
+
+.navButton{
+  border: 0;
+  border-radius: 5px;
+  font-weight:100;
+  font-family: 'Josefin Sans', sans-serif;
+  background: none;
+  color: #888d8f;
+  padding:10px 10px ;
+}
+
+.userNavButton{
+  border: 0;
+  border-radius: 5px;
+  font-weight:100;
+  font-family: 'Josefin Sans', sans-serif;
+  background: none;
+  color: #888d8f;
+  padding:10px 10px ;
+}
+
+#overviewCards{
+  color:White;
+}
+
+
+.add{
+min-width: 100px;
+  border-color: transparent;
+  font-size: 10px;
+  text-align: center;
+  font-family: arial;
+    background-color: #434e66;
+color:white;
+      border-bottom-left-radius: 1em;
+      border-bottom-right-radius: 1em;
+}
+button:focus {
+    outline:none;
+}
+
+.navButton:hover{
+    min-width: 100px;
+  background-color:#434e66;
+  color:white;
+  border-radius:1em;
+}
