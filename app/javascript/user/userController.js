@@ -241,7 +241,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
             modal: {
               templateUrl: 'app/views/auth/register.html',
               position: {
-               top: '30%',
+               top: '30%'
               },
               fade: true
             }

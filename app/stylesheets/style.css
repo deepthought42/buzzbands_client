@@ -28,6 +28,10 @@
   content: "";
   padding: 0; }
 
+/* line 1, ../sass/partials/_signup.scss */
+#signupmorph {
+  max-width: 300px; }
+
 /* line 1, ../sass/partials/_promotion.scss */
 .status {
   color: white; }
