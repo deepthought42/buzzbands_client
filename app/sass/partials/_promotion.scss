@@ -1,0 +1,166 @@
+.status{
+color:white;
+}
+#venueFilter{border-radius:1em;
+
+border-color:#5f7387;}
+
+.table-striped>tbody>tr:nth-child(odd)>td{
+background-color: #5f7387;
+    border-color: transparent;
+}
+.table-striped>tbody>tr:nth-child(even)>td{
+background-color: #434e66;
+    border-color: transparent;
+}
+
+input[type="checkbox"]:checked {
+color: red;}
+
+.edit{
+  background-color: #4BBA4B;
+  border-radius: 1em;
+  border: none;
+  color:white;
+}
+.edit:hover{
+background-color: white;
+    color:#4BBA4B;
+}
+
+.form-control{
+background-color: #3b4454;
+    border-color: transparent;
+}
+.addphoto{  padding: 5px 15px;
+  margin-top: 5px;
+  border-radius: 1em;
+  background-color: #ffffff;
+  color: #4BBA4B;}
+
+table{
+  background-color: grey;
+}
+
+.thumbcontent{
+display:none;
+
+}
+
+.thumbhover:hover{
+display:visible;
+
+}
+.edit2{
+  border:2px solid #4BBA4B;
+background-color: transparent;
+
+  color:white;
+  width:100%;
+  max-width:30%;
+  margin-top:10%;
+
+}
+.edit2:hover{
+background-color:white;
+  color:#4BBA4B;
+}
+
+.viewicon{
+  background-color:#de519b;
+  font-size:20px;
+  color:white;
+}
+
+.md-calendar{
+background: #3b4454;
+    color:white;
+}
+
+.md-calendar-date.md-focus .md-calendar-date-selection-indicator{
+background-color: #242831;
+
+}
+
+thead{
+background-color: #242831!important;
+color:white;
+}
+
+
+.md-calendar-date-selection-indicator:hover{
+ background-color: #de519b;
+    color:#4BBA4B;
+}
+
+
+.md-datepicker-input-container{
+
+    border-bottom-style: none!important;
+
+}
+
+
+md-datepicker{
+
+  padding: 30px;
+}
+
+@media only screen and (min-width:0px) and (max-width: 767px)  {
+
+
+  #datepicker2{
+        margin-top: 60px;
+
+  }
+}
+
+
+body, html{
+
+background-color: #242831;
+
+}
+
+
+#promotion{
+  background-color: #434e66;
+  margin:-10px;
+  padding: 30px;
+  height: 300px;
+  width:305px;
+}
+
+md-icon{
+color:white;
+}
+
+
+md-datepicker{
+background-color:transparent;
+}
+.md-datepicker-input{
+color:white;
+}
+
+.md-datepicker-triangle-button.md-button.md-icon-button{
+background-color: white;
+}
+
+.md-datepicker-triangle-button .md-datepicker-expand-triangle{
+border-top-color: #de519b;
+}
+
+.md-button:not([disabled]).md-icon-button:hover{
+border-top-color:white;
+background-color:#4BBA4B ;
+}
+.btn-link{
+color:White;
+
+}
+
+.btn-link:focus, .btn-link:hover{
+
+color:#4BBA4B;
+}

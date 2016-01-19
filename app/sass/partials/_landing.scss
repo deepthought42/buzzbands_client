@@ -1,0 +1,555 @@
+.container-fluid{
+padding-left:0px;
+padding-right:0px;
+}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+padding-left:0px;padding-right:0px;
+}
+
+body{
+background-color:#242831
+}
+.btn-signup{
+height: 50px;
+padding: 10px 30px;
+background-color:#de519b;
+color:white;
+border-color: white;
+    width:100%;
+    text-align: center;
+}
+
+.btn-login{
+height: 50px;
+padding: 10px 30px;
+background-color:#5aba47;
+color:white;
+border-color: white;
+    width:100%;
+    text-align: center;
+}
+.btn-login:hover{
+background-color: #5aba47;
+    color:white;
+}
+
+
+.btn-signup:hover{
+background-color: #de519b;
+    color:white;
+}
+
+
+#signupmorph{
+padding: 10px 30px;
+background-color: #de519b;
+}
+#loginmorph{
+padding: 10px 30px;
+background-color: #5aba47;
+}
+
+.close{
+color:white;
+opacity: 1;
+}
+
+.container-btn-signup{
+max-width: 300px;;
+    margin: auto;
+}
+
+.my-icon {
+
+}
+.my-icon > i {
+    z-index: 9;
+
+    position: absolute;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 1.5em solid transparent;
+    border-top: 1.5em solid #242831;
+    left:186px;
+        top:358px;
+}
+
+/* --------------------------------
+
+Primary style
+
+-------------------------------- */
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 100%;
+  font-family: "Merriweather", serif;
+  color: #de519b;
+  background-color: white;
+}
+
+/* --------------------------------
+
+Modules - reusable parts of our design
+
+-------------------------------- */
+.cd-container {
+  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+
+  margin: 0 auto;
+}
+.cd-container::after {
+  /* clearfix */
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* --------------------------------
+
+Main components
+
+-------------------------------- */
+@media only screen and (min-width: 1170px) {
+  body.new-color-1::before {
+    background-color: #de519b;
+  }
+
+  body.new-color-2::before {
+    background-color: #242831 ;
+  }
+
+  body.new-color-3::before {
+    background-color: #699ec0;
+  }
+}
+body::before, body::after {
+  /* the 2 underneath colored sections */
+  content: '';
+  position: fixed;
+  /* trick to remove some annoying flickering on webkit browsers */
+  width: 100%;
+
+  left: 50%;
+  right: auto;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  height:440px;
+  z-index: -1;
+
+}
+
+body::before {
+  top: 0;
+  background-color: #242831 ;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+body::after {
+  top: 50%;
+  background-color: white;
+}
+
+
+
+.cd-service {
+  position: relative;
+  z-index: 2;
+  min-height: 50px;
+  margin-left: 56px;
+  background-color: white;
+  padding: 1em 1em 4em;
+}
+.cd-service::before, .cd-service::after {
+  content: '';
+  position: absolute;
+  width: 56px;
+  right: 100%;
+  z-index: 2;
+}
+.cd-service::before {
+  top: 0;
+  height: 50px;
+  background-repeat: no-repeat;
+}
+.cd-service::after {
+  top: 50px;
+  bottom: 0;
+  background-image: url("../img/cd-pattern-small.svg");
+  background-repeat: repeat-y;
+}
+.cd-service.cd-service-divider::after {
+  top: 0;
+}
+.cd-service.cd-service-divider:last-child {
+  display: none;
+}
+.cd-service.cd-service-1::before {
+  background-image: url("../img/cd-icon-1-small.svg");
+}
+.cd-service.cd-service-2::before {
+  background-image: url("../img/cd-icon-2-small.svg");
+}
+.cd-service.cd-service-3::before {
+  background-image: url("../img/cd-icon-3-small.svg");
+}
+.cd-service.cd-service-4::before {
+  background-image: url("../img/cd-icon-4-small.svg");
+}
+.cd-service h2 {
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 1em;
+  font-family: "Merriweather Sans", sans-serif;
+}
+.cd-service p {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.5);
+}
+@media only screen and (min-width: 1170px) {
+  .cd-service {
+    min-height: 525px;
+    margin-left: 420px;
+    padding: 6em 2em;
+  }
+  .cd-service::before, .cd-service::after {
+    width: 420px;
+  }
+  .cd-service::before {
+    height: 325px;
+  }
+  .cd-service::after {
+    top: 325px;
+    background-image: url("../img/cd-pattern-large.svg");
+  }
+  .cd-service.cd-service-divider:first-child, .cd-service.cd-service-divider:last-child {
+    min-height: 50px;
+    padding: 0;
+  }
+  .cd-service.cd-service-divider:last-child {
+    display: block;
+  }
+  .cd-service.cd-service-1::before {
+    background-image: url("../img/cd-icon-1-large.svg");
+  }
+  .cd-service.cd-service-2::before {
+    background-image: url("../img/cd-icon-2-large.svg");
+  }
+  .cd-service.cd-service-3::before {
+    background-image: url("../img/cd-icon-3-large.svg");
+  }
+  .cd-service.cd-service-4::before {
+    background-image: url("../img/cd-icon-4-large.svg");
+  }
+  .cd-service h2, .cd-service p {
+    color: #5aba47;
+    -webkit-transition: color, 0.5s;
+    -moz-transition: color, 0.5s;
+    transition: color, 0.5s;
+  }
+  .cd-service h2 {
+    font-size: 30px;
+    font-size: 1.875rem;
+  }
+  .cd-service p {
+      max-width: 500px;
+      margin: auto;
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  .cd-service.focus h2 {
+    color: #242831;
+  }
+  .cd-service.focus p {
+    color: rgba(36, 40, 49, .7)
+  }
+}
+
+
+.cd-service-4{
+padding-bottom:570px;
+
+}
+
+
+
+.footer-distributed{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	font: bold 16px sans-serif;
+	text-align: left;
+
+	padding: 50px 60px 40px;
+
+	overflow: hidden;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	float: left;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+	color:  #ffffff;
+	font: normal 36px 'Cookie', cursive;
+	margin: 0 0 10px;
+}
+
+.footer-distributed h3 span{
+	color:  #5383d3;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	color:  #ffffff;
+	margin: 0 0 10px;
+	padding: 0;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer social icons */
+
+.footer-distributed .footer-icons{
+	margin-top: 40px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	float: right;
+}
+
+.footer-distributed .footer-right p{
+	display: inline-block;
+	vertical-align: top;
+	margin: 15px 42px 0 0;
+	color: #ffffff;
+}
+
+/* The contact form */
+
+.footer-distributed form{
+	display: inline-block;
+}
+
+.footer-distributed form input,
+.footer-distributed form textarea{
+	display: block;
+	border-radius: 3px;
+	box-sizing: border-box;
+	background-color:  #1f2022;
+	box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+	border: none;
+	resize: none;
+
+	font: inherit;
+	font-size: 14px;
+	font-weight: normal;
+	color:  #d1d2d2;
+
+	width: 400px;
+	padding: 18px;
+}
+
+.footer-distributed ::-webkit-input-placeholder {
+	color:  #5c666b;
+}
+
+.footer-distributed ::-moz-placeholder {
+	color:  #5c666b;
+	opacity: 1;
+}
+
+.footer-distributed :-ms-input-placeholder{
+	color:  #5c666b;
+}
+
+
+.footer-distributed form input{
+	height: 55px;
+	margin-bottom: 15px;
+}
+
+.footer-distributed form textarea{
+	height: 100px;
+	margin-bottom: 20px;
+}
+
+.footer-distributed form button{
+	border-radius: 3px;
+	background-color:  #33383b;
+	color: #ffffff;
+	border: 0;
+	padding: 15px 50px;
+	font-weight: bold;
+	float: right;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 1000px) {
+
+	.footer-distributed {
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-company-name{
+		font-size: 12px;
+	}
+
+	.footer-distributed form input,
+	.footer-distributed form textarea{
+		width: 250px;
+	}
+
+	.footer-distributed form button{
+		padding: 10px 35px;
+	}
+
+}
+
+@media (max-width: 800px) {
+
+	.footer-distributed{
+		padding: 30px;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-right{
+		float: none;
+		max-width: 300px;
+		margin: 0 auto;
+	}
+
+	.footer-distributed .footer-left{
+		margin-bottom: 40px;
+	}
+
+	.footer-distributed form{
+		margin-top: 30px;
+	}
+
+	.footer-distributed form{
+		display: block;
+	}
+
+	.footer-distributed form button{
+		float: none;
+	}
+}
+
+
+#email{
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  top: 65%;
+
+}
+
+#inputemail{
+  width: 376px;
+  font-size: 29px;
+  border: none;
+
+}
+
+
+#staytuned{
+  font-size:29px;
+  color:#5aba47;
+
+}
+
+#staytuned:hover{
+
+  background-color: #de519b;
+  color:white;
+  border:none;
+}
+
+
+#dashboard{
+width: 100%;
+height: 100vh;
+background-image: url(http://localhost:8000/images/dash.jpg);
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+
+}
+
+@media only screen and (min-width:400px) and (max-width: 1169px)  {
+
+    footer{
+    margin-top:100px;
+    }
+
+}
+
+
+@media only screen and (min-width:0px) and (max-width: 400px)  {
+
+    footer{
+    margin-top:0px;
+    }
+
+}
