@@ -262,7 +262,12 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 				$auth.submitRegistration(credentials).then(function(registeredUser) {
           $scope.$session.user = registeredUser.data.data;
 					$scope.successfulRegistration = true;
-          $state.go("analytics.adminDashboard");
+          if($scope.$session.user.role == 'admin' || $scope.$session.user.role == 'buzzbands_employee'){
+            $state.go("analytics.adminDashboard");
+          }
+          else{
+            $state.go("veneus.adminDashboard");
+          }
 				}, function(error) {
 					console.log("Something went wrong during registration. Womp womp");
 				});
@@ -310,7 +315,12 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.$session.user = currentUser;
 				$auth.validateUser()
-        $state.go('analytics.adminDashboard');
+        if($scope.$session.user.role == 'admin' || $scope.$session.user.role == 'buzzbands_employee'){
+          $state.go("analytics.adminDashboard");
+        }
+        else{
+          $state.go("venues.adminDashboard");
+        }
 			});
 
 			$scope.$on('auth:login-error', function(event, currentUser) {
