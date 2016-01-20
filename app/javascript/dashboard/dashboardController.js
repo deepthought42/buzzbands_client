@@ -27,7 +27,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
         }
       })
       .state('venues.adminDashboard', {
-        url: '/venues/:id',
+        url: '/venues',
         parent: 'adminDashboard',
         views: {
           '':{
@@ -53,12 +53,27 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
         }
       })
       .state('adminDashboard.newVenue', {
-        url: '/venues',
-        parent: 'venues.adminDashboard',
+        url: '/venues/new',
+        parent: 'adminDashboard',
         views: {
           '':{
             templateUrl: 'app/views/venue/new.html',
             controller: 'VenueCreationController'
+          },
+        },
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      })
+      .state('adminDashboard.editVenue', {
+        url: '/venues/:venue_id',
+        parent: 'adminDashboard',
+        views: {
+          '':{
+            templateUrl: 'app/views/venue/edit.html',
+            controller: 'VenueDetailsController'
           },
         },
         resolve: {

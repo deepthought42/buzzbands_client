@@ -1,5 +1,13 @@
 
 <div id="venueEditPanel" class="col-sm-12 col-lg-12">
+  <div ng-show="hasPermission('account_user') || hasPermission('admin')" class="col-sm-12">
+    <button style="max-width:100px;"
+            class="btn add-button col-sm-12"
+            ui-sref="adminDashboard.newVenue">
+          <i style="font-size:40px;" class="fa fa-arrow-left"></i>
+          New Venue
+    </button>
+  </div>
   <div class="row" >
       <span style="color:#808266;font-size:30px;">Edit Event</span>
       <span class="col-sm-12 col-lg-12 ">

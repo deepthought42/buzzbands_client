@@ -1,13 +1,10 @@
-
-
- <div ng-switch="venueLoaded" ng-show="hasPermission('account_user') || hasPermission('admin')" class="col-sm-12">
-  <div ng-switch-when="false">
-    <div ui-view="new@venues.adminDashboard"></div>
-  </div>
-  <div ng-switch-when="true">
-		<button style="max-width:100px;" ng-show="venueLoaded" class="btn add-button col-sm-12" ng-click="showCreatePanel()"><i style="font-size:40px;"class="fa fa-arrow-left"></i></button>
-    <div ui-view="edit@venues.adminDashboard"></div>
-  </div>
+<div ng-show="hasPermission('account_user') || hasPermission('admin')" class="col-sm-12">
+  <button class="btn btn-primary col-sm-1"
+          ui-sref="adminDashboard.newVenue">
+        <i style="font-size:1em;" class="fa fa-plus">
+          New Venue
+        </i>
+  </button>
 </div>
 <div style="color:white;font-size:40px;font-Family:arial;font-Family: 'Josefin Sans', sans-serif;
   font-weight: 100;" class="col-lg-6 col-sm-12">
