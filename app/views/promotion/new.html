@@ -4,7 +4,6 @@
 			ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
 		<form name="promotionForm"
 			enctype="multipart/form-data"
-			ng-submit="createPromotion(promotion, promotionForm.$valid)"
 			novalidate>
 		<div class="col-md-12">
 			<div class="col-md-5">
@@ -15,7 +14,7 @@
 									name="name"
 									ng-model="promotion.name"
 									id="newPromotionName"
-									placeholder="ENTER TITLE HERE"
+									placeholder="Promotion Name"
 									required
 									minlength="3"
 									maxlength="250"/>
@@ -87,7 +86,7 @@
 		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
 			<button style="background-color:#de519b;"
 							class="btn btn-primary"
-						  type="submit"
+							ng-click="createPromotion(promotion, promotionForm.$valid)"
 							ng-disabled="promotionForm.$invalid">
 				CREATE
 			</button>

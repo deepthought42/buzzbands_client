@@ -29,7 +29,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       $scope.$session = $sessionStorage;
       $scope.promoPanel='index';
       $scope.promotion = {};
-      $scope.venues = $scope.$session.venues;
+      $scope.venues = $scope.$session.venues || Venue.query();
       $scope.promotionLoaded = true;
       $scope.visibleTab = "thumbnail";
       $scope.time = '';
@@ -119,6 +119,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
     $scope.createPromotion = function(promotion, isValid){
+      console.log("VALID PROMOTION");
       promotion.start_time = new Date(promotion.start_time);
       promotion.start_time.setHours($scope.start_time.getHours());
       promotion.start_time.setMinutes($scope.start_time.getMinutes());
@@ -138,7 +139,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       if(isValid){
         Promotion.save(promotion);
       }
-      //state.go("new@promotions.dashboard");
+      state.go("adminDashboard.promotions");
     }
     $scope.toggleMode = function() {
       $scope.ismeridian = ! $scope.ismeridian;
@@ -171,7 +172,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
     $scope.hasPermission = function(role){
-      return $scope.$session.user !== undefined && $scope.$session.user.role >= role;
+      return $scope.$session.user !== undefined && $scope.$session.user.role === role;
     }
 
     this.init();

@@ -14,7 +14,7 @@
     <button id="buyBandButton"
             class="pull-right btn"
             ui-sref="adminDashboard.shopBands"
-            ng-show="hasPermission(3)">
+            ng-show="hasPermission('admin')">
       BUY BANDS
     </button>
       <div id="adminDashboardcontainer" class="row">
@@ -24,7 +24,7 @@
             <button style="border-radius:1em;"  ui-sref="analytics.adminDashboard"
                     ng-class='{"navButtonActive":tog==1,"navButton":tog!=1}'
                     ng-click='setPage(1)'
-                    ng-show="hasPermission(3) || hasPermission(4)">
+                    ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
                   Overview
             </button>
           </div>
@@ -43,9 +43,9 @@
             </button><br>
             <button ui-sref="adminDashboard.newPromotion"
                     class="add btn btn-primary"
-                    ng-show="tog==3 && hasPermission(3)">Add New</button>
+                    ng-show="tog==3 && hasPermission('admin')">Add New</button>
           </div>
-          <div class="col-sm-12 col-xs-12" ng-show="hasPermission(4)">
+          <div class="col-sm-12 col-xs-12" ng-show="hasPermission('buzzbands_employee')">
             <button style="margin-top:10px;" ui-sref="adminDashboard.users"
                     ng-class='{"navButtonActive":$session.activeViewId==4,"navButton":$session.activeViewId!=4}'
                     ng-click='setPage(4)'>

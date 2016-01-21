@@ -13,7 +13,7 @@
               class="btn btn-primary"
               ng-click="createPromotion()"
               ui-sref="adminDashboard.newPromotion"
-              ng-show="hasPermission(3) || hasPermission(4)">
+              ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
           Add new
       </button>
     </div>
@@ -39,7 +39,7 @@
               title="Are you sure?"
               mwl-confirm=""
               class="btn btn-default ng-binding ng-isolate-scope"
-              ng-show="hasPermission(3) || hasPermission(4)">
+              ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
                 Delete
       </button>
     </div>
@@ -111,7 +111,7 @@
             <td>
               <button ng-click="editPromotion(promo.id)"
                       class="edit"
-                      ng-show="hasPermission(3) || hasPermission(4)">
+                      ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
                 Edit
               </button>
             </td>
