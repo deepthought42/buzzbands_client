@@ -155,7 +155,16 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     };
 
     $scope.previewImage = function(files){
-      $scope.venue.url = files[0].url;
+      $scope.setUrl(files);
+      var reader = new FileReader();
+      if(typeof files[0] === 'Blob'){
+        reader.readAsDataURL(files[0]);
+      }
+      reader.onload = function(event){
+        $scope.logo_url = reader.result;
+        $scope.promotion.ad_location = files[0].url;
+        $scope.$apply()
+      }
     }
 
     $scope.setUrl = function(files){
