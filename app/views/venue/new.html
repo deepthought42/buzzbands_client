@@ -12,7 +12,6 @@
 	<form name="venueForm"
 				enctype="multipart/form-data"
 				ng-init="venue = {}"
-				ng-submit="createVenue(venueForm.$valid)"
 				novalidate>
 		<div class="col-md-12">
 			<div class="col-sm-12">
@@ -114,7 +113,7 @@
 			<br>
 
 		<div style="text-align:center;" class="actions col-md-12">
-		<br>	<button type="submit" class="saveButton btn btn-primary"
+			<button type="submit" class="saveButton btn btn-primary" ng-click="createVenue(venueForm.$valid)">
 				<i class="fa fa-save"></i>
 				Save
 			</button>
