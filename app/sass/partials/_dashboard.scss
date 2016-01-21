@@ -6,13 +6,49 @@ text-align: left;
 }
 
 #dashboard-controller{
+  background-color: #2D3440;
+
+}
+
+.analytics-title h2{
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+#dashboard-header{
+  font-size: 80px;
+  color: #4BBA4B;
+  font-weight: 300;
+  text-align: center;
+
+}
+
+#dashboard-content-wrapper{
+  padding: 10px;
 
 }
 
 /*QUERIES*/
-@media only screen and (min-width:0px) and (max-width: 768px)  {
+
+@media screen and (min-width: 992px){
+
+  #dashboard-controller{
+    height: 100vh;
+    background-color: #2D3440;
+
+  }
+
+}
+
+@media screen and (min-width: 768px)  {
+
     #dashboardcontainer{
     text-align:center;
+    }
+
+    .analytics-title h2{
+      font-size: 28px;
+
     }
 
 }
@@ -132,10 +168,6 @@ margin-top:40px;
 
 }
 
-.analyticstitle{
-font-size:14px!important;
-
-}
 }
 
 #buyBandButton:hover{

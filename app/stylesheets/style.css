@@ -490,34 +490,63 @@ input:focus {
 #dashboardcontainer {
   text-align: left; }
 
+/* line 8, ../sass/partials/_dashboard.scss */
+#dashboard-controller {
+  background-color: #2D3440; }
+
+/* line 13, ../sass/partials/_dashboard.scss */
+.analytics-title h2 {
+  font-size: 20px;
+  letter-spacing: 2px; }
+
+/* line 18, ../sass/partials/_dashboard.scss */
+#dashboard-header {
+  font-size: 80px;
+  color: #4BBA4B;
+  font-weight: 300;
+  text-align: center; }
+
+/* line 26, ../sass/partials/_dashboard.scss */
+#dashboard-content-wrapper {
+  padding: 10px; }
+
 /*QUERIES*/
-@media only screen and (min-width: 0px) and (max-width: 768px) {
-  /* line 14, ../sass/partials/_dashboard.scss */
+@media screen and (min-width: 992px) {
+  /* line 35, ../sass/partials/_dashboard.scss */
+  #dashboard-controller {
+    height: 100vh;
+    background-color: #2D3440; } }
+@media screen and (min-width: 768px) {
+  /* line 45, ../sass/partials/_dashboard.scss */
   #dashboardcontainer {
-    text-align: center; } }
-/* line 20, ../sass/partials/_dashboard.scss */
+    text-align: center; }
+
+  /* line 49, ../sass/partials/_dashboard.scss */
+  .analytics-title h2 {
+    font-size: 28px; } }
+/* line 56, ../sass/partials/_dashboard.scss */
 .overviewStat {
   text-align: center;
   font-size: 70px;
   font-family: 'Josefin Sans', sans-serif; }
 
-/* line 27, ../sass/partials/_dashboard.scss */
+/* line 63, ../sass/partials/_dashboard.scss */
 .overviewStatCard {
   text-align: center;
   font-family: 'Josefin Sans', sans-serif; }
 
-/* line 33, ../sass/partials/_dashboard.scss */
+/* line 69, ../sass/partials/_dashboard.scss */
 #quickStatsCardsContainer {
   text-align: center; }
 
-/* line 38, ../sass/partials/_dashboard.scss */
+/* line 74, ../sass/partials/_dashboard.scss */
 .strike {
   display: block;
   text-align: center;
   overflow: hidden;
   white-space: nowrap; }
 
-/* line 45, ../sass/partials/_dashboard.scss */
+/* line 81, ../sass/partials/_dashboard.scss */
 .strike > span {
   position: relative;
   display: inline-block;
@@ -525,7 +554,7 @@ input:focus {
   font-weight: 100;
   font-family: 'Josefin Sans', sans-serif; }
 
-/* line 54, ../sass/partials/_dashboard.scss */
+/* line 90, ../sass/partials/_dashboard.scss */
 .strike > span:before,
 .strike > span:after {
   content: "";
@@ -535,17 +564,17 @@ input:focus {
   height: 1px;
   background: white; }
 
-/* line 63, ../sass/partials/_dashboard.scss */
+/* line 99, ../sass/partials/_dashboard.scss */
 .strike > span:before {
   right: 100%;
   margin-right: 15px; }
 
-/* line 68, ../sass/partials/_dashboard.scss */
+/* line 104, ../sass/partials/_dashboard.scss */
 .strike > span:after {
   left: 100%;
   margin-left: 15px; }
 
-/* line 73, ../sass/partials/_dashboard.scss */
+/* line 109, ../sass/partials/_dashboard.scss */
 #buyBandButton {
   border: none;
   color: white;
@@ -553,7 +582,7 @@ input:focus {
   font-weight: 100;
   font-family: 'Josefin Sans', sans-serif; }
 
-/* line 83, ../sass/partials/_dashboard.scss */
+/* line 119, ../sass/partials/_dashboard.scss */
 .quickStatCard {
   background-color: #de519b;
   border-right: 2px solid #242831;
@@ -563,11 +592,11 @@ input:focus {
   min-height: 185px; }
 
 @media only screen and (min-width: 0px) and (max-width: 767px) {
-  /* line 94, ../sass/partials/_dashboard.scss */
+  /* line 130, ../sass/partials/_dashboard.scss */
   .quickStatCard {
     border-bottom: 2px solid #242831; }
 
-  /* line 100, ../sass/partials/_dashboard.scss */
+  /* line 136, ../sass/partials/_dashboard.scss */
   .new {
     position: absolute;
     margin-left: -71px;
@@ -577,7 +606,7 @@ input:focus {
     color: white;
     width: 69px; }
 
-  /* line 109, ../sass/partials/_dashboard.scss */
+  /* line 145, ../sass/partials/_dashboard.scss */
   .newpromo {
     position: absolute;
     margin-left: -83px;
@@ -587,36 +616,32 @@ input:focus {
     background-color: #3b4454;
     color: white; }
 
-  /* line 120, ../sass/partials/_dashboard.scss */
+  /* line 156, ../sass/partials/_dashboard.scss */
   #logo {
     margin-left: -60%;
     padding-bottom: 0px !important;
     padding-top: 0px !important; }
 
-  /* line 126, ../sass/partials/_dashboard.scss */
+  /* line 162, ../sass/partials/_dashboard.scss */
   .overviewStat {
     font-size: 35px; }
 
-  /* line 130, ../sass/partials/_dashboard.scss */
+  /* line 166, ../sass/partials/_dashboard.scss */
   #quickStatsCardsContainer {
-    margin-top: 40px; }
-
-  /* line 135, ../sass/partials/_dashboard.scss */
-  .analyticstitle {
-    font-size: 14px !important; } }
-/* line 141, ../sass/partials/_dashboard.scss */
+    margin-top: 40px; } }
+/* line 173, ../sass/partials/_dashboard.scss */
 #buyBandButton:hover {
   background-color: white;
   color: #de519b; }
 
-/* line 146, ../sass/partials/_dashboard.scss */
+/* line 178, ../sass/partials/_dashboard.scss */
 #settings {
   background-color: #4BBA4B;
   color: white;
   border: none;
   font-size: 30px; }
 
-/* line 153, ../sass/partials/_dashboard.scss */
+/* line 185, ../sass/partials/_dashboard.scss */
 #settings:hover {
   background-color: white;
   color: #4BBA4B; }
@@ -627,41 +652,55 @@ body {
 
 /* line 5, ../sass/partials/_navigation.scss */
 .navButtonActive {
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
   border: 0;
-  font-weight: 100;
+  font-weight: 700;
   font-family: 'Josefin Sans', sans-serif;
   background-color: #4BBA4B;
-  color: #242831;
+  color: #2D3440;
   padding: 10px 10px;
-  min-width: 100px; }
+  min-width: 100%;
+  text-transform: uppercase;
+  font-size: 16px; }
 
 /* line 19, ../sass/partials/_navigation.scss */
 .navButton {
   border: 0;
-  border-radius: 5px;
-  font-weight: 100;
+  border-radius: 0px;
+  font-weight: 700;
   font-family: 'Josefin Sans', sans-serif;
   background: none;
   color: #888d8f;
-  padding: 10px 10px; }
+  padding: 10px 10px;
+  text-transform: uppercase;
+  font-size: 16px;
+  text-align: right;
+  min-width: 50%;
+  float: right;
+  transition: all .5s; }
 
-/* line 29, ../sass/partials/_navigation.scss */
+/* line 37, ../sass/partials/_navigation.scss */
+.navButton:hover {
+  min-width: 100%;
+  background-color: #434e66;
+  color: white;
+  border-radius: 0;
+  text-align: center; }
+
+/* line 46, ../sass/partials/_navigation.scss */
 .userNavButton {
   border: 0;
-  border-radius: 5px;
+  border-radius: 0px;
   font-weight: 100;
   font-family: 'Josefin Sans', sans-serif;
   background: none;
   color: #888d8f;
   padding: 10px 10px; }
 
-/* line 39, ../sass/partials/_navigation.scss */
+/* line 56, ../sass/partials/_navigation.scss */
 #overviewCards {
   color: White; }
 
-/* line 44, ../sass/partials/_navigation.scss */
+/* line 61, ../sass/partials/_navigation.scss */
 .add {
   min-width: 100px;
   border-color: transparent;
@@ -673,16 +712,9 @@ body {
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em; }
 
-/* line 55, ../sass/partials/_navigation.scss */
+/* line 72, ../sass/partials/_navigation.scss */
 button:focus {
   outline: none; }
-
-/* line 59, ../sass/partials/_navigation.scss */
-.navButton:hover {
-  min-width: 100px;
-  background-color: #434e66;
-  color: white;
-  border-radius: 1em; }
 
 /* .container-fluid{
 padding-left:0px;

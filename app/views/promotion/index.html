@@ -26,22 +26,7 @@
               id="venueFilter">
         <option value="" selected>All Venues</option>
       </select>
-      <button style="background-color:red;color:white;border-color:transparent;"
-              ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
-              cancel-button-type="default"
-              confirm-button-type="danger"
-              on-cancel="vm.cancelClicked = true"
-              on-confirm="deletePromotions()"
-              placement="bottom"
-              cancel-text="No &lt;i class='glyphicon glyphicon-remove'&gt;&lt;/i&gt;"
-              confirm-text="Yes &lt;i class='glyphicon glyphicon-ok'&gt;&lt;/i&gt;"
-              message="Are you really &lt;b&gt;sure&lt;/b&gt; you want to do this?"
-              title="Are you sure?"
-              mwl-confirm=""
-              class="btn btn-default ng-binding ng-isolate-scope"
-              ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
-                Delete
-      </button>
+
     </div>
 
     <div class="status col-sm-4">

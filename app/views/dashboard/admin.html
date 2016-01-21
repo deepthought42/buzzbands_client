@@ -1,8 +1,4 @@
-<link rel="stylesheet" href="app/stylesheets/dashboard.css">
-<link rel="stylesheet" href="app/stylesheets/navigation.css">
-<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300' rel='stylesheet' type='text/css'>
 <div class="container-fluid">
-    <br>
     <button id="settings"
             ng-controller="UserAccountAccessController"
             id"editMyAccountButton"
@@ -18,24 +14,24 @@
       BUY BANDS
     </button>
       <div id="adminDashboardcontainer" class="row">
-        <div style="text-align:center;" class="col-md-2 col-xs-12" ng-controller="DashboardController" id="dashboard-controller">
+        <div class="col-md-2 col-xs-12" ng-controller="DashboardController" id="dashboard-controller">
           <img style="width:50px;padding-top:15px;padding-bottom:100px;"src="images/logo.png"><br>
-          <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
-            <button style="border-radius:1em;"  ui-sref="analytics.adminDashboard"
+          <div class="col-sm-12 col-xs-12">
+            <button ui-sref="analytics.adminDashboard"
                     ng-class='{"navButtonActive":tog==1,"navButton":tog!=1}'
                     ng-click='setPage(1)'
                     ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
                   Overview
             </button>
           </div>
-          <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
-            <button  ui-sref="venues.adminDashboard"
+          <div class="col-sm-12 col-xs-12">
+            <button ui-sref="venues.adminDashboard"
                    ng-class='{"navButtonActive":tog==2,"navButton":tog!=2}'
                    ng-click='setPage(2)'>
                  Venues
            </button>
           </div>
-          <div style="margin-bottom:10px;" class="col-sm-12 col-xs-12">
+          <div class="col-sm-12 col-xs-12">
             <button ui-sref="adminDashboard.promotions"
                     ng-class='{"navButtonActive":$session.activeViewId==3,"navButton":$session.activeViewId!=3}'
                     ng-click='setPage(3)'>
@@ -46,7 +42,7 @@
                     ng-show="tog==3 && hasPermission('admin')">Add New</button>
           </div>
           <div class="col-sm-12 col-xs-12" ng-show="hasPermission('buzzbands_employee')">
-            <button style="margin-top:10px;" ui-sref="adminDashboard.users"
+            <button ui-sref="adminDashboard.users"
                     ng-class='{"navButtonActive":$session.activeViewId==4,"navButton":$session.activeViewId!=4}'
                     ng-click='setPage(4)'>
                       Users
@@ -58,7 +54,7 @@
           </div>
         </div>
 
-        <div  style="padding-top:15px;" class=" col-md-10 col-xs-12">
+        <div  style="padding-top:15px;" class="col-md-10 col-xs-12" id="dashboard-content-wrapper">
           <div ui-view></div>
         </div>
       </div>

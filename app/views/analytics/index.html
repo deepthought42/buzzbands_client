@@ -1,42 +1,49 @@
 
- <span style="color:white;font-size:50px;font-weight:100;font-family: 'Josefin Sans', sans-serif;"
-        ng-controller="AnalyticsController"><h1 class="font-josefin font-white">Overview</h1></span>
+ <span ng-controller="AnalyticsController"><h1 class="font-josefin font-white" id="dashboard-header">Overview</h1></span>
 
- <div id="overviewCards">
-  <div class="col-sm-4 col-xs-4 overviewStatCard">
-    <div class="overviewStat">
-      <!-- active promotion count here. Following is temporary placeholder-->
-      {{(promotions | filter:{active:true}).length || 0}}
+ <div class="container-fluid" id="overviewCards">
+   <div class="row">
+    <div class="col-sm-4 col-xs-4 overviewStatCard">
+      <div class="overviewStat">
+        <!-- active promotion count here. Following is temporary placeholder-->
+        {{(promotions | filter:{active:true}).length || 0}}
+      </div>
+     <div style="color:#888d8f;" class="font-josefin font-white" >
+        Last Month
+      </div>
+     <div class="analytics-title font-josefin font-white">
+        <h2>
+          Active Promotions
+        </h2>
+      </div>
     </div>
-    <div style="color:#888d8f;" class="font-josefin font-white" >
-      Last Month
+    <div class="col-sm-4 col-xs-4 overviewStatCard">
+      <div class="overviewStat">
+        <!-- last month band order count here. Following is temporary placeholder -->
+       {{bandsOrdered.length}}
+      </div>
+      <div style="color:#888d8f;" class="font-josefin font-white">
+        Last month
+      </div>
+      <div class="analytics-title font-josefin font-white">
+        <h2>
+          Bands Ordered
+        </h2>
+      </div>
     </div>
-     <div class="analyticstitle font-josefin font-white" style="font-size:20px;color:#BDBDBD;">
-      Active Promotions
-    </div>
-  </div>
-  <div class="col-sm-4 col-xs-4 overviewStatCard">
-    <div class="overviewStat">
-      <!-- last month band order count here. Following is temporary placeholder -->
-      {{bandsOrdered.length}}
-    </div>
-   <div style="color:#888d8f;" class="font-josefin font-white">
-      Last month
-    </div>
-     <div class="analyticstitle font-josefin font-white"  style="font-size:20px;color:#BDBDBD;">
-      Bands Ordered
-    </div>
-  </div>
-  <div class="col-sm-4 col-xs-4 overviewStatCard">
-    <div class="overviewStat">
+    <div class="col-sm-4 col-xs-4 overviewStatCard">
+      <div class="overviewStat">
       <!-- total active accounts here. Following is temporary placeholder -->
       <span class="status"> {{(activeAccounts | filter:{active:true}).length || 0}} </span>
-    </div>
+      </div>
      <div style="color:#888d8f;" class="font-josefin font-white">
       Total
-    </div>
-     <div  class="analyticstitle font-josefin font-white"  style="font-size:20px;color:#BDBDBD;">
-      Active Accounts
+      </div>
+      <div class="analytics-title font-josefin font-white">
+          <h2>
+            Active Accounts
+          </h2>
+      </div>
     </div>
   </div>
 </div>
