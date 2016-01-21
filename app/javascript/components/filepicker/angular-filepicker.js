@@ -24,7 +24,7 @@ angular.module('filepicker', [])
                     path: path,
                     container: container
                 };
-
+                console.log(attrs.mimetypes);
                 filepicker.setKey(attrs.apiKey ? attrs.apiKey : '');
                 filepicker.pickAndStore(picker_options, store_options, function (fpfiles) {
                     scope.$apply(function () {
