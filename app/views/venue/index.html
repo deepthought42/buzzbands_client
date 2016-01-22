@@ -29,20 +29,6 @@
       <span class="statusbracket"> (</span>
       <span class="status">  {{(venueList | filter:{active:false}).length || -1}} </span>
       <span class="statusbracket"> )</span>
-      <button ng-click="vm.confirmClicked = false; vm.cancelClicked = false"
-              cancel-button-type="default"
-              confirm-button-type="danger"
-              on-cancel="vm.cancelClicked = true"
-              on-confirm="deleteVenues()"
-              placement="bottom"
-              cancel-text="No &lt;i class='glyphicon glyphicon-remove'&gt;&lt;/i&gt;"
-              confirm-text="Yes &lt;i class='glyphicon glyphicon-ok'&gt;&lt;/i&gt;"
-              message="Are you really &lt;b&gt;sure&lt;/b&gt; you want to do this?"
-              title="Are you sure?"
-              mwl-confirm=""
-              class="btn btn-default ng-binding ng-isolate-scope">
-          Delete
-      </button>
     </span>
     <div class="col-lg-12">
       <div style="height:100%;" id="style-2" class="table-responsive">

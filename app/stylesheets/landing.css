@@ -41,30 +41,31 @@ background-color: #de519b;
 
 
 #signupmorph{
-padding: 10px 30px;
-background-color: #de519b;
+  padding: 10px 30px;
+  background-color: #de519b;
 }
+
 #loginmorph{
-padding: 10px 30px;
-background-color: #5aba47;
+  padding: 10px 30px;
+  background-color: #5aba47;
 }
 
 .close{
-color:white;
-opacity: 1;
+  color:white;
+  opacity: 1;
 }
 
 .container-btn-signup{
-max-width: 300px;;
-    margin: auto;
+  max-width: 300px;;
+  margin: auto;
 }
 
 .my-icon {
 
 }
 .my-icon > i {
-    z-index: 9;
 
+    z-index: 9;
     position: absolute;
     display: inline-block;
     width: 0;
@@ -73,7 +74,8 @@ max-width: 300px;;
     border: 1.5em solid transparent;
     border-top: 1.5em solid #242831;
     left:186px;
-        top:358px;
+    top:358px;
+    
 }
 
 /* --------------------------------

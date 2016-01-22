@@ -1,3 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,700,300,100,600);
+/* line 5, ../sass/partials/_fonts.scss */
+.font-josefin {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300; }
+
+/* line 10, ../sass/partials/_fonts.scss */
+.font-white {
+  font-color: #FFFFFF; }
+
 /* app css stylesheet */
 /* line 3, ../sass/partials/_app.scss */
 .menu {
@@ -27,6 +37,10 @@
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0; }
+
+/* line 1, ../sass/partials/_signup.scss */
+#signupmorph {
+  max-width: 300px; }
 
 /* line 1, ../sass/partials/_promotion.scss */
 .status {
@@ -476,36 +490,63 @@ input:focus {
 #dashboardcontainer {
   text-align: left; }
 
+/* line 8, ../sass/partials/_dashboard.scss */
+#dashboard-controller {
+  background-color: #2D3440; }
+
+/* line 13, ../sass/partials/_dashboard.scss */
+.analytics-title h2 {
+  font-size: 20px;
+  letter-spacing: 2px; }
+
+/* line 18, ../sass/partials/_dashboard.scss */
+#dashboard-header {
+  font-size: 80px;
+  color: #4BBA4B;
+  font-weight: 300;
+  text-align: center; }
+
+/* line 26, ../sass/partials/_dashboard.scss */
+#dashboard-content-wrapper {
+  padding: 10px; }
+
 /*QUERIES*/
-@media only screen and (min-width: 0px) and (max-width: 768px) {
-  /* line 10, ../sass/partials/_dashboard.scss */
+@media screen and (min-width: 992px) {
+  /* line 35, ../sass/partials/_dashboard.scss */
+  #dashboard-controller {
+    height: 100vh;
+    background-color: #2D3440; } }
+@media screen and (min-width: 768px) {
+  /* line 45, ../sass/partials/_dashboard.scss */
   #dashboardcontainer {
-    text-align: center; } }
-/* line 16, ../sass/partials/_dashboard.scss */
+    text-align: center; }
+
+  /* line 49, ../sass/partials/_dashboard.scss */
+  .analytics-title h2 {
+    font-size: 28px; } }
+/* line 56, ../sass/partials/_dashboard.scss */
 .overviewStat {
   text-align: center;
   font-size: 70px;
-  font-weight: 100;
   font-family: 'Josefin Sans', sans-serif; }
 
-/* line 24, ../sass/partials/_dashboard.scss */
+/* line 63, ../sass/partials/_dashboard.scss */
 .overviewStatCard {
   text-align: center;
-  font-weight: 100;
   font-family: 'Josefin Sans', sans-serif; }
 
-/* line 31, ../sass/partials/_dashboard.scss */
+/* line 69, ../sass/partials/_dashboard.scss */
 #quickStatsCardsContainer {
   text-align: center; }
 
-/* line 36, ../sass/partials/_dashboard.scss */
+/* line 74, ../sass/partials/_dashboard.scss */
 .strike {
   display: block;
   text-align: center;
   overflow: hidden;
   white-space: nowrap; }
 
-/* line 43, ../sass/partials/_dashboard.scss */
+/* line 81, ../sass/partials/_dashboard.scss */
 .strike > span {
   position: relative;
   display: inline-block;
@@ -513,7 +554,7 @@ input:focus {
   font-weight: 100;
   font-family: 'Josefin Sans', sans-serif; }
 
-/* line 52, ../sass/partials/_dashboard.scss */
+/* line 90, ../sass/partials/_dashboard.scss */
 .strike > span:before,
 .strike > span:after {
   content: "";
@@ -523,17 +564,17 @@ input:focus {
   height: 1px;
   background: white; }
 
-/* line 61, ../sass/partials/_dashboard.scss */
+/* line 99, ../sass/partials/_dashboard.scss */
 .strike > span:before {
   right: 100%;
   margin-right: 15px; }
 
-/* line 66, ../sass/partials/_dashboard.scss */
+/* line 104, ../sass/partials/_dashboard.scss */
 .strike > span:after {
   left: 100%;
   margin-left: 15px; }
 
-/* line 71, ../sass/partials/_dashboard.scss */
+/* line 109, ../sass/partials/_dashboard.scss */
 #buyBandButton {
   border: none;
   color: white;
@@ -541,7 +582,7 @@ input:focus {
   font-weight: 100;
   font-family: 'Josefin Sans', sans-serif; }
 
-/* line 81, ../sass/partials/_dashboard.scss */
+/* line 119, ../sass/partials/_dashboard.scss */
 .quickStatCard {
   background-color: #de519b;
   border-right: 2px solid #242831;
@@ -551,11 +592,11 @@ input:focus {
   min-height: 185px; }
 
 @media only screen and (min-width: 0px) and (max-width: 767px) {
-  /* line 92, ../sass/partials/_dashboard.scss */
+  /* line 130, ../sass/partials/_dashboard.scss */
   .quickStatCard {
     border-bottom: 2px solid #242831; }
 
-  /* line 98, ../sass/partials/_dashboard.scss */
+  /* line 136, ../sass/partials/_dashboard.scss */
   .new {
     position: absolute;
     margin-left: -71px;
@@ -565,7 +606,7 @@ input:focus {
     color: white;
     width: 69px; }
 
-  /* line 107, ../sass/partials/_dashboard.scss */
+  /* line 145, ../sass/partials/_dashboard.scss */
   .newpromo {
     position: absolute;
     margin-left: -83px;
@@ -575,36 +616,32 @@ input:focus {
     background-color: #3b4454;
     color: white; }
 
-  /* line 118, ../sass/partials/_dashboard.scss */
+  /* line 156, ../sass/partials/_dashboard.scss */
   #logo {
     margin-left: -60%;
     padding-bottom: 0px !important;
     padding-top: 0px !important; }
 
-  /* line 124, ../sass/partials/_dashboard.scss */
+  /* line 162, ../sass/partials/_dashboard.scss */
   .overviewStat {
     font-size: 35px; }
 
-  /* line 128, ../sass/partials/_dashboard.scss */
+  /* line 166, ../sass/partials/_dashboard.scss */
   #quickStatsCardsContainer {
-    margin-top: 40px; }
-
-  /* line 133, ../sass/partials/_dashboard.scss */
-  .analyticstitle {
-    font-size: 14px !important; } }
-/* line 139, ../sass/partials/_dashboard.scss */
+    margin-top: 40px; } }
+/* line 173, ../sass/partials/_dashboard.scss */
 #buyBandButton:hover {
   background-color: white;
   color: #de519b; }
 
-/* line 144, ../sass/partials/_dashboard.scss */
+/* line 178, ../sass/partials/_dashboard.scss */
 #settings {
   background-color: #4BBA4B;
   color: white;
   border: none;
   font-size: 30px; }
 
-/* line 151, ../sass/partials/_dashboard.scss */
+/* line 185, ../sass/partials/_dashboard.scss */
 #settings:hover {
   background-color: white;
   color: #4BBA4B; }
@@ -615,41 +652,55 @@ body {
 
 /* line 5, ../sass/partials/_navigation.scss */
 .navButtonActive {
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
   border: 0;
-  font-weight: 100;
+  font-weight: 700;
   font-family: 'Josefin Sans', sans-serif;
   background-color: #4BBA4B;
-  color: #242831;
+  color: #2D3440;
   padding: 10px 10px;
-  min-width: 100px; }
+  min-width: 100%;
+  text-transform: uppercase;
+  font-size: 16px; }
 
 /* line 19, ../sass/partials/_navigation.scss */
 .navButton {
   border: 0;
-  border-radius: 5px;
-  font-weight: 100;
+  border-radius: 0px;
+  font-weight: 700;
   font-family: 'Josefin Sans', sans-serif;
   background: none;
   color: #888d8f;
-  padding: 10px 10px; }
+  padding: 10px 10px;
+  text-transform: uppercase;
+  font-size: 16px;
+  text-align: right;
+  min-width: 50%;
+  float: right;
+  transition: all .5s; }
 
-/* line 29, ../sass/partials/_navigation.scss */
+/* line 37, ../sass/partials/_navigation.scss */
+.navButton:hover {
+  min-width: 100%;
+  background-color: #434e66;
+  color: white;
+  border-radius: 0;
+  text-align: center; }
+
+/* line 46, ../sass/partials/_navigation.scss */
 .userNavButton {
   border: 0;
-  border-radius: 5px;
+  border-radius: 0px;
   font-weight: 100;
   font-family: 'Josefin Sans', sans-serif;
   background: none;
   color: #888d8f;
   padding: 10px 10px; }
 
-/* line 39, ../sass/partials/_navigation.scss */
+/* line 56, ../sass/partials/_navigation.scss */
 #overviewCards {
   color: White; }
 
-/* line 44, ../sass/partials/_navigation.scss */
+/* line 61, ../sass/partials/_navigation.scss */
 .add {
   min-width: 100px;
   border-color: transparent;
@@ -661,32 +712,23 @@ body {
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em; }
 
-/* line 55, ../sass/partials/_navigation.scss */
+/* line 72, ../sass/partials/_navigation.scss */
 button:focus {
   outline: none; }
 
-/* line 59, ../sass/partials/_navigation.scss */
-.navButton:hover {
-  min-width: 100px;
-  background-color: #434e66;
-  color: white;
-  border-radius: 1em; }
-
-/* line 1, ../sass/partials/_landing.scss */
-.container-fluid {
-  padding-left: 0px;
-  padding-right: 0px; }
-
-/* line 5, ../sass/partials/_landing.scss */
-.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
-  padding-left: 0px;
-  padding-right: 0px; }
-
-/* line 9, ../sass/partials/_landing.scss */
+/* .container-fluid{
+padding-left:0px;
+padding-right:0px;
+} */
+/* .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+padding-left:0px;padding-right:0px;
+}
+ */
+/* line 10, ../sass/partials/_landing.scss */
 body {
   background-color: #242831; }
 
-/* line 12, ../sass/partials/_landing.scss */
+/* line 13, ../sass/partials/_landing.scss */
 .btn-signup {
   height: 50px;
   padding: 10px 30px;
@@ -696,7 +738,7 @@ body {
   width: 100%;
   text-align: center; }
 
-/* line 22, ../sass/partials/_landing.scss */
+/* line 23, ../sass/partials/_landing.scss */
 .btn-login {
   height: 50px;
   padding: 10px 30px;
@@ -706,37 +748,37 @@ body {
   width: 100%;
   text-align: center; }
 
-/* line 31, ../sass/partials/_landing.scss */
+/* line 32, ../sass/partials/_landing.scss */
 .btn-login:hover {
   background-color: #5aba47;
   color: white; }
 
-/* line 37, ../sass/partials/_landing.scss */
+/* line 38, ../sass/partials/_landing.scss */
 .btn-signup:hover {
   background-color: #de519b;
   color: white; }
 
-/* line 43, ../sass/partials/_landing.scss */
+/* line 44, ../sass/partials/_landing.scss */
 #signupmorph {
   padding: 10px 30px;
   background-color: #de519b; }
 
-/* line 47, ../sass/partials/_landing.scss */
+/* line 48, ../sass/partials/_landing.scss */
 #loginmorph {
   padding: 10px 30px;
   background-color: #5aba47; }
 
-/* line 52, ../sass/partials/_landing.scss */
+/* line 53, ../sass/partials/_landing.scss */
 .close {
   color: white;
   opacity: 1; }
 
-/* line 57, ../sass/partials/_landing.scss */
+/* line 58, ../sass/partials/_landing.scss */
 .container-btn-signup {
   max-width: 300px;
   margin: auto; }
 
-/* line 65, ../sass/partials/_landing.scss */
+/* line 66, ../sass/partials/_landing.scss */
 .my-icon > i {
   z-index: 9;
   position: absolute;
@@ -1196,12 +1238,205 @@ body::after {
   background-attachment: fixed;
   background-size: cover; }
 
+/* General Blueprint Style */
+@font-face {
+  font-family: 'bpicons';
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/bpicons/bpicons.eot");
+  src: url("../fonts/bpicons/bpicons.eot?#iefix") format("embedded-opentype"), url("../fonts/bpicons/bpicons.woff") format("woff"), url("../fonts/bpicons/bpicons.ttf") format("truetype"), url("../fonts/bpicons/bpicons.svg#bpicons") format("svg"); }
+
+/* Made with http://icomoon.io/ */
+/* Resets */
+/* line 558, ../sass/partials/_landing.scss */
+*,
+*:after,
+*:before {
+  box-sizing: border-box; }
+
+/* Helper classes */
+/* line 566, ../sass/partials/_landing.scss */
+.cf:before,
+.cf:after {
+  content: ' ';
+  display: table; }
+
+/* line 571, ../sass/partials/_landing.scss */
+.cf:after {
+  clear: both; }
+
+/* Main styles */
+/* line 578, ../sass/partials/_landing.scss */
+body {
+  font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+  margin: 0;
+  color: #cecece;
+  background: #1d1e21;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/* line 587, ../sass/partials/_landing.scss */
+a {
+  text-decoration: none;
+  color: #5c5edc;
+  outline: none; }
+
+/* line 593, ../sass/partials/_landing.scss */
+a:hover {
+  color: #fff; }
+
+/* Blueprint header */
+/* line 602, ../sass/partials/_landing.scss */
+.bp-header__title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  top: 40%;
+  color: #FFF;
+  font-size: 4vw; }
+
+/* line 613, ../sass/partials/_landing.scss */
+.bp-header__desc {
+  font-size: 0.95em;
+  margin: 0.5em 0 1em;
+  padding: 0; }
+
+/* line 619, ../sass/partials/_landing.scss */
+.bp-header__present {
+  font-size: 0.85em;
+  font-weight: 700;
+  position: relative;
+  z-index: 100;
+  display: block;
+  padding: 0 0 0.6em 0.1em;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: #5c5edc; }
+
+/* line 631, ../sass/partials/_landing.scss */
+.bp-tooltip:after {
+  font-size: 50%;
+  font-size: 75%;
+  position: relative;
+  top: -8px;
+  left: -12px;
+  width: 30px;
+  height: 30px; }
+
+/* line 641, ../sass/partials/_landing.scss */
+.bp-tooltip:hover:before {
+  content: attr(data-content);
+  font-size: 110%;
+  font-weight: 700;
+  line-height: 1.2;
+  position: absolute;
+  left: auto;
+  margin-left: 4px;
+  padding: 0.8em 1em;
+  text-align: left;
+  text-indent: 0;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #fff;
+  background: #5c5edc; }
+
+/* line 658, ../sass/partials/_landing.scss */
+.bp-nav {
+  margin: 0 0 0 -0.75em; }
+
+/* line 662, ../sass/partials/_landing.scss */
+.bp-nav__item {
+  position: relative;
+  display: inline-block;
+  width: 2.5em;
+  height: 2.5em;
+  margin: 0 0.1em;
+  text-align: left;
+  border-radius: 50%; }
+
+/* line 672, ../sass/partials/_landing.scss */
+.bp-nav__item > span {
+  display: none; }
+
+/* line 676, ../sass/partials/_landing.scss */
+.bp-nav__item:hover:before {
+  content: attr(data-info);
+  font-size: 0.85em;
+  font-weight: bold;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  width: 600%;
+  text-align: left;
+  pointer-events: none;
+  color: #595a5f; }
+
+/* line 689, ../sass/partials/_landing.scss */
+.bp-nav__item:hover {
+  background: #5c5edc; }
+
+/* line 693, ../sass/partials/_landing.scss */
+.bp-icon:after {
+  font-family: 'bpicons';
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-align: center;
+  text-transform: none;
+  color: #5c5edc;
+  -webkit-font-smoothing: antialiased;
+  speak: none; }
+
+/* line 706, ../sass/partials/_landing.scss */
+.bp-nav .bp-icon:after {
+  line-height: 2.4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent: 0; }
+
+/* line 716, ../sass/partials/_landing.scss */
+.bp-nav a:hover:after {
+  color: #fff; }
+
+/* line 720, ../sass/partials/_landing.scss */
+.bp-icon--next:after {
+  content: '\e000'; }
+
+/* line 724, ../sass/partials/_landing.scss */
+.bp-icon--drop:after {
+  content: '\e001'; }
+
+/* line 728, ../sass/partials/_landing.scss */
+.bp-icon--archive:after {
+  content: '\e002'; }
+
+/* line 732, ../sass/partials/_landing.scss */
+.bp-icon--about:after {
+  content: '\e003'; }
+
+/* line 736, ../sass/partials/_landing.scss */
+.bp-icon--prev:after {
+  content: '\e004'; }
+
+@media screen and (max-width: 40em) {
+  /* line 741, ../sass/partials/_landing.scss */
+  .bp-header {
+    padding: 50px 20px 1em; }
+
+  /* line 744, ../sass/partials/_landing.scss */
+  .bp-header__title {
+    font-size: 1.8em; } }
 @media only screen and (min-width: 400px) and (max-width: 1169px) {
-  /* line 542, ../sass/partials/_landing.scss */
+  /* line 752, ../sass/partials/_landing.scss */
   footer {
     margin-top: 100px; } }
 @media only screen and (min-width: 0px) and (max-width: 400px) {
-  /* line 551, ../sass/partials/_landing.scss */
+  /* line 761, ../sass/partials/_landing.scss */
   footer {
     margin-top: 0px; } }
 /* line 1, ../sass/partials/_hover.scss */
