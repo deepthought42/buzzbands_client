@@ -1,0 +1,34 @@
+table{
+
+	tbody{
+
+		tr{
+			height: 80px;
+
+			td{
+				vertical-align: middle!important;
+
+				img{
+					height: auto;
+					width: 60px;
+				}
+			}
+
+			th{
+
+
+			}
+		}
+
+	}
+
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td{
+    background-color: #5f7387;
+    border-color: transparent;
+}
+.table-striped>tbody>tr:nth-child(even)>td{
+    background-color: #434e66;
+    border-color: transparent;
+}

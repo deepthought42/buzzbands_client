@@ -1,66 +1,62 @@
-<style>
-      .thumbnail { height: 280px !important; }
-    </style>
-    <div class="container col-sm-12">
-
-    <div style="color:white;font-size:40px;font-Family:arial;font-Family: 'Josefin Sans', sans-serif;
-  font-weight: 100;" class="col-lg-6 col-sm-12">
-      Promotions
-      <button style="background-color: #3b4454;
-                      border: none;
-                      color: #4BBA4B;
-                      font-size: 10px; "
-              class="btn btn-primary"
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-md-12">
+          
+        <h1 class="font-white font-josefin">Promotions</h1>
+        <button
+              class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
               ng-click="createPromotion()"
               ui-sref="adminDashboard.newPromotion"
               ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
-          Add new
-      </button>
-    </div>
+          + New Promo
+        </button>
+
+        </div>
+
+      </div>
+      <div class="row">
+        
+        <div class="col-md-12">
+          
+            All
+              <span style="color:#de519b;">(</span>
+              {{promotionList.length || 0}}
+              <span style="color:#de519b;">)</span>
 
 
-    <div class="col-sm-12">
-      <select style="margin-top:30px;"
-              ng-options="venue.id as venue.name for venue in venues"
-              ng-model="promotion.venue_id"
-              id="venueFilter">
-        <option value="" selected>All Venues</option>
-      </select>
+            Active
+              <span style="color:#de519b;"> ( </span>
+              {{($scope.promotionList | filter:active==0).length || 0}}
+              <span style="color:#de519b;"> ) </span>
 
-    </div>
 
-    <div class="status col-sm-4">
-      All
-        <span style="color:#de519b;">(</span>
-        {{promotionList.length || 0}}
-        <span style="color:#de519b;">)</span>
-    </div>
-    <div  class="status col-sm-4">
-      Active
-        <span style="color:#de519b;"> ( </span>
-        {{($scope.promotionList | filter:active==0).length || 0}}
-        <span style="color:#de519b;"> ) </span>
-    </div>
-    <div class="status col-sm-4">
-      Disabled
-        <span style="color:#de519b;"> ( </span>
-        {{($scope.promotionList | filter:active==1).length || 0}}
-        <span style="color:#de519b;"> ) </span>
-    </div>
-  <div class="col-lg-12">
-    <button class="btn btn-default btn-sm fa fa-th"
-            ng-click="visibleTab='thumbnail'">
-      Thumbnail
-    </button>
-    <button class="btn btn-default btn-sm fa fa-list-ul"
-            ng-click="visibleTab='list'">
-      List
-    </button>
-  </div>
-  <div>
+            Disabled
+              <span style="color:#de519b;"> ( </span>
+              {{($scope.promotionList | filter:active==1).length || 0}}
+              <span style="color:#de519b;"> ) </span>
 
-  </div>
-  <br><br>
+              <button class="btn btn-primary buzzbands-btn"
+                      ng-click="visibleTab='thumbnail'">
+                Thumbnail
+              </button>
+
+              <button class="btn btn-primary buzzbands-btn"
+                      ng-click="visibleTab='list'">
+                List
+              </button>
+
+                <select 
+                          ng-options="venue.id as venue.name for venue in venues"
+                          ng-model="promotion.venue_id"
+                          id="venueFilter">
+                    <option value="" selected>All Venues</option>
+                </select>
+
+        </div>
+
+      </div>
+
   <div ng-switch="visibleTab">
     <div ng-switch-when="list">
       <table class="table-responsive table table-striped" >
@@ -105,9 +101,9 @@
       </table>
     </div>
 
-    <ul id="thumbnail" class=" grid   cs-style-3"  ng-switch-when="thumbnail">
-      <li ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id}">
-        <div class=" col-lg-3 col-sm-2" >
+    <ul masonry id="thumbnail" class="grid" ng-switch-when="thumbnail">
+      <li class="masonry-brick" ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id}">
+
   					<figure>
               <img id="promotion"
                    class="promotion img-responsive"
@@ -117,8 +113,9 @@
   							<button class="edit"  ng-click="editPromotion(promo.id)" >Edit</button>
   						</figcaption>
             </figure>
-        </div>
+
       </li>
     </ul>
+
   </div>
 </div>

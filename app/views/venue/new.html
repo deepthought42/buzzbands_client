@@ -7,7 +7,7 @@
 	        Back
 	  </button>
 	</div>
-	<span style="color:#808266;font-size:30px;">Add New Event</span>
+	<span>Add New Venue</span>
 	<br /><br />
 	<form name="venueForm"
 				enctype="multipart/form-data"
@@ -38,7 +38,7 @@
 			</div>
 			<div class="col-sm-12 col-xs-12">
 				<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-							pickerclass="btn addphoto"
+							pickerclass="btn btn-primary buzzbands-btn"
 							multiple=false
 							mimetypes="'image/*'"
 							callback="previewImage(file)">
@@ -113,7 +113,7 @@
 			<br>
 
 		<div style="text-align:center;" class="actions col-md-12">
-			<button type="submit" class="saveButton btn btn-primary" ng-click="createVenue(venueForm.$valid)">
+			<button type="submit" class="btn btn-primary buzzbands-btn buzzbands-pink-btn" ng-click="createVenue(venueForm.$valid)">
 				<i class="fa fa-save"></i>
 				Save
 			</button>

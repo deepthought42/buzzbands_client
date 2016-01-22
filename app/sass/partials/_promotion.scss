@@ -1,21 +1,16 @@
 .status{
-color:white;
-}
-#venueFilter{border-radius:1em;
+  color:white;
 
-border-color:#5f7387;}
-
-.table-striped>tbody>tr:nth-child(odd)>td{
-background-color: #5f7387;
-    border-color: transparent;
 }
-.table-striped>tbody>tr:nth-child(even)>td{
-background-color: #434e66;
-    border-color: transparent;
+
+#venueFilter{
+  border-radius:1em;
+  border-color:#5f7387;
 }
 
 input[type="checkbox"]:checked {
-color: red;}
+  color: red;
+}
 
 .edit{
   background-color: #4BBA4B;
@@ -24,22 +19,21 @@ color: red;}
   color:white;
 }
 .edit:hover{
-background-color: white;
-    color:#4BBA4B;
+  background-color: white;
+  color:#4BBA4B;
 }
 
 .form-control{
-background-color: #3b4454;
+  background-color: #3b4454;
     border-color: transparent;
 }
-.addphoto{  padding: 5px 15px;
+
+.addphoto{  
+  padding: 5px 15px;
   margin-top: 5px;
   border-radius: 1em;
   background-color: #ffffff;
-  color: #4BBA4B;}
-
-table{
-  background-color: grey;
+  color: #4BBA4B;
 }
 
 .thumbcontent{
@@ -116,20 +110,14 @@ md-datepicker{
 }
 
 
-body, html{
 
-background-color: #242831;
-
-}
-
-
-#promotion{
+/* #promotion{
   background-color: #434e66;
   margin:-10px;
   padding: 30px;
   height: 300px;
   width:305px;
-}
+} */
 
 md-icon{
 color:white;

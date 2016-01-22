@@ -1,0 +1,21 @@
+.buzzbands-btn{
+
+	background-color: #3b4454;
+	border: none;
+	color: #4BBA4B;
+	font-size: 16px;
+	transition: all .2s;
+	font-weight: 700;
+
+	&:hover{
+		background-color: #4BBA4B;
+	}
+
+	&.buzzbands-pink-btn{
+
+		background-color: #de519b;
+		color: #FFF;
+
+	}
+
+}

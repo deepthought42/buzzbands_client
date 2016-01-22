@@ -22,7 +22,8 @@ angular.module('buzzbands_client', [
   'buzzbands.UserDashboardControllers',
   'buzzbands.OrderService',
   'filepicker',
-  'ngDragDrop'
+  'ngDragDrop',
+  'wu.masonry'
 ]).
 config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider',
  function($urlRouterProvider, $stateProvider, $authProvider, $httpProvider) {

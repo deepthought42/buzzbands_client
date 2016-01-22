@@ -19,7 +19,8 @@
     "angular-morph": "latest",
     "angular-payments": "latest",
     "angular-dragdrop": "1.0.7",
-    "angular-nvd3": "latest"
+    "angular-nvd3": "latest",
+    "angular-masonry": "~0.14.1"
   },
   "resolutions": {
     "angular": "1.4.8",

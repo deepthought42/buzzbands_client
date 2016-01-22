@@ -1,16 +1,26 @@
 <div ng-show="hasPermission('account_user') || hasPermission('admin')" class="col-sm-12">
-  <button class="btn btn-primary col-sm-1"
-          ui-sref="adminDashboard.newVenue">
-        <i style="font-size:1em;" class="fa fa-plus">
-          New Venue
-        </i>
-  </button>
 </div>
-<div style="color:white;font-size:40px;font-Family:arial;font-Family: 'Josefin Sans', sans-serif;
-  font-weight: 100;" class="col-lg-6 col-sm-12">
-      Events
+
+<div class="container-fluid padding-bottom-10">
+  
+  <div class="row">
+    
+    <div class="col-md-12">
+      
+      <h1 class="font-white font-josefin">Venues</h1>
+      <button class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+            ui-sref="adminDashboard.newVenue">
+            + New Venue
+      </button>
 
     </div>
+
+  </div>
+
+
+</div>
+<div class="row"></div>
+
 <div class="col-sm-12">
     <span class="status">
       All
@@ -41,7 +51,7 @@
                        ng-click="selectAll(selectAllPromos)" />
               </td>
               <td>Venue Photo</td>
-              <td>Name</td>
+              <td>Venue Name</td>
               <td ng-show="hasPermission('admin')"></td>
             </tr>
           </thead>
@@ -51,14 +61,14 @@
                 <input type="checkbox" ng-model="venue.selected" />
               </td>
               <td ng-click="showPromotionsList(venue.id)">
-                  <img style="width:100px;" ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
+                  <img ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
               </td>
 
               <td ng-click="showPromotionsList(venue.id)">
                 <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
               </td>
               <td ng-show="hasPermission('admin')">
-                <button ng-show="hasPermission('admin')" ng-click="editVenue(venue.id)">Edit</button>
+                <button class="buzzbands-btn btn btn-primary" ng-show="hasPermission('admin')" ng-click="editVenue(venue.id)">Edit Venue</button>
               </td>
             </tr>
           </tbody>
