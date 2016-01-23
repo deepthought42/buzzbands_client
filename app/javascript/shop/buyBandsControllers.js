@@ -17,7 +17,7 @@ angular.module('buzzbands.BandsControllers', ['ui.router',
                                    'Order',
                                    '$state',
                                    '$sessionStorage',
-  function($scope, Bands, Packages, Order, state, session) {
+  function($scope, Bands, BandPackages, Order, state, session) {
   /**
    * Initializes controller
    */
@@ -70,6 +70,11 @@ angular.module('buzzbands.BandsControllers', ['ui.router',
         {id:'White',
          href:'./images/white.png'}];
    };
+
+   $scope.hasPermission = function(role){
+    if (session.user && session.user.role == role) {return true;}
+    return false;
+   }
 
    this.init();
 }]);

@@ -63,13 +63,13 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       }
 
     $scope.editUser = function(id){
-      if($scope.hasPermission(2)){
+      if($scope.hasPermission('admin')){
         state.go("adminDashboard.editUser", {"userId": id})
       }
     }
 
     $scope.hasPermission = function(role){
-     if ($scope.$session.user && $scope.$session.user.role >= role) {return true;}
+     if ($scope.$session.user && $scope.$session.user.role == role) {return true;}
      return false;
     }
     $scope.getUserList();
@@ -96,7 +96,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     $scope.updateUser = function(user){
         User.update($scope.user).$promise.then(function(data){
           $scope.user = {};
-          if($scope.hasPermission(2)){
+          if($scope.hasPermission('admin')){
             state.go("analytics.adminDashboard");
           }
           else{
@@ -136,7 +136,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 
     $scope.user = $scope.loadUser();
     $scope.hasPermission = function(role){
-      return $scope.$session.user.role >= role;
+      return $scope.$session.user.role == role;
     }
   }
 ])
@@ -190,7 +190,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     }
 
     $scope.hasPermission = function(role){
-      return $scope.$session.user.role >= role;
+      return $scope.$session.user.role == role;
     }
 
     $scope.queryVenues();
