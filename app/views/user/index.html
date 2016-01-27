@@ -22,10 +22,10 @@
       <td>
         <button class="btn btn-primary"
                 ng-click="editUser(user.id)"
-                ng-show="hasPermission(2)">Edit</button>
+                ng-show="hasPermission('buzzbands_employee')">Edit</button>
         <button class="btn btn-danger"
                 ng-click="delete(user.id)"
-                ng-show="hasPermission(2)">Delete</button>
+                ng-show="hasPermission('buzzbands_employee')">Delete</button>
       </td>
     </tr>
   </tbody>
