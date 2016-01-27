@@ -1,22 +1,22 @@
 <div class="container-fluid">
-    <button id="settings"
+    <div id="edit-account-btn"
             ng-controller="UserAccountAccessController"
             id"editMyAccountButton"
-            class="pull-right"
+            class="btn btn-primary buzzbands-btn"
             ng-click="editMyAccount()">
             <img style="width:50px;" ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
 
-          </button>
-    <button id="buyBandButton"
-            class="pull-right btn"
-            ng-controller="BuyBandsController"
-            ui-sref="adminDashboard.shopBands"
-            ng-show="hasPermission('admin')">
+          </div>
+
+    <button id="buy-bands-btn"
+            class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+            ng-show="hasPermission('admin')"
+            ui-sref="adminDashboard.shopBands">
       BUY BANDS
     </button>
       <div id="adminDashboardcontainer" class="row">
         <div class="col-md-2 col-xs-12" ng-controller="DashboardController" id="dashboard-controller">
-          <img style="width:50px;padding-top:15px;padding-bottom:100px;"src="images/logo.png"><br>
+          <img src="images/logo.png">
           <div class="col-sm-12 col-xs-12">
             <button ui-sref="analytics.adminDashboard"
                     ng-class='{"navButtonActive":tog==1,"navButton":tog!=1}'
