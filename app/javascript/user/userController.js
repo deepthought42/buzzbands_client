@@ -21,8 +21,12 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 .controller('UserIndexController', ['$scope', '$rootScope', '$auth',
                                    '$sessionStorage', '$state', 'User', 'Role',
 	function ($scope, $rootScope, $auth, $sessionStorage, state, User, Role) {
-    $scope.$session = $sessionStorage;
-    $scope.roles = Role;
+
+    this._init = function(){
+      $scope.$session = $sessionStorage;
+      $scope.roles = Role;
+      $scope.getUserList();
+    }
 
     /**
     *
@@ -69,18 +73,21 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     }
 
     $scope.hasPermission = function(role){
-     if ($scope.$session.user && $scope.$session.user.role == role) {return true;}
-     return false;
+     return $scope.$session.user && $scope.$session.user.role == role
     }
-    $scope.getUserList();
+
+    this._init();
   }
 ])
 .controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$sessionStorage', 'Role',
   function($scope, User, state, stateParams, $auth, $sessionStorage, Role)
   {
-    $scope.$session = $sessionStorage;
-    $auth.validateUser();
-    $scope.roles = Role;
+    this._init = function(){
+      $scope.$session = $sessionStorage;
+      $auth.validateUser();
+      $scope.roles = Role;
+      $scope.user = $scope.loadUser();
+    }
 
     $scope.loadUser = function(){
       console.log(stateParams.userId);
@@ -134,19 +141,23 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       }
     }
 
-    $scope.user = $scope.loadUser();
     $scope.hasPermission = function(role){
       return $scope.$session.user.role == role;
     }
+
+    this._init();
   }
 ])
 .controller('UserCreationController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage', 'Role', 'Venue',
   function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage, Role, Venue)
   {
-    $scope.$session = $sessionStorage;
-    $auth.validateUser();
-    $scope.user = {};
-    $scope.roles = Role;
+    this._init = function(){
+      $scope.$session = $sessionStorage;
+      $auth.validateUser();
+      $scope.user = {};
+      $scope.roles = Role;
+      $scope.queryVenues();
+    }
 
     $scope.queryVenues = function(){
       Venue.query().$promise
@@ -193,7 +204,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       return $scope.$session.user.role == role;
     }
 
-    $scope.queryVenues();
+    this._init();
   }
 ])
 .controller('UserAccountAccessController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',

@@ -33,6 +33,15 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       $scope.promotionLoaded = true;
       $scope.visibleTab = "thumbnail";
       $scope.time = '';
+
+      if(!$stateParams.venue_id){
+        //Show all promotions
+        $scope.promotionList = $scope.getPromotionList();
+      }
+      else{
+        //show promotions for the venuw with the provided ID
+        $scope.promotionList = $scope.getVenuePromotionList($stateParams.venue_id);
+      }
     }
 
     $scope.editPromotion = function(id){
@@ -45,7 +54,15 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
     $scope.getPromotionList = function(){
-      return Promotion.query();
+      Promotion.query().$promise
+        .then(function(data){
+          $scope.promotionList = data;
+          $scope.$session.promotions = $scope.promotionList;
+        })
+        .catch(function(data){
+          console.log("error querying venues")
+        });
+      return $scope.promotionList;
     }
 
     $scope.getVenuePromotionList = function(venue_id){
@@ -58,15 +75,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
           return $scope.venues[i].url;
         }
       }
-    }
-
-    if(!$stateParams.venue_id){
-      //Show all promotions
-      $scope.promotionList = $scope.getPromotionList();
-    }
-    else{
-      //show promotions for the venuw with the provided ID
-      $scope.promotionList = $scope.getVenuePromotionList($stateParams.venue_id);
     }
 
     $scope.deletePromotions = function(){
