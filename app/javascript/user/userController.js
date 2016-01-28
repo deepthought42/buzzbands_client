@@ -210,11 +210,12 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 .controller('UserAccountAccessController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
   function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
   {
-    $scope.$session = $sessionStorage;
+    $scope.session = $sessionStorage;
     $auth.validateUser();
 
     $scope.editMyAccount = function(){
-      state.go('adminDashboard.editUser', {"userId": $scope.$session.user.id});
+      $scope.session.activeViewId = 10;
+      state.go('adminDashboard.editUser', {"userId": $scope.session.user.id});
     }
   }
 ])
