@@ -2,22 +2,18 @@
 </div>
 
 <div class="container-fluid padding-bottom-10">
-  
+
   <div class="row">
-    
+
     <div class="col-md-12">
-      
+
       <h1 class="font-white font-josefin">Venues</h1>
       <button class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
             ui-sref="adminDashboard.newVenue">
             + New Venue
       </button>
-
     </div>
-
   </div>
-
-
 </div>
 <div class="row"></div>
 
@@ -25,8 +21,8 @@
     <span class="status">
       All
       <span class="statusbracket" >(</span>
-       <span class="status"> {{venueList.length}}</span>
-       <span class="statusbracket" > )</span>
+      <span class="status"> {{venueList.length}}</span>
+      <span class="statusbracket" > )</span>
     </span>
     <span class="status">
       Active
@@ -67,8 +63,8 @@
               <td ng-click="showPromotionsList(venue.id)">
                 <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
               </td>
-              <td ng-show="hasPermission('admin')">
-                <button class="buzzbands-btn btn btn-primary" ng-show="hasPermission('admin')" ng-click="editVenue(venue.id)">Edit Venue</button>
+              <td ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
+                <button class="buzzbands-btn btn btn-primary" ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')" ng-click="editVenue(venue.id)">Edit Venue</button>
               </td>
             </tr>
           </tbody>
