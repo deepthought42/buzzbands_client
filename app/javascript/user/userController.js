@@ -67,7 +67,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
       }
 
     $scope.editUser = function(id){
-      if($scope.hasPermission('admin')){
+      if($scope.hasPermission('admin') || $scope.hasPermission('buzzbands_employee')){
         state.go("adminDashboard.editUser", {"userId": id})
       }
     }
