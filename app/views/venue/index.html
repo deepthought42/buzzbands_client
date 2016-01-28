@@ -48,7 +48,7 @@
               </td>
               <td>Venue Photo</td>
               <td>Venue Name</td>
-              <td ng-show="hasPermission('admin')"></td>
+              <td ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')"></td>
             </tr>
           </thead>
           <tbody>
