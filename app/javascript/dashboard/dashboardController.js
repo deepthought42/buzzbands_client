@@ -264,8 +264,6 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
     $scope.setPage = function(pageVal){
       $scope.tog = pageVal;
       $scope.session.activeViewId = pageVal;
-
-      //load page based on current value
     }
 
     this._init();

@@ -60,7 +60,7 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     * @role admin only
     */
     $scope.delete = function(user_id){
-      if($sessionStorage.roles[0].name == 'admin'){}
+      if($sessionStorage.user.role == 'admin'){}
         User.delete({id: user_id}).$promise.then(function(){
           $scope.getUserList();
         });
