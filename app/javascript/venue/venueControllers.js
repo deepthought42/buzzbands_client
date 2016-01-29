@@ -15,20 +15,20 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     function($scope, Venue, state, $sessionStorage, $rootScope) {
       this._init = function(){
         $scope.venueLoaded = false;
-        $scope.$session = $sessionStorage;
+        $scope.session = $sessionStorage;
         $scope.venue = {};
         $scope.venueList = $scope.queryVenues();
       }
 
       $scope.hasPermission = function(role){
-        return $scope.$session.user !== undefined && $scope.$session.user.role == role;
+        return $scope.session.user !== undefined && $scope.session.user.role == role;
       }
 
       $scope.queryVenues = function(){
         Venue.query().$promise
           .then(function(data){
             $scope.venueList = data;
-            $scope.$session.venues = $scope.venueList;
+            $scope.session.venues = $scope.venueList;
           })
           .catch(function(data){
             console.log("error querying venues")
@@ -52,7 +52,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
             Venue.remove({id: $scope.venueList[i].id}).$promise
               .then(function(data){
                 $scope.venueList = $scope.queryVenues();
-                $scope.$session.venues = $scope.venueList;
+                $scope.session.venues = $scope.venueList;
               })
               .catch(function(data){
                 console.log("an error occurred while deleting venue");
@@ -62,7 +62,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
       }
 
       $scope.editVenue = function(venueId){
-        $scope.$session.last_venue_id = venueId;
+        $scope.session.last_venue_id = venueId;
         state.go("adminDashboard.editVenue", {venue_id: venueId});
       }
 
@@ -72,6 +72,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
       }
 
       $scope.showPromotionsList = function(venueId){
+        $scope.session.activeViewId = 3;
         state.go("adminDashboard.venuePromotions", {venue_id: venueId});
       }
 
@@ -105,14 +106,14 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
   ['$scope', 'Venue', '$state', '$stateParams', '$auth', '$rootScope', '$sessionStorage',
     function($scope, Venue, state, $stateParams, $auth, $rootScope, $sessionStorage) {
       this._init = function(){
-        $scope.$session = $sessionStorage;
+        $scope.session = $sessionStorage;
         $auth.validateUser();
         $scope.categories = ["Bar","Night Club"];
         $scope.venue = {};
       }
 
       $scope.hasPermission = function(role){
-        return $scope.$session.user.role == role;
+        return $scope.session.user.role == role;
       }
 
       $scope.createVenue = function(venueValid){
