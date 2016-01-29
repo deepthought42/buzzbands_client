@@ -19,6 +19,19 @@
 		-ms-transform: translateY(-5px);
 	}
 
+	&:active{
+		background-color: #4BBA4B;
+	}
+
+	&:focus{
+		background-color: #4BBA4B;
+	}
+
+	&:active:focus{
+		background-color: #4BBA4B;
+	}
+	
+
 	&#edit-account-btn{
 		position: fixed;
 		right: 20px;

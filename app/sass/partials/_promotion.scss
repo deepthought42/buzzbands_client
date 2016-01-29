@@ -114,7 +114,9 @@ color:white;
 
 
 md-datepicker{
-background-color:transparent;
+  background-color:transparent;
+  position: relative;
+  top: 32px;
 }
 .md-datepicker-input{
 color:white;
@@ -146,6 +148,17 @@ color:#4BBA4B;
 
   tr{
     height: inherit;
+  }
+
+  .datepicker-row{
+    height: 105px;
+    position: relative;
+
+    .col-md-6{
+      height: 100%;
+      position: relative;
+
+    }
   }
 }
 

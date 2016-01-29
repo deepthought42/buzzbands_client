@@ -47,6 +47,7 @@
                   id="venueFilter">
               <option value="" selected>All Venues</option>
           </select>
+          <input type="text" ng-model="test">
       </div>
     </div>
 
@@ -66,7 +67,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id || ''}">
+          <tr ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id || ''}, test">
             <td ng-show="hasPermission('buzzbands_employee')">
               <input type="checkbox" ng-click="promo.selected=!promo.selected" />
             </td>
@@ -84,7 +85,7 @@
 
             <td>
               <button ng-click="editPromotion(promo.id)"
-                      class="edit"
+                      class="btn btn-primary buzzbands-btn edit"
                       ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
                 Edit
               </button>
