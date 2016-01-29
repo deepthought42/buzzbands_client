@@ -50,7 +50,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="venue in venueList|orderBy:'active':true" >
+              <tr ng-repeat="venue in venueList|orderBy:'active':true| filter:venueSearch" >
                 <td ng-show="hasPermission('buzzbands_employee')">
                   <input type="checkbox" ng-click="venue.selected=!venue.selected" />
                 </td>
@@ -76,6 +76,3 @@
     </div>
   </div>
 </div>
-
-
-  

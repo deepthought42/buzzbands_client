@@ -47,7 +47,7 @@
                   id="venueFilter">
               <option value="" selected>All Venues</option>
           </select>
-          <input type="text" ng-model="test">
+          <input type="text" ng-model="promotionSearch" placeholder="Search Promotions..." >
       </div>
     </div>
 
@@ -67,7 +67,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id || ''}, test">
+          <tr ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id || ''} | filter: promotionSearch">
             <td ng-show="hasPermission('buzzbands_employee')">
               <input type="checkbox" ng-click="promo.selected=!promo.selected" />
             </td>
@@ -96,7 +96,7 @@
     </div>
 
     <ul masonry id="thumbnail" class="grid" ng-switch-when="thumbnail">
-      <li class="masonry-brick" ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id}">
+      <li class="masonry-brick" ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id} | filter:promotionSearch">
 
   					<figure class="promo-wrapper">
               <img id="promotion"
