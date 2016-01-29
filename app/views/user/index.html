@@ -20,10 +20,10 @@
       </td>
       <td>{{user.active}}</td>
       <td>
-        <button class="btn btn-primary"
+        <button class="btn btn-primary buzzbands-btn"
                 ng-click="editUser(user.id)"
                 ng-show="hasPermission('buzzbands_employee')">Edit</button>
-        <button class="btn btn-danger"
+        <button class="btn btn-danger buzzbands-btn buzzbands-pink-btn"
                 ng-click="delete(user.id)"
                 ng-show="hasPermission('buzzbands_employee')">Delete</button>
       </td>

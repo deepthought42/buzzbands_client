@@ -6,9 +6,17 @@
 	font-size: 16px;
 	transition: all .2s;
 	font-weight: 700;
+	transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-ms-transform: translateY(0);
 
 	&:hover{
 		background-color: #4BBA4B;
+		transform: translateY(-5px);
+		-webkit-transform: translateY(-5px);
+		-moz-transform: translateY(-5px);
+		-ms-transform: translateY(-5px);
 	}
 
 	&#edit-account-btn{

@@ -40,10 +40,11 @@
             List
           </button>
 
-          <select
-                    ng-options="venue.id as venue.name for venue in venues"
-                    ng-model="promotion.venue_id"
-                    id="venueFilter">
+          <select class="form-control"
+                  style="display: inline-block"
+                  ng-options="venue.id as venue.name for venue in venues"
+                  ng-model="promotion.venue_id"
+                  id="venueFilter">
               <option value="" selected>All Venues</option>
           </select>
       </div>
