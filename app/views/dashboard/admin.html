@@ -49,12 +49,6 @@
                 ng-click='setPage(4)'>
             Users
         </button><br/>
-        <button ui-sref="adminDashboard.createUser"
-                 class="add btn btn-primary"
-                 ng-show="session.activeViewId==4"
-                 ng-click="addUser()">
-             Add New
-         </button>
        </div>
        <div class="col-sm-12 col-xs-12" ng-show="hasPermission('buzzbands_employee')">
          <button ui-sref="adminDashboard.accounts"
@@ -70,11 +64,11 @@
             Pricing
         </button>
        </div>
-      </div>
     </div>
 
     <div  style="padding-top:15px;" class="col-md-10 col-xs-12" id="dashboard-content-wrapper">
       <div ui-view></div>
     </div>
+
   </div>
 </div>

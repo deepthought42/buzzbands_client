@@ -6,18 +6,37 @@
 	font-size: 16px;
 	transition: all .2s;
 	font-weight: 700;
+	transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-ms-transform: translateY(0);
 
 	&:hover{
 		background-color: #4BBA4B;
+		transform: translateY(-5px);
+		-webkit-transform: translateY(-5px);
+		-moz-transform: translateY(-5px);
+		-ms-transform: translateY(-5px);
 	}
+
+	&:active{
+		background-color: #4BBA4B;
+	}
+
+	&:focus{
+		background-color: #4BBA4B;
+	}
+
+	&:active:focus{
+		background-color: #4BBA4B;
+	}
+	
 
 	&#edit-account-btn{
 		position: fixed;
 		right: 20px;
 		top: 30px;
 		z-index: 1000;
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
 	}
 
 	&.buzzbands-pink-btn{
@@ -28,12 +47,10 @@
 		&#buy-bands-btn{
 
 			position: fixed;
-			right: 90px;
+			right: 115px;
 			top: 30px;
 			padding: 20px 30px;
 			z-index: 1000;
-			border-top-right-radius: 0;
-			border-bottom-right-radius: 0;
 
 		}
 

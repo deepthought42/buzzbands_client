@@ -1,18 +1,16 @@
 
-<div id="promotionUpdatePanel">
-	<form name="promotionForm"
-				enctype="multipart/form-data"
-				ng-submit="updatePromotion(promotion)"
-				novalidate>
-		<div class="col-md-12">
-				<img style="max-width:50%;"
-						 ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}"/>
-				<div class="field">
-          <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">
-						EDIT PROMOTION
-					</h1>
-					<input  style="margin:initial;"
-									class="form-control"
+<div id="promotionUpdatePanel" class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+			<h1 class="font-white font-josefin text-center">Edit Promotion</h1>
+			<form name="promotionForm"
+						id="promotion-form"
+						enctype="multipart/form-data"
+						ng-submit="updatePromotion(promotion)"
+						novalidate> 
+						
+				<div class="form-group">
+					<input  class="form-control"
 									type="text"
 									name="name"
 									ng-model="promotion.name"
@@ -24,67 +22,90 @@
 
 					<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
 						<p ng-message="required">Name is required.</p>
-						<p ng-message="minlength">Name must be at least 3 characters</p>
+						<p ng-message="minlength">Name must be at least 3 charctears</p>
 						<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
 					</div>
 				</div>
-				<div class="col-sm-12 col-xs-12">
-					<div   filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-									pickerclass="btn addphoto"
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-6 text-right">
+
+							<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker>
+
+						</div>
+						<div class="col-md-6">
+
+							<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="start_time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">
+							</uib-timepicker>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-6 text-right">
+
+							<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker>
+
+						</div>
+						<div class="col-md-6">
+
+							<uib-timepicker  style="width:232px;background-color:#242831;"
+														 ng-model="end_time"
+														 ng-change="changed()"
+														 hour-step="hstep"
+														 minute-step="mstep"
+														 show-meridian="ismeridian">
+							</uib-timepicker>
+						</div>
+					</div>
+				</div>
+				<div class="form-group text-center">
+					<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+									pickerclass="btn btn-primary buzzbands-btn"
 									multiple="false"
 									mimetypes="'image/*'"
 									callback="previewImage(file)">
-              <span>
-								<i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
+								<i  style="margin-right:10px;"class="fa fa-camera"></i>
 								Add Photo
-							</span>
 					</div>
 				</div>
-		</div>
 
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<select ng-options="venue.id as venue.name for venue in venues"
-							ng-selected="venue.id == promotion.venue_id"
-							ng-model="promotion.venue_id">
-			</select>
-		</div>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
-			<div class="col-md-6 col-sm-12">
-				<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker><br><br>
-				<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="start_time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+				<div class="form-group">
+					<select class="form-control"
+									ng-options="venue.id as venue.name for venue in venues"
+									ng-selected="venue.id == promotion.venue_id"
+									ng-model="promotion.venue_id">
+					</select>
+				</div>
+				<div class="form-group text-center" >
+					<label>
+									Active:
+					</label>
+					<input type="checkbox" ng-model="promotion.active"/>
+				</div>
+				<div class="form-group text-center">
+						<button style="background-color:#de519b;"class="btn btn-primary"
+										type="submit"
+										ng-click="updatePromotion(promotion)"
+										ng-disabled="promotionForm.$invalid">
+							Update
+						</button>
+				</div>
 
-			</div>
-			<!-- Start time date time picker popup -->
-			<div id="datepicker2" class="col-md-6 col-sm-12">
-				<md-datepicker ng-model="promotion.end_time"
-											 md-placeholder="Enter date">
-				</md-datepicker><br><br>
-				<uib-timepicker  style="width:232px;background-color:#242831;"
-												 ng-model="end_time"
-												 ng-change="changed()"
-												 hour-step="hstep"
-												 minute-step="mstep"
-												 show-meridian="ismeridian">
-				</uib-timepicker>
-			</div>
 
-				<br><br>
+			</form>
 
-		</div>
-			<div class="col-sm-12" >
-				<label style="color:white;" class="control-label">
-				Active:
-				</label>
 
-				<input type="checkbox" ng-model="promotion.active"/>
-			</div>
-			<div style="margin-top:35px;" class="actions col-md-12">
-				<button style="background-color:#de519b;"class="btn btn-primary"
-								type="submit"
-								ng-click="updatePromotion(promotion)"
-								ng-disabled="promotionForm.$invalid">
-					Update
-				</button>
-			</div>
-	</form>
+		</div> 
+	<div class="col-md-6">
+		
+		<img style="max-width:50%;"
+							 ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}"/>
+	</div> 
+
+	</div>
+
 </div>

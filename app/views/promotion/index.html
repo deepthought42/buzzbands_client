@@ -40,12 +40,14 @@
             List
           </button>
 
-          <select
-                    ng-options="venue.id as venue.name for venue in venues"
-                    ng-model="promotion.venue_id"
-                    id="venueFilter">
+          <select class="form-control"
+                  style="display: inline-block"
+                  ng-options="venue.id as venue.name for venue in venues"
+                  ng-model="promotion.venue_id"
+                  id="venueFilter">
               <option value="" selected>All Venues</option>
           </select>
+          <input type="text" ng-model="test">
       </div>
     </div>
 
@@ -65,7 +67,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id || ''}">
+          <tr ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id || ''}, test">
             <td ng-show="hasPermission('buzzbands_employee')">
               <input type="checkbox" ng-click="promo.selected=!promo.selected" />
             </td>
@@ -83,7 +85,7 @@
 
             <td>
               <button ng-click="editPromotion(promo.id)"
-                      class="edit"
+                      class="btn btn-primary buzzbands-btn edit"
                       ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
                 Edit
               </button>
@@ -96,13 +98,13 @@
     <ul masonry id="thumbnail" class="grid" ng-switch-when="thumbnail">
       <li class="masonry-brick" ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id}">
 
-  					<figure>
+  					<figure class="promo-wrapper">
               <img id="promotion"
                    class="promotion img-responsive"
                    src="{{promo.ad_location ? promo.ad_location : 'images/venue_img_missing.jpg'}}" />
                <figcaption>
-  							<h3>{{promo.name}}</h3>
-  							<button class="edit"  ng-click="editPromotion(promo.id)" >Edit</button>
+  							<h3 class="font-josefin">{{promo.name}}</h3>
+  							<button class="edit btn btn-primary buzzbands-btn"  ng-click="editPromotion(promo.id)" >Edit</button>
   						</figcaption>
             </figure>
 

@@ -1,4 +1,9 @@
-<span style="color:white;font-size:30px;">Accounts</span>
+<h1 class="font-white font-josefin">Users</h1>
+<button ui-sref="adminDashboard.createUser"
+                 class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+                 ng-click="addUser()">
+             + New User
+ </button>
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -20,10 +25,10 @@
       </td>
       <td>{{user.active}}</td>
       <td>
-        <button class="btn btn-primary"
+        <button class="btn btn-primary buzzbands-btn"
                 ng-click="editUser(user.id)"
                 ng-show="hasPermission('buzzbands_employee')">Edit</button>
-        <button class="btn btn-danger"
+        <button class="btn btn-danger buzzbands-btn buzzbands-pink-btn"
                 ng-click="delete(user.id)"
                 ng-show="hasPermission('buzzbands_employee')">Delete</button>
       </td>
