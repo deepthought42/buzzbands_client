@@ -12,17 +12,6 @@ input[type="checkbox"]:checked {
   color: red;
 }
 
-.edit{
-  background-color: #4BBA4B;
-  border-radius: 1em;
-  border: none;
-  color:white;
-}
-.edit:hover{
-  background-color: white;
-  color:#4BBA4B;
-}
-
 .form-control{
   background-color: #3b4454;
     border-color: transparent;
@@ -151,4 +140,44 @@ color:White;
 .btn-link:focus, .btn-link:hover{
 
 color:#4BBA4B;
+}
+
+#thumbnail{
+  list-style-type: none;
+  padding-left: 0;
+  padding-top: 10px;
+
+  li{
+    margin-bottom: 10px;
+  }
+}
+
+figure.promo-wrapper{
+  position: relative;
+
+  figcaption{
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(222,81,155,0.8);
+    width: 100%;
+    padding: 3px 10px;
+
+    h3{
+      margin: 0;
+      display: inline-block;
+      line-height: 40px;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .btn{
+      float: right;
+      position: relative;
+      top: 3px;
+      background-color: #4BBA4B;
+      color: #fff;
+    }
+  }
 }
