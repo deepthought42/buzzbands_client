@@ -48,13 +48,12 @@ angular.module('buzzbands.UserDashboardControllers', ['ui.router'])
   }
 ])
 
-.controller('UserDashboardController', ['$scope', '$sessionStorage', '$state', function($scope, $sessionStorage, state) {
-  $scope.$session = $sessionStorage;
+.controller('UserDashboardController', ['$scope', '$sessionStorage', '$state',
+  function($scope, $sessionStorage, state) {
+    $scope.$session = $sessionStorage;
 
-  $scope.hasPermission = function(role){
-    if($scope.$session.user === undefined){
-      return false;
+    $scope.hasPermission = function(role){
+      return $scope.$session.user.role == role;
     }
-    return $scope.$session.user.role == role;
   }
-}])
+])

@@ -15,15 +15,17 @@ angular.module('buzzbands.BandsControllers', ['ui.router',
                                    'Bands',
                                    'BandPackages',
                                    'Order',
+                                   'Venue',
                                    '$state',
                                    '$sessionStorage',
-  function($scope, Bands, BandPackages, Order, state, session) {
+  function($scope, Bands, BandPackages, Order, Venue, state, session) {
   /**
    * Initializes controller
    */
    this.init = function(){
+     $scope.$session = session;
      $scope.bandColors = this.getBandColors();
-     $scope.venues = session.venues;
+     $scope.venues = $scope.$session.venues || Venue.query();
      $scope.order = {};
 
      BandPackages.query().$promise.then(function(data){
@@ -72,8 +74,7 @@ angular.module('buzzbands.BandsControllers', ['ui.router',
    };
 
    $scope.hasPermission = function(role){
-    if (session.user && session.user.role == role) {return true;}
-    return false;
+    return session.user && session.user.role == role;
    }
 
    this.init();

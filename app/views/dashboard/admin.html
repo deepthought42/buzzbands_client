@@ -4,14 +4,15 @@
             id"editMyAccountButton"
             class="btn btn-primary buzzbands-btn"
             ng-click="editMyAccount()">
-            <img style="width:50px;" ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
 
-          </div>
-
-    <button id="buy-bands-btn"
-            class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
-            ng-show="hasPermission('admin')"
-            ui-sref="adminDashboard.shopBands">
+            <img style="width:50px;"
+                 ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
+    </div>
+    <button id="buyBandButton"
+            class="pull-right btn"
+            ng-controller="BuyBandsController"
+            ui-sref="adminDashboard.shopBands"
+            ng-show="hasPermission('admin')">
       BUY BANDS
     </button>
       <div id="adminDashboardcontainer" class="row">

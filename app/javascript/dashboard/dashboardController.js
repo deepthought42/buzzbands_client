@@ -193,10 +193,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
                 resolve: {
                   auth: function($auth) {
                     return $auth.validateUser();
-                  },
-                  userId: ['$stateParams', function($stateParams){
-                      return $stateParams.userId;
-                  }]
+                  }
                 }
               })
             .state('adminDashboard.newPromotion', {
@@ -245,7 +242,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
                       auth: function($auth) {
                         return $auth.validateUser();
                       },
-                      promotionId: ['$stateParams', function($stateParams){
+                      venue_id: ['$stateParams', function($stateParams){
                           return $stateParams.venue_id;
                       }]
                     }
@@ -254,15 +251,20 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
   }
 ])
 
-.controller('DashboardController', ['$scope', '$sessionStorage', '$state', function($scope, $sessionStorage, state) {
-  $scope.$session = $sessionStorage;
-  $scope.tog = $scope.$session.activeViewId;
-  $scope.hasPermission = function(role){
-    return $scope.$session.user && $scope.$session.user.role === role;
-  }
+.controller('DashboardController', ['$scope', '$sessionStorage', '$state',
+  function($scope, $sessionStorage, state) {
+    $scope.$session = $sessionStorage;
+    $scope.tog = $scope.$session.activeViewId;
+    
+    $scope.hasPermission = function(role){
+      return $scope.$session.user && $scope.$session.user.role === role;
+    }
 
-  $scope.setPage = function(pageVal){
-    $scope.tog = pageVal;
-    $scope.$session.activeViewId = pageVal;
+    $scope.setPage = function(pageVal){
+      $scope.tog = pageVal;
+      $scope.$session.activeViewId = pageVal;
+
+      //load page based on current value
+    }
   }
-}])
+])
