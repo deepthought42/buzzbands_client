@@ -60,14 +60,14 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     * @role admin only
     */
     $scope.delete = function(user_id){
-      if($sessionStorage.roles[0].name == 'admin'){}
+      if($sessionStorage.user.role == 'admin'){}
         User.delete({id: user_id}).$promise.then(function(){
           $scope.getUserList();
         });
       }
 
     $scope.editUser = function(id){
-      if($scope.hasPermission('admin')){
+      if($scope.hasPermission('admin') || $scope.hasPermission('buzzbands_employee')){
         state.go("adminDashboard.editUser", {"userId": id})
       }
     }
@@ -210,11 +210,12 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
 .controller('UserAccountAccessController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
   function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
   {
-    $scope.$session = $sessionStorage;
+    $scope.session = $sessionStorage;
     $auth.validateUser();
 
     $scope.editMyAccount = function(){
-      state.go('adminDashboard.editUser', {"userId": $scope.$session.user.id});
+      $scope.session.activeViewId = 10;
+      state.go('adminDashboard.editUser', {"userId": $scope.session.user.id});
     }
   }
 ])

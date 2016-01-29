@@ -1,8 +1,8 @@
     <div class="container-fluid">
       <div class="row">
-        
+
         <div class="col-md-12">
-          
+
         <h1 class="font-white font-josefin">Promotions</h1>
         <button
               class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
@@ -11,58 +11,50 @@
               ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
           + New Promo
         </button>
-
-        </div>
-
       </div>
-      <div class="row">
-        
-        <div class="col-md-12">
-          
-            All
-              <span style="color:#de519b;">(</span>
-              {{promotionList.length || 0}}
-              <span style="color:#de519b;">)</span>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        All
+          <span style="color:#de519b;">(</span>
+          {{promotionList.length || 0}}
+          <span style="color:#de519b;">)</span>
 
+        Active
+          <span style="color:#de519b;"> ( </span>
+          {{($scope.promotionList | filter:active==0).length || 0}}
+          <span style="color:#de519b;"> ) </span>
 
-            Active
-              <span style="color:#de519b;"> ( </span>
-              {{($scope.promotionList | filter:active==0).length || 0}}
-              <span style="color:#de519b;"> ) </span>
+        Disabled
+          <span style="color:#de519b;"> ( </span>
+          {{($scope.promotionList | filter:active==1).length || 0}}
+          <span style="color:#de519b;"> ) </span>
 
+          <button class="btn btn-primary buzzbands-btn"
+                  ng-click="visibleTab='thumbnail'">
+            Thumbnail
+          </button>
 
-            Disabled
-              <span style="color:#de519b;"> ( </span>
-              {{($scope.promotionList | filter:active==1).length || 0}}
-              <span style="color:#de519b;"> ) </span>
+          <button class="btn btn-primary buzzbands-btn"
+                  ng-click="visibleTab='list'">
+            List
+          </button>
 
-              <button class="btn btn-primary buzzbands-btn"
-                      ng-click="visibleTab='thumbnail'">
-                Thumbnail
-              </button>
-
-              <button class="btn btn-primary buzzbands-btn"
-                      ng-click="visibleTab='list'">
-                List
-              </button>
-
-                <select 
-                          ng-options="venue.id as venue.name for venue in venues"
-                          ng-model="promotion.venue_id"
-                          id="venueFilter">
-                    <option value="" selected>All Venues</option>
-                </select>
-
-        </div>
-
+          <select
+                    ng-options="venue.id as venue.name for venue in venues"
+                    ng-model="promotion.venue_id"
+                    id="venueFilter">
+              <option value="" selected>All Venues</option>
+          </select>
       </div>
+    </div>
 
   <div ng-switch="visibleTab">
     <div ng-switch-when="list">
       <table class="table-responsive table table-striped" >
         <thead style="color:white;">
           <tr>
-            <td>Selected</td>
+            <td ng-show="hasPermission('buzzbands_employee')">Selected</td>
             <td>Active</td>
             <td>Title</td>
             <td>Promotion</td>
@@ -74,7 +66,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id || ''}">
-            <td>
+            <td ng-show="hasPermission('buzzbands_employee')">
               <input type="checkbox" ng-click="promo.selected=!promo.selected" />
             </td>
             <td><input type="checkbox" ng-model="promo.active"/></td>

@@ -2,22 +2,15 @@
 </div>
 
 <div class="container-fluid padding-bottom-10">
-  
   <div class="row">
-    
     <div class="col-md-12">
-      
       <h1 class="font-white font-josefin">Venues</h1>
       <button class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
-            ui-sref="adminDashboard.newVenue">
+              ui-sref="adminDashboard.newVenue">
             + New Venue
       </button>
-
     </div>
-
   </div>
-
-
 </div>
 <div class="row"></div>
 
@@ -25,8 +18,8 @@
     <span class="status">
       All
       <span class="statusbracket" >(</span>
-       <span class="status"> {{venueList.length}}</span>
-       <span class="statusbracket" > )</span>
+      <span class="status"> {{venueList.length}}</span>
+      <span class="statusbracket" > )</span>
     </span>
     <span class="status">
       Active
@@ -45,20 +38,17 @@
         <table style="width:100%;" class="table table-striped">
           <thead style="color:White;">
             <tr>
-              <td>
-                <input type="checkbox"
-                       ng-model="selectAllPromos"
-                       ng-click="selectAll(selectAllPromos)" />
-              </td>
+              <td ng-show="hasPermission('buzzbands_employee')">Selected</td>
               <td>Venue Photo</td>
               <td>Venue Name</td>
-              <td ng-show="hasPermission('admin')"></td>
+              <td>Active?</td>
+              <td ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')"></td>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="venue in venueList|orderBy:'active':true" >
-              <td>
-                <input type="checkbox" ng-model="venue.selected" />
+              <td ng-show="hasPermission('buzzbands_employee')">
+                <input type="checkbox" ng-click="venue.selected=!venue.selected" />
               </td>
               <td ng-click="showPromotionsList(venue.id)">
                   <img ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
@@ -67,8 +57,12 @@
               <td ng-click="showPromotionsList(venue.id)">
                 <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
               </td>
-              <td ng-show="hasPermission('admin')">
-                <button class="buzzbands-btn btn btn-primary" ng-show="hasPermission('admin')" ng-click="editVenue(venue.id)">Edit Venue</button>
+              <td>
+                <i ng-show="venue.active" class="fa fa-check" />
+                <i ng-show="!venue.active" class="fa fa-times" style="color: red" />
+              </td>
+              <td ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
+                <button class="buzzbands-btn btn btn-primary" ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')" ng-click="editVenue(venue.id)">Edit Venue</button>
               </td>
             </tr>
           </tbody>
