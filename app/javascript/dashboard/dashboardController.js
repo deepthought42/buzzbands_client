@@ -246,7 +246,53 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
               return $stateParams.venue_id;
           }]
         }
-      });
+      })
+      .state('adminDashboard.accounts', {
+        url: '/accounts',
+        parent: 'adminDashboard',
+        views: {
+          '':{
+            templateUrl: 'app/views/account/index.html',
+            controller: 'AccountIndexController'
+          }
+        },
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      })
+      .state('adminDashboard.createAccount', {
+        url: '/accounts/new',
+        parent: 'adminDashboard',
+        views: {
+          '':{
+            templateUrl: 'app/views/account/new.html',
+            controller: 'AccountCreationController'
+          }
+        },
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      })
+      .state('adminDashboard.editAccount', {
+        url: '/accounts/:id/edit',
+        parent: 'adminDashboard',
+        views: {
+          '':{
+            templateUrl: 'app/views/account/edit.html',
+            controller: 'AccountDetailsController'
+          }
+        },
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      });;
+
   }
 ])
 

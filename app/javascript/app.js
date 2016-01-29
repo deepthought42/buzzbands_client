@@ -18,9 +18,9 @@ angular.module('buzzbands_client', [
   'buzzbands.AnalyticsControllers',
   'buzzbands.BandsService',
   'buzzbands.BandsControllers',
-  'buzzbands.RoleServices',
   'buzzbands.UserDashboardControllers',
   'buzzbands.OrderService',
+  'buzzbands.AccountControllers',
   'filepicker',
   'ngDragDrop',
   'wu.masonry'
