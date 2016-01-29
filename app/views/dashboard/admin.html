@@ -57,22 +57,18 @@
          </button>
        </div>
        <div class="col-sm-12 col-xs-12" ng-show="hasPermission('buzzbands_employee')">
-         <div class="col-sm-12 col-xs-12">
-           <button ui-sref="adminDashboard.accounts"
-                  ng-class='{"navButtonActive":session.activeViewId==5,"navButton":session.activeViewId!=5}'
-                  ng-click='setPage(5)'>
-              Accounts
-          </button>
-         </div>
+         <button ui-sref="adminDashboard.accounts"
+                ng-class='{"navButtonActive":session.activeViewId==5,"navButton":session.activeViewId!=5}'
+                ng-click='setPage(5)'>
+            Accounts
+        </button>
        </div>
        <div class="col-sm-12 col-xs-12" ng-show="hasPermission('user')">
-         <div class="col-sm-12 col-xs-12">
-           <button ui-sref="adminDashboard.createAccount"
-                  ng-class='{"navButtonActive":session.activeViewId==6,"navButton":session.activeViewId!=6}'
-                  ng-click='setPage(6)'>
-              Pricing
-          </button>
-         </div>
+         <button ui-sref="adminDashboard.createAccount"
+                ng-class='{"navButtonActive":session.activeViewId==6,"navButton":session.activeViewId!=6}'
+                ng-click='setPage(6)'>
+            Pricing
+        </button>
        </div>
       </div>
     </div>
