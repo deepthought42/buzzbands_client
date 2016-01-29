@@ -1,96 +1,137 @@
 
-<div id="promotionCreatePanel" class="col-md-12">
-	<img class="col-sm-6 col-xs-6"
-			ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
-		<form name="promotionForm"
-			enctype="multipart/form-data"
-			novalidate>
-		<div class="col-md-12">
-			<div class="col-md-5">
-				<div class="field">
-          <h1 style="font-size:30px;font-weight:100;color:white;font-family:'Josefin Sans', sans-serif;">Add New Promotion</h1>
-					<input  class="form-control"
-									type="text"
-									name="name"
-									ng-model="promotion.name"
-									id="newPromotionName"
-									placeholder="Promotion Name"
-									required
-									minlength="3"
-									maxlength="250"/>
-					<div ng-messages="promotionForm.name.$error"
-							 ng-if="promotionForm.$valid"
-							 class="text-danger">
-						<p ng-message="required">Name is required.</p>
-						<p ng-message="minlength">Name must be at least 3 characters</p>
-						<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
+<div id="promotionCreatePanel" class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+		<h1 class="text-center font-white font-josefin">Add New Promotion</h1>
+			
+		<form name="promotionForm" enctype="multipart/form-data" id="promotion-form" novalidate>
+
+		    <div class="form-group">
+
+		    	<input  class="form-control"
+								type="text"
+								name="name"
+								ng-model="promotion.name"
+								id="newPromotionName"
+								placeholder="Promotion Name"
+								required
+								minlength="3"
+								maxlength="250"/>
+				<div ng-messages="promotionForm.name.$error"
+						 ng-if="promotionForm.$valid"
+						 class="text-danger">
+					<p ng-message="required">Name is required.</p>
+					<p ng-message="minlength">Name must be at least 3 characters</p>
+					<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
+				</div>
+
+		    </div>
+		    <div class="form-group text-right">
+
+			    <div class="row">
+
+			    	<div class="col-md-6">
+			    		
+			    		<md-datepicker ng-model="promotion.start_time"
+														 md-placeholder="Enter date">
+							</md-datepicker>
+
+
+			    	</div>
+			    	<div class="col-md-6">
+			    		
+			    		<uib-timepicker style="width:232px;background-color:#242831;"
+															ng-model="start_time"
+															ng-change="changed()"
+															hour-step="hstep"
+															minute-step="mstep"
+															show-meridian="ismeridian">
+							</uib-timepicker>
+
+			    	</div>
+
+			    </div>
+
+
+		    </div>
+		    <div class="form-group text-right">
+
+		    	<div class="row">
+		    		
+			    	<div class="col-md-6">
+			    			<md-datepicker ng-model="promotion.end_time"
+															md-placeholder="Enter date">
+								</md-datepicker>
+
+
+			    	</div>
+			    	<div class="col-md-6">
+			    		
+			    		<uib-timepicker  style="width:232px;background-color:#242831;"
+																ng-model="end_time"
+																ng-change="changed()"
+																hour-step="hstep"
+																minute-step="mstep"
+																show-meridian="ismeridian">
+								</uib-timepicker>
+
+			    	</div>
+
+		    	</div>
+
+		    </div>
+		    <div class="form-group text-center">
+		    	
+		    	<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+												pickerclass="btn btn-primary buzzbands-btn"
+												multiple="false"
+												mimetypes="'image/*'"
+												callback="previewImage(file)"
+												style="margin: auto">
+										 <i class="fa fa-camera"></i>
+											 Add Photo
+									</div>
+
+
+
+		    </div>
+		    <div class="form-group text-center">
+		    	<label class="font-white font-josefin">
+		    	Select the Venue
+		    	</label>
+		    	
+					<select ng-options="venue.id as venue.name for venue in venues"
+									ng-model="promotion.venue_id"
+									class="form-control"
+									required>
+
+					</select>
+					<div ng-messages="promotionForm.venue.$error" ng-if="promotionForm.$invalid" class="text-danger">
+						<p ng-message="required">Venue is required.</p>
 					</div>
-				</div>
-			</div>
 
-			<br><br>
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
-				<div class="col-md-4 col-sm-12">
-					<md-datepicker ng-model="promotion.start_time"
-												 md-placeholder="Enter date">
-					</md-datepicker>
-					<br><br>
-					<uib-timepicker style="width:232px;background-color:#242831;"
-													ng-model="start_time"
-													ng-change="changed()"
-													hour-step="hstep"
-													minute-step="mstep"
-													show-meridian="ismeridian">
-					</uib-timepicker>
-				</div>
-				<!-- Start time date time picker popup -->
-				<div id="datepicker2" class="col-md-4 col-sm-12">
-					<md-datepicker ng-model="promotion.end_time"
-												md-placeholder="Enter date">
-					</md-datepicker><br><br>
-					<uib-timepicker  style="width:232px;background-color:#242831;"
-													ng-model="end_time"
-													ng-change="changed()"
-													hour-step="hstep"
-													minute-step="mstep"
-													show-meridian="ismeridian">
-					</uib-timepicker>
-				</div>
 
-					<br><br>
 
-			</div>
+		    </div>
+		    <div class="form-group text-center">
 
-				<div class="col-sm-12 col-xs-12">
-							<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-										pickerclass="btn addphoto"
-										multiple="false"
-										mimetypes="'image/*'"
-										callback="previewImage(file)">
-								 <i  style="margin-right:10px;"class="addphoto fa fa-camera"></i>
-									Add Photo
-							</div><br><br>
-				</div>
-			</div>
+					<button class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+									ng-click="createPromotion(promotion, promotionForm.$valid)"
+									ng-disabled="promotionForm.$invalid">
+						Create New Promotion
+					</button>
+
+		    </div>
+
+			</form>
+
 
 		</div>
-		<div class="col-sm-12">
-			VENUES:
-			<select ng-options="venue.id as venue.name for venue in venues"
-							ng-model="promotion.venue_id"
-							required>
-			</select>
-			<div ng-messages="promotionForm.venue.$error" ng-if="promotionForm.$invalid" class="text-danger">
-				<p ng-message="required">Venue is required.</p>
-			</div>
+		<div class="col-md-6">
+			
+			<img class="col-sm-6 col-xs-6"
+			ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
+
 		</div>
-		<div style="text-align:center;margin-top:100px;" class="actions col-md-12">
-			<button style="background-color:#de519b;"
-							class="btn btn-primary"
-							ng-click="createPromotion(promotion, promotionForm.$valid)"
-							ng-disabled="promotionForm.$invalid">
-				CREATE
-			</button>
-		</div>
-	</form>
+	</div>
 </div>

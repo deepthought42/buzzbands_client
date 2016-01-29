@@ -272,22 +272,27 @@ md-datepicker {
   color: #4BBA4B;
 }
 
-/* line 145, ../sass/partials/_promotion.scss */
+/* line 147, ../sass/partials/_promotion.scss */
+#promotion-form tr {
+  height: inherit;
+}
+
+/* line 152, ../sass/partials/_promotion.scss */
 #thumbnail {
   list-style-type: none;
   padding-left: 0;
   padding-top: 10px;
 }
-/* line 150, ../sass/partials/_promotion.scss */
+/* line 157, ../sass/partials/_promotion.scss */
 #thumbnail li {
   margin-bottom: 10px;
 }
 
-/* line 155, ../sass/partials/_promotion.scss */
+/* line 162, ../sass/partials/_promotion.scss */
 figure.promo-wrapper {
   position: relative;
 }
-/* line 158, ../sass/partials/_promotion.scss */
+/* line 165, ../sass/partials/_promotion.scss */
 figure.promo-wrapper figcaption {
   position: absolute;
   bottom: 0;
@@ -295,7 +300,7 @@ figure.promo-wrapper figcaption {
   width: 100%;
   padding: 3px 10px;
 }
-/* line 165, ../sass/partials/_promotion.scss */
+/* line 172, ../sass/partials/_promotion.scss */
 figure.promo-wrapper figcaption h3 {
   margin: 0;
   display: inline-block;
@@ -305,15 +310,20 @@ figure.promo-wrapper figcaption h3 {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-/* line 175, ../sass/partials/_promotion.scss */
+/* line 182, ../sass/partials/_promotion.scss */
 figure.promo-wrapper figcaption .btn {
   float: right;
   position: relative;
   top: 3px;
   background-color: #4BBA4B;
-  color: #fff;
+  color: #FFF;
 }
 
+/** 
+*
+* New Promo
+*
+**/
 /* line 1, ../sass/partials/_venue.scss */
 table {
   color: #5ab553;
