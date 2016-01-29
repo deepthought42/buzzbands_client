@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.UserServices', 'buzzbands.VenueService'])
+angular.module('buzzbands.UserControllers',
+  ['ui.router','ngMorph','buzzbands.UserServices', 'buzzbands.VenueService'])
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('authenticate', {
     url: '/authenticate',
@@ -19,12 +20,11 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
   });
 }])
 .controller('UserIndexController', ['$scope', '$rootScope', '$auth',
-                                   '$sessionStorage', '$state', 'User', 'Role',
-	function ($scope, $rootScope, $auth, $sessionStorage, state, User, Role) {
+                                   '$sessionStorage', '$state', 'User',
+	function ($scope, $rootScope, $auth, $sessionStorage, state, User) {
 
     this._init = function(){
       $scope.$session = $sessionStorage;
-      $scope.roles = Role;
       $scope.getUserList();
     }
 
@@ -79,13 +79,12 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     this._init();
   }
 ])
-.controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$sessionStorage', 'Role',
-  function($scope, User, state, stateParams, $auth, $sessionStorage, Role)
+.controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$sessionStorage',
+  function($scope, User, state, stateParams, $auth, $sessionStorage)
   {
     this._init = function(){
       $scope.$session = $sessionStorage;
       $auth.validateUser();
-      $scope.roles = Role;
       $scope.user = $scope.loadUser();
     }
 
@@ -148,14 +147,14 @@ angular.module('buzzbands.UserControllers', ['ui.router','ngMorph','buzzbands.Us
     this._init();
   }
 ])
-.controller('UserCreationController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage', 'Role', 'Venue',
-  function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage, Role, Venue)
+.controller('UserCreationController',
+  ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage', 'Venue',
+  function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage, Venue)
   {
     this._init = function(){
       $scope.$session = $sessionStorage;
       $auth.validateUser();
       $scope.user = {};
-      $scope.roles = Role;
       $scope.queryVenues();
     }
 
