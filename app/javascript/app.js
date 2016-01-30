@@ -78,11 +78,10 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
 		return {
     	'request': function(config) {
         var injector = angular.injector(['ipCookie']);
-
         var cookies = injector.get('ipCookie');
         var auth_headers = cookies('auth_headers');
 
-				if ((config.headers['access-token'] || auth_headers['access-token']) && !$httpProvider.defaults.headers.common['access-token']) {
+				if ((config.headers['access-token'] || (auth_headers && auth_headers['access-token'])) && !$httpProvider.defaults.headers.common['access-token']) {
           console.log("Config :: " + config.headers['access-token']);
 
 		    	$httpProvider.defaults.headers.common['Access-Token'] = config.headers['access-token'] || auth_headers['access-token'];
@@ -95,7 +94,7 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
 			},
 
       'responseError': function(response) {
-        
+
         return response;
       }
 
