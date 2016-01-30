@@ -24,13 +24,13 @@
       <span class="status">
         Active
           <span class="statusbracket"> ( </span>
-          <span class="status"> {{(venueList | filter:{active:true}).length || -1}} </span>
+          <span class="status"> {{(venueList | filter:{active:true}).length || 0}} </span>
           <span class="statusbracket"> )</span>
       </span>
       <span class=" status">
         Disabled
         <span class="statusbracket"> (</span>
-        <span class="status">  {{(venueList | filter:{active:false}).length || -1}} </span>
+        <span class="status">  {{(venueList | filter:{active:false}).length || 0}} </span>
         <span class="statusbracket"> )</span>
       </span>
       <input type="text" ng-model="venueSearch" placeholder="Search Venues..." >

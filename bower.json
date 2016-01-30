@@ -18,7 +18,6 @@
     "angular-resource": "latest",
     "angular-morph": "latest",
     "angular-payments": "latest",
-    "angular-dragdrop": "1.0.7",
     "angular-nvd3": "latest",
     "angular-masonry": "~0.14.1"
   },
