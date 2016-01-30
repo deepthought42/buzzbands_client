@@ -26,26 +26,18 @@ angular.module('buzzbands.UserControllers',
     this._init = function(){
       $scope.$session = $sessionStorage;
       $scope.getUserList();
+      $auth.validateUser();
     }
 
     /**
     *
     */
     $scope.getUserList = function(){
-      if($scope.$session.user && $scope.$session.user.role == 3){
+      $auth.validateUser();
+
+      if($scope.$session.user && $scope.$session.user.role == 'buzzbands_employee'){
         User.query().$promise
           .then(function(data){
-            console.log("successfully queried users :: "+data);
-            return $scope.userList = data;
-          })
-          .catch(function(data){
-            console.log("error querying users")
-          });
-      }
-      else {
-        User.query().$promise
-          .then(function(data){
-            console.log("successfully queried users :: "+data);
             return $scope.userList = data;
           })
           .catch(function(data){
@@ -210,7 +202,6 @@ angular.module('buzzbands.UserControllers',
   function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
   {
     $scope.session = $sessionStorage;
-    $auth.validateUser();
 
     $scope.editMyAccount = function(){
       $scope.session.activeViewId = 10;
@@ -233,7 +224,6 @@ angular.module('buzzbands.UserControllers',
      }
 
 		$scope.$session = $sessionStorage;
-    $scope.$session.signedIn = $auth.validateUser();
 
     $scope.signInSettings = {
            closeEl: '.close',
@@ -308,24 +298,18 @@ angular.module('buzzbands.UserControllers',
     /**
     * @param loginForm {User}
     */
-    $scope.signIn = function(loginForm){
-			var credentials = {
-				email: $scope.loginForm.email,
-				password: $scope.loginForm.password
-			};
-
+    $scope.signIn = function(isValid){
 			//Authenticate with user credentials
-			$auth.submitLogin(credentials).then(function(response) {
+			$auth.submitLogin($scope.user).then(function(response) {
 				//$scope.$session.user = response.data;
-				console.log(response.data)
-				console.log($scope.$session.user); // => {id: 1, ect: '...'}
 			}, function(error) {
 				$scope.error = "Failed to log in "+error;
 			});
 
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.$session.user = currentUser;
-				$auth.validateUser()
+        $auth.validateUser();
+
         if($scope.$session.user.role == 'admin' || $scope.$session.user.role == 'buzzbands_employee'){
           $state.go("analytics.adminDashboard");
         }

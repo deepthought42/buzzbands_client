@@ -1,14 +1,14 @@
 <div id="loginmorph" ng-controller="UserAuthController">
   <button class="close">X</button>
   <form style="padding-top:35px;"  role="form"
-        ng-init="loginForm = {}"
+        ng-init="user = {}"
         ng-submit="signIn(userLogin.$valid)"
         name="userLogin" novalidate>
         <div class="form-group">
         <input type="email"
                name="email"
                id="userFormEmailField"
-               ng-model="loginForm.email"
+               ng-model="user.email"
                required="required"
                class="form-control"
                placeholder="Email" />
@@ -22,10 +22,10 @@
                 type="password"
                 name="password"
                 id="password"
-                ng-model="loginForm.password"
+                ng-model="user.password"
                 class="form-control"
                 required />
-        <div ng-messages="loginForm.password.$error" ng-if="loginForm.$submitted">
+        <div ng-messages="userLogin.password.$error" ng-if="userLogin.$submitted">
           <p class="text-danger" ng-message="required">Password is required.</p>
         </div>
       </div>

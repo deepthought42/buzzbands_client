@@ -157,11 +157,10 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
           }
         },
         resolve: {
-            auth: function($auth, $sessionStorage) {
-              //ensure user has admin role
-              return $auth.validateUser() && $sessionStorage.role == 'admin';
-            }
+          auth: function($auth) {
+            return $auth.validateUser();
           }
+        }
     })
     .state('adminDashboard.editUser', {
       url: '/admin/users/edit/:userId',
@@ -296,13 +295,14 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
   }
 ])
 
-.controller('DashboardController', ['$scope', '$sessionStorage', '$state',
-  function($scope, $sessionStorage, state) {
+.controller('DashboardController', ['$scope', '$rootScope', '$sessionStorage', '$state', '$auth',
+  function($scope, $rootScope, $sessionStorage, state, $auth) {
     this._init = function(){
       $scope.session = $sessionStorage;
       $scope.session.activeViewId = $scope.session.activeViewId || 1;
+      $auth.validateUser();
     }
-
+    console.log("loaded dashbaord");
     $scope.hasPermission = function(role){
       return $scope.session.user && $scope.session.user.role === role;
     }
@@ -311,6 +311,18 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
       $scope.tog = pageVal;
       $scope.session.activeViewId = pageVal;
     }
+
+    $rootScope.$on('auth:validation-success', function(event, currentUser) {
+      console.log("Valid Token");
+    });
+
+    $rootScope.$on('auth:validation-error', function(event, currentUser) {
+      console.log("VALIDATION ERROR!");
+    });
+
+    $rootScope.$on('auth:invalid', function(event, currentUser) {
+      console.log("Invalid Token");
+    });
 
     this._init();
   }
