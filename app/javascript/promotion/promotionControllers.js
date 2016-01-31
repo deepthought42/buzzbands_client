@@ -106,9 +106,9 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
   }
 ])
 
-.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue',
+.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue', '$state',
                                             '$sessionStorage', '$log',
-  function($scope, Promotion, Venue, $sessionStorage, $log) {
+  function($scope, Promotion, Venue, state, $sessionStorage, $log) {
     this.init = function(){
       $scope.promotion = {};
       $scope.venues = Venue.query();
@@ -189,7 +189,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 
 .controller('PromotionDetailsController',
   ['$scope', 'Promotion', 'Venue', '$state', '$stateParams', '$auth', '$sessionStorage', '$log',
-    function($scope, Promotion, Venue, $state, stateParams, $auth, $sessionStorage, $log)
+    function($scope, Promotion, Venue, state, stateParams, $auth, $sessionStorage, $log)
     {
 
       this.init = function(){
@@ -255,7 +255,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         }
         Promotion.update(promotion).$promise.then(function(data){
           $scope.promotion = {};
-          $state.go("adminDashboard.promotions");
+          state.go("adminDashboard.promotions");
         });
       }
 
