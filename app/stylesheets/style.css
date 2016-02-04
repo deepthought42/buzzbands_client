@@ -878,6 +878,11 @@ input:focus {
   color: #4BBA4B;
 }
 
+/* line 1, ../sass/partials/_user.scss */
+#new-user-add-photo {
+  margin-top: 10px;
+}
+
 /* line 1, ../sass/partials/_navigation.scss */
 body {
   background-color: #242831 !important;
