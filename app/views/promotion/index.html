@@ -67,7 +67,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id || ''} | filter: promotionSearch">
+          <tr ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id || undefined} | filter: promotionSearch">
             <td ng-show="hasPermission('buzzbands_employee')">
               <input type="checkbox" ng-click="promo.selected=!promo.selected" />
             </td>

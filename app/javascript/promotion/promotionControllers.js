@@ -60,7 +60,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
           $scope.$session.promotions = $scope.promotionList;
         })
         .catch(function(data){
-          console.log("error querying venues")
+          console.log("error querying promotions")
         });
       return $scope.promotionList;
     }
@@ -127,7 +127,6 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
     $scope.createPromotion = function(promotion, isValid){
-      console.log("VALID PROMOTION");
       promotion.start_time = new Date(promotion.start_time);
       promotion.start_time.setHours($scope.start_time.getHours());
       promotion.start_time.setMinutes($scope.start_time.getMinutes());
@@ -138,7 +137,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 
       if(promotion.start_time > promotion.end_time){
         //promotion.start_time = promotion.end_time;
-        $log.log("start time is after end time");
+        alert("start time is after end time");
         //display error
         isValid = false;
         return;
