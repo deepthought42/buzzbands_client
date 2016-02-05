@@ -5,20 +5,20 @@
 			<img style="max-width:50%;" ng-src="{{user.image != null ? user.image : 'app/img/missing_user.png'}}" />
 
 			<form name="userForm"
-							enctype="multipart/form-data"
-							ng-submit="updateUser(userForm)"
-							novalidate>
+						enctype="multipart/form-data"
+						ng-submit="updateUser(user)"
+						novalidate>
 				<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-								pickerclass="btn btn-primary buzzbands-btn margin-top-15"
-								multiple="false"
-								mimetypes="'image/*'"
-								callback="previewImage(file)">
+							pickerclass="btn btn-primary buzzbands-btn margin-top-15"
+							multiple="false"
+							mimetypes="'image/*'"
+							callback="previewImage(file)">
 			  <i  style="margin-right:10px;"
 			  		class="fa fa-camera"></i>
 							Add Photo
 				</div>
-				<div class="form-group" ng-show="$session.user.email != user.email">
-					<select ng-options="role.id as role.name for role in roles | filter:lessThan('id',$session.user.role) "
+				<div class="form-group" ng-show="$session.user.email != user.email && hasPermission('buzzbands_employee')">
+					<select ng-options="role.id as role.name for role in roles "
 									ng-selected="user.role.id == role.id"
 									ng-model="user.role">
 						<option value="">Select role</option>
@@ -26,7 +26,7 @@
 				</div>
 				<div class="form-group" ng-show="user.email != $session.user.email">
 					Active?
-					<input type="checkbox" ng-model="user.active" ng-disabled="!hasPermission(2)" />
+					<input type="checkbox" ng-model="user.active" ng-disabled="!hasPermission('buzzbands_employee')" />
 				</div>
 				<button type="submit" class="btn btn-primary buzzbands-btn buzzbands-pink-btn margin-top-15" >
 					<i class="fa fa-save"></i>

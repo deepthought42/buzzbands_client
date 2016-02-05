@@ -71,19 +71,27 @@ angular.module('buzzbands.UserControllers',
     this._init();
   }
 ])
-.controller('UserDetailsController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$sessionStorage',
-  function($scope, User, state, stateParams, $auth, $sessionStorage)
+.controller('UserDetailsController',
+  ['$scope', 'User', 'Role', '$state', '$stateParams', '$auth', '$sessionStorage',
+  function($scope, User, Role, state, stateParams, $auth, $sessionStorage)
   {
     this._init = function(){
       $scope.$session = $sessionStorage;
       $auth.validateUser();
       $scope.user = $scope.loadUser();
+      $scope.roles = Role;
+      console.log($scope.roles);
     }
 
     $scope.loadUser = function(){
       console.log(stateParams.userId);
       if(stateParams.userId != $scope.$session.user.id){
-        $scope.user = User.query({id: stateParams.userId});
+        User.query({id: stateParams.userId}).$promise
+          .then(
+            function(data){
+              $scope.user = data;
+            }
+          );
       }
       else{
         $scope.user = $scope.$session.user;
@@ -92,9 +100,9 @@ angular.module('buzzbands.UserControllers',
     }
 
     $scope.updateUser = function(user){
-        User.update($scope.user).$promise.then(function(data){
+        User.update(user).$promise.then(function(data){
           $scope.user = {};
-          if($scope.hasPermission('admin')){
+          if($scope.hasPermission('admin') || $scope.hasPermission('buzzbands_employee')){
             state.go("analytics.adminDashboard");
           }
           else{
@@ -121,7 +129,7 @@ angular.module('buzzbands.UserControllers',
 
     $scope.previewImage = function(files){
       $scope.user.image = files[0].url;
-
+      console.log("IMAGE :: "+$scope.user.image);
       var reader = new FileReader();
       if(typeof files[0] === 'Blob'){
         reader.readAsDataURL(files[0]);
@@ -174,21 +182,6 @@ angular.module('buzzbands.UserControllers',
 
       $scope.user.password = generatedPass;
       $scope.user.password_confirmation = generatedPass;
-    }
-
-    $scope.createUser = function(user, venue_id){
-      console.log("creating user");
-      user.uid = user.email;
-      //user.provider="email";
-      $auth.submitRegistration({"user" : user, 'role': user.role})
-        .then(function(resp) {
-          console.log("SUCCESSFUL USER CREATION!!!");
-        })
-        .catch(function(resp) {
-          console.log("FAILED USER CREATION!!!");
-        });
-
-      state.go('adminDashboard.users');
     }
 
     $scope.hasPermission = function(role){
