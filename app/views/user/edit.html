@@ -41,7 +41,7 @@
 						</div>
 
 			</form>
-			<form ng-submit="updatePassword(changePasswordForm)" role="form" ng-init="changePasswordForm = {}" ng-show="$session.user.email == user.email">
+			<form ng-submit="updatePassword()" role="form" ng-init="changePasswordForm = {}" ng-show="$session.user.email == user.email">
 			  <div class="form-group">
 
 			    <input type="password" name="password" ng-model="changePasswordForm.password" required="required" class="form-control" placeholder="Password">

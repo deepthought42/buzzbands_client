@@ -253,11 +253,11 @@ angular.module('buzzbands.UserControllers',
     }
 
 		$scope.register = function(isValid){
-			var credentials = {
+			var credentials = {user: {
 				email: $scope.registrationForm.email,
 				password: $scope.registrationForm.password,
 				password_confirmation: $scope.registrationForm.confirmation_password
-			};
+			}};
 
 			if(isValid){
 				$auth.submitRegistration(credentials).then(function(registeredUser) {

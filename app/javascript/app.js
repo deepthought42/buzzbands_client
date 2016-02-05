@@ -63,8 +63,7 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
        return response.data;
      }
    });
-    //$httpProvider.defaults.headers.common['X-CSRF-Token'] =
-		//	$('meta[name=csrf-token]').attr('content');
+
   /*
    Response interceptors are stored inside the
    $httpProvider.responseInterceptors array.
@@ -80,6 +79,7 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
         var cookies = injector.get('ipCookie');
         var auth_headers = cookies('auth_headers');
 
+        $httpProvider.defaults.headers.common['XSRF-TOKEN'] = cookies('XSRF-TOKEN');
 				if ((config.headers['access-token'] || (auth_headers && auth_headers['access-token'])) && !$httpProvider.defaults.headers.common['access-token']) {
 		    	$httpProvider.defaults.headers.common['Access-Token'] = config.headers['access-token'] || auth_headers['access-token'];
 					$httpProvider.defaults.headers.common['Token-Type'] = config.headers['token-type'] || auth_headers['token-type'];
