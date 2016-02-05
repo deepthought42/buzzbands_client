@@ -59,7 +59,7 @@ angular.module('buzzbands.UserControllers',
       }
 
     $scope.editUser = function(id){
-      if($scope.hasPermission('admin') || $scope.hasPermission('buzzbands_employee')){
+      if($scope.hasPermission('buzzbands_employee')){
         state.go("adminDashboard.editUser", {"userId": id})
       }
     }
@@ -75,38 +75,27 @@ angular.module('buzzbands.UserControllers',
   ['$scope', 'User', 'Role', '$state', '$stateParams', '$auth', '$sessionStorage',
   function($scope, User, Role, state, stateParams, $auth, $sessionStorage)
   {
+    console.log(stateParams.userId);
+
     this._init = function(){
       $scope.$session = $sessionStorage;
       $auth.validateUser();
-      $scope.user = $scope.loadUser();
       $scope.roles = Role;
-      console.log($scope.roles);
+      $scope.loadUser(stateParams.userId);
     }
 
-    $scope.loadUser = function(){
-      console.log(stateParams.userId);
-      if(stateParams.userId != $scope.$session.user.id){
-        User.query({id: stateParams.userId}).$promise
-          .then(
-            function(data){
-              $scope.user = data;
-            }
-          );
-      }
-      else{
-        $scope.user = $scope.$session.user;
-      }
-      return $scope.user;
+    $scope.loadUser = function(user_id){
+      $scope.user = User.get({id: user_id});
     }
 
     $scope.updateUser = function(user){
         User.update(user).$promise.then(function(data){
           $scope.user = {};
-          if($scope.hasPermission('admin') || $scope.hasPermission('buzzbands_employee')){
-            state.go("analytics.adminDashboard");
+          if($scope.hasPermission('buzzbands_employee')){
+            state.go("adminDashboard.users");
           }
           else{
-            state.go("analytics.userDashboard");
+            state.go("analytics.adminDashboard");
           }
         });
     };
@@ -129,15 +118,6 @@ angular.module('buzzbands.UserControllers',
 
     $scope.previewImage = function(files){
       $scope.user.image = files[0].url;
-      console.log("IMAGE :: "+$scope.user.image);
-      var reader = new FileReader();
-      if(typeof files[0] === 'Blob'){
-        reader.readAsDataURL(files[0]);
-      }
-      reader.onload = function(event){
-        $scope.user.image = files[0].url;
-        $scope.$apply();
-      }
     }
 
     $scope.hasPermission = function(role){

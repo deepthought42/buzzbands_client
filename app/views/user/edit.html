@@ -8,7 +8,8 @@
 						enctype="multipart/form-data"
 						ng-submit="updateUser(user)"
 						novalidate>
-				<div  filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+				<div  filepicker
+							api-key="AapVeFhkrSlOTwi51kt8Cz"
 							pickerclass="btn btn-primary buzzbands-btn margin-top-15"
 							multiple="false"
 							mimetypes="'image/*'"
@@ -19,7 +20,7 @@
 				</div>
 				<div class="form-group" ng-show="$session.user.email != user.email && hasPermission('buzzbands_employee')">
 					<select ng-options="role.id as role.name for role in roles "
-									ng-selected="user.role.id == role.id"
+									ng-selected="user.role == role.name"
 									ng-model="user.role">
 						<option value="">Select role</option>
 					</select>

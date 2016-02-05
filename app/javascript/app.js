@@ -79,7 +79,7 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
         var cookies = injector.get('ipCookie');
         var auth_headers = cookies('auth_headers');
 
-        $httpProvider.defaults.headers.common['XSRF-TOKEN'] = cookies('XSRF-TOKEN');
+        $httpProvider.defaults.headers.common['X-XSRF-TOKEN'] = cookies('XSRF-TOKEN');
 				if ((config.headers['access-token'] || (auth_headers && auth_headers['access-token'])) && !$httpProvider.defaults.headers.common['access-token']) {
 		    	$httpProvider.defaults.headers.common['Access-Token'] = config.headers['access-token'] || auth_headers['access-token'];
 					$httpProvider.defaults.headers.common['Token-Type'] = config.headers['token-type'] || auth_headers['token-type'];
@@ -88,13 +88,7 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
 					$httpProvider.defaults.headers.common['Uid'] = config.headers['uid'] || auth_headers['uid'];
 		    }
 		    return config;
-			},
-
-      'responseError': function(response) {
-
-        return response;
-      }
-
+			}
 		};
   });
 }])
@@ -113,6 +107,7 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
   $rootScope.$on('auth:validation-error', function (ev, error) {
        //i don't really use alert() but you get the idea
        alert('You need to be logged in!');
+       $state.go("authenticate");
        // here you might want to redirect a user
        // I think ui-router uses something like $state.go('login');
    });
