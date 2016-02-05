@@ -4,8 +4,8 @@
     <tr>
       <td></td>
       <td>Email</td>
-      <td></td>
-      <td></td>
+      <td>role</td>
+      <td>Active?</td>
       <td></td>
     </tr>
   </thead>
@@ -25,7 +25,7 @@
                 ng-show="hasPermission('buzzbands_employee')">Edit</button>
         <button class="btn btn-danger buzzbands-btn buzzbands-pink-btn"
                 ng-click="delete(user.id)"
-                ng-show="hasPermission('buzzbands_employee')">Delete</button>
+                ng-show="hasPermission('buzzbands_employee')">Deactivate</button>
       </td>
     </tr>
   </tbody>
