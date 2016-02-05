@@ -163,7 +163,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
         }
     })
     .state('adminDashboard.editUser', {
-      url: '/admin/users/edit/:userId',
+      url: '/users/:userId/edit',
       parent: 'adminDashboard',
       views: {
         '':{
@@ -181,7 +181,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
       }
     })
     .state('adminDashboard.createUser', {
-        url: 'admin/users/new',
+        url: '/users/new',
         parent: 'adminDashboard',
         views: {
           '':{
