@@ -18,7 +18,10 @@
       <td>
         {{user.role || 'Not Set'}}
       </td>
-      <td>{{user.active}}</td>
+      <td>
+        <i ng-show="user.active" class="fa fa-check" />
+        <i ng-show="!user.active" class="fa fa-times" style="color: red" />
+      </td>
       <td>
         <button class="btn btn-primary buzzbands-btn"
                 ng-click="editUser(user.id)"

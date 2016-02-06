@@ -71,7 +71,9 @@
             <td ng-show="hasPermission('buzzbands_employee')">
               <input type="checkbox" ng-click="promo.selected=!promo.selected" />
             </td>
-            <td><input type="checkbox" ng-model="promo.active"/></td>
+            <td>
+              <input type="checkbox" ng-model="promo.active"/>
+            </td>
             <td>{{promo.name}}
                 <br/>
                 {{promo.description}}</td>
