@@ -49,15 +49,30 @@ angular.module('buzzbands.UserControllers',
     /**
     * Deletes user account.
     *
-    * @role admin only
+    * @role buzzbands_employee only
     */
     $scope.delete = function(user_id){
-      if($sessionStorage.user.role == 'admin'){}
+      if($sessionStorage.user.role == 'buzzbands_employee'){}
         User.delete({id: user_id}).$promise.then(function(){
           $scope.getUserList();
-        });
-      }
+      });
+    }
 
+    /**
+    * Activates user account.
+    *
+    * @role buzzbands_employee only
+    */
+    $scope.activate = function(user_id){
+      if($sessionStorage.user.role == 'buzzbands_employee'){}
+        User.activate({id: user_id}).$promise.then(function(){
+          $scope.getUserList();
+      });
+    }
+
+    /**
+     *
+     */
     $scope.editUser = function(id){
       if($scope.hasPermission('buzzbands_employee')){
         state.go("adminDashboard.editUser", {"userId": id})
