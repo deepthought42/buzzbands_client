@@ -83,7 +83,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
       }
     })
 
-    .state('adminDashboard.promotions', {
+    .state('promotions.adminDashboard', {
       url: '/promotions',
       parent: 'adminDashboard',
       views: {
@@ -246,7 +246,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
           }]
         }
       })
-      .state('adminDashboard.accounts', {
+      .state('accounts.adminDashboard', {
         url: '/accounts',
         parent: 'adminDashboard',
         views: {
@@ -301,6 +301,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
       $scope.session = $sessionStorage;
       $scope.session.activeViewId = $scope.session.activeViewId || 1;
       $auth.validateUser();
+      $scope.loadLastViewedPage();
     }
     console.log("loaded dashbaord");
     $scope.hasPermission = function(role){
@@ -308,8 +309,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
     }
 
     $scope.setPage = function(pageVal){
-      $scope.tog = pageVal;
-      $scope.session.activeViewId = pageVal;
+      $scope.session.activeViewId = $scope.tog = pageVal;
     }
 
     $rootScope.$on('auth:validation-success', function(event, currentUser) {
@@ -323,6 +323,25 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
     $rootScope.$on('auth:invalid', function(event, currentUser) {
       console.log("Invalid Token");
     });
+
+
+    $scope.loadLastViewedPage = function(){
+      if($scope.session.activeViewId == 1){
+        state.go("analytics.adminDashboard");
+      }
+      else if($scope.session.activeViewId == 2){
+        state.go("venues.adminDashboard");
+      }
+      else if($scope.session.activeViewId == 3){
+        state.go("promotions.adminDashboard");
+      }
+      else if($scope.session.activeViewId == 4){
+        state.go("adminDashboard.users");
+      }
+      else if($scope.session.activeViewId == 5){
+        state.go("accounts.adminDashboard");
+      }
+    }
 
     this._init();
   }
