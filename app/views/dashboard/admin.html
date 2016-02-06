@@ -17,7 +17,7 @@
     <div class="col-md-2 col-xs-12" ng-controller="DashboardController" id="dashboard-controller">
       <img src="images/logo.png">
       <div class="col-sm-12 col-xs-12">
-        <button ui-sref="analytics.adminDashboard"
+        <button ui-sref="adminDashboard.analytics"
                 ng-class='{"navButtonActive":session.activeViewId==1,"navButton":session.activeViewId!=1}'
                 ng-click='setPage(1)'
                 ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
@@ -25,14 +25,14 @@
         </button>
       </div>
       <div class="col-sm-12 col-xs-12">
-        <button ui-sref="venues.adminDashboard"
+        <button ui-sref="adminDashboard.venues"
                ng-class='{"navButtonActive":session.activeViewId==2,"navButton":session.activeViewId!=2}'
                ng-click='setPage(2)'>
            Venues
        </button>
       </div>
       <div class="col-sm-12 col-xs-12">
-        <button ui-sref="promotions.adminDashboard"
+        <button ui-sref="adminDashboard.promotions"
                 ng-class='{"navButtonActive":session.activeViewId==3,"navButton":session.activeViewId!=3}'
                 ng-click='setPage(3)'>
             Promotions
@@ -51,7 +51,7 @@
         </button><br/>
        </div>
        <div class="col-sm-12 col-xs-12" ng-show="hasPermission('buzzbands_employee')">
-         <button ui-sref="accounts.adminDashboard"
+         <button ui-sref="adminDashboard.accounts"
                 ng-class='{"navButtonActive":session.activeViewId==5,"navButton":session.activeViewId!=5}'
                 ng-click='setPage(5)'>
             Accounts

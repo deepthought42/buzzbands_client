@@ -15,7 +15,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
           }
         }
     })
-    .state('analytics.adminDashboard', {
+    .state('adminDashboard.analytics', {
       url: '',
       parent: 'adminDashboard',
       templateUrl: 'app/views/analytics/index.html',
@@ -26,7 +26,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
         }
       }
     })
-    .state('venues.adminDashboard', {
+    .state('adminDashboard.venues', {
       url: '/venues',
       parent: 'adminDashboard',
       views: {
@@ -83,7 +83,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
       }
     })
 
-    .state('promotions.adminDashboard', {
+    .state('adminDashboard.promotions', {
       url: '/promotions',
       parent: 'adminDashboard',
       views: {
@@ -246,7 +246,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
           }]
         }
       })
-      .state('accounts.adminDashboard', {
+      .state('adminDashboard.accounts', {
         url: '/accounts',
         parent: 'adminDashboard',
         views: {
@@ -327,19 +327,19 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
 
     $scope.loadLastViewedPage = function(){
       if($scope.session.activeViewId == 1){
-        state.go("analytics.adminDashboard");
+        state.go("adminDashboard.analytics");
       }
       else if($scope.session.activeViewId == 2){
-        state.go("venues.adminDashboard");
+        state.go("adminDashboard.venues");
       }
       else if($scope.session.activeViewId == 3){
-        state.go("promotions.adminDashboard");
+        state.go("adminDashboard.promotions");
       }
       else if($scope.session.activeViewId == 4){
         state.go("adminDashboard.users");
       }
       else if($scope.session.activeViewId == 5){
-        state.go("accounts.adminDashboard");
+        state.go("adminDashboard.accounts");
       }
     }
 
