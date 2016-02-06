@@ -19,7 +19,7 @@
 							Add Photo
 				</div>
 				<div class="form-group" ng-show="$session.user.email != user.email && hasPermission('buzzbands_employee')">
-					<select ng-options="role.id as role.name for role in roles "
+					<select ng-options="role.name as role.name for role in roles "
 									ng-selected="user.role == role.name"
 									ng-model="user.role">
 						<option value="">Select role</option>

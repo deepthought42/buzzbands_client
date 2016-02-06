@@ -10,15 +10,15 @@ services.factory('User', ['$resource', 'buzzbands.serviceConfig', function ($res
 services.factory('Role', function () {
     return [
       {
-        id: 0,
+        id: "0",
         name: "user"
       },
       {
-        id: 2,
+        id: "2",
         name: "admin"
       },
       {
-        id : 3,
+        id : "3",
         name: "buzzbands_employee"
       }
     ];
