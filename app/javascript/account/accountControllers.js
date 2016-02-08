@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('buzzbands.AccountControllers', ['ui.router', 'buzzbands.AccountService', 'mwl.confirm'])
-
+angular.module('buzzbands.AccountControllers',
+  ['ui.router', 'buzzbands.AccountService', 'mwl.confirm'])
 .controller('AccountIndexController',
   ['$scope', 'Account', '$state', '$sessionStorage', '$rootScope',
     function($scope, Account, state, $sessionStorage, $rootScope) {

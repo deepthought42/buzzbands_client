@@ -1,16 +1,56 @@
 'use strict';
 
-angular.module('buzzbands.LandingControllers', ['ui.router'])
-.controller('LandingController', ['$scope', function($scope) {
-  $scope.showLogin = function(){
-    $scope.registerViewVisible = false;
-    $scope.loginViewVisible = true;
+angular.module('buzzbands.LandingControllers', ['ui.router','ngMorph'])
+.config(['$stateProvider',
+  function($stateProvider) {
+    $stateProvider
+      .state('landing', {
+        url: '/',
+        templateUrl: 'app/views/landing/index.html',
+        controller: 'LandingController'
+      })
   }
+])
+.controller('LandingController', ['$scope', '$state', '$sessionStorage',
+function($scope, $state, $sessionStorage) {
+  $scope.settings = {
+     closeEl: '.close',
+     modal: {
+       templateUrl: 'app/views/auth/login.html',
+       position: {
+        top: '30%',
+        left: '20%'
+       },
+       fade: false
+     }
+   }
 
-  $scope.showRegistration = function(){
-    $scope.registerViewVisible = true;
-    $scope.loginViewVisible = false;
+  $scope.$session = $sessionStorage;
+
+  $scope.signInSettings = {
+         closeEl: '.close',
+         modal: {
+           templateUrl: 'app/views/auth/login.html',
+           position: {
+            top: '30%',
+
+           },
+           fade: true
+         }
+       };
+
+   $scope.signUpSettings = {
+          closeEl: '.close',
+          modal: {
+            templateUrl: 'app/views/auth/register.html',
+            position: {
+             top: '30%'
+            },
+            fade: true
+          }
+        };
+
+  $scope.showRegistrationPage = function(){
+    $state.go('register');
   }
-
-  $scope.showRegistration();
 }])

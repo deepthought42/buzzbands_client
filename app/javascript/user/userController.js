@@ -1,23 +1,19 @@
 'use strict';
 
 angular.module('buzzbands.UserControllers',
-  ['ui.router','ngMorph','buzzbands.UserServices', 'buzzbands.VenueService'])
+  ['ui.router','buzzbands.UserServices', 'buzzbands.VenueService'])
 .config(['$stateProvider', function($stateProvider) {
-  $stateProvider.state('authenticate', {
-    url: '/authenticate',
-    templateUrl: 'app/views/landing/index.html',
-    controller: 'UserAuthController'
-  })
-  .state('register', {
-    url: '/register',
-    templateUrl: 'app/views/auth/signup.html',
-    controller: 'UserAuthController'
-  })
-  .state('login', {
-    url: '/login',
-    templateUrl: 'app/views/auth/login.html',
-    controller: 'UserAuthController'
-  });
+  $stateProvider
+    .state('register', {
+      url: '/signup',
+      templateUrl: 'app/views/auth/register.html',
+      controller: 'UserAuthController'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'app/views/auth/login.html',
+      controller: 'UserAuthController'
+    });
 }])
 .controller('UserIndexController', ['$scope', '$rootScope', '$auth',
                                    '$sessionStorage', '$state', 'User',
@@ -199,42 +195,7 @@ angular.module('buzzbands.UserControllers',
 ])
 .controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state', 'User',
 	function ($scope, $rootScope, $auth, $sessionStorage, $state, User) {
-    $scope.settings = {
-       closeEl: '.close',
-       modal: {
-         templateUrl: 'app/views/auth/login.html',
-         position: {
-          top: '30%',
-          left: '20%'
-         },
-         fade: false
-       }
-     }
-
-		$scope.$session = $sessionStorage;
-
-    $scope.signInSettings = {
-           closeEl: '.close',
-           modal: {
-             templateUrl: 'app/views/auth/login.html',
-             position: {
-              top: '30%',
-
-             },
-             fade: true
-           }
-         };
-
-     $scope.signUpSettings = {
-            closeEl: '.close',
-            modal: {
-              templateUrl: 'app/views/auth/register.html',
-              position: {
-               top: '30%'
-              },
-              fade: true
-            }
-          };
+    $scope.$session = $sessionStorage;
 
     if($scope.$session.signedIn === true){
         $state.go("analytics.adminDashboard");
@@ -299,10 +260,10 @@ angular.module('buzzbands.UserControllers',
         $auth.validateUser();
 
         if($scope.$session.user.role == 'admin' || $scope.$session.user.role == 'buzzbands_employee'){
-          $state.go("analytics.adminDashboard");
+          $state.go("adminDashboard.analytics");
         }
         else{
-          $state.go("venues.adminDashboard");
+          $state.go("adminDashboard.venues");
         }
 			});
 

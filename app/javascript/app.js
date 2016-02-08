@@ -27,7 +27,7 @@ angular.module('buzzbands_client', [
 config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider', '$provide', '$injector',
  function($urlRouterProvider, $stateProvider, $authProvider, $httpProvider, $provide, $injector) {
 
-  $urlRouterProvider.otherwise('/authenticate');
+  $urlRouterProvider.otherwise('/');
   // the following shows the default values. values passed to this method
   // will extend the defaults using angular.extend
 

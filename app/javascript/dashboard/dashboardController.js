@@ -29,23 +29,6 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
     .state('adminDashboard.venues', {
       url: '/venues',
       parent: 'adminDashboard',
-      views: {
-        '':{
-          templateUrl: 'app/views/venue/index.html',
-          controller: 'VenueIndexController',
-        },
-        'new@venues.adminDashboard': {
-          templateUrl: 'app/views/venue/new.html',
-          controller: 'VenueCreationController'
-        },
-        'edit@venues.adminDashboard': {
-          templateUrl: 'app/views/venue/edit.html',
-          controller: 'VenueDetailsController',
-          params: {
-            venue_id: undefined // or "default Title"
-          },
-        }
-      },
       resolve: {
         auth: function($auth) {
           return $auth.validateUser();
