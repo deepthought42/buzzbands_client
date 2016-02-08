@@ -1,7 +1,32 @@
 'use strict';
 
 angular.module('buzzbands.AccountControllers',
-  ['ui.router', 'buzzbands.AccountService', 'mwl.confirm'])
+  ['ui.router', 'buzzbands.AccountService', 'mwl.confirm', 'angularPayments'])
+  .config(['$stateProvider',
+    function($stateProvider) {
+
+      $stateProvider
+        .state('account', {
+          url: '/signup',
+          views: {
+            '':{
+              templateUrl: 'app/views/account/new.html',
+              controller: 'AccountCreationController'
+            },
+            'signup@account':{
+              templateUrl: 'app/views/auth/register.html'
+            },
+            'info@account':{
+              templateUrl: 'app/views/account/info.html'
+            },
+            'checkout@account':{
+              templateUrl: 'app/views/shop/stripeCheckout.html',
+              controller : 'AccountCreationController'
+            }
+          }
+        })
+    }
+  ])
 .controller('AccountIndexController',
   ['$scope', 'Account', '$state', '$sessionStorage', '$rootScope',
     function($scope, Account, state, $sessionStorage, $rootScope) {
@@ -83,6 +108,7 @@ angular.module('buzzbands.AccountControllers',
     function($scope, Account, state, $stateParams, $auth, $rootScope, $sessionStorage) {
       this._init = function(){
         $scope.session = $sessionStorage;
+        $scope.session.registered = false;
         $auth.validateUser();
         $scope.categories = ["Bar","Night Club"];
         $scope.account = {};
@@ -101,6 +127,24 @@ angular.module('buzzbands.AccountControllers',
             .catch(function(data){
               console.log("there was an error creating account");
             });
+        }
+      }
+
+      $scope.submitPayment = function(status, response){
+        if(response.error) {
+          console.log("an error occurred while processing payment");
+          // there was an error. Fix it.
+        } else {
+          // got stripe token, now charge it or smt
+          $scope.account.stripeToken = response.id
+          Account.save({account: $scope.account});
+
+          if($scope.$session.user.role == 'admin' || $scope.$session.user.role == 'buzzbands_employee'){
+            $state.go("adminDashboard.analytics");
+          }
+          else{
+            $state.go("adminDashboard.veneus");
+          }
         }
       }
 
@@ -137,20 +181,6 @@ angular.module('buzzbands.AccountControllers',
       }
 
       this._init();
-    }
-  ]
-)
-
-.controller('AccountPromotionsIndexController',
-  ['$scope', 'AccountPromotion', '$stateParams','$sessionStorage',
-    function($scope, AccountPromotion, stateParams, $sessionStorage) {
-      AccountPromotion.query({account_id: stateParams.account_id}).$promise
-        .then(function(data){
-          $scope.promotionList = data;
-        })
-        .catch(function(data){
-          console.log("error querying accounts")
-        });
     }
   ]
 )

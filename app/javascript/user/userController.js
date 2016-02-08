@@ -5,7 +5,7 @@ angular.module('buzzbands.UserControllers',
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider
     .state('register', {
-      url: '/signup',
+      url: '/register',
       templateUrl: 'app/views/auth/register.html',
       controller: 'UserAuthController'
     })
@@ -212,12 +212,9 @@ angular.module('buzzbands.UserControllers',
 				$auth.submitRegistration(credentials).then(function(registeredUser) {
           $scope.$session.user = registeredUser.data.data;
 					$scope.successfulRegistration = true;
-          if($scope.$session.user.role == 'admin' || $scope.$session.user.role == 'buzzbands_employee'){
-            $state.go("analytics.adminDashboard");
-          }
-          else{
-            $state.go("veneus.adminDashboard");
-          }
+
+          //show payment form
+          $scope.$session.registered = true;
 				}, function(error) {
 					console.log("Something went wrong during registration. Womp womp");
 				});

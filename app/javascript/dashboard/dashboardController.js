@@ -103,10 +103,6 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
         '':{
           templateUrl: 'app/views/shop/bandSelection.html',
           controller: 'BuyBandsController'
-        },
-        '/checkout':{
-          templateUrl: 'app/views/shop/stripeCheckout.html',
-          controller: 'BuyBandsController'
         }
       },
       resolve: {
@@ -244,21 +240,6 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
           }
         }
       })
-      .state('adminDashboard.createAccount', {
-        url: '/accounts/new',
-        parent: 'adminDashboard',
-        views: {
-          '':{
-            templateUrl: 'app/views/account/new.html',
-            controller: 'AccountCreationController'
-          }
-        },
-        resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          }
-        }
-      })
       .state('adminDashboard.editAccount', {
         url: '/accounts/:id/edit',
         parent: 'adminDashboard',
@@ -273,7 +254,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
             return $auth.validateUser();
           }
         }
-      });;
+      });
 
   }
 ])

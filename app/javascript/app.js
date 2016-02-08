@@ -22,7 +22,8 @@ angular.module('buzzbands_client', [
   'buzzbands.OrderService',
   'buzzbands.AccountControllers',
   'filepicker',
-  'wu.masonry'
+  'wu.masonry',
+  'angularPayments'
 ]).
 config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider', '$provide', '$injector',
  function($urlRouterProvider, $stateProvider, $authProvider, $httpProvider, $provide, $injector) {

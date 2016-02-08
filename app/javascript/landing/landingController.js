@@ -32,8 +32,7 @@ function($scope, $state, $sessionStorage) {
          modal: {
            templateUrl: 'app/views/auth/login.html',
            position: {
-            top: '30%',
-
+            top: '30%'
            },
            fade: true
          }
@@ -51,6 +50,6 @@ function($scope, $state, $sessionStorage) {
         };
 
   $scope.showRegistrationPage = function(){
-    $state.go('register');
+    $state.go('account');
   }
 }])

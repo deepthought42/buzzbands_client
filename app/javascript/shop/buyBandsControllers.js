@@ -36,13 +36,12 @@ angular.module('buzzbands.BandsControllers', ['ui.router',
 
    $scope.submitPayment = function(status, response){
      if(response.error) {
+       console.log("an error occurred while processing payment");
        // there was an error. Fix it.
      } else {
        // got stripe token, now charge it or smt
        session.order.paymentToken = response.id
-
        Order.save(session.order);
-
        session.order = {};
      }
    }
