@@ -1,11 +1,18 @@
 <div class="container-fluid">
-  <div id="edit-account-btn"
+
+<div class="btn-group edit-account-btn-wrapper">
+  <button id="edit-account-btn"
           ng-controller="UserAccountAccessController"
           id"editMyAccountButton"
-          class="btn btn-primary buzzbands-btn"
+          class="btn btn-primary dropdown-toggle buzzbands-btn"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
           ng-click="editMyAccount()">
+      {{user.email}}    
       <img style="width:50px;" ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
-  </div>
+  </button>
+  <div ng-click="#" class="text-right">Log Out</div>  
+  </div>   
+
 
   <button id="buy-bands-btn"
           class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
