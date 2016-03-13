@@ -75,11 +75,16 @@
 }
 
 /* line 1, ../sass/partials/_alerts.scss */
+.alert {
+  max-width: 600px;
+}
+
+/* line 5, ../sass/partials/_alerts.scss */
 .promotion-add-success {
   margin-top: 10px;
 }
 
-/* line 5, ../sass/partials/_alerts.scss */
+/* line 9, ../sass/partials/_alerts.scss */
 .venue-add-success {
   margin-top: 10px;
 }
