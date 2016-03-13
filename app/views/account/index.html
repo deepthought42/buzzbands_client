@@ -19,8 +19,11 @@
         <td>
           <img style="width:50px;" ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
         </td>
-        <td>{{account.user.email}}Test Email</td>
-
+        <td>{{account.user.email}}</td>
+        <td>
+          <i ng-show="user.active" class="fa fa-check" />
+          <i ng-show="!user.active" class="fa fa-times" style="color: red" />
+        </td>
         <td>
           <button class="btn btn-primary buzzbands-btn"
                   ng-click="edit(account.id)"
