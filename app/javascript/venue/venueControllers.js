@@ -3,17 +3,16 @@
 angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueService', 'mwl.confirm'])
 
 .config(['$stateProvider', function($stateProvider) {
-  $stateProvider.state('venues', {
-      url: '/venues',
-      templateUrl: 'app/views/venue/index.html',
-      controller: 'VenueIndexController'
-    });
+
 }])
 
 .controller('VenueIndexController',
   ['$scope', 'Venue', '$state', '$sessionStorage', '$rootScope',
     function($scope, Venue, state, $sessionStorage, $rootScope) {
+      console.log("loaded venue index controller");
+
       this._init = function(){
+        console.log("loaded venue index controller");
         $scope.venueLoaded = false;
         $scope.session = $sessionStorage;
         $scope.venue = {};

@@ -96,11 +96,11 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
 .run(function($rootScope, $state){
   $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
     if(error.status == 401){
-      $state.go("authenticate");
+      $state.go("adminDashboard.venues");
     }
     else{
-      //console.log("EXPERIENCED 404 err");
-      $state.go("authenticate");
+      console.log("EXPERIENCED 404 err ");
+      $state.go("adminDashboard.venues");
       //handle 400, 404, 500, etc here
     }
   })
@@ -108,8 +108,9 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
   $rootScope.$on('auth:validation-error', function (ev, error) {
        //i don't really use alert() but you get the idea
        alert('You need to be logged in!');
-       $state.go("authenticate");
+       $state.go("login");
        // here you might want to redirect a user
        // I think ui-router uses something like $state.go('login');
    });
+
 });

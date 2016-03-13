@@ -6,15 +6,11 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
   function($stateProvider) {
 
     $stateProvider.state('adminDashboard', {
-        url: '/admin',
+        url: '/',
         abstract: true,
-        templateUrl: 'app/views/dashboard/admin.html',
-        resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          }
-        }
+        templateUrl: 'app/views/dashboard/admin.html'
     })
+
     .state('adminDashboard.analytics', {
       url: '',
       parent: 'adminDashboard',
@@ -27,13 +23,10 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
       }
     })
     .state('adminDashboard.venues', {
-      url: '/venues',
+      url: 'venues',
       parent: 'adminDashboard',
-      resolve: {
-        auth: function($auth) {
-          return $auth.validateUser();
-        }
-      }
+      templateUrl: 'app/views/venue/index.html',
+      controller: 'VenueIndexController'
     })
     .state('adminDashboard.newVenue', {
       url: '/venues/new',
@@ -67,17 +60,12 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
     })
 
     .state('adminDashboard.promotions', {
-      url: '/promotions',
+      url: 'promotions',
       parent: 'adminDashboard',
       views: {
         '':{
           templateUrl: 'app/views/promotion/index.html',
           controller: 'PromotionIndexController'
-        }
-      },
-      resolve: {
-        auth: function($auth) {
-          return $auth.validateUser();
         }
       }
     })
@@ -91,9 +79,6 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
         }
       },
       resolve: {
-        auth: function($auth) {
-          return $auth.validateUser();
-        }
       }
     })
   .state('adminDashboard.shopBands', {
@@ -217,9 +202,6 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
           }
         },
         resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          },
           venue_id: ['$stateParams', function($stateParams){
               return $stateParams.venue_id;
           }]
@@ -259,15 +241,15 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
   }
 ])
 
-.controller('DashboardController', ['$scope', '$rootScope', '$sessionStorage', '$state', '$auth',
-  function($scope, $rootScope, $sessionStorage, state, $auth) {
+.controller('DashboardController', ['$scope', '$rootScope', '$sessionStorage', '$state',
+  function($scope, $rootScope, $sessionStorage, state) {
     this._init = function(){
+      console.log("loaded dashbaord");
       $scope.session = $sessionStorage;
       $scope.session.activeViewId = $scope.session.activeViewId || 1;
-      $auth.validateUser();
       $scope.loadLastViewedPage();
     }
-    console.log("loaded dashbaord");
+
     $scope.hasPermission = function(role){
       return $scope.session.user && $scope.session.user.role === role;
     }

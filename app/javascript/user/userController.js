@@ -198,7 +198,7 @@ angular.module('buzzbands.UserControllers',
     $scope.$session = $sessionStorage;
 
     if($scope.$session.signedIn === true){
-        $state.go("analytics.adminDashboard");
+        $state.go("adminDashboard.analytics");
     }
 
 		$scope.register = function(isValid){

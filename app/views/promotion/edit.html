@@ -7,8 +7,8 @@
 						id="promotion-form"
 						enctype="multipart/form-data"
 						ng-submit="updatePromotion(promotion)"
-						novalidate> 
-						
+						novalidate>
+
 				<div class="form-group">
 					<input  class="form-control"
 									type="text"
@@ -30,28 +30,22 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-6 text-right">
-
 							<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker>
-
 						</div>
 						<div class="col-md-6">
-
 							<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="start_time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">
 							</uib-timepicker>
-
 						</div>
-
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-6 text-right">
-
-							<md-datepicker ng-model="promotion.end_time" md-placeholder="Enter date"></md-datepicker>
-
+							<md-datepicker ng-model="promotion.end_time"
+														 md-placeholder="Enter date">
+							</md-datepicker>
 						</div>
 						<div class="col-md-6">
-
 							<uib-timepicker  style="width:232px;background-color:#242831;"
 														 ng-model="end_time"
 														 ng-change="changed()"
@@ -87,25 +81,19 @@
 					<input type="checkbox" ng-model="promotion.active"/>
 				</div>
 				<div class="form-group text-center">
-						<button style="background-color:#de519b;"class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+						<button style="background-color:#de519b;"
+										class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
 										type="submit"
 										ng-click="updatePromotion(promotion)"
 										ng-disabled="promotionForm.$invalid">
 							Update
 						</button>
 				</div>
-
-
 			</form>
-
-
-		</div> 
-	<div class="col-md-6">
-		
-		<img style="max-width:50%;"
-							 ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}"/>
-	</div> 
-
+		</div>
+		<div class="col-md-6">
+			<img style="max-width:50%;"
+					 ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}"/>
+		</div>
 	</div>
-
 </div>

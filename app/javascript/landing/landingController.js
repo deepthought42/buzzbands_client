@@ -5,7 +5,7 @@ angular.module('buzzbands.LandingControllers', ['ui.router','ngMorph'])
   function($stateProvider) {
     $stateProvider
       .state('landing', {
-        url: '/',
+        url: '/landing',
         templateUrl: 'app/views/landing/index.html',
         controller: 'LandingController'
       })
