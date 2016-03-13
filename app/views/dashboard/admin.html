@@ -23,9 +23,15 @@
           ui-sref="adminDashboard.shopBands">
     BUY BANDS
   </button>
+
+  <span ng-click="showRegistrationPage()"> Learn More </span>
+
   <div id="adminDashboardcontainer" class="row">
     <div class="col-md-2 col-xs-12" ng-controller="DashboardController" id="dashboard-controller">
       <img src="images/logo.png">
+      <div class="col-sm-12 col-xs-12 text-center">
+        <h3 class="font-white font-josefin">Select a Package</h3>
+      </div>
       <div class="col-sm-12 col-xs-12">
         <button ui-sref="adminDashboard.analytics"
                 ng-class='{"navButtonActive":session.activeViewId==1,"navButton":session.activeViewId!=1}'

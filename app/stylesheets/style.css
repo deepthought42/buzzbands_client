@@ -79,6 +79,11 @@
   margin-top: 10px;
 }
 
+/* line 5, ../sass/partials/_alerts.scss */
+.venue-add-success {
+  margin-top: 10px;
+}
+
 /* line 1, ../sass/partials/_utility.scss */
 .padding-bottom-10 {
   padding-bottom: 10px;
