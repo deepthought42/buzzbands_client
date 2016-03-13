@@ -1,11 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,700,300,100,600);
-/* line 5, ../sass/partials/_fonts.scss */
-.font-josefin {
-  font-family: "Josefin Sans", sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
+/* line 7, ../sass/partials/_fonts.scss */
+.font-audiowide {
+  font-family: "Audiowide", sans-serif;
   font-weight: 300;
 }
 
-/* line 10, ../sass/partials/_fonts.scss */
+/* line 12, ../sass/partials/_fonts.scss */
 .font-white {
   font-color: #FFFFFF;
 }

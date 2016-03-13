@@ -148,6 +148,22 @@
 
   <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script>
+    
+  $(window).load(function(){
+  /**
+   * Affix Dashboard Sidebar Controller when viewport is more than 1024 px
+   */
+
+  if( $(this).innerWidth() > 1024){
+    //$('#dashboard-controller').attr('data-spy','affix');
+    console.log('Inner Width is greater than 1024');
+  }
+
+});
+
+</script>
   
 </body>
 </html>

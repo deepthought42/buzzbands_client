@@ -1,9 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,700,300,100,600);
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
 
-$josefin:  'Josefin Sans', sans-serif;
+$audiowide:  'Josefin Sans', sans-serif;
+$audiowide:  'Audiowide', sans-serif;
 
-.font-josefin{
-	font-family: $josefin;
+.font-audiowide{
+	font-family: $audiowide;
 	font-weight: 300;
 }
 
