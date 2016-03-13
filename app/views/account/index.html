@@ -15,57 +15,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr ng-repeat="account in accountList">
         <td>
           <img style="width:50px;" ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
         </td>
-        <td>Test Email</td>
-        <td>
-          Test Whatever
-        </td>
-        <td>Test Spoof</td>
+        <td>{{account.user.email}}Test Email</td>
+
         <td>
           <button class="btn btn-primary buzzbands-btn"
-                  ng-click="editUser(user.id)"
-                  ng-show="hasPermission('buzzbands_employee')">Edit</button>
+                  ng-click="edit(account.id)"
+                  ng-show="false && hasPermission('buzzbands_employee')">Edit</button>
           <button class="btn btn-danger buzzbands-btn buzzbands-pink-btn"
-                  ng-click="delete(user.id)"
-                  ng-show="hasPermission('buzzbands_employee')">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <img style="width:50px;" ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
-        </td>
-        <td>Test Email</td>
-        <td>
-          Test Whatever
-        </td>
-        <td>Test Spoof</td>
-        <td>
-          <button class="btn btn-primary buzzbands-btn"
-                  ng-click="editUser(user.id)"
-                  ng-show="hasPermission('buzzbands_employee')">Edit</button>
-          <button class="btn btn-danger buzzbands-btn buzzbands-pink-btn"
-                  ng-click="delete(user.id)"
-                  ng-show="hasPermission('buzzbands_employee')">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <img style="width:50px;" ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
-        </td>
-        <td>Test Email</td>
-        <td>
-          Test Whatever
-        </td>
-        <td>Test Spoof</td>
-        <td>
-          <button class="btn btn-primary buzzbands-btn"
-                  ng-click="editUser(user.id)"
-                  ng-show="hasPermission('buzzbands_employee')">Edit</button>
-          <button class="btn btn-danger buzzbands-btn buzzbands-pink-btn"
-                  ng-click="delete(user.id)"
+                  ng-click="delete(account.id)"
                   ng-show="hasPermission('buzzbands_employee')">Delete</button>
         </td>
       </tr>

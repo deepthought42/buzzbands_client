@@ -78,7 +78,7 @@ angular.module('buzzbands.AccountControllers',
           }
       }
 
-      $scope.editAccount = function(accountId){
+      $scope.edit = function(accountId){
         $scope.session.last_account_id = accountId;
         state.go("adminDashboard.editAccount", {account_id: accountId});
       }
