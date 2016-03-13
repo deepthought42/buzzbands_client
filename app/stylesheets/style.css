@@ -29,8 +29,10 @@ body {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-/* line 14, ../sass/partials/_buttons.scss */
+/* line 16, ../sass/partials/_buttons.scss */
 .buzzbands-btn:hover {
   background-color: #4BBA4B;
   transform: translateY(-5px);
@@ -38,24 +40,24 @@ body {
   -moz-transform: translateY(-5px);
   -ms-transform: translateY(-5px);
 }
-/* line 22, ../sass/partials/_buttons.scss */
+/* line 24, ../sass/partials/_buttons.scss */
 .buzzbands-btn:active {
   background-color: #4BBA4B;
 }
-/* line 26, ../sass/partials/_buttons.scss */
+/* line 28, ../sass/partials/_buttons.scss */
 .buzzbands-btn:focus {
   background-color: #4BBA4B;
 }
-/* line 30, ../sass/partials/_buttons.scss */
+/* line 32, ../sass/partials/_buttons.scss */
 .buzzbands-btn:active:focus {
   background-color: #4BBA4B;
 }
-/* line 34, ../sass/partials/_buttons.scss */
+/* line 36, ../sass/partials/_buttons.scss */
 .buzzbands-btn.buzzbands-pink-btn {
   background-color: #de519b;
   color: #FFF;
 }
-/* line 39, ../sass/partials/_buttons.scss */
+/* line 41, ../sass/partials/_buttons.scss */
 .buzzbands-btn.buzzbands-pink-btn#buy-bands-btn {
   position: fixed;
   right: 115px;
@@ -63,12 +65,12 @@ body {
   padding: 20px 30px;
   z-index: 1000;
 }
-/* line 51, ../sass/partials/_buttons.scss */
+/* line 53, ../sass/partials/_buttons.scss */
 .buzzbands-btn.margin-top-bot-15 {
   margin: 15px 0;
 }
 
-/* line 57, ../sass/partials/_buttons.scss */
+/* line 59, ../sass/partials/_buttons.scss */
 .edit-account-btn-wrapper {
   position: fixed;
   right: 20px;
@@ -76,7 +78,7 @@ body {
   z-index: 1000;
 }
 
-/* line 67, ../sass/partials/_buttons.scss */
+/* line 69, ../sass/partials/_buttons.scss */
 .pointer:hover {
   cursor: pointer;
 }
@@ -173,6 +175,17 @@ table tbody tr td img {
   padding: 0;
 }
 
+@media (min-width: 1200px) {
+  /* line 34, ../sass/partials/_app.scss */
+  #dashboard-content-wrapper {
+    padding-top: 5vh !important;
+  }
+
+  /* line 38, ../sass/partials/_app.scss */
+  #logo {
+    font-size: 44px;
+  }
+}
 /* line 1, ../sass/partials/_signup.scss */
 #signupmorph {
   max-width: 300px;
