@@ -20,7 +20,7 @@ angular.module('buzzbands.UserControllers',
 	function ($scope, $rootScope, $auth, $sessionStorage, state, User) {
 
     this._init = function(){
-      $scope.$session = $sessionStorage;
+      $scope.session = $sessionStorage;
       $scope.getUserList();
       $auth.validateUser();
     }
@@ -31,7 +31,7 @@ angular.module('buzzbands.UserControllers',
     $scope.getUserList = function(){
       $auth.validateUser();
 
-      if($scope.$session.user && $scope.$session.user.role == 'buzzbands_employee'){
+      if($scope.session.user && $scope.session.user.role == 'buzzbands_employee'){
         User.query().$promise
           .then(function(data){
             return $scope.userList = data;
@@ -76,7 +76,7 @@ angular.module('buzzbands.UserControllers',
     }
 
     $scope.hasPermission = function(role){
-     return $scope.$session.user && $scope.$session.user.role == role
+     return $scope.session.user && $scope.session.user.role == role
     }
 
     this._init();
@@ -89,7 +89,7 @@ angular.module('buzzbands.UserControllers',
     console.log(stateParams.userId);
 
     this._init = function(){
-      $scope.$session = $sessionStorage;
+      $scope.session = $sessionStorage;
       $auth.validateUser();
       $scope.roles = Role;
       $scope.loadUser(stateParams.userId);
@@ -132,7 +132,7 @@ angular.module('buzzbands.UserControllers',
     }
 
     $scope.hasPermission = function(role){
-      return $scope.$session.user.role == role;
+      return $scope.session.user.role == role;
     }
 
     this._init();
@@ -143,7 +143,7 @@ angular.module('buzzbands.UserControllers',
   function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage, Venue)
   {
     this._init = function(){
-      $scope.$session = $sessionStorage;
+      $scope.session = $sessionStorage;
       $auth.validateUser();
       $scope.user = {};
       $scope.queryVenues();
@@ -153,7 +153,7 @@ angular.module('buzzbands.UserControllers',
       Venue.query().$promise
         .then(function(data){
           console.log("successfully queried venues :: "+data);
-          $scope.venues = $scope.$session.venues;
+          $scope.venues = $scope.session.venues;
         })
         .catch(function(data){
           console.log("error querying venues")
@@ -176,7 +176,7 @@ angular.module('buzzbands.UserControllers',
     }
 
     $scope.hasPermission = function(role){
-      return $scope.$session.user.role == role;
+      return $scope.session.user.role == role;
     }
 
     this._init();
@@ -195,9 +195,9 @@ angular.module('buzzbands.UserControllers',
 ])
 .controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state', 'User',
 	function ($scope, $rootScope, $auth, $sessionStorage, $state, User) {
-    $scope.$session = $sessionStorage;
+    $scope.session = $sessionStorage;
 
-    if($scope.$session.signedIn === true){
+    if($scope.session.signedIn === true){
         $state.go("adminDashboard.analytics");
     }
 
@@ -210,11 +210,11 @@ angular.module('buzzbands.UserControllers',
 
 			if(isValid){
 				$auth.submitRegistration(credentials).then(function(registeredUser) {
-          $scope.$session.user = registeredUser.data.data;
+          $scope.session.user = registeredUser.data.data;
 					$scope.successfulRegistration = true;
 
           //show payment form
-          $scope.$session.registered = true;
+          $scope.session.registered = true;
 				}, function(error) {
 					console.log("Something went wrong during registration. Womp womp");
 				});
@@ -232,11 +232,11 @@ angular.module('buzzbands.UserControllers',
 			$auth.signOut()
 			$scope.$on('auth:logout-success', function(event, oldCurrentUser) {
 				$('#editProfileForm').hide();
-				delete $scope.$session.user;
+				delete $scope.session.user;
 			});
 
 			$scope.$on('auth:logout-error', function(event, reason){
-				delete $scope.$session.user;
+				delete $scope.session.user;
 				console.log("There was an error signing you out. REASON :: "+reason);
 			})
 		}
@@ -247,16 +247,16 @@ angular.module('buzzbands.UserControllers',
     $scope.signIn = function(isValid){
 			//Authenticate with user credentials
 			$auth.submitLogin($scope.user).then(function(response) {
-				//$scope.$session.user = response.data;
+				//$scope.session.user = response.data;
 			}, function(error) {
 				$scope.error = "Failed to log in "+error;
 			});
 
 			$scope.$on('auth:login-success', function(event, currentUser) {
-				$scope.$session.user = currentUser;
+				$scope.session.user = currentUser;
         $auth.validateUser();
 
-        if($scope.$session.user.role == 'admin' || $scope.$session.user.role == 'buzzbands_employee'){
+        if($scope.session.user.role == 'admin' || $scope.session.user.role == 'buzzbands_employee'){
           $state.go("adminDashboard.analytics");
         }
         else{
