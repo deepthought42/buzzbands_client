@@ -8,7 +8,7 @@
       <div ui-sref="login" class="text-right" ng-show="!session.user">Sign In</div>
       <div ng-click="logout()" class="text-right" ng-show="session.user">Log Out</div>
     </div>
-    <div ng-controller="UserAccountAccessController">
+    <div ng-controller="UserAccountAccessController" class="text-right">
       <button id="edit-account-btn"
               ng-show="session.user"
               id="editMyAccountButton"
