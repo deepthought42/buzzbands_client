@@ -236,6 +236,12 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
             return $auth.validateUser();
           }
         }
+      })
+      .state('adminDashboard.servicePackage', {
+        url: 'servicePackage',
+        parent: 'adminDashboard',
+        templateUrl: 'app/views/shop/packageSelection.html',
+        controller: 'BuyPackageController'
       });
 
   }
