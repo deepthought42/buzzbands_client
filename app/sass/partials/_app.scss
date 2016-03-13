@@ -28,3 +28,15 @@
   content: "";
   padding: 0;
 }
+
+@media(min-width: 1200px){
+
+  #dashboard-content-wrapper{
+    padding-top: 5vh!important;
+  }
+
+  #logo{
+    font-size: 44px;
+  }
+
+}

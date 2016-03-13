@@ -30,9 +30,9 @@
   <div id="adminDashboardcontainer" class="row">
 
     <div class="col-md-2 col-xs-12" ng-controller="DashboardController" id="dashboard-controller" data-spy="affix">
-      <img src="images/logo.png">
+      <h1 class="font-audiowide font-white pull-right" id="logo">hypedrive</h1>
       <div class="col-sm-12 col-xs-12 text-center">
-        <button class="btn btn-primary buzzbands-btn buzzbands-pink-btn btn-lg btn-block" ui-sref="adminDashboard.servicePackage">Select a Package</button>
+        <button class="btn btn-primary buzzbands-btn buzzbands-pink-btn btn-lg btn-block" ui-sref="adminDashboard.servicePackage">Get More Info</button>
       </div>
       <div class="col-sm-12 col-xs-12">
         <button ui-sref="adminDashboard.analytics"
@@ -85,7 +85,7 @@
     </div>
     <div class="col-md-2"></div>
 
-    <div  style="padding-top:15px;" class="col-md-10 col-xs-12" id="dashboard-content-wrapper">
+    <div class="col-md-10 col-xs-12" id="dashboard-content-wrapper">
       <div ui-view></div>
     </div>
 
