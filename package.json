@@ -17,7 +17,7 @@
     "shelljs": "^0.2.6"
   },
   "engines": {
-    "npm": "4.4.3"
+    "node": "4.4.3"
   },
   "scripts": {
     "start": "node app/javascript/app.js"
