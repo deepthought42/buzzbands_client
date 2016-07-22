@@ -21,8 +21,7 @@
     "bower": "^1.3.1"
   },
   "scripts": {
-    "prestart": "npm install",
-    "start": "npm start",
+    "start": "http-server -a localhost -p 8000 -c-1",
 
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
