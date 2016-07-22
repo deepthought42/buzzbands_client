@@ -6,12 +6,13 @@
     <div class="col-md-12">
       <h1 class="font-white font-audiowide">Venues</h1>
       <button class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+              ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')"
               ui-sref="adminDashboard.newVenue">
             + New Venue
       </button>
     </div>
   </div>
-  <div class="row">
+  <div class="row" ng-show="isVenueCreatedSuccessfully">
       <div clas="col-md-12">
         <div class="alert alert-success venue-add-success">
            The venue (venue name) was created successfully. <a href="#">Edit venue</a> or <a href="#">add another</a>.
@@ -50,16 +51,16 @@
           <table style="width:100%;" class="table table-striped">
             <thead style="color:White;">
               <tr>
-                <td ng-show="hasPermission('buzzbands_employee')">Selected</td>
+                <td ng-show="hasPermission('hypedrive_employee')">Selected</td>
                 <td>Venue Photo</td>
                 <td>Venue Name</td>
                 <td>Active?</td>
-                <td ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')"></td>
+                <td ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')"></td>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="venue in venueList|orderBy:'active':true| filter:venueSearch" >
-                <td ng-show="hasPermission('buzzbands_employee')">
+                <td ng-show="hasPermission('hypedrive_employee')">
                   <input type="checkbox" ng-click="venue.selected=!venue.selected" />
                 </td>
                 <td ng-click="showPromotionsList(venue.id)">
@@ -73,8 +74,8 @@
                   <i ng-show="venue.active" class="fa fa-check" />
                   <i ng-show="!venue.active" class="fa fa-times" style="color: red" />
                 </td>
-                <td ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
-                  <button class="buzzbands-btn btn btn-primary" ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')" ng-click="editVenue(venue.id)">Edit</button>
+                <td ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">
+                  <button class="buzzbands-btn btn btn-primary" ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')" ng-click="editVenue(venue.id)">Edit</button>
                 </td>
               </tr>
             </tbody>

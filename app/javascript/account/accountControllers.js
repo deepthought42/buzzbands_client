@@ -139,7 +139,7 @@ angular.module('buzzbands.AccountControllers',
           $scope.account.stripeToken = response.id
           Account.save({account: $scope.account});
 
-          if($scope.$session.user.role == 'admin' || $scope.$session.user.role == 'buzzbands_employee'){
+          if($scope.$session.user.role == 'admin' || $scope.$session.user.role == 'hypedrive_employee'){
             $state.go("adminDashboard.analytics");
           }
           else{

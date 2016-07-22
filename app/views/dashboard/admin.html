@@ -38,7 +38,7 @@
         <button ui-sref="adminDashboard.analytics"
                 ng-class='{"navButtonActive":session.activeViewId==1,"navButton":session.activeViewId!=1}'
                 ng-click='setPage(1)'
-                ng-show="hasPermission('admin') || hasPermission('buzzbands_employee')">
+                ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">
             Overview
         </button>
       </div>
@@ -61,14 +61,14 @@
             Add New
         </button>
       </div>
-      <div class="col-sm-12 col-xs-12" ng-show="hasPermission('buzzbands_employee')">
+      <div class="col-sm-12 col-xs-12" ng-show="hasPermission('hypedrive_employee')">
         <button ui-sref="adminDashboard.users"
                 ng-class='{"navButtonActive":session.activeViewId==4,"navButton":session.activeViewId!=4}'
                 ng-click='setPage(4)'>
             Users
         </button><br/>
        </div>
-       <div class="col-sm-12 col-xs-12" ng-show="hasPermission('buzzbands_employee')">
+       <div class="col-sm-12 col-xs-12" ng-show="hasPermission('hypedrive_employee')">
          <button ui-sref="adminDashboard.accounts"
                 ng-class='{"navButtonActive":session.activeViewId==5,"navButton":session.activeViewId!=5}'
                 ng-click='setPage(5)'>

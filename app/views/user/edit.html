@@ -18,7 +18,7 @@
 			  		class="fa fa-camera"></i>
 							Add Photo
 				</div>
-				<div class="form-group" ng-show="$session.user.email != user.email && hasPermission('buzzbands_employee')">
+				<div class="form-group" ng-show="$session.user.email != user.email && hasPermission('hypedrive_employee')">
 					<select ng-options="role.name as role.name for role in roles "
 									ng-selected="user.role == role.name"
 									ng-model="user.role">
@@ -27,7 +27,7 @@
 				</div>
 				<div class="form-group" ng-show="user.email != $session.user.email">
 					Active?
-					<input type="checkbox" ng-model="user.active" ng-disabled="!hasPermission('buzzbands_employee')" />
+					<input type="checkbox" ng-model="user.active" ng-disabled="!hasPermission('hypedrive_employee')" />
 				</div>
 				<button type="submit" class="btn btn-primary buzzbands-btn buzzbands-pink-btn margin-top-15" >
 					<i class="fa fa-save"></i>
@@ -47,7 +47,7 @@
 					<i class="fa fa-save"></i>
 					Reset password
 				</button>
-				<div ng-show="hasPermission('buzzbands_employee')"><br>
+				<div ng-show="hasPermission('hypedrive_employee')"><br>
 					<button class="btn btn-primary buzzbands-btn">Send password reset email</button>
 				</div>
 			</form>

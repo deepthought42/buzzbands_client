@@ -31,7 +31,7 @@ angular.module('buzzbands.UserControllers',
     $scope.getUserList = function(){
       $auth.validateUser();
 
-      if($scope.session.user && $scope.session.user.role == 'buzzbands_employee'){
+      if($scope.session.user && $scope.session.user.role == 'hypedrive_employee'){
         User.query().$promise
           .then(function(data){
             return $scope.userList = data;
@@ -45,10 +45,10 @@ angular.module('buzzbands.UserControllers',
     /**
     * Deletes user account.
     *
-    * @role buzzbands_employee only
+    * @role hypedrive_employee only
     */
     $scope.delete = function(user_id){
-      if($sessionStorage.user.role == 'buzzbands_employee'){}
+      if($sessionStorage.user.role == 'hypedrive_employee'){}
         User.delete({id: user_id}).$promise.then(function(){
           $scope.getUserList();
       });
@@ -57,10 +57,10 @@ angular.module('buzzbands.UserControllers',
     /**
     * Activates user account.
     *
-    * @role buzzbands_employee only
+    * @role hypedrive_employee only
     */
     $scope.activate = function(user_id){
-      if($sessionStorage.user.role == 'buzzbands_employee'){}
+      if($sessionStorage.user.role == 'hypedrive_employee'){}
         User.activate({id: user_id}).$promise.then(function(){
           $scope.getUserList();
       });
@@ -70,7 +70,7 @@ angular.module('buzzbands.UserControllers',
      *
      */
     $scope.editUser = function(id){
-      if($scope.hasPermission('buzzbands_employee')){
+      if($scope.hasPermission('hypedrive_employee')){
         state.go("adminDashboard.editUser", {"userId": id})
       }
     }
@@ -102,7 +102,7 @@ angular.module('buzzbands.UserControllers',
     $scope.updateUser = function(user){
         User.update(user).$promise.then(function(data){
           $scope.user = {};
-          if($scope.hasPermission('buzzbands_employee')){
+          if($scope.hasPermission('hypedrive_employee')){
             state.go("adminDashboard.users");
           }
           else{
@@ -256,7 +256,7 @@ angular.module('buzzbands.UserControllers',
 				$scope.session.user = currentUser;
         $auth.validateUser();
 
-        if($scope.session.user.role == 'admin' || $scope.session.user.role == 'buzzbands_employee'){
+        if($scope.session.user.role == 'admin' || $scope.session.user.role == 'hypedrive_employee'){
           $state.go("adminDashboard.analytics");
         }
         else{

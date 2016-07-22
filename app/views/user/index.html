@@ -25,13 +25,13 @@
       <td>
         <button class="btn btn-primary buzzbands-btn"
                 ng-click="editUser(user.id)"
-                ng-show="hasPermission('buzzbands_employee') && $session.user.id == user.id">Edit</button>
+                ng-show="hasPermission('hypedrive_employee') && $session.user.id == user.id">Edit</button>
         <button class="btn btn-danger buzzbands-btn buzzbands-pink-btn"
                 ng-click="activate(user.id)"
-                ng-show="hasPermission('buzzbands_employee') && !user.active">Activate</button>
+                ng-show="hasPermission('hypedrive_employee') && !user.active">Activate</button>
         <button class="btn btn-danger buzzbands-btn buzzbands-pink-btn"
                 ng-click="delete(user.id)"
-                ng-show="hasPermission('buzzbands_employee') && user.active">Deactivate</button>
+                ng-show="hasPermission('hypedrive_employee') && user.active">Deactivate</button>
       </td>
     </tr>
   </tbody>

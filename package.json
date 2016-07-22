@@ -17,6 +17,9 @@
     "protractor": "^2.1.0",
     "shelljs": "^0.2.6"
   },
+  "engines": {
+    "node": "4.3.3"
+  }
   "scripts": {
     "postinstall": "bower install",
 

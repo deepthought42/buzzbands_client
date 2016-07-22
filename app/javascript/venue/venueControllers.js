@@ -17,6 +17,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         $scope.session = $sessionStorage;
         $scope.venue = {};
         $scope.venueList = $scope.queryVenues();
+        $scope.isVenueCreatedSuccessfully = false;
       }
 
       $scope.hasPermission = function(role){
@@ -38,7 +39,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         Venue.remove({id: venueId}).$promise
           .then(function(data){
             $scope.venueList = $scope.queryVenues();
-            state.go("venues.adminDashboard");
+            state.go("adminDashboard.venues");
           })
           .catch(function(data){
             console.log("an error occurred while deleting venue");
@@ -96,6 +97,15 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         }
       }
 
+      //LISTENERS
+
+        $scope.$on('venue-created', function(event, args){
+          $scope.isVenueCreatedSuccessfully = true;
+          $timeout(function() {
+              $scope.isVenueCreatedSuccessfully = false;
+              console.log('update with timeout fired')
+          }, 5000);
+        });
       this._init();
     }
   ]
@@ -119,7 +129,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         if(venueValid){
           Venue.save($scope.venue).$promise
             .then(function(data){
-              state.go("venues.adminDashboard");
+              state.go("adminDashboard.venues");
             })
             .catch(function(data){
               console.log("there was an error creating venue");
@@ -140,6 +150,8 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
         }
       }
 
+      $rootScope.$broadcast('venue-created');
+
       this._init();
     }
   ]
@@ -150,7 +162,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
     function($scope, Venue, state, stateParams, $auth, $rootScope)
     {
       $auth.validateUser();
-      $scope.categories = ["Bar","Night Club"];
+      $scope.categories = ["Bar","Night Club","Brewery"];
 
       $scope.loadVenue = function(){
         Venue.get({id: stateParams.venue_id}).$promise
@@ -165,7 +177,7 @@ angular.module('buzzbands.VenueControllers', ['ui.router', 'buzzbands.VenueServi
       $scope.updateVenue = function(venueValid){
         if(venueValid){
           Venue.update($scope.venue).$promise.then(function(data){
-            state.go("venues.adminDashboard");
+            state.go("adminDashboard.venues");
           });
         }
       }

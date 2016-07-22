@@ -194,7 +194,7 @@ angular.module('buzzbands.DashboardControllers', ['ui.router'])
     })
     .state('edit.venueIndex', {
         url: '/venues/edit/:venue_id',
-        parent: 'venues.adminDashboard',
+        parent: 'adminDashboard.venues',
         views: {
           '':{
             templateUrl: 'app/views/venue/edit.html',

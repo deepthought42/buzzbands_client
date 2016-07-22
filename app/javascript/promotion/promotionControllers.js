@@ -32,6 +32,8 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       $scope.venues = $scope.$session.venues || Venue.query();
       $scope.promotionLoaded = true;
       $scope.visibleTab = "thumbnail";
+      $scope.isPromotionCreatedSuccessfully = false;
+
       $scope.time = '';
 
       if(!$stateParams.venue_id){
@@ -99,8 +101,16 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     }
 
     $scope.hasPermission = function(role){
-      return $scope.$session.user !== undefined && $scope.$session.user.role >= role;
+      return $scope.$session.user !== undefined && $scope.$session.user.role == role;
     }
+
+    $scope.$on('promotion-created', function(event, args){
+      $scope.isPromotionCreatedSuccessfully = true;
+      $timeout(function() {
+          $scope.isPromotionCreatedSuccessfully = false;
+          console.log('update with timeout fired')
+      }, 5000);
+    });
 
     this.init();
   }
@@ -181,6 +191,8 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     $scope.hasPermission = function(role){
       return $scope.$session.user !== undefined && $scope.$session.user.role === role;
     }
+
+    $rootScope.$broadcast('promotion-created');
 
     this.init();
   }
@@ -277,7 +289,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       }
 
       $scope.hasPermission = function(role){
-        return $scope.$session.user !== undefined && $scope.$session.user.role >= role;
+        return $scope.$session.user !== undefined && $scope.$session.user.role == role;
       }
 
     $scope.status = {

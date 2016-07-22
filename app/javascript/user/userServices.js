@@ -20,7 +20,7 @@ services.factory('Role', function () {
       },
       {
         id : "3",
-        name: "buzzbands_employee"
+        name: "hypedrive_employee"
       }
     ];
   }
