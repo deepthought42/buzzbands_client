@@ -20,6 +20,6 @@
     "node": "4.4.3"
   },
   "scripts": {
-    "start": "node app/javascript/app.js"
+    "start": "npm start"
   }
 }
