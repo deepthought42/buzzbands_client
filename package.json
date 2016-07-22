@@ -16,10 +16,13 @@
     "protractor": "^2.1.0",
     "shelljs": "^0.2.6"
   },
+  "dependencies": {
+    "http-server": "^0.6.1"
+  },
   "engines": {
     "node": "4.4.3"
   },
   "scripts": {
-    "start": ""
+    "start": "http-server -a localhost -p 8000 -c-1",
   }
 }
