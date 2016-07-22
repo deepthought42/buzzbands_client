@@ -19,5 +19,8 @@
   },
   "engines": {
     "node": "4.4.3"
+  },
+  "scripts": {
+    "start": "nf start",
   }
 }
