@@ -1,7 +1,7 @@
 {
   "name": "buzzbands_client",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "repository": "https://github.com/deepthought42/buzzbands_client",
   "license": "MIT",
@@ -20,6 +20,6 @@
     "npm": "4.4.3"
   },
   "scripts": {
-    "start": "node app/javascript/app.js",
+    "start": "node app/javascript/app.js"
   }
 }
