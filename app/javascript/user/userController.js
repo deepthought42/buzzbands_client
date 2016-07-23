@@ -37,7 +37,7 @@ angular.module('buzzbands.UserControllers',
             return $scope.userList = data;
           })
           .catch(function(data){
-            console.log("error querying users")
+            //console.log("error querying users");
           });
       }
     }
@@ -86,8 +86,6 @@ angular.module('buzzbands.UserControllers',
   ['$scope', 'User', 'Role', '$state', '$stateParams', '$auth', '$sessionStorage',
   function($scope, User, Role, state, stateParams, $auth, $sessionStorage)
   {
-    console.log(stateParams.userId);
-
     this._init = function(){
       $scope.session = $sessionStorage;
       $auth.validateUser();
@@ -114,10 +112,10 @@ angular.module('buzzbands.UserControllers',
     $scope.updatePassword = function() {
       $auth.updatePassword($scope.updatePasswordForm)
         .then(function(resp) {
-          console.log("Sucessfully reset password");
+          //console.log("Sucessfully reset password");
         })
         .catch(function(resp) {
-          console.log("FAILED reset password");
+          //console.log("FAILED reset password");
         });
     };
 
@@ -152,11 +150,10 @@ angular.module('buzzbands.UserControllers',
     $scope.queryVenues = function(){
       Venue.query().$promise
         .then(function(data){
-          console.log("successfully queried venues :: "+data);
           $scope.venues = $scope.session.venues;
         })
         .catch(function(data){
-          console.log("error querying venues")
+          //console.log("error querying venues")
         });
     }
 
@@ -216,7 +213,7 @@ angular.module('buzzbands.UserControllers',
           //show payment form
           $scope.session.registered = true;
 				}, function(error) {
-					console.log("Something went wrong during registration. Womp womp");
+					//console.log("Something went wrong during registration. Womp womp");
 				});
 
 				$scope.$on('auth:registration-email-success', function(event, user) {
@@ -237,7 +234,7 @@ angular.module('buzzbands.UserControllers',
 
 			$scope.$on('auth:logout-error', function(event, reason){
 				delete $scope.session.user;
-				console.log("There was an error signing you out. REASON :: "+reason);
+				//console.log("There was an error signing you out. REASON :: "+reason);
 			})
 		}
 
