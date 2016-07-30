@@ -21,6 +21,7 @@ angular.module('buzzbands_client', [
   'buzzbands.UserDashboardControllers',
   'buzzbands.OrderService',
   'buzzbands.AccountControllers',
+  'buzzbands.serviceConfig',
   'filepicker',
   'wu.masonry',
   'angularPayments'
@@ -33,7 +34,7 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
   // will extend the defaults using angular.extend
 
   $authProvider.configure({
-     apiUrl:                  'http://localhost:3000/api',
+     apiUrl:                  'https://hypedrive-api.heroku.com/api',
      forceValidateToken:      false,
      validateOnPageLoad:      true,
      proxyUrl:                '/proxy',

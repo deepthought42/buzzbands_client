@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('buzzbands.LandingControllers', ['ui.router','ngMorph'])
+var landing = angular.module('buzzbands.LandingControllers', ['ui.router','ngMorph'])
 .config(['$stateProvider',
   function($stateProvider) {
     $stateProvider
@@ -10,8 +10,8 @@ angular.module('buzzbands.LandingControllers', ['ui.router','ngMorph'])
         controller: 'LandingController'
       })
   }
-])
-.controller('LandingController', ['$scope', '$state', '$sessionStorage',
+]);
+landing.controller('LandingController', ['$scope', '$state', '$sessionStorage',
 function($scope, $state, $sessionStorage) {
   $scope.settings = {
      closeEl: '.close',
@@ -23,7 +23,7 @@ function($scope, $state, $sessionStorage) {
        },
        fade: false
      }
-   }
+   };
 
   $scope.$session = $sessionStorage;
 
@@ -51,5 +51,5 @@ function($scope, $state, $sessionStorage) {
 
   $scope.showRegistrationPage = function(){
     $state.go('account');
-  }
-}])
+  };
+}]);

@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('buzzbands.AnalyticsControllers', ['ui.router',
+var analytics = angular.module('buzzbands.AnalyticsControllers', ['ui.router',
                                                   'buzzbands.VenueService',
                                                   'buzzbands.OrderService',
-                                                  'nvd3'])
+                                                  'nvd3']);
 
-.config(['$stateProvider', function($stateProvider) {
+analytics.config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('analytics', {
     views: {
       '': {
@@ -14,9 +14,9 @@ angular.module('buzzbands.AnalyticsControllers', ['ui.router',
       }
     }
   })
-}])
+}]);
 
-.controller('AnalyticsController', ['$scope', 'Venue','Promotion', 'Order', '$sessionStorage',
+analytics.controller('AnalyticsController', ['$scope', 'Venue','Promotion', 'Order', '$sessionStorage',
   function($scope, Venue, Promotion, Order, session) {
 
   this._init = function(){
@@ -62,7 +62,7 @@ angular.module('buzzbands.AnalyticsControllers', ['ui.router',
       };
 
     $scope.data = $scope.totalScans;
-  }
+  };
 
   this._init();
-}])
+}]);

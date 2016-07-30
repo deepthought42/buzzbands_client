@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('buzzbands.UserControllers',
+var user = angular.module('buzzbands.UserControllers',
   ['ui.router','buzzbands.UserServices', 'buzzbands.VenueService'])
-.config(['$stateProvider', function($stateProvider) {
+user.config(['$stateProvider', function($stateProvider) {
   $stateProvider
     .state('register', {
       url: '/register',
@@ -14,8 +14,8 @@ angular.module('buzzbands.UserControllers',
       templateUrl: 'app/views/auth/login.html',
       controller: 'UserAuthController'
     });
-}])
-.controller('UserIndexController', ['$scope', '$rootScope', '$auth',
+}]);
+user.controller('UserIndexController', ['$scope', '$rootScope', '$auth',
                                    '$sessionStorage', '$state', 'User',
 	function ($scope, $rootScope, $auth, $sessionStorage, state, User) {
 
@@ -40,7 +40,7 @@ angular.module('buzzbands.UserControllers',
             //console.log("error querying users");
           });
       }
-    }
+    };
 
     /**
     * Deletes user account.
@@ -52,7 +52,7 @@ angular.module('buzzbands.UserControllers',
         User.delete({id: user_id}).$promise.then(function(){
           $scope.getUserList();
       });
-    }
+    };
 
     /**
     * Activates user account.
@@ -64,7 +64,7 @@ angular.module('buzzbands.UserControllers',
         User.activate({id: user_id}).$promise.then(function(){
           $scope.getUserList();
       });
-    }
+    };
 
     /**
      *
@@ -73,16 +73,16 @@ angular.module('buzzbands.UserControllers',
       if($scope.hasPermission('hypedrive_employee')){
         state.go("adminDashboard.editUser", {"userId": id})
       }
-    }
+    };
 
     $scope.hasPermission = function(role){
      return $scope.session.user && $scope.session.user.role == role
-    }
+   };
 
     this._init();
   }
-])
-.controller('UserDetailsController',
+]);
+user.controller('UserDetailsController',
   ['$scope', 'User', 'Role', '$state', '$stateParams', '$auth', '$sessionStorage',
   function($scope, User, Role, state, stateParams, $auth, $sessionStorage)
   {
@@ -91,11 +91,11 @@ angular.module('buzzbands.UserControllers',
       $auth.validateUser();
       $scope.roles = Role;
       $scope.loadUser(stateParams.userId);
-    }
+    };
 
     $scope.loadUser = function(user_id){
       $scope.user = User.get({id: user_id});
-    }
+    };
 
     $scope.updateUser = function(user){
         User.update(user).$promise.then(function(data){
@@ -123,20 +123,20 @@ angular.module('buzzbands.UserControllers',
         return function(item){
           return item[prop] <= val;
         }
-    }
+    };
 
     $scope.previewImage = function(files){
       $scope.user.image = files[0].url;
-    }
+    };
 
     $scope.hasPermission = function(role){
       return $scope.session.user.role == role;
-    }
+    };
 
     this._init();
   }
-])
-.controller('UserCreationController',
+]);
+user.controller('UserCreationController',
   ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage', 'Venue',
   function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage, Venue)
   {
@@ -145,7 +145,7 @@ angular.module('buzzbands.UserControllers',
       $auth.validateUser();
       $scope.user = {};
       $scope.queryVenues();
-    }
+    };
 
     $scope.queryVenues = function(){
       Venue.query().$promise
@@ -155,7 +155,7 @@ angular.module('buzzbands.UserControllers',
         .catch(function(data){
           //console.log("error querying venues")
         });
-    }
+    };
 
     /**
     * Generate random string of 10 characters for temp password
@@ -170,16 +170,16 @@ angular.module('buzzbands.UserControllers',
 
       $scope.user.password = generatedPass;
       $scope.user.password_confirmation = generatedPass;
-    }
+    };
 
     $scope.hasPermission = function(role){
       return $scope.session.user.role == role;
-    }
+    };
 
     this._init();
   }
-])
-.controller('UserAccountAccessController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
+]);
+user.controller('UserAccountAccessController', ['$scope', 'User', '$state', '$stateParams', '$auth', '$rootScope','$sessionStorage',
   function($scope, User, state, stateParams, $auth, $rootScope, $sessionStorage)
   {
     $scope.session = $sessionStorage;
@@ -187,10 +187,10 @@ angular.module('buzzbands.UserControllers',
     $scope.editMyAccount = function(){
       $scope.session.activeViewId = 10;
       state.go('adminDashboard.editUser', {"userId": $scope.session.user.id});
-    }
+    };
   }
-])
-.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state', 'User',
+]);
+user.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessionStorage', '$state', 'User',
 	function ($scope, $rootScope, $auth, $sessionStorage, $state, User) {
     $scope.session = $sessionStorage;
 
@@ -223,7 +223,7 @@ angular.module('buzzbands.UserControllers',
           $state.go('analytics.adminDashboard')
 				});
 			}
-		}
+		};
 
     $scope.logout = function(user){
 			$auth.signOut()
@@ -236,7 +236,7 @@ angular.module('buzzbands.UserControllers',
 				delete $scope.session.user;
 				//console.log("There was an error signing you out. REASON :: "+reason);
 			})
-		}
+		};
 
     /**
     * @param loginForm {User}
@@ -264,6 +264,6 @@ angular.module('buzzbands.UserControllers',
 			$scope.$on('auth:login-error', function(event, currentUser) {
 				alert("Error logging in");
 			});
-		}
+		};
 	}
 ]);

@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.PromotionService', 'buzzbands.VenueService', 'ui.bootstrap', 'ngMaterial', 'angularMoment'])
+var promo = angular.module('buzzbands.PromotionControllers',
+  ['ui.router', 'buzzbands.PromotionService', 'buzzbands.VenueService',
+    'ui.bootstrap', 'ngMaterial', 'angularMoment']);
 
-.config(['$stateProvider', function($stateProvider) {
+promo.config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('promotions', {
     url: '/promotions/:promotionId',
     templateUrl: 'app/views/promotion/index.html',
@@ -18,9 +20,9 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
     templateUrl: 'app/views/promotion/new.html',
     controller: 'PromotionCreationController'
   });
-}])
+}]);
 
-.controller('PromotionIndexController', ['$scope', 'Promotion', '$state',
+promo.controller('PromotionIndexController', ['$scope', 'Promotion', '$state',
                                          '$stateParams', 'VenuePromotion',
                                          'Venue', '$sessionStorage', '$log',
   function($scope, Promotion, state, $stateParams,
@@ -44,16 +46,16 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         //show promotions for the venuw with the provided ID
         $scope.promotionList = $scope.getVenuePromotionList($stateParams.venue_id);
       }
-    }
+    };
 
     $scope.editPromotion = function(id){
       state.go("adminDashboard.editPromotion", {"promotionId": id})
-    }
+    };
 
     $scope.deletePromotion = function(id){
       Promotion.remove(id);
       $scope.promotionList = $scope.getPromotionList();
-    }
+    };
 
     $scope.getPromotionList = function(){
       Promotion.query().$promise
@@ -65,11 +67,11 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
           console.log("error querying promotions")
         });
       return $scope.promotionList;
-    }
+    };
 
     $scope.getVenuePromotionList = function(venue_id){
       return VenuePromotion.query({venue_id: venue_id});
-    }
+    };
 
     $scope.getVenueName = function(venue_id){
       for(var i =0; i<$scope.venues.length ;i++){
@@ -77,7 +79,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
           return $scope.venues[i].url;
         }
       }
-    }
+    };
 
     $scope.deletePromotions = function(){
       for(var i =0;i < $scope.promotionList.length; i++){
@@ -91,18 +93,18 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
           });
         }
       }
-    }
+    };
 
     $scope.selectAll = function(selected){
       console.log("selecting all");
       for(promotion in promotionList){
         promotion.selected = selected
       }
-    }
+    };
 
     $scope.hasPermission = function(role){
       return $scope.$session.user !== undefined && $scope.$session.user.role == role;
-    }
+    };
 
     $scope.$on('promotion-created', function(event, args){
       $scope.isPromotionCreatedSuccessfully = true;
@@ -114,9 +116,9 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
 
     this.init();
   }
-])
+]);
 
-.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue', '$state',
+promo.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue', '$state',
                                             '$sessionStorage', '$log',
   function($scope, Promotion, Venue, state, $sessionStorage, $log) {
     this.init = function(){
@@ -134,7 +136,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
       };
 
       $scope.ismeridian = true;
-    }
+    };
 
     $scope.createPromotion = function(promotion, isValid){
       promotion.start_time = new Date(promotion.start_time);
@@ -181,24 +183,24 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         $scope.logo_url = reader.result;
         $scope.promotion.ad_location = files[0].url;
         $scope.$apply()
-      }
-    }
+      };
+    };
 
     $scope.setUrl = function(files){
       $scope.promotion.ad_location = files[0].url;
-    }
+    };
 
     $scope.hasPermission = function(role){
       return $scope.$session.user !== undefined && $scope.$session.user.role === role;
-    }
+    };
 
     $rootScope.$broadcast('promotion-created');
 
     this.init();
   }
-])
+]);
 
-.controller('PromotionDetailsController',
+promo.controller('PromotionDetailsController',
   ['$scope', 'Promotion', 'Venue', '$state', '$stateParams', '$auth', '$sessionStorage', '$log',
     function($scope, Promotion, Venue, state, stateParams, $auth, $sessionStorage, $log)
     {
@@ -217,7 +219,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
         };
 
         $scope.ismeridian = true;
-      }
+      };
 
       $scope.toggleMode = function() {
         $scope.ismeridian = ! $scope.ismeridian;
@@ -246,7 +248,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
               console.log("ERR  :: "+ data)
             });
         }
-      }
+      };
 
       $scope.updatePromotion = function(promotion){
 
@@ -268,7 +270,7 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
           $scope.promotion = {};
           state.go("adminDashboard.promotions");
         });
-      }
+      };
 
       $scope.open = function($event) {
           $scope.status.opened = true;
@@ -286,11 +288,11 @@ angular.module('buzzbands.PromotionControllers', ['ui.router', 'buzzbands.Promot
           $scope.promotion.ad_location = files[0].url;
           $scope.$apply()
         }
-      }
+      };
 
       $scope.hasPermission = function(role){
         return $scope.$session.user !== undefined && $scope.$session.user.role == role;
-      }
+      };
 
     $scope.status = {
       opened: false

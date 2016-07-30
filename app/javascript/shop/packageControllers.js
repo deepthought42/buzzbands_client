@@ -32,7 +32,7 @@ angular.module('buzzbands.BandsControllers', ['ui.router',
        $scope.packages = data;
        //$scope.order.package = $scope.packages[0];
      });
-   }
+   };
 
     /**
     *
@@ -45,13 +45,13 @@ angular.module('buzzbands.BandsControllers', ['ui.router',
        $scope.account.stripeToken = response.id
        Account.save($scope.account.stripeToken);
      }
-   }
+   };
 
    $scope.orderPackage = function(chosenPackage){
      session.package = chosenPackage;
 
      state.go("adminDashboard.checkout");
-   }
+   };
 
    this.init();
 }]);
