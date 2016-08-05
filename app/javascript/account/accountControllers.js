@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('buzzbands.AccountControllers',
-  ['ui.router', 'buzzbands.AccountService', 'mwl.confirm', 'angularPayments'])
+  ['ui.router', 'buzzbands.AccountService', 'mwl.confirm', 'angularPayments', 'hypedrive.Package', 'hypedrive.UserServices'])
   .config(['$stateProvider',
     function($stateProvider) {
 
@@ -104,25 +104,59 @@ angular.module('buzzbands.AccountControllers',
 )
 
 .controller('AccountCreationController',
-  ['$scope', 'Account', '$state', '$stateParams', '$auth', '$rootScope', '$sessionStorage',
-    function($scope, Account, state, $stateParams, $auth, $rootScope, $sessionStorage) {
+  ['$scope', 'Account', '$state', '$stateParams', '$auth', '$rootScope', '$sessionStorage', 'Package', 'User',
+    function($scope, Account, state, $stateParams, $auth, $rootScope, $sessionStorage, Package, User) {
+
       this._init = function(){
         $scope.session = $sessionStorage;
-        $scope.session.registered = false;
         $auth.validateUser();
-        $scope.categories = ["Bar","Night Club"];
         $scope.account = {};
+        $scope.showNewUserReg = true;
+        $scope.showExistingUsers = false;
+        $scope.packages = Package.query();
+        $scope.users = User.query();
       }
 
       $scope.hasPermission = function(role){
         return $scope.session.user.role == role;
       }
 
+      $scope.register = function(isValid){
+        var randomstring = Math.random().toString(36).slice(-8);
+        var credentials = {user: {
+          email: $scope.registrationForm.email,
+          password: randomstring,
+          password_confirmation: randomstring
+        }};
+
+        if(isValid){
+          $auth.submitRegistration(credentials).then(function(registeredUser) {
+            //$scope.session.user = registeredUser.data.data;
+            $scope.successfulRegistration = true;
+
+            //show payment form
+            $scope.session.registered = true;
+          }, function(error) {
+            //console.log("Something went wrong during registration. Womp womp");
+          });
+
+          $scope.$on('auth:registration-email-success', function(event, user) {
+            //$rootScope.$broadcast('userRegistered', user);
+            //$scope.user = user;
+            $scope.account.user_id = user.id;
+            $scope.registrationForm={}
+            $scope.userRegistration.$submitted = false;
+            //$state.go('analytics.adminDashboard')
+          });
+        }
+      };
+
       $scope.createAccount = function(accountValid){
-        if(accountValid){
+
+        if($scope.hasPermission('hypedrive_employee')){
           Account.save($scope.account).$promise
             .then(function(data){
-              state.go("adminDashboard.accounts");
+              //state.go("adminDashboard.accounts");
             })
             .catch(function(data){
               console.log("there was an error creating account");
@@ -137,7 +171,7 @@ angular.module('buzzbands.AccountControllers',
         } else {
           // got stripe token, now charge it or smt
           $scope.account.stripeToken = response.id
-          Account.save({account: $scope.account});
+          Account.save($scope.account);
 
           if($scope.$session.user.role == 'admin' || $scope.$session.user.role == 'hypedrive_employee'){
             $state.go("adminDashboard.analytics");

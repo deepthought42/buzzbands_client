@@ -1,8 +1,9 @@
+var services = angular.module('hypedrive.Package', ['ngResource', 'buzzbands.serviceConfig']);
+
 /**
  *  Service for Packages
  */
-services.factory('Packages', ['$resource', 'buzzbands.serviceConfig', function ($resource, config) {
+services.factory('Package', ['$resource', 'buzzbands.serviceConfig', function ($resource, config) {
   return $resource(config.basePath + '/packages', {}, {
-
   });
 }]);

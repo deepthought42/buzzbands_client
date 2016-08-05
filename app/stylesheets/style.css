@@ -35,10 +35,11 @@ body {
 /* line 16, ../sass/partials/_buttons.scss */
 .buzzbands-btn:hover {
   background-color: #4BBA4B;
+  /*
   transform: translateY(-5px);
   -webkit-transform: translateY(-5px);
   -moz-transform: translateY(-5px);
-  -ms-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);*/
 }
 /* line 24, ../sass/partials/_buttons.scss */
 .buzzbands-btn:active {
@@ -401,7 +402,7 @@ figure.promo-wrapper figcaption .btn {
   color: #FFF;
 }
 
-/** 
+/**
 *
 * New Promo
 *
@@ -2254,4 +2255,22 @@ a:hover {
   .masonry-brick {
     width: 30%;
   }
+}
+
+.align-bottom {
+  position: absolute;
+  bottom: 0px;
+}
+
+.table-banner{
+  height: 5em;
+}
+
+.table-banner > * {
+    float: none;
+    display: inline-block;
+    font-size: 14px; /* if using LESS it's quicker to just use @font-size-base */
+}
+.table-banner > *:last-child {
+    vertical-align: bottom;
 }

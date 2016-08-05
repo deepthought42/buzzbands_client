@@ -29,6 +29,12 @@
           <p class="text-danger" ng-message="required">Password is required.</p>
         </div>
       </div>
+
+      <div class="form-group" ng-show="showLoginFailureError">
+          <p class="text-danger">
+            Username or password does not match our records
+          </p>
+      </div>
       <button type="submit" class="btn-login btn btn-default">Sign in</button>
   </form>
 </div>

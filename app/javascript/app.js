@@ -33,8 +33,9 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
   // the following shows the default values. values passed to this method
   // will extend the defaults using angular.extend
 
+  //production :: 'https://hypedrive-api.heroku.com/api',
   $authProvider.configure({
-     apiUrl:                  'https://hypedrive-api.heroku.com/api',
+     apiUrl:                  'http://localhost:3000/api',
      forceValidateToken:      false,
      validateOnPageLoad:      true,
      proxyUrl:                '/proxy',
@@ -107,8 +108,6 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
   })
 
   $rootScope.$on('auth:validation-error', function (ev, error) {
-       //i don't really use alert() but you get the idea
-       alert('You need to be logged in!');
        $state.go("login");
        // here you might want to redirect a user
        // I think ui-router uses something like $state.go('login');

@@ -1,7 +1,7 @@
 'use strict';
 
 var user = angular.module('buzzbands.UserControllers',
-  ['ui.router','buzzbands.UserServices', 'buzzbands.VenueService'])
+  ['ui.router','hypedrive.UserServices', 'buzzbands.VenueService'])
 user.config(['$stateProvider', function($stateProvider) {
   $stateProvider
     .state('register', {
@@ -220,13 +220,13 @@ user.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessio
 					$rootScope.$broadcast('userRegistered', user);
 					$scope.registrationForm={}
 					$scope.userRegistration.$submitted = false;
-          $state.go('analytics.adminDashboard')
+          //$state.go('analytics.adminDashboard')
 				});
 			}
 		};
 
     $scope.logout = function(user){
-			$auth.signOut()
+			$auth.signOut();
 			$scope.$on('auth:logout-success', function(event, oldCurrentUser) {
 				$('#editProfileForm').hide();
 				delete $scope.session.user;
@@ -238,16 +238,14 @@ user.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessio
 			})
 		};
 
+
+    $scope.showLoginFailureError = false;
     /**
     * @param loginForm {User}
     */
     $scope.signIn = function(isValid){
 			//Authenticate with user credentials
-			$auth.submitLogin($scope.user).then(function(response) {
-				//$scope.session.user = response.data;
-			}, function(error) {
-				$scope.error = "Failed to log in "+error;
-			});
+			$auth.submitLogin($scope.user);
 
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.session.user = currentUser;
@@ -262,7 +260,9 @@ user.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessio
 			});
 
 			$scope.$on('auth:login-error', function(event, currentUser) {
-				alert("Error logging in");
+        if(Object.keys($scope.user).length != 0 && $scope.user.email != "" && $scope.user.password != ""){
+          $scope.showLoginFailureError = true;
+        }
 			});
 		};
 	}

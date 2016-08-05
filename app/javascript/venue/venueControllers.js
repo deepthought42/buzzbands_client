@@ -100,10 +100,6 @@ venue.controller('VenueIndexController',
 
         $scope.$on('venue-created', function(event, args){
           $scope.isVenueCreatedSuccessfully = true;
-          $timeout(function() {
-              $scope.isVenueCreatedSuccessfully = false;
-              //console.log('update with timeout fired')
-          }, 5000);
         });
       this._init();
     }

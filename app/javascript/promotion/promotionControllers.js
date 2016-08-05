@@ -118,9 +118,9 @@ promo.controller('PromotionIndexController', ['$scope', 'Promotion', '$state',
   }
 ]);
 
-promo.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue', '$state',
+promo.controller('PromotionCreationController', ['$rootScope', '$scope', 'Promotion', 'Venue', '$state',
                                             '$sessionStorage', '$log',
-  function($scope, Promotion, Venue, state, $sessionStorage, $log) {
+  function($scope, $rootScope, Promotion, Venue, state, $sessionStorage, $log) {
     this.init = function(){
       $scope.promotion = {};
       $scope.venues = Venue.query();
@@ -156,9 +156,16 @@ promo.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue',
       }
 
       if(isValid){
-        Promotion.save(promotion);
+        Promotion.save(promotion,
+          function(){
+            state.go("adminDashboard.promotions");
+          },
+          function(){
+            alert("error creating promotion");
+          }
+        );
       }
-      state.go("adminDashboard.promotions");
+
     }
     $scope.toggleMode = function() {
       $scope.ismeridian = ! $scope.ismeridian;
@@ -191,7 +198,7 @@ promo.controller('PromotionCreationController', ['$scope', 'Promotion', 'Venue',
     };
 
     $scope.hasPermission = function(role){
-      return $scope.$session.user !== undefined && $scope.$session.user.role === role;
+      return $sessionStorage.user !== undefined && $sessionStorage.user.role === role;
     };
 
     $rootScope.$broadcast('promotion-created');

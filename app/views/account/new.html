@@ -1,5 +1,58 @@
-<div ui-view="signup@account" ng-show="session.registered==false"></div>
+<div>
+  <div>
+    <div>
+      <label for="existingUserRegLabel">Existing User?
+      <input id="existingUserRegLabel" type="radio" ng-model="showExistingUsers" ng-click="showNewUserReg = !showNewUserReg"/>
+    </div>
+    <div>
+      <label for="newUserRegLabel">New User?
+      <input id="newUserRegLabel" type="radio" ng-model="showNewUserReg" ng-click="showExistingUsers = !showExistingUsers"/>
+    </div>
+  </div>
 
-<div ui-view="checkout@account" ng-show="session.registered"></div>
-<a ui-sref="landing">Log in</a>
+  <div ng-show="hasPermission('hypedrive_employee') && showNewUserReg ">
+    <label>User</label>
+    <select ng-model="account.user_id"
+            ng-options="user.id as user.email for user in users track by user.id"
+            class="form-control">
+    </select>
+  </div>
+
+  <form style="padding-top:35px;" role="form" ng-init="registrationForm = {}"
+        ng-submit="register(userRegistration.$valid)"
+        name="userRegistration"
+        ng-show="showExistingUsers"
+        novalidate>
+    <div class="form-group" >
+      <label>User</label>
+      <input type="email"
+             name="email"
+             id="userFormEmailField"
+             ng-model="registrationForm.email"
+             required="required"
+             class="form-control"
+             placeholder="Email" />
+      <div ng-messages="userRegistration.email.$error" ng-if="userRegistration.$submitted">
+        <p ng-message="required">Email is required.</p>
+        <p ng-message="email">Invalid email address.</p>
+      </div>
+      <button class="form-control" type="submit"> Invite user</button>
+    </div>
+
+  </form>
+  <!--<div ui-view="signup@account"></div>-->
+  <label>Package</label>
+
+  <select ng-model="account.package_id"
+          ng-options="package.id as package.name for package in packages track by package.id"
+          class="form-control">
+  </select>
+
+  <button class="btn btn-primary" ng-click="createAccount()">Create Account</button>
+
+</div>
+
+<div ui-view="checkout@account" ng-show="session.user"></div>
+
+
 <div ui-view="info@account"></div>

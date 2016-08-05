@@ -175,7 +175,7 @@ dashboard.config(['$stateProvider',
         }
     });
     $stateProvider.state('adminDashboard.editPromotion', {
-        url: '/promotions/edit/:promotionId',
+        url: 'promotions/edit/:promotionId',
         parent: 'adminDashboard',
         views: {
           '':{
@@ -193,7 +193,7 @@ dashboard.config(['$stateProvider',
         }
     });
     $stateProvider.state('edit.venueIndex', {
-        url: '/venues/edit/:venue_id',
+        url: 'venues/edit/:venue_id',
         parent: 'adminDashboard.venues',
         views: {
           '':{
@@ -208,7 +208,7 @@ dashboard.config(['$stateProvider',
         }
       });
       $stateProvider.state('adminDashboard.accounts', {
-        url: '/accounts',
+        url: 'accounts',
         parent: 'adminDashboard',
         views: {
           '':{
@@ -223,12 +223,37 @@ dashboard.config(['$stateProvider',
         }
       });
       $stateProvider.state('adminDashboard.editAccount', {
-        url: '/accounts/:id/edit',
+        url: 'accounts/:id/edit',
         parent: 'adminDashboard',
         views: {
           '':{
             templateUrl: 'app/views/account/edit.html',
             controller: 'AccountDetailsController'
+          }
+        },
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      });
+      $stateProvider.state('adminDashboard.createAccount', {
+        url: 'accounts/new',
+        parent: 'adminDashboard',
+        views: {
+          '':{
+            templateUrl: 'app/views/account/new.html',
+            controller: 'AccountCreationController'
+          },
+          'signup@account':{
+            templateUrl: 'app/views/auth/register.html'
+          },
+          'info@account':{
+            templateUrl: 'app/views/account/info.html'
+          },
+          'checkout@account':{
+            templateUrl: 'app/views/shop/stripeCheckout.html',
+            controller : 'AccountCreationController'
           }
         },
         resolve: {

@@ -2,48 +2,59 @@
 </div>
 
 <div class="container-fluid padding-bottom-10">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="font-white font-audiowide">Venues</h1>
-      <button class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
-              ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')"
-              ui-sref="adminDashboard.newVenue">
+  <div class="col-sm-12 table-banner">
+      <div class="col-sm-2">
+        <h1 class="font-white font-audiowide">Venues</h1>
+      </div>
+      <div class="col-sm-5">
+        <span class="status">
+          All
+          <span class="statusbracket" >(</span>
+          <span class="status"> {{venueList.length}}</span>
+          <span class="statusbracket" > )</span>
+        </span>
+
+        <span class="status">
+          Active
+            <span class="statusbracket"> ( </span>
+            <span class="status"> {{(venueList | filter:{active:true}).length || 0}} </span>
+            <span class="statusbracket"> )</span>
+        </span>
+
+        <span class=" status">
+          Disabled
+          <span class="statusbracket"> (</span>
+          <span class="status">  {{(venueList | filter:{active:false}).length || 0}} </span>
+          <span class="statusbracket"> )</span>
+        </span>
+
+        <input type="text" ng-model="venueSearch" placeholder="Search Venues..." >
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+                ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')"
+                ui-sref="adminDashboard.newVenue">
             + New Venue
-      </button>
-    </div>
+        </button>
+      </div>
   </div>
+
+  <div class="row">
+
+  </div>
+
   <div class="row" ng-show="isVenueCreatedSuccessfully">
-      <div clas="col-md-12">
-        <div class="alert alert-success venue-add-success">
-           The venue (venue name) was created successfully. <a href="#">Edit venue</a> or <a href="#">add another</a>.
-        </div>
+    <div clas="col-md-12">
+      <div class="alert alert-success venue-add-success">
+         The venue (venue name) was created successfully. <a href="#">Edit venue</a> or <a href="#">add another</a>.
       </div>
     </div>
+  </div>
 </div>
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
-      <span class="status">
-        All
-        <span class="statusbracket" >(</span>
-        <span class="status"> {{venueList.length}}</span>
-        <span class="statusbracket" > )</span>
-      </span>
-      <span class="status">
-        Active
-          <span class="statusbracket"> ( </span>
-          <span class="status"> {{(venueList | filter:{active:true}).length || 0}} </span>
-          <span class="statusbracket"> )</span>
-      </span>
-      <span class=" status">
-        Disabled
-        <span class="statusbracket"> (</span>
-        <span class="status">  {{(venueList | filter:{active:false}).length || 0}} </span>
-        <span class="statusbracket"> )</span>
-      </span>
-      <input type="text" ng-model="venueSearch" placeholder="Search Venues..." >
-    </div>
+
   </div>
     <div class="row">
       <div class="col-md-12">
