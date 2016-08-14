@@ -1,7 +1,7 @@
 var venueService = angular.module('buzzbands.VenueService', ['ngResource', 'buzzbands.serviceConfig']);
 
 venueService.factory('Venue', ['$resource', 'buzzbands.serviceConfig', function ($resource, config) {
-  return $resource(config.basePath + '/venues/:id.json', {id: '@id'}, {
+  return $resource(config.basePath + '/venues/:id', {id: '@id'}, {
     update: { method: 'PUT'}
   });
 }]);

@@ -2,6 +2,6 @@
 angular.module('buzzbands.serviceConfig', [])
   .value('buzzbands.serviceConfig', {
     devBasePath: 'http://localhost:3000',// Set your base path here
-    productionBasePath: 'https://hypedrive-api.heroku.com',
-    basePath: 'http://localhost:3000',
+    productionBasePath: 'https://hypedrive-api.herokuapp.com',
+    basePath: 'https://hypedrive-api.herokuapp.com'
   });

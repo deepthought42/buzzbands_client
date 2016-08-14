@@ -22,7 +22,6 @@ analytics.controller('AnalyticsController', ['$scope', 'Venue','Promotion', 'Ord
   this._init = function(){
     $scope.$session = session;
     $scope.promotions = $scope.$session.promotions || Promotion.query();
-    $scope.bandsOrdered = Order.getPreviousMonthOrders();
     $scope.activeAccounts = $scope.$session.venues || Venue.query();
     $scope.totalScans = [{values:[{x:1,y:1},{x:2,y:2},{x:3,y:3}], key: 'Scans', //key  - the name of the series.
                     color: '#ff7f0e'}];
