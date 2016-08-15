@@ -33,10 +33,10 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
   // the following shows the default values. values passed to this method
   // will extend the defaults using angular.extend
 
-  //production :: 'https://hypedrive-api.heroku.com/api',
+  //production :: 'https://hypedrive-api.herokuapp.com/api',
   //local dev :: 'http://localhost:3000/api'
   $authProvider.configure({
-     apiUrl:                  'https://hypedrive-api.heroku.com/api',
+     apiUrl:                  'https://hypedrive-api.herokuapp.com/api',
      forceValidateToken:      false,
      validateOnPageLoad:      true,
      proxyUrl:                '/proxy',
