@@ -1,28 +1,13 @@
-    <div class="container-fluid">
-      <div class="row">
+<div class="container-fluid">
+  <div class="row">
 
-        <div class="col-md-12">
-
+    <div class="col-md-12">
+      <div class="col-sm-3">
         <h1 class="font-white font-audiowide">Promotions</h1>
-        <button
-              class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
-              ng-click="createPromotion()"
-              ui-sref="adminDashboard.newPromotion"
-              ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">
-          + New Promo
-        </button>
       </div>
-    </div>
-    <div class="row" ng-show="isPromotionCreatedSuccessfully">
-      <div clas="col-md-12">
-        <div class="alert alert-success promotion-add-success">
-           The promotion (promotion name) was created successfully.
-           <a href="#">Edit promo</a> or <a href="#">add another</a>.
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
+      <div class="col-sm-3">
+        <br/>
+        <br/>
         All
           <span style="color:#de519b;">(</span>
           {{promotionList.length || 0}}
@@ -37,28 +22,61 @@
           <span style="color:#de519b;"> ( </span>
           {{($scope.promotionList | filter:active==1).length || 0}}
           <span style="color:#de519b;"> ) </span>
+      </div>
 
-          <button class="btn btn-primary buzzbands-btn"
-                  ng-click="visibleTab='thumbnail'">
-            Thumbnail
-          </button>
+      <div class="col-sm-1 pull-right">
+      </div>
 
-          <button class="btn btn-primary buzzbands-btn"
-                  ng-click="visibleTab='list'">
-            List
-          </button>
-
-          <select class="form-control"
-                  style="display: inline-block"
-                  ng-options="venue.id as venue.name for venue in venues"
-                  ng-model="promotion.venue_id"
-                  id="venueFilter">
-              <option value="" selected>All Venues</option>
-          </select>
-          <input type="text" ng-model="promotionSearch" placeholder="Search Promotions..." >
+      <div class="col-sm-2 pull-right">
+        <input type="text" class="form-control col-sm-2" ng-model="promotionSearch" placeholder="Search Promotions..." >
       </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-sm-3">
+        <button class="btn btn-primary buzzbands-btn"
+                ng-click="visibleTab='thumbnail'">
+            <i class="fa fa-th"></i>
+          <!--Thumbnail -->
+        </button>
 
+        <button class="btn btn-primary buzzbands-btn"
+                ng-click="visibleTab='list'">
+          <i class="fa fa-th-list"></i>
+          List
+        </button>
+      </div>
+      <div class="col-sm-3">
+        <select class="form-control"
+                style="display: inline-block"
+                ng-options="venue.id as venue.name for venue in venues | orderBy: 'name'"
+                ng-model="promotion.venue_id"
+                id="venueFilter">
+            <option value="" selected>All Venues</option>
+        </select>
+      </div>
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-3">
+        <button
+              class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+              ng-click="createPromotion()"
+              ui-sref="adminDashboard.newPromotion"
+              ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">
+          <i class="fa fa-plus"></i> New Promotion
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" ng-show="isPromotionCreatedSuccessfully">
+    <div clas="col-md-12">
+      <div class="alert alert-success promotion-add-success">
+         The promotion "{{createdPromotionName}}" was created successfully.
+      </div>
+    </div>
+  </div>
   <div ng-switch="visibleTab">
     <div ng-switch-when="list">
       <table class="table-responsive table table-striped" >

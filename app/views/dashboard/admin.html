@@ -11,7 +11,7 @@
                 class="btn btn-primary dropdown-toggle buzzbands-btn"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                 ng-click="editMyAccount()">
-            <img style="width:50px;" ng-src="{{user.image || 'app/img/img_missing.jpg'}}" />
+            <img style="width:50px;" ng-src="{{user.image || 'app/img/missing_user.png'}}" />
         </button>
 
       </div>
@@ -21,8 +21,11 @@
   <div id="adminDashboardcontainer" class="row">
 
     <div class="col-md-2 col-xs-12" ng-controller="DashboardController" id="dashboard-controller" data-spy="affix">
-      <h1 class="font-audiowide font-white pull-right" id="logo">hypedrive</h1>
-
+      <br />
+      <div class="col-sm-12">
+        <img src="/images/hypedrive_logo.svg"/>
+      </div>
+      <br />
       <div class="col-sm-12 col-xs-12">
         <button ui-sref="adminDashboard.analytics"
                 ng-class='{"navButtonActive":session.activeViewId==1,"navButton":session.activeViewId!=1}'

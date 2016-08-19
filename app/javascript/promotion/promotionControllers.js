@@ -34,7 +34,17 @@ promo.controller('PromotionIndexController', ['$scope', 'Promotion', '$state',
       $scope.venues = $scope.$session.venues || Venue.query();
       $scope.promotionLoaded = true;
       $scope.visibleTab = "thumbnail";
-      $scope.isPromotionCreatedSuccessfully = false;
+
+      if($stateParams.createdPromotion){
+        $scope.createdPromotionName = $stateParams.promotionName;
+        $scope.isPromotionCreatedSuccessfully = true;
+        $timeout(function() {
+            $scope.isPromotionCreatedSuccessfully = false;
+        }, 3000);
+      }
+      else{
+        $scope.isPromotionCreatedSuccessfully = false;
+      }
 
       $scope.time = '';
 
@@ -106,14 +116,6 @@ promo.controller('PromotionIndexController', ['$scope', 'Promotion', '$state',
       return $scope.$session.user !== undefined && $scope.$session.user.role == role;
     };
 
-    $scope.$on('promotion-created', function(event, args){
-      $scope.isPromotionCreatedSuccessfully = true;
-      $timeout(function() {
-          $scope.isPromotionCreatedSuccessfully = false;
-          console.log('update with timeout fired')
-      }, 5000);
-    });
-
     this.init();
   }
 ]);
@@ -148,20 +150,22 @@ promo.controller('PromotionCreationController', ['$rootScope', '$scope', 'Promot
       promotion.end_time.setMinutes($scope.end_time.getMinutes());
 
       if(promotion.start_time > promotion.end_time){
-        //promotion.start_time = promotion.end_time;
-        alert("start time is after end time");
+        console.log("start time is after end time");
+
         //display error
         isValid = false;
         return;
       }
 
       if(isValid){
+        $scope.savedPromotion = promotion;
         Promotion.save(promotion,
           function(){
-            state.go("adminDashboard.promotions");
+            state.go("adminDashboard.promotions", {createdPromotion: true, promotionName: $scope.savedPromotion.name});
           },
           function(){
-            alert("error creating promotion");
+            $scope.errors = ["error creating promotion"];
+            console.log("error creating promotion");
           }
         );
       }
@@ -200,8 +204,6 @@ promo.controller('PromotionCreationController', ['$rootScope', '$scope', 'Promot
     $scope.hasPermission = function(role){
       return $sessionStorage.user !== undefined && $sessionStorage.user.role === role;
     };
-
-    $rootScope.$broadcast('promotion-created');
 
     this.init();
   }

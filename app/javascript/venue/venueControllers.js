@@ -8,15 +8,22 @@ venue.config(['$stateProvider', function($stateProvider) {
 }]);
 
 venue.controller('VenueIndexController',
-  ['$scope', 'Venue', '$state', '$sessionStorage', '$rootScope',
-    function($scope, Venue, state, $sessionStorage, $rootScope) {
+  ['$scope', 'Venue', '$state', '$sessionStorage', '$rootScope', '$timeout', '$stateParams',
+    function($scope, Venue, state, $sessionStorage, $rootScope, $timeout, $stateParams) {
 
       this._init = function(){
         $scope.venueLoaded = false;
         $scope.session = $sessionStorage;
         $scope.venue = {};
         $scope.venueList = $scope.queryVenues();
-        $scope.isVenueCreatedSuccessfully = false;
+
+        if($stateParams.createdVenue){
+          $scope.showSuccessMsg();
+          $timeout(function () { $scope.hideSuccessMsg(); }, 3000);
+        }
+        else{
+          $scope.hideSuccessMsg();
+        }
       };
 
       $scope.hasPermission = function(role){
@@ -96,11 +103,14 @@ venue.controller('VenueIndexController',
         }
       };
 
-      //LISTENERS
+      $scope.showSuccessMsg = function(){
+        $scope.isVenueCreatedSuccessfully = true;
+      }
 
-        $scope.$on('venue-created', function(event, args){
-          $scope.isVenueCreatedSuccessfully = true;
-        });
+      $scope.hideSuccessMsg = function(){
+        $scope.isVenueCreatedSuccessfully = false;
+      }
+
       this._init();
     }
   ]
@@ -124,7 +134,7 @@ venue.controller('VenueCreationController',
         if(venueValid){
           Venue.save($scope.venue).$promise
             .then(function(data){
-              state.go("adminDashboard.venues");
+              state.go("adminDashboard.venues", {createdVenue: true});
             })
             .catch(function(data){
               //console.log("there was an error creating venue");
@@ -144,8 +154,6 @@ venue.controller('VenueCreationController',
           $scope.$apply();
         }
       };
-
-      $rootScope.$broadcast('venue-created');
 
       this._init();
     }

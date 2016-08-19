@@ -4,37 +4,45 @@
         ng-init="user = {}"
         ng-submit="signIn(userLogin.$valid)"
         name="userLogin" novalidate>
-        <div class="form-group">
-        <input type="email"
-               name="email"
-               id="userFormEmailField"
-               ng-model="user.email"
-               required="required"
-               class="form-control"
-               placeholder="Email" />
-        <div ng-messages="userLogin.email.$error" ng-if="userLogin.$submitted">
-          <p class="text-danger" ng-message="required">Email is required.</p>
-          <p class="text-danger" ng-message="email">Invalid email address.</p>
-        </div>
-      </div>
-       <div class="form-group">
-        <input placeholder= "Password"
-                type="password"
-                name="password"
-                id="password"
-                ng-model="user.password"
-                class="form-control"
-                required />
-        <div ng-messages="userLogin.password.$error" ng-if="userLogin.$submitted">
-          <p class="text-danger" ng-message="required">Password is required.</p>
-        </div>
-      </div>
+    <div class="form-group">
+      <input type="email"
+             name="email"
+             id="userFormEmailField"
+             ng-model="user.email"
+             required="required"
+             class="form-control"
+             placeholder="Email" />
 
-      <div class="form-group" ng-show="showLoginFailureError">
-          <p class="text-danger">
-            Username or password does not match our records
+    </div>
+    <div class="form-group">
+      <input placeholder= "Password"
+              type="password"
+              name="password"
+              id="password"
+              ng-model="user.password"
+              class="form-control"
+              required />
+
+    </div>
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-6">
+      <div ng-messages="userLogin.email.$error" ng-if="userLogin.$submitted"
+           class="errorMsg">
+        <p ng-message="required">Email is required.</p>
+        <p ng-message="email">Invalid email address.</p>
+      </div>
+      <div ng-messages="userLogin.password.$error" ng-if="userLogin.$submitted"
+           class="errorMsg">
+        <p ng-message="required" >Password is required.</p>
+      </div>
+      <div class="form-group" ng-show="showLoginFailureError"
+           class="errorMsg">
+          <p ng-repeat="error in loginErrors">
+            {{error}}
           </p>
       </div>
-      <button type="submit" class="btn-login btn btn-default">Sign in</button>
+    </div>
+    <button type="submit" class="btn-login btn btn-default">Sign in</button>
   </form>
 </div>

@@ -96,6 +96,7 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
 		};
   });
 }])
+
 .run(function($rootScope, $state){
   $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
     if(error.status == 401){

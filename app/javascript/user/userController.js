@@ -244,8 +244,10 @@ user.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessio
     * @param loginForm {User}
     */
     $scope.signIn = function(isValid){
-			//Authenticate with user credentials
-			$auth.submitLogin($scope.user);
+      if(isValid){
+			   //Authenticate with user credentials
+	      $auth.submitLogin($scope.user);
+      }
 
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.session.user = currentUser;
@@ -259,10 +261,9 @@ user.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessio
         }
 			});
 
-			$scope.$on('auth:login-error', function(event, currentUser) {
-        if(Object.keys($scope.user).length != 0 && $scope.user.email != "" && $scope.user.password != ""){
-          $scope.showLoginFailureError = true;
-        }
+			$scope.$on('auth:login-error', function(event, resp) {
+        $scope.showLoginFailureError = true;
+        $scope.loginErrors = resp.errors;
 			});
 		};
 	}

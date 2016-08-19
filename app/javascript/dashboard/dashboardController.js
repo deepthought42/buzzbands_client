@@ -26,7 +26,8 @@ dashboard.config(['$stateProvider',
       url: 'venues',
       parent: 'adminDashboard',
       templateUrl: 'app/views/venue/index.html',
-      controller: 'VenueIndexController'
+      controller: 'VenueIndexController',
+      params: { createdVenue: null, }
     });
     $stateProvider.state('adminDashboard.newVenue', {
       url: '/venues/new',
@@ -67,6 +68,10 @@ dashboard.config(['$stateProvider',
           templateUrl: 'app/views/promotion/index.html',
           controller: 'PromotionIndexController'
         }
+      },
+      params: {
+        createdPromotion: null,
+        promotionName: null
       }
     });
     $stateProvider.state('adminDashboard.venuePromotions', {

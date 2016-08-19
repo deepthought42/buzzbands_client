@@ -14,7 +14,7 @@
              required="required"
              class="form-control"
              placeholder="Email" />
-      <div ng-messages="userRegistration.email.$error" ng-if="userRegistration.$submitted">
+      <div ng-messages="userRegistration.email.$error" ng-if="userRegistration.$submitted" class="errorMsg">
         <p ng-message="required">Email is required.</p>
         <p ng-message="email">Invalid email address.</p>
       </div>
@@ -28,7 +28,9 @@
               class="form-control"
               required
               minlength="8" />
-      <div ng-messages="userRegistration.password.$error" ng-if="userRegistration.$submitted">
+      <div ng-messages="userRegistration.password.$error"
+           ng-if="userRegistration.$submitted"
+           class="errorMsg">
         <p ng-message="minlength">
             Password must be at least 8 characters.
         </p>
@@ -42,7 +44,9 @@
               ng-model="registrationForm.confirmation_password"
               class="form-control"
               required />
-      <div ng-messages="userRegistration.confirmation_password.$error" ng-if="userRegistration.$submitted">
+      <div ng-messages="userRegistration.confirmation_password.$error"
+           ng-if="userRegistration.$submitted"
+           class="errorMsg">
         <p ng-message="required" >
               Confirmation password is required.
         </p>
