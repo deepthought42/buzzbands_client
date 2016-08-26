@@ -1,72 +1,74 @@
 <div class="container-fluid">
-  <div class="row">
-
+  <div class="row headerRow">
     <div class="col-md-12">
-      <div class="col-sm-3">
-        <h1 class="font-white font-audiowide">Promotions</h1>
+      <div class="col-sm-3 headerElement">
+        <h1 class="font-audiowide headerText">Promotions</h1>
       </div>
-      <div class="col-sm-3">
-        <br/>
-        <br/>
-        All
-          <span style="color:#de519b;">(</span>
-          {{promotionList.length || 0}}
-          <span style="color:#de519b;">)</span>
-
-        Active
-          <span style="color:#de519b;"> ( </span>
-          {{($scope.promotionList | filter:active==0).length || 0}}
-          <span style="color:#de519b;"> ) </span>
-
-        Disabled
-          <span style="color:#de519b;"> ( </span>
-          {{($scope.promotionList | filter:active==1).length || 0}}
-          <span style="color:#de519b;"> ) </span>
+      <div class="col-sm-5 font-audiowide headerElement">
+        <h5 class="headerText statsBar">
+          <span class="status">
+            Stats: All
+            <span style="color:#de519b;">(</span>
+            {{promotionList.length || 0}}
+            <span style="color:#de519b;">)</span>
+          </span>
+          <span class="status">
+            Active
+            <span style="color:#de519b;"> ( </span>
+            {{($scope.promotionList | filter:active==0).length || 0}}
+            <span style="color:#de519b;"> ) </span>
+          </span>
+          <span class="status">
+            Disabled
+            <span style="color:#de519b;"> ( </span>
+            {{($scope.promotionList | filter:active==1).length || 0}}
+            <span style="color:#de519b;"> ) </span>
+          </span>
+          </h5>
       </div>
-
-      <div class="col-sm-1 pull-right">
-      </div>
-
+      <div class="col-sm-1 pull-right"></div>
       <div class="col-sm-2 pull-right">
-        <input type="text" class="form-control col-sm-2" ng-model="promotionSearch" placeholder="Search Promotions..." >
+        <input type="text"
+               class="form-control col-sm-12 statsBar"
+               ng-model="promotionSearch"
+               placeholder="Search Promotions..." />
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="col-sm-3">
-        <button class="btn btn-primary buzzbands-btn"
-                ng-click="visibleTab='thumbnail'">
-            <i class="fa fa-th"></i>
-          <!--Thumbnail -->
-        </button>
+  <div class="row headerRow">
+    <div class="col-sm-2">
+      <button class="btn btn-primary buzzbands-btn"
+              ng-click="visibleTab='thumbnail'">
+          <i class="fa fa-th"></i>
+        <!--Thumbnail -->
+      </button>
 
-        <button class="btn btn-primary buzzbands-btn"
-                ng-click="visibleTab='list'">
-          <i class="fa fa-th-list"></i>
-          List
-        </button>
-      </div>
-      <div class="col-sm-3">
-        <select class="form-control"
-                style="display: inline-block"
-                ng-options="venue.id as venue.name for venue in venues | orderBy: 'name'"
-                ng-model="promotion.venue_id"
-                id="venueFilter">
-            <option value="" selected>All Venues</option>
-        </select>
-      </div>
-      <div class="col-sm-1">
-      </div>
-      <div class="col-sm-3">
-        <button
-              class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
-              ng-click="createPromotion()"
-              ui-sref="adminDashboard.newPromotion"
-              ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">
-          <i class="fa fa-plus"></i> New Promotion
-        </button>
-      </div>
+      <button class="btn btn-primary buzzbands-btn"
+              ng-click="visibleTab='list'">
+        <i class="fa fa-th-list"></i>
+        List
+      </button>
+    </div>
+    <div class="col-sm-3">
+      <select class="form-control"
+              style="display: inline-block"
+              ng-options="venue.id as venue.name for venue in venues | orderBy: 'name'"
+              ng-model="promotion.venue_id"
+              id="venueFilter">
+          <option value="" selected>All Venues</option>
+      </select>
+    </div>
+    <div class="col-sm-1">
+      <!-- this is a spacer. Do not delete -->
+    </div>
+    <div class="col-sm-3">
+      <button
+            class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+            ng-click="createPromotion()"
+            ui-sref="adminDashboard.newPromotion"
+            ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">
+        <i class="fa fa-plus"></i> New Promotion
+      </button>
     </div>
   </div>
 
@@ -126,15 +128,15 @@
     <ul masonry id="thumbnail" class="grid" ng-switch-when="thumbnail">
       <li class="masonry-brick" ng-repeat="promo in promotionList | orderBy:active:true | filter:{venue_id : promotion.venue_id} | filter:promotionSearch">
 
-  					<figure class="promo-wrapper">
-              <img id="promotion"
-                   class="promotion img-responsive"
-                   src="{{promo.ad_location ? promo.ad_location : 'images/venue_img_missing.jpg'}}" />
-               <figcaption>
-  							<h3 class="font-audiowide">{{promo.name}}</h3>
-  							<button class="edit btn btn-primary buzzbands-btn"  ng-click="editPromotion(promo.id)" >Edit</button>
-  						</figcaption>
-            </figure>
+					<figure class="promo-wrapper">
+            <img id="promotion"
+                 class="promotion img-responsive"
+                 src="{{promo.ad_location ? promo.ad_location : 'images/venue_img_missing.jpg'}}" />
+             <figcaption>
+							<h3 class="font-audiowide">{{promo.name}}</h3>
+							<button class="edit btn btn-primary buzzbands-btn"  ng-click="editPromotion(promo.id)" >Edit</button>
+						</figcaption>
+          </figure>
 
       </li>
     </ul>

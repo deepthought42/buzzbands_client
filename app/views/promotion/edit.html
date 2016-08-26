@@ -1,6 +1,30 @@
 
 <div id="promotionUpdatePanel" class="container-fluid">
 	<div class="row">
+		<div class="row" ng-show="showError">
+			<div class="col-md-12 text-danger">
+	      <div class="alert alert-danger"
+						 ng-repeat="error in errors">
+					 {{error}}.
+				</div>
+	    </div>
+		</div>
+		<div class="col-md-4">
+			<img class="col-sm-12"
+					 ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}"/>
+
+			<div class="col-sm-12 form-group text-center">
+				<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+										pickerclass="btn btn-primary buzzbands-btn"
+										multiple="false"
+										mimetypes="'image/*'"
+										callback="previewImage(file)"
+										style="margin: auto">
+								 <i class="fa fa-camera"></i>
+									 Add Photo
+				 </div>
+			</div>
+		</div>
 		<div class="col-md-6">
 			<h1 class="font-white font-audiowide text-center">Edit Promotion</h1>
 			<form name="promotionForm"
@@ -20,6 +44,25 @@
 									minlength="3"
 									maxlength="250"/>
 
+					<input  class="form-control"
+								type="text"
+								name="name"
+								ng-model="promotion.description"
+								id="newPromotionDescription"
+								placeholder="Description"
+								required
+								minlength="3"
+								maxlength="250"/>
+
+					<input  class="form-control"
+								type="text"
+								name="name"
+								ng-model="promotion.notes"
+								id="newPromotionNotes"
+								placeholder="Notes"
+								required
+								minlength="3"/>
+
 					<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
 						<p ng-message="required">Name is required.</p>
 						<p ng-message="minlength">Name must be at least 3 charctears</p>
@@ -30,7 +73,7 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-6 text-right">
-							<md-datepicker ng-model="promotion.start_time" md-placeholder="Enter date"></md-datepicker>
+							<md-datepicker ng-model="promotion.start_time" md-placeholder="mm/dd/yyyy"></md-datepicker>
 						</div>
 						<div class="col-md-6">
 							<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="start_time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">
@@ -38,11 +81,12 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-6 text-right">
 							<md-datepicker ng-model="promotion.end_time"
-														 md-placeholder="Enter date">
+														 md-placeholder="mm/dd/yyyy">
 							</md-datepicker>
 						</div>
 						<div class="col-md-6">
@@ -56,20 +100,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group text-center">
-					<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-									pickerclass="btn btn-primary buzzbands-btn"
-									multiple="false"
-									mimetypes="'image/*'"
-									callback="previewImage(file)">
-								<i  style="margin-right:10px;"class="fa fa-camera"></i>
-								Add Photo
-					</div>
-				</div>
+
 
 				<div class="form-group">
+					<label class="font-white font-audiowide">
+						Select the Venue
+					</label>
 					<select class="form-control"
-									ng-options="venue.id as venue.name for venue in venues"
+									ng-options="venue.id as venue.name for venue in venues | orderBy : 'name'"
 									ng-selected="venue.id == promotion.venue_id"
 									ng-model="promotion.venue_id">
 					</select>
@@ -81,19 +119,19 @@
 					<input type="checkbox" ng-model="promotion.active"/>
 				</div>
 				<div class="form-group text-center">
+						<button class="btn buzzbands-btn btn-danger pull-right"
+					          ui-sref="adminDashboard.promotions">
+			        Cancel
+					  </button>
 						<button style="background-color:#de519b;"
-										class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+										class="btn btn-primary buzzbands-btn buzzbands-pink-btn pull-right"
 										type="submit"
 										ng-click="updatePromotion(promotion)"
 										ng-disabled="promotionForm.$invalid">
-							Update
+								Update
 						</button>
 				</div>
 			</form>
-		</div>
-		<div class="col-md-6">
-			<img style="max-width:50%;"
-					 ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}"/>
 		</div>
 	</div>
 </div>

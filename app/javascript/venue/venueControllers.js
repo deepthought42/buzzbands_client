@@ -124,10 +124,11 @@ venue.controller('VenueCreationController',
         $auth.validateUser();
         $scope.categories = ["Bar","Night Club"];
         $scope.venue = {};
+        $scope.errors = [];
       };
 
       $scope.hasPermission = function(role){
-        return $scope.session.user.role == role;
+        return $scope.session.user !== undefined && $scope.session.user.role == role;
       };
 
       $scope.createVenue = function(venueValid){
@@ -137,8 +138,11 @@ venue.controller('VenueCreationController',
               state.go("adminDashboard.venues", {createdVenue: true});
             })
             .catch(function(data){
-              //console.log("there was an error creating venue");
+              $scope.errors.push("There was an error creating venue");
+              $scope.showError = true;
+            console.log("there was an error creating venue : "+Object.keys(data)+ " :: " +data.status+"  :: "+data.headers);
             });
+
         }
       };
 
@@ -155,6 +159,14 @@ venue.controller('VenueCreationController',
         }
       };
 
+      $scope.showErrorMsg = function(){
+        $scope.showError = true;
+      }
+
+      $scope.hideErrorMsg = function(){
+        $scope.showError = false;
+      }
+
       this._init();
     }
   ]
@@ -166,6 +178,7 @@ venue.controller('VenueDetailsController',
     {
       $auth.validateUser();
       $scope.categories = ["Bar","Night Club","Brewery"];
+      $scope.errors = [];
 
       $scope.loadVenue = function(){
         Venue.get({id: stateParams.venue_id}).$promise
@@ -173,7 +186,8 @@ venue.controller('VenueDetailsController',
             $scope.venue = data;
           })
           .catch(function(data){
-            //console.log("ERR  :: "+ data)
+            $scope.errors.push("An error occurred while updating venue");
+            $scope.showError = true;
           });
       };
 
@@ -181,6 +195,9 @@ venue.controller('VenueDetailsController',
         if(venueValid){
           Venue.update($scope.venue).$promise.then(function(data){
             state.go("adminDashboard.venues");
+          })
+          .catch(function(data){
+            $scope.errors.push(data.errors);
           });
         }
       };
@@ -197,11 +214,12 @@ venue.controller('VenueDetailsController',
 venue.controller('VenuePromotionsIndexController',
   ['$scope', 'VenuePromotion', '$stateParams','$sessionStorage',
     function($scope, VenuePromotion, stateParams, $sessionStorage) {
-      VenuePromotion.query({venue_id: stateParams.venue_id}).$promise
+      VenuePromotion.getNearMe({venue_id: stateParams.venue_id}).$promise
         .then(function(data){
           $scope.promotionList = data;
         })
         .catch(function(data){
+          $scope.errors.push(data.errors);
           //console.log("error querying venues")
         });
     }

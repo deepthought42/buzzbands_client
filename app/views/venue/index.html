@@ -1,14 +1,15 @@
 <div ng-show="hasPermission('account_user') || hasPermission('admin')" class="col-sm-12">
 </div>
 
-<div class="container-fluid padding-bottom-10">
-  <div class="col-sm-12 table-banner">
-      <div class="col-sm-2">
-        <h1 class="font-white font-audiowide">Venues</h1>
-      </div>
-      <div class="col-sm-3">
+<div class="container-fluid">
+  <div class="row headerRow">
+    <div class="col-sm-2 headerElement">
+      <h1 class="font-audiowide headerText">Venues</h1>
+    </div>
+    <div class="col-sm-6 headerElement" >
+      <h5 class="font-audiowide statsBar">
         <span class="status">
-          All
+          Stats:  All
           <span class="statusbracket" >(</span>
           <span class="status"> {{venueList.length}}</span>
           <span class="statusbracket" > )</span>
@@ -27,50 +28,59 @@
           <span class="status">  {{(venueList | filter:{active:false}).length || 0}} </span>
           <span class="statusbracket"> )</span>
         </span>
-      </div>
-      <div class="col-sm-1">
-        <button class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
-                ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')"
-                ui-sref="adminDashboard.newVenue">
-            <i class="fa fa-plus"></i> New Venue
-        </button>
-      </div>
-      <div class="col-sm-1 pull-right">
-      </div>
-      <div class="col-sm-2 pull-right">
-        <input type="text" class="form-control" ng-model="venueSearch" placeholder="Search Venues..." >
-      </div>
+      </h5>
+    </div>
+    <div class="col-sm-1 pull-right">
+    </div>
+    <div class="col-sm-2 headerElement pull-right">
+      <input type="text"
+             class="form-control statsBar"
+             ng-model="venueSearch"
+             placeholder="Search Venues..." >
     </div>
   </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="row" ng-show="isVenueCreatedSuccessfully">
-      <div clas="col-md-12">
-        <div class="alert alert-success venue-add-success">
-           The venue was created successfully.
+</div>
+<div class="container-fluid"
+     ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">
+  <div class="row headerRow">
+    <div class="col-sm-1">
+      <button class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+              ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')"
+              ui-sref="adminDashboard.newVenue">
+          <i class="fa fa-plus"></i>
+          New Venue
+      </button>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="row" ng-show="isVenueCreatedSuccessfully">
+        <div clas="col-md-12">
+          <div class="alert alert-success venue-add-success">
+             The venue was created successfully.
+          </div>
         </div>
       </div>
     </div>
-  </div>
     <div class="row">
       <div class="col-md-12">
         <div style="height:100%;" id="style-2" class="table-responsive">
           <table style="width:100%;" class="table table-striped">
             <thead style="color:White;">
               <tr>
-                <td ng-show="hasPermission('hypedrive_employee')">Selected</td>
-                <td>Venue Photo</td>
-                <td>Venue Name</td>
-                <td>Active?</td>
+                <td>Photo</td>
+                <td>Name</td>
+                <td>Address</td>
+                <td ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">Active?</td>
                 <td ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')"></td>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="venue in venueList|orderBy:'active':true| filter:venueSearch" >
-                <td ng-show="hasPermission('hypedrive_employee')">
-                  <input type="checkbox" ng-click="venue.selected=!venue.selected" />
-                </td>
                 <td ng-click="showPromotionsList(venue.id)">
                     <img ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
                 </td>
@@ -79,11 +89,16 @@
                   <b tooltip-placement="bottom" tooltip="{{venue.address}}  {{venue.city}}, {{venue.state}} {{venue.zip_code}}">{{venue.name}}</b>
                 </td>
                 <td>
+                  {{venue.address}}
+                </td>
+                <td ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">
                   <i ng-show="venue.active" class="fa fa-check" />
                   <i ng-show="!venue.active" class="fa fa-times" style="color: red" />
                 </td>
                 <td ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">
-                  <button class="buzzbands-btn btn btn-primary" ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')" ng-click="editVenue(venue.id)">Edit</button>
+                  <button class="buzzbands-btn btn btn-primary"
+                          ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')"
+                          ng-click="editVenue(venue.id)">Edit</button>
                 </td>
               </tr>
             </tbody>

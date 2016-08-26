@@ -1,13 +1,36 @@
 
 <div id="promotionCreatePanel" class="container-fluid">
 	<div class="row">
+		<div class="row" ng-show="showError">
+			<div class="col-md-12 text-danger">
+	      <div class="alert alert-danger"
+						 ng-repeat="error in errors">
+					 {{error}}.
+				</div>
+	    </div>
+		</div>
+		<div class="col-sm-5">
+			<img class="col-sm-12 col-xs-12"
+					 ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
+
+			<div class="col-sm-12 form-group text-center">
+				<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
+											pickerclass="btn btn-primary buzzbands-btn"
+											multiple="false"
+											mimetypes="'image/*'"
+											callback="previewImage(file)"
+											style="margin: auto">
+									 <i class="fa fa-camera"></i>
+										 Add Photo
+				</div>
+			</div>
+		</div>
 		<div class="col-md-6">
 		<h1 class="text-center font-white font-audiowide">Add New Promotion</h1>
-			
+
 		<form name="promotionForm" enctype="multipart/form-data" id="promotion-form" novalidate>
 
 		    <div class="form-group">
-
 		    	<input  class="form-control"
 								type="text"
 								name="name"
@@ -17,29 +40,45 @@
 								required
 								minlength="3"
 								maxlength="250"/>
-				<div ng-messages="promotionForm.name.$error"
-						 ng-if="promotionForm.$valid"
-						 class="text-danger">
-					<p ng-message="required">Name is required.</p>
-					<p ng-message="minlength">Name must be at least 3 characters</p>
-					<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
-				</div>
 
+					<input  class="form-control"
+								type="text"
+								name="name"
+								ng-model="promotion.description"
+								id="newPromotionDescription"
+								placeholder="Description"
+								required
+								minlength="3"
+								maxlength="250"/>
+
+					<input  class="form-control"
+								type="text"
+								name="name"
+								ng-model="promotion.notes"
+								id="newPromotionNotes"
+								placeholder="Notes"
+								required
+								minlength="3"
+								maxlength="250"/>
+
+				  <div ng-messages="promotionForm.name.$error"
+						 	 ng-if="promotionForm.$valid"
+						 	 class="text-danger">
+						<p ng-message="required">Name is required.</p>
+						<p ng-message="minlength">Name must be at least 3 characters</p>
+						<p ng-repeat="validation in serverValidations['errors']">{{validation[0]}}</p>
+					</div>
 		    </div>
+
 		    <div class="form-group text-right">
-
 			    <div class="row datepicker-row">
-
 			    	<div class="col-md-6">
-			    		
 			    		<md-datepicker ng-model="promotion.start_time"
-														 md-placeholder="Enter date">
+														 md-placeholder="mm/dd/yyyy">
 							</md-datepicker>
-
-
 			    	</div>
+
 			    	<div class="col-md-6">
-			    		
 			    		<uib-timepicker style="width:232px;background-color:#242831;"
 															ng-model="start_time"
 															ng-change="changed()"
@@ -47,26 +86,18 @@
 															minute-step="mstep"
 															show-meridian="ismeridian">
 							</uib-timepicker>
-
 			    	</div>
-
 			    </div>
-
-
 		    </div>
-		    <div class="form-group text-right">
 
+		    <div class="form-group text-right">
 		    	<div class="row">
-		    		
 			    	<div class="col-md-6">
 			    			<md-datepicker ng-model="promotion.end_time"
-															md-placeholder="Enter date">
+															md-placeholder="mm/dd/yyyy">
 								</md-datepicker>
-
-
 			    	</div>
 			    	<div class="col-md-6">
-			    		
 			    		<uib-timepicker  style="width:232px;background-color:#242831;"
 																ng-model="end_time"
 																ng-change="changed()"
@@ -74,64 +105,42 @@
 																minute-step="mstep"
 																show-meridian="ismeridian">
 								</uib-timepicker>
-
 			    	</div>
-
 		    	</div>
-
 		    </div>
-		    <div class="form-group text-center">
-		    	
-		    	<div filepicker api-key="AapVeFhkrSlOTwi51kt8Cz"
-												pickerclass="btn btn-primary buzzbands-btn"
-												multiple="false"
-												mimetypes="'image/*'"
-												callback="previewImage(file)"
-												style="margin: auto">
-										 <i class="fa fa-camera"></i>
-											 Add Photo
-									</div>
 
-
-
-		    </div>
 		    <div class="form-group text-center">
 		    	<label class="font-white font-audiowide">
-		    	Select the Venue
+		    		Select the Venue
 		    	</label>
-		    	
-					<select ng-options="venue.id as venue.name for venue in venues"
+
+					<select ng-options="venue.id as venue.name for venue in venues | orderBy : 'name'"
 									ng-model="promotion.venue_id"
 									class="form-control"
 									required>
-
 					</select>
-					<div ng-messages="promotionForm.venue.$error" ng-if="promotionForm.$invalid" class="text-danger">
+
+					<div ng-messages="promotionForm.venue.$error"
+							 ng-if="promotionForm.$invalid"
+							 class="text-danger">
 						<p ng-message="required">Venue is required.</p>
 					</div>
-
-
-
 		    </div>
-		    <div class="form-group text-center">
 
+		    <div class="form-group text-center">
 					<button class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
 									ng-click="createPromotion(promotion, promotionForm.$valid)"
 									ng-disabled="promotionForm.$invalid">
-						Create New Promotion
+						Create Promotion
 					</button>
 
+					<button class="btn buzzbands-btn btn-danger"
+				          ui-sref="adminDashboard.promotions">
+		        Cancel
+				  </button>
 		    </div>
 
 			</form>
-
-
-		</div>
-		<div class="col-md-6">
-			
-			<img class="col-sm-6 col-xs-6"
-			ng-src="{{promotion.ad_location ? promotion.ad_location : 'images/venue_img_missing.jpg'}}" />
-
 		</div>
 	</div>
 </div>

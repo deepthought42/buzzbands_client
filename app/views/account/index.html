@@ -1,10 +1,18 @@
-<h1 class="font-white font-audiowide">Accounts</h1>
-  <button ui-sref="adminDashboard.createAccount"
-           class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
-           ng-click="addAccount()"
-           ng-show="hasPermission('hypedrive_employee')">
-     + New Account
- </button>
+<div class="container-fluid headerRow">
+  <div class="row mainHeaderBar">
+    <div class="col-sm-3">
+      <h1 class="font-audiowide">Accounts</h1>
+    </div>
+    <div class="col-sm-2">
+      <button ui-sref="adminDashboard.createAccount"
+               class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
+               ng-click="addAccount()"
+               ng-show="hasPermission('hypedrive_employee')">
+         + New Account
+     </button>
+   </div>
+  </div>
+</div>
 <table class="table table-striped table-hover">
     <thead>
       <tr>

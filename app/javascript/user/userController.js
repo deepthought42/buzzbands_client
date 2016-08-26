@@ -3,17 +3,7 @@
 var user = angular.module('buzzbands.UserControllers',
   ['ui.router','hypedrive.UserServices', 'buzzbands.VenueService'])
 user.config(['$stateProvider', function($stateProvider) {
-  $stateProvider
-    .state('register', {
-      url: '/register',
-      templateUrl: 'app/views/auth/register.html',
-      controller: 'UserAuthController'
-    })
-    .state('login', {
-      url: '/login',
-      templateUrl: 'app/views/auth/login.html',
-      controller: 'UserAuthController'
-    });
+
 }]);
 user.controller('UserIndexController', ['$scope', '$rootScope', '$auth',
                                    '$sessionStorage', '$state', 'User',
@@ -228,15 +218,24 @@ user.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessio
     $scope.logout = function(user){
 			$auth.signOut();
 			$scope.$on('auth:logout-success', function(event, oldCurrentUser) {
-				$('#editProfileForm').hide();
-				delete $scope.session.user;
+        console.log("logout successful");
+				//$('#editProfileForm').hide();
+        delete $scope.session.user;
+        $state.go('login')
+
+
 			});
 
 			$scope.$on('auth:logout-error', function(event, reason){
+        console.log("logout error");
 				delete $scope.session.user;
-				//console.log("There was an error signing you out. REASON :: "+reason);
+        $state.go('login')
 			})
 		};
+
+    $scope.$on('$auth.validation-error', function(event, reason){
+      $state.go('login')
+    })
 
 
     $scope.showLoginFailureError = false;
@@ -266,5 +265,9 @@ user.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessio
         $scope.loginErrors = resp.errors;
 			});
 		};
+
+    $scope.$on('auth:unauthorized', function(event, resp) {
+      $state.go("login");
+    });
 	}
 ]);

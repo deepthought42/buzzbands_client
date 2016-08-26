@@ -24,9 +24,9 @@ promo.config(['$stateProvider', function($stateProvider) {
 
 promo.controller('PromotionIndexController', ['$scope', 'Promotion', '$state',
                                          '$stateParams', 'VenuePromotion',
-                                         'Venue', '$sessionStorage', '$log',
+                                         'Venue', '$sessionStorage', '$log', '$timeout',
   function($scope, Promotion, state, $stateParams,
-            VenuePromotion, Venue, $sessionStorage, $log) {
+            VenuePromotion, Venue, $sessionStorage, $log, $timeout) {
     this.init = function(){
       $scope.$session = $sessionStorage;
       $scope.promoPanel='index';
@@ -123,7 +123,9 @@ promo.controller('PromotionIndexController', ['$scope', 'Promotion', '$state',
 promo.controller('PromotionCreationController', ['$rootScope', '$scope', 'Promotion', 'Venue', '$state',
                                             '$sessionStorage', '$log',
   function($scope, $rootScope, Promotion, Venue, state, $sessionStorage, $log) {
+
     this.init = function(){
+      $scope.errors = [];
       $scope.promotion = {};
       $scope.venues = Venue.query();
       $scope.start_time = new Date();
@@ -150,8 +152,8 @@ promo.controller('PromotionCreationController', ['$rootScope', '$scope', 'Promot
       promotion.end_time.setMinutes($scope.end_time.getMinutes());
 
       if(promotion.start_time > promotion.end_time){
-        console.log("start time is after end time");
-
+        scope.errors.push("Start time is after end time");
+        $scope.showError = true;
         //display error
         isValid = false;
         return;
@@ -164,8 +166,7 @@ promo.controller('PromotionCreationController', ['$rootScope', '$scope', 'Promot
             state.go("adminDashboard.promotions", {createdPromotion: true, promotionName: $scope.savedPromotion.name});
           },
           function(){
-            $scope.errors = ["error creating promotion"];
-            console.log("error creating promotion");
+            $scope.errors.push("error creating promotion");
           }
         );
       }
@@ -215,6 +216,7 @@ promo.controller('PromotionDetailsController',
     {
 
       this.init = function(){
+        $scope.errors = [];
         $auth.validateUser();
         $scope.loadPromotion();
         $scope.venues = Venue.query();
@@ -231,7 +233,7 @@ promo.controller('PromotionDetailsController',
       };
 
       $scope.toggleMode = function() {
-        $scope.ismeridian = ! $scope.ismeridian;
+        $scope.ismeridian = !$scope.ismeridian;
       };
 
       $scope.update = function() {
@@ -254,7 +256,8 @@ promo.controller('PromotionDetailsController',
               $scope.end_time = new Date($scope.promotion.end_time);
             })
             .catch(function(data){
-              console.log("ERR  :: "+ data)
+              $scope.errors.push("An error occured while loading promotion");
+              $scope.showError = true;
             });
         }
       };
@@ -271,13 +274,19 @@ promo.controller('PromotionDetailsController',
 
         if(promotion.start_time > promotion.end_time){
           promotion.start_time = promotion.end_time;
-          $log.log("start time is after end time");
+          $scope.errors.push("Start time is after end time");
+          $scope.showError = true;
           //display error
           return;
         }
+
         Promotion.update(promotion).$promise.then(function(data){
           $scope.promotion = {};
           state.go("adminDashboard.promotions");
+        })
+        .catch(function(data){
+          scope.errors.push("An error occurred while updating promotion.");
+          $scope.showError = true;
         });
       };
 

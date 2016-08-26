@@ -8,7 +8,12 @@ dashboard.config(['$stateProvider',
     $stateProvider.state('adminDashboard', {
         url: '/',
         abstract: true,
-        templateUrl: 'app/views/dashboard/admin.html'
+        templateUrl: 'app/views/dashboard/admin.html',
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
     });
 
     $stateProvider.state('adminDashboard.analytics', {
@@ -27,10 +32,15 @@ dashboard.config(['$stateProvider',
       parent: 'adminDashboard',
       templateUrl: 'app/views/venue/index.html',
       controller: 'VenueIndexController',
-      params: { createdVenue: null, }
+      params: { createdVenue: null, },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
+        }
+      }
     });
     $stateProvider.state('adminDashboard.newVenue', {
-      url: '/venues/new',
+      url: 'venues/new',
       parent: 'adminDashboard',
       views: {
         '':{
@@ -45,7 +55,7 @@ dashboard.config(['$stateProvider',
       }
     });
     $stateProvider.state('adminDashboard.editVenue', {
-      url: '/venues/:venue_id',
+      url: 'venues/:venue_id',
       parent: 'adminDashboard',
       views: {
         '':{
@@ -72,10 +82,15 @@ dashboard.config(['$stateProvider',
       params: {
         createdPromotion: null,
         promotionName: null
+      },
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
+        }
       }
     });
     $stateProvider.state('adminDashboard.venuePromotions', {
-      url: '/venue/:venue_id/promotions',
+      url: 'venue/:venue_id/promotions',
       parent: 'adminDashboard',
       views: {
         '':{
@@ -84,25 +99,13 @@ dashboard.config(['$stateProvider',
         }
       },
       resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
+        }
       }
     });
-   $stateProvider.state('adminDashboard.shopBands', {
-      url: '/shopBands',
-      parent: 'adminDashboard',
-      views: {
-        '':{
-          templateUrl: 'app/views/shop/bandSelection.html',
-          controller: 'BuyBandsController'
-        }
-      },
-      resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          }
-        }
-    });
     $stateProvider.state('adminDashboard.checkout', {
-        url: '/checkout',
+        url: 'checkout',
         parent: 'adminDashboard',
         views: {
           '':{
@@ -117,7 +120,7 @@ dashboard.config(['$stateProvider',
           }
     });
     $stateProvider.state('adminDashboard.users', {
-        url: '/users',
+        url: 'users',
         parent: 'adminDashboard',
         views: {
           '':{
@@ -132,7 +135,7 @@ dashboard.config(['$stateProvider',
         }
     });
     $stateProvider.state('adminDashboard.editUser', {
-      url: '/users/:userId/edit',
+      url: 'users/:userId/edit',
       parent: 'adminDashboard',
       views: {
         '':{
@@ -150,7 +153,7 @@ dashboard.config(['$stateProvider',
       }
     });
     $stateProvider.state('adminDashboard.createUser', {
-        url: '/users/new',
+        url: 'users/new',
         parent: 'adminDashboard',
         views: {
           '':{
@@ -165,7 +168,7 @@ dashboard.config(['$stateProvider',
         }
     });
     $stateProvider.state('adminDashboard.newPromotion', {
-        url: '/promotions/new/:promotionId',
+        url: 'promotions/new/:promotionId',
         parent: 'adminDashboard',
         views: {
           '':{
@@ -207,6 +210,10 @@ dashboard.config(['$stateProvider',
           }
         },
         resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          },
+
           venue_id: ['$stateParams', function($stateParams){
               return $stateParams.venue_id;
           }]
@@ -271,7 +278,12 @@ dashboard.config(['$stateProvider',
         url: 'servicePackage',
         parent: 'adminDashboard',
         templateUrl: 'app/views/shop/packageSelection.html',
-        controller: 'BuyPackageController'
+        controller: 'BuyPackageController',
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
       });
   }
 ]);
