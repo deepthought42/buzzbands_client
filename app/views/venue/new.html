@@ -116,7 +116,35 @@
 							<p ng-message="pattern">Zip code can only contain numbers.</p>
 						</div>
 					</div>
+					<div class="form-group">
+						<input  class="form-control"
+										type="text"
+										name="capacity"
+										ng-model="venue.capacity"
+										id="newVenueCapacity"
+										placeholder="Capacity"
+										maxlength="8"
+										pattern="[0-9]*">
+						<div ng-messages="venueForm.capacity.$error" ng-if="venueForm.$submitted" class="text-danger">
+							<p ng-message="pattern">Capacity must be a number.</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<input  class="form-control"
+										type="text"
+										name="cover"
+										ng-model="venue.cover"
+										id="newVenueCover"
+										placeholder="Cover"
+										maxlength="5"
+										pattern="[0-9]*"
+										venue-name-availability-validator="/venues.json"/>
+						<div ng-messages="venueForm.cover.$error" ng-if="venueForm.$submitted" class="text-danger">
+							<p ng-message="pattern">Cover must be a number.</p>
+						</div>
+					</div>
 				</div>
+
 				<div class="actions col-md-12">
 					<button type="submit" class="btn btn-primary buzzbands-btn buzzbands-pink-btn"
 									ng-click="createVenue(venueForm.$valid)">

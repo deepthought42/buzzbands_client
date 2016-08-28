@@ -22,7 +22,6 @@
     "angular-masonry": "~0.14.1"
   },
   "resolutions": {
-    "angular": "1.5.2",
-    "angular-messages": "^1.4.8"
+    "angular": "1.5.5"
   }
 }

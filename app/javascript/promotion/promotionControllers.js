@@ -136,7 +136,7 @@ promo.controller('PromotionCreationController', ['$rootScope', '$scope', 'Promot
 
       $scope.options = {
         hstep: [1, 2, 3],
-        mstep: [1, 5, 10, 15, 25, 30]
+        mstep: [10, 15, 25, 30]
       };
 
       $scope.ismeridian = true;
@@ -226,7 +226,7 @@ promo.controller('PromotionDetailsController',
 
         $scope.options = {
           hstep: [1, 2, 3],
-          mstep: [1, 5, 10, 15, 25, 30]
+          mstep: [10, 15, 25, 30]
         };
 
         $scope.ismeridian = true;

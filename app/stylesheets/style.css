@@ -320,10 +320,11 @@ md-datepicker {
 }
 
 /* line 133, ../sass/partials/_promotion.scss */
-.md-button:not([disabled]).md-icon-button:hover {
-  border-top-color: white;
-  background-color: #4bba4b;
+.md-datepicker-calendar-icon:hover {
+  color: #4bba4b;
 }
+
+
 
 /* line 137, ../sass/partials/_promotion.scss */
 .btn-link {
@@ -2301,4 +2302,12 @@ a:hover {
   width: 90%;
   padding-top: 0px;
   padding-bottom: 20px;
+}
+
+.md-datepicker-calendar {
+  display: visible;
+}
+
+.md-datepicker-triangle-button{
+  display: none;
 }

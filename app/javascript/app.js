@@ -26,7 +26,8 @@ angular.module('buzzbands_client', [
   'filepicker',
   'wu.masonry',
   'angularPayments',
-  'AuthInterceptor'
+  'AuthInterceptor',
+  'ngMaterial'
 ]).
 config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider', '$provide', '$injector', '$locationProvider',
  function($urlRouterProvider, $stateProvider, $authProvider, $httpProvider, $provide, $injector, $locationProvider) {
