@@ -39,9 +39,9 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
   //production :: 'https://hypedrive-api.herokuapp.com/api',
   //local dev :: 'http://localhost:3000/api'
   $authProvider.configure({
-     apiUrl:                  'http://localhost:3000/api',
+     apiUrl:                  'https://hypedrive-api.herokuapp.com/api',
      forceValidateToken:      false,
-     validateOnPageLoad:      true,
+     validateOnPageLoad:      false,
      proxyUrl:                '/proxy',
      omniauthWindowType:      'sameWindow',
      authProviderPaths: {

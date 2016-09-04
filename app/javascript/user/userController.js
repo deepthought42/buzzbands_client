@@ -12,14 +12,14 @@ user.controller('UserIndexController', ['$scope', '$rootScope', '$auth',
     this._init = function(){
       $scope.session = $sessionStorage;
       $scope.getUserList();
-      $auth.validateUser();
+      //$auth.validateUser();
     }
 
     /**
     *
     */
     $scope.getUserList = function(){
-      $auth.validateUser();
+      //$auth.validateUser();
 
       if($scope.session.user && $scope.session.user.role == 'hypedrive_employee'){
         User.query().$promise
@@ -78,7 +78,7 @@ user.controller('UserDetailsController',
   {
     this._init = function(){
       $scope.session = $sessionStorage;
-      $auth.validateUser();
+      //$auth.validateUser();
       $scope.roles = Role;
       $scope.loadUser(stateParams.userId);
     };
@@ -132,7 +132,7 @@ user.controller('UserCreationController',
   {
     this._init = function(){
       $scope.session = $sessionStorage;
-      $auth.validateUser();
+      //$auth.validateUser();
       $scope.user = {};
       $scope.queryVenues();
     };
@@ -250,7 +250,7 @@ user.controller('UserAuthController', ['$scope', '$rootScope', '$auth', '$sessio
 
 			$scope.$on('auth:login-success', function(event, currentUser) {
 				$scope.session.user = currentUser;
-        $auth.validateUser();
+        //$auth.validateUser();
 
         if($scope.session.user.role == 'admin' || $scope.session.user.role == 'hypedrive_employee'){
           $state.go("adminDashboard.analytics");
