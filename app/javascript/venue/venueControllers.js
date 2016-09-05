@@ -98,7 +98,7 @@ venue.controller('VenueIndexController',
           reader.readAsDataURL(files[0]);
         }
         reader.onload = function(event){
-          $scope.venue.url = files[0].url;
+          $scope.venue.logo_url = files[0].url;
           $scope.$apply();
         }
       };
@@ -147,14 +147,14 @@ venue.controller('VenueCreationController',
       };
 
       $scope.previewImage = function(files){
-        $scope.venue.url = files[0].url;
+        $scope.venue.logo_url = files[0].url;
 
         var reader = new FileReader();
         if(typeof files[0] == 'Blob'){
           reader.readAsDataURL(files[0]);
         }
         reader.onload = function(event){
-          $scope.venue.url = files[0].url;
+          $scope.venue.logo_url = files[0].url;
           $scope.$apply();
         }
       };
@@ -203,7 +203,7 @@ venue.controller('VenueDetailsController',
       };
 
       $scope.previewImage = function(files){
-        $scope.venue.url = files[0].url;
+        $scope.venue.logo_url = files[0].url;
       };
 
       $scope.loadVenue();

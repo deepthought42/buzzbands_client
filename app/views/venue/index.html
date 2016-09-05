@@ -82,7 +82,7 @@
             <tbody>
               <tr ng-repeat="venue in venueList|orderBy:'active':true| filter:venueSearch" >
                 <td ng-click="showPromotionsList(venue.id)">
-                    <img ng-src="{{venue.url !== null && venue.url !== undefined ? venue.url : 'images/venue_img_missing.jpg'}}" />
+                    <img ng-src="{{venue.logo_url !== null && venue.logo_url !== undefined ? venue.logo_url : 'images/venue_placeholder.png'}}" />
                 </td>
 
                 <td ng-click="showPromotionsList(venue.id)">
@@ -90,6 +90,8 @@
                 </td>
                 <td>
                   {{venue.address}}
+                  <br />
+                  {{venue.city}}, {{venue.state}} {{venue.zip_code}}
                 </td>
                 <td ng-show="hasPermission('admin') || hasPermission('hypedrive_employee')">
                   <i ng-show="venue.active" class="fa fa-check" />

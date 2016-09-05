@@ -105,7 +105,7 @@
             <td>{{promo.name}}
                 <br/>
                 {{promo.description}}</td>
-            <td><img style="max-width:100px;"class="img-responsive" ng-src="{{promo.ad_location ? promo.ad_location : 'images/venue_img_missing.jpg'}}"></td>
+            <td><img style="max-width:100px;"class="img-responsive" ng-src="{{promo.ad_location ? promo.ad_location : 'images/promotion_placeholder.png'}}"></td>
             <td>{{promo.start_time | date:'MM/dd/yyyy @ h:mma'}}</td>
             <td>{{promo.end_time | date:'MM/dd/yyyy @ h:mma'}}</td>
             <td>
@@ -131,7 +131,7 @@
 					<figure class="promo-wrapper">
             <img id="promotion"
                  class="promotion img-responsive"
-                 src="{{promo.ad_location ? promo.ad_location : 'images/venue_img_missing.jpg'}}" />
+                 src="{{promo.ad_location ? promo.ad_location : 'images/promotion_placeholder.png'}}" />
              <figcaption>
 							<h3 class="font-audiowide">{{promo.name}}</h3>
 							<button class="edit btn btn-primary buzzbands-btn"  ng-click="editPromotion(promo.id)" >Edit</button>

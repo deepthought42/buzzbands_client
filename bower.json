@@ -13,7 +13,7 @@
     "angular-bootstrap": "latest",
     "angular-bootstrap-confirm": "0.2.0",
     "components-font-awesome": "4.3.0",
-    "ng-token-auth": "0.0.28",
+    "ng-token-auth": "0.0.29",
     "ngstorage": "0.3.4",
     "angular-resource": "latest",
     "angular-morph": "latest",

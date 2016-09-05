@@ -40,8 +40,8 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
   //local dev :: 'http://localhost:3000/api'
   $authProvider.configure({
      apiUrl:                  'https://hypedrive-api.herokuapp.com/api',
-     forceValidateToken:      false,
-     validateOnPageLoad:      false,
+     forceValidateToken:      true,
+     validateOnPageLoad:      true,
      proxyUrl:                '/proxy',
      omniauthWindowType:      'sameWindow',
      authProviderPaths: {
@@ -50,9 +50,9 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
        google:   '/auth/google'
      },
      tokenFormat: {
-       "access-token": "{{ token }}",
+       "access-token": "{{ access-token }}",
        "token-type":   "Bearer",
-       "client":       "{{ clientId }}",
+       "client":       "{{ client }}",
        "expiry":       "{{ expiry }}",
        "uid":          "{{ uid }}"
      },
@@ -88,11 +88,11 @@ config(['$urlRouterProvider', '$stateProvider', '$authProvider', '$httpProvider'
 
           $httpProvider.defaults.headers.common['X-XSRF-TOKEN'] = cookies('XSRF-TOKEN');
   				if ((config.headers['access-token'] || (auth_headers && auth_headers['access-token'])) && !$httpProvider.defaults.headers.common['access-token']) {
-  		    	$httpProvider.defaults.headers.common['Access-Token'] = config.headers['access-token'] || auth_headers['access-token'];
-  					$httpProvider.defaults.headers.common['Token-Type'] = config.headers['token-type'] || auth_headers['token-type'];
-  			    $httpProvider.defaults.headers.common['Client'] = config.headers['client'] || auth_headers['client'];
-  					$httpProvider.defaults.headers.common['Expiry'] = config.headers['expiry'] || auth_headers['expiry'];
-  					$httpProvider.defaults.headers.common['Uid'] = config.headers['uid'] || auth_headers['uid'];
+  		    	$httpProvider.defaults.headers.common['Access-Token'] = auth_headers['access-token'];
+  					$httpProvider.defaults.headers.common['Token-Type'] = auth_headers['token-type'];
+  			    $httpProvider.defaults.headers.common['Client'] = auth_headers['client'];
+  					$httpProvider.defaults.headers.common['Expiry'] = auth_headers['expiry'];
+  					$httpProvider.defaults.headers.common['Uid'] = auth_headers['uid'];
   		    }
   		    return config;
   			}
