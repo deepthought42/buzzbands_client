@@ -125,6 +125,20 @@
                   </div>
 
                   <div class="form-group">
+                    <input  class="form-control"
+                            type="text"
+                            name="phone"
+                            ng-model="venue.phone"
+                            id="newVenuePhone"
+                            placeholder="Phone Number"
+                            maxlength="10"
+                            pattern="[0-9]*">
+                    <div ng-messages="venueForm.phone.$error" ng-if="venueForm.$submitted" class="text-danger">
+                      <p ng-message="pattern">Phone number must contain only numbers</p>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
         						<input  class="form-control"
         										type="text"
         										name="capacity"
@@ -146,12 +160,68 @@
         										id="newVenueCover"
         										placeholder="Cover"
         										maxlength="5"
-        										pattern="[0-9]*"
-        										venue-name-availability-validator="/venues.json"/>
+        										pattern="[0-9]*"/>
         						<div ng-messages="venueForm.cover.$error" ng-if="venueForm.$submitted" class="text-danger">
         							<p ng-message="pattern">Cover must be a number.</p>
         						</div>
         					</div>
+
+                  <div class="form-group">
+        						<input  class="form-control"
+        										type="text"
+        										name="numBars"
+        										ng-model="venue.num_bars"
+        										id="newVenueCover"
+        										placeholder="# of bars"
+        										maxlength="5"
+        										pattern="[0-9]*" />
+        						<div ng-messages="venueForm.num_bars.$error" ng-if="venueForm.$submitted" class="text-danger">
+        							<p ng-message="pattern"># of bars must be a number.</p>
+        						</div>
+        					</div>
+
+                  <div class="form-group">
+                    <input  class="form-control"
+        										type="text"
+        										name="mensBathroom"
+        										ng-model="venue.mensBathroom"
+        										id="newVenueMensBathroom"
+        										placeholder="# of Mens Bathrooms"
+        										maxlength="5"
+        										pattern="[0-9]*"/>
+        						<div ng-messages="venueForm.mensBathroom.$error" ng-if="venueForm.$submitted" class="text-danger">
+        							<p ng-message="pattern">Mens bathroom count must be a number.</p>
+        						</div>
+        					</div>
+
+                  <div class="form-group">
+                    <input  class="form-control"
+        										type="text"
+        										name="womensBathroom"
+        										ng-model="venue.womensBathroom"
+        										id="newVenueWomensBathrooms"
+        										placeholder="# of Womens Bathrooms"
+        										maxlength="5"
+        										pattern="[0-9]*"/>
+        						<div ng-messages="venueForm.womensBathroom.$error" ng-if="venueForm.$submitted" class="text-danger">
+        							<p ng-message="pattern">Womens bathroom must be a number.</p>
+        						</div>
+        					</div>
+
+                  <div class="form-group">
+                    <input  class="form-control"
+        										type="text"
+        										name="numBeersOnTap"
+        										ng-model="venue.num_beers_on_tap"
+        										id="newVenueBeersOnTap"
+        										placeholder="# of beers on tap"
+        										maxlength="5"
+        										pattern="[0-9]*"/>
+        						<div ng-messages="venueForm.numBeersOnTap.$error" ng-if="venueForm.$submitted" class="text-danger">
+        							<p ng-message="pattern"># of beers on tap must be a number.</p>
+        						</div>
+        					</div>
+
                 <div class="col-sm-12 text-center">
                   Active?
                   <input type="checkbox" ng-model="venue.active" ng-disabled="isAdmin()" />

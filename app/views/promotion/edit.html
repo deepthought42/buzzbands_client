@@ -50,7 +50,6 @@
 								ng-model="promotion.description"
 								id="newPromotionDescription"
 								placeholder="Description"
-								required
 								minlength="3"
 								maxlength="250"/>
 
@@ -60,7 +59,6 @@
 								ng-model="promotion.notes"
 								id="newPromotionNotes"
 								placeholder="Notes"
-								required
 								minlength="3"/>
 
 					<div ng-messages="promotionForm.name.$error" ng-if="promotionForm.$valid" class="text-danger">
@@ -73,10 +71,17 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-6 text-right">
-							<md-datepicker ng-model="promotion.start_time" md-placeholder="mm/dd/yyyy"></md-datepicker>
+							<md-datepicker ng-model="promotion.start_time"
+														 md-placeholder="mm/dd/yyyy">
+ 						  </md-datepicker>
 						</div>
 						<div class="col-md-6">
-							<uib-timepicker  style="width:232px;background-color:#242831;" ng-model="start_time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">
+							<uib-timepicker  style="width:232px;background-color:#242831;"
+															 ng-model="start_time"
+															 ng-change="changed()"
+															 hour-step="hstep"
+															 minute-step="mstep"
+															 show-meridian="ismeridian">
 							</uib-timepicker>
 						</div>
 					</div>
